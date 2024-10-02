@@ -13,14 +13,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class Maincontroller {
-   
-   private final MainService service;
-   
+	private final MainService service;
+	
  @GetMapping("login")
  public String login() {
-    return "login/login";
+	 return "login/login";
  }
-   
+	
 
 
 }
