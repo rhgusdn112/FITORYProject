@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitory - 홈트레이닝 사이트</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <div class="container">
@@ -14,8 +14,8 @@
                 <span class="subtitle">성공적인 다이어트를 위한</span>
             </div>
             <div class="nav">
-                <a href="/login" class="nav-item">LogIn</a>
-                <a href="/cart" class="nav-item">Cart</a>
+                <a th:href="@{/login}" class="nav-item">LogIn</a>
+                <a th:href="@{/cart}" class="nav-item">Cart</a>
             </div>
         </div>
 
@@ -25,11 +25,11 @@
                 <button type="submit" class="search-button">X</button>
             </div>
             <div class="menu">
-                <a href="/teacher" class="menu-item">TEACHER</a>
-                <a href="/hometraining" class="menu-item">HomeTraining</a>
-                <a href="/homegym" class="menu-item">Home Gym</a>
-                <a href="/cart" class="menu-item">CART</a>
-                <a href="/announcement" class="menu-item">공지사항</a>
+                <a th:href="@{/teacher}" class="menu-item">TEACHER</a>
+                <a th:href="@{/hometraining}" class="menu-item">HomeTraining</a>
+                <a th:href="@{/homegym}" class="menu-item">Home Gym</a>
+                <a th:href="@{/cart}" class="menu-item">CART</a>
+                <a th:href="@{/announcement}" class="menu-item">공지사항</a>
             </div>
         </div>
     </div>
