@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class Maincontroller {
+<<<<<<< HEAD
 	
 	private final MainService service;
 	
@@ -24,3 +25,16 @@ public class Maincontroller {
 
 
 }
+=======
+   
+   private final MainService service;
+   
+ @GetMapping("login")
+ public String login() {
+    return "login/login";
+ }
+   
+
+
+}
+>>>>>>> origin/feature/login-html-css

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -9,3 +10,70 @@
   <h1>로그인 페이지</h1>
 </body>
 </html>
+=======
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitory - 로그인</title>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="menu-icon">
+                <img src="/images/menu-icon.gif" alt="Menu Icon" width="70" height="70">
+            </div>
+            <div class="logo">
+                <h1>FITORI</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+                <button>X</button>
+            </div>
+        </div>
+
+        <div class="login-container">
+            <h2>로그인</h2>
+            <div class="login-options">
+                <input type="radio" id="member" name="loginType" value="member" checked>
+                <label for="member" class="login-option">회원 로그인</label>
+                <input type="radio" id="trainer" name="loginType" value="trainer">
+                <label for="trainer" class="login-option">강사 로그인</label>
+            </div>
+
+            <div class="login-form">
+                <div class="input-group">
+                    <label for="email">아이디(Email)</label>
+                    <input type="text" id="email" placeholder="아이디">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호">
+                </div>
+
+                <button class="login-button" onclick="submitLogin()">로그인</button>
+            </div>
+
+            <div class="login-footer">
+                <a href="/signup">회원가입</a> |
+                <a href="/find-id">ID 찾기</a> |
+                <a href="/find-password">비밀번호 찾기</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitLogin() {
+            const loginType = document.querySelector('input[name="loginType"]:checked').value;
+            if (loginType === 'member') {
+                window.location.href = '/member/login';
+            } else if (loginType === 'trainer') {
+                window.location.href = '/trainer/login';
+            }
+        }
+    </script>
+</body>
+</html>
+>>>>>>> origin/feature/login-html-css
