@@ -13,11 +13,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class Maincontroller {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
->>>>>>> 8d9942b495acc98767b51987c665bedaf38a0053
 	private final MainService service;
 	
  @GetMapping("login")
@@ -28,9 +23,6 @@ public class Maincontroller {
 
 
 }
-<<<<<<< HEAD
-=======
-   
    private final MainService service;
    
  @GetMapping("login")
