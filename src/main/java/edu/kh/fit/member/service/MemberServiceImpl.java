@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
-	private final BCryptPasswordEncoder encoder;
+	private final BCryptPasswordEncoder encorder;
 	
 	
 	// (회원) 로그인 서비스
@@ -23,11 +23,27 @@ public class MemberServiceImpl implements MemberService{
 			
 			if(memberLogin == null)	return null;
 
-			if( !encoder.matches(encoder.encode(memberPw), memberLogin.getMemberPw()) ){
+			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
 				return null;
 			}
 				
 			return memberLogin;
 		}
 
+	// (회원) 회원가입
+	@Override
+	public int signUp(Member inputMember) {
+
+		String encPw = encorder.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		if(inputMember.getMemberAddress().equals(",,")) {
+			inputMember.setMemberAddress(null);
+		}
+		
+		int result = mapper.signUp(inputMember);
+		
+		
+		return result;
+	}
 }

@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class TrainnerServiceImpl implements TrainnerService{
 	
 	private final TrainnerMapper mapper;
-	private final BCryptPasswordEncoder encoder;
+	private final BCryptPasswordEncoder encorder;
 	
 	// (강사) 로그인 서비스
 	@Override
@@ -23,10 +23,27 @@ public class TrainnerServiceImpl implements TrainnerService{
 			
 			if(trainnerLogin == null)	return null;
 
-			if( !encoder.matches(encoder.encode(trainnerPw), trainnerLogin.getTrainnerPw())){
+			if( !encorder.matches(encorder.encode(trainnerPw), trainnerLogin.getTrainnerPw())){
 				return null;
 			}
 				
 			return trainnerLogin;
 		}
+	
+	// (강사) 회원 가입
+	@Override
+	public int signUp(Trainner inputTrainner) {
+		
+		String encPw = encorder.encode(inputTrainner.getTrainnerPw());
+		inputTrainner.setTrainnerPw(encPw);
+		
+		if(inputTrainner.getTrainnerAddress().equals(",,")) {
+			inputTrainner.setTrainnerAddress(null);
+		}
+		
+		
+		int result = mapper.signUp(inputTrainner);
+						
+		return result;
+	}
 }

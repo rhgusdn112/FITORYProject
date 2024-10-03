@@ -11,4 +11,10 @@ public interface MemberService {
 	 */
 	Member memberLogin(String memberEmail, String memberPw);
 
+	/** (회원) 회원가입
+	 * @param inputMember
+	 * @return
+	 */
+	int signUp(Member inputMember);
+
 }

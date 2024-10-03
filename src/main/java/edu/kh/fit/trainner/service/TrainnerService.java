@@ -11,4 +11,11 @@ public interface TrainnerService {
 	 */
 	Trainner trainnerLogin(String trainnerEmail, String trainnerPw);
 
+	
+	/** (강사) 회원가입
+	 * @param inputTrainner
+	 * @return
+	 */
+	int signUp(Trainner inputTrainner);
+
 }

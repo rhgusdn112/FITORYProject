@@ -2,11 +2,14 @@ package edu.kh.fit.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -45,15 +48,14 @@ public class MemberController {
 		
 		Member memberLogin = service.memberLogin(memberEmail, memberPw);
 		
-		if(memberLogin == null) { // 로그인 실패
-			ra.addFlashAttribute("message", "해당하는 정보가 없습니다.");
-		}else { // 로그인 성공
-
+		if(memberLogin == null) {
+			ra.addFlashAttribute("message",
+												"아이디 혹은 패스워드가 일치하지 않습니다.");
+		}else {
 			model.addAttribute("memberLogin", memberLogin);
 			
 			//----------------------------------------------------------------
 			/* 이메일 저장 코드(Cookie) */
-			
 			Cookie cookie = new Cookie("saveEmail", memberEmail);
 			
 			cookie.setPath("/"); 
@@ -66,12 +68,50 @@ public class MemberController {
 			}
 		
 			resp.addCookie(cookie);
-			
-			
 			//----------------------------------------------------------------
 		}
-		
-		
 		return "redirect:/"; 
+	}
+	
+	/** 로그아웃
+	 * @return
+	 */
+	@GetMapping("logout")
+	public String logout(SessionStatus status) {
+		
+		status.setComplete();
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	/** 회원가입
+	 * @param inputMember
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("signUp")
+	public String signUp(
+			@ModelAttribute Member inputMember,
+			RedirectAttributes ra	) {
+		
+		int result = service.signUp(inputMember);
+		
+		String message = null;
+		String path    = null;
+		
+		if(result > 0) {
+			path = "/";
+			message 
+				= inputMember.getMemberNickname() + "님의 가입을 환영합니다";
+		} else {
+			path = "signUp";
+			message = "회원 가입 실패...";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
 	}
 }
