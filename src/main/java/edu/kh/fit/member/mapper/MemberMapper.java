@@ -10,4 +10,6 @@ public interface MemberMapper {
 	// (회원) 로그인 서비스
 	Member memberLogin(String memberEmail);
 
+	int signUp(Member inputMember);
+
 }

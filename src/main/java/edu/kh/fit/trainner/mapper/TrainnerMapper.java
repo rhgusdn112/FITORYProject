@@ -11,4 +11,7 @@ public interface TrainnerMapper {
 	// (강사) 로그인 서비스
 	Trainner trainnerLogin(String trainnerEmail);
 
+	// (강사) 회원가입
+	int signUp(Trainner inputTrainner);
+
 }
