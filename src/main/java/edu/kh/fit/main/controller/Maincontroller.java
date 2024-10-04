@@ -12,10 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class Maincontroller {
-<<<<<<< HEAD
-=======
 
->>>>>>> bf5ba2e6531d460967d1ccba2f6f3cc9d7bf8768
 	private final MainService service;
 	
 	@GetMapping("login")
@@ -27,21 +24,5 @@ public class Maincontroller {
 	public String signUp() {
 		return "common/signUp";
 	}
-	
-
-	
-	
-
-
 }
-<<<<<<< HEAD
-   private final MainService service;
-   
- @GetMapping("login")
- public String login() {
-    return "login/login";
- }
-   
-=======
->>>>>>> bf5ba2e6531d460967d1ccba2f6f3cc9d7bf8768
 
