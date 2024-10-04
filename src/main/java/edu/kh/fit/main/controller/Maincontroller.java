@@ -24,11 +24,5 @@ public class Maincontroller {
 	public String signUp() {
 		return "common/signUp";
 	}
-	
-
-	
-	
-
-
 }
 
