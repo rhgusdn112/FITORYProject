@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head th:replace="common/common :: head"></head>
+<body>
+    <!-- 헤더 조각 삽입 -->
+    <header th:insert="common/header :: header"></header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
+        <p>이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
+    </main>
+
+    <!-- 푸터 조각 삽입 -->
+    <footer th:insert="common/footer :: footer"></footer>
+</body>
+</html>
