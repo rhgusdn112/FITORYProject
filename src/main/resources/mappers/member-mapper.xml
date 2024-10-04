@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.member.mapper.MemberMapper">
 	
-	
+	<!-- 로그인 -->
 	<select id="loginMember"
 			resultType="Member">
 		SELECT
@@ -20,5 +20,16 @@
 		AND   MEMBER_DEL_FL = 'N'
 	</select>
 	
-	
+	<!-- 로그아웃 -->
+	<insert id="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(
+		SEQ_MEMBER_NO.NEXTVAL, 
+		#{memberEmail}, 
+		#{memberPw},
+	 	#{memberNickname}, 
+	 	#{memberTel}, 
+	 	#{memberAddress}
+	 	, NULL, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
 </mapper>

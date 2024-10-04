@@ -1,28 +1,40 @@
 package edu.kh.fit.main.controller;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.fit.main.service.MainService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
 public class Maincontroller {
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf5ba2e6531d460967d1ccba2f6f3cc9d7bf8768
 	private final MainService service;
 	
- @GetMapping("login")
- public String login() {
-	 return "login/login";
- }
+	@GetMapping("login")
+	public String login() {
+	  return "login/login";
+ }  
+	
+	@GetMapping("signUp")
+	public String signUp() {
+		return "common/signUp";
+	}
+	
+
+	
 	
 
 
 }
+<<<<<<< HEAD
    private final MainService service;
    
  @GetMapping("login")
@@ -30,9 +42,6 @@ public class Maincontroller {
     return "login/login";
  }
    
-
-
-}
->>>>>>> origin/feature/login-html-css
 =======
->>>>>>> 8d9942b495acc98767b51987c665bedaf38a0053
+>>>>>>> bf5ba2e6531d460967d1ccba2f6f3cc9d7bf8768
+
