@@ -15,6 +15,10 @@ import lombok.RequiredArgsConstructor;
 public class Maincontroller {
 	private final MainService service;
 	
+	@GetMapping("main")
+	public String main() {
+		return "common/main";
+	}
 	@GetMapping("login")
  	public String login() {
 	 	return "login/login";

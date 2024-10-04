@@ -1,0 +1,29 @@
+.footer {
+  background-color: #f0f0f0;
+  padding: 30px;
+  color: #333;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.customer-center {
+  max-width: 200px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer-links h4 {
+  font-weight: bold;
+}
+
+.footer-info {
+  margin-top: 20px;
+  font-size: 14px;
+}

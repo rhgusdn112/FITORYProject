@@ -1,0 +1,12 @@
+.main-content {
+  padding: 50px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+h2 {
+  font-family: 'MaruBuri', sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,25 @@
+<div th:fragment="header">
+  <div class="header-container">
+      <div class="nav-container">
+          <div class="menu-icon">
+              <img src="../static/images/menu-icon.gif" alt="Menu">
+          </div>
+          <h1 class="logo">FITORY</h1>
+          <div class="auth-links">
+              <div th:if="${#httpServletRequest.remoteUser == null}">
+                  <a th:href="@{/login}" class="nav-item">LogIn</a>
+                  <a th:href="@{/cart}" class="nav-item">Cart</a>
+              </div>
+              <div th:if="${#httpServletRequest.remoteUser != null}">
+                  <a th:href="@{/myPage}" class="nav-item">MyPage</a>
+                  <a th:href="@{/logout}" class="nav-item">Logout</a>
+                  <a th:href="@{/cart}" class="nav-item">Cart</a>
+              </div>
+          </div>
+      </div>
+      <div class="search-container">
+          <input type="text" placeholder="Search" class="search-input">
+          <button type="submit" class="search-button">X</button>
+      </div>
+  </div>
+</div>
