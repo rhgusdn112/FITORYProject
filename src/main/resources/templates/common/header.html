@@ -6,11 +6,11 @@
           </div>
           <h1 class="logo">FITORY</h1>
           <div class="auth-links">
-              <div th:if="${#httpServletRequest.remoteUser == null}">
+              <div th:if="${#httpServletRequest?.remoteUser == null}">
                   <a th:href="@{/login}" class="nav-item">LogIn</a>
                   <a th:href="@{/cart}" class="nav-item">Cart</a>
               </div>
-              <div th:if="${#httpServletRequest.remoteUser != null}">
+              <div th:if="${#httpServletRequest?.remoteUser != null}">
                   <a th:href="@{/myPage}" class="nav-item">MyPage</a>
                   <a th:href="@{/logout}" class="nav-item">Logout</a>
                   <a th:href="@{/cart}" class="nav-item">Cart</a>
