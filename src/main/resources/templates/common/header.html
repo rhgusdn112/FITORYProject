@@ -1,25 +1,34 @@
 <div th:fragment="header">
-  <div class="header-container">
-      <div class="nav-container">
-          <div class="menu-icon">
-              <img src="../static/images/menu-icon.gif" alt="Menu">
-          </div>
-          <h1 class="logo">FITORY</h1>
-          <div class="auth-links">
-              <div th:if="${#httpServletRequest?.remoteUser == null}">
-                  <a th:href="@{/login}" class="nav-item">LogIn</a>
-                  <a th:href="@{/cart}" class="nav-item">Cart</a>
-              </div>
-              <div th:if="${#httpServletRequest?.remoteUser != null}">
-                  <a th:href="@{/myPage}" class="nav-item">MyPage</a>
-                  <a th:href="@{/logout}" class="nav-item">Logout</a>
-                  <a th:href="@{/cart}" class="nav-item">Cart</a>
-              </div>
-          </div>
-      </div>
-      <div class="search-container">
-          <input type="text" placeholder="Search" class="search-input">
-          <button type="submit" class="search-button">X</button>
-      </div>
-  </div>
+    <header class="header">
+        <div class="menu-icon">
+            <a th:href="@{/main}">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
+        <div class="logo-container">
+            <a th:href="@{/main}" class="logo-link">
+                <h1 class="logo">FITORY</h1>
+            </a>
+        </div>
+        <div class="nav-centered">
+            <!-- 로그인 여부에 따른 조건부 렌더링 -->
+            <div th:if="${#authentication?.principal != null}">
+                <a th:href="@{/mypage}" class="nav-item">MyPage</a>
+                |
+                <a th:href="@{/logout}" class="nav-item">Logout</a>
+                |
+                <a th:href="@{/cart}" class="nav-item">Cart</a>
+            </div>
+            <div th:if="${#authentication?.principal == null}">
+                <a th:href="@{/login}" class="nav-item">LogIn</a>
+                |
+                <a th:href="@{/cart}" class="nav-item">Cart</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search" class="search-input" oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
+            <button class="clear-button" onclick="document.querySelector('.search-input').value = ''; this.style.display = 'none';" style="display: none;">X</button>
+            <button class="search-button"><i class="fa fa-search"></i></button>
+        </div>
+    </header>
 </div>
