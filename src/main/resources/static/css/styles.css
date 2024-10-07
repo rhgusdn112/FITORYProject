@@ -9,11 +9,12 @@ body, html {
 
 .container {
   background-image: url('../images/main-background.jpg');
-  background-size: cover;
+  background-size: cover; /* 'cover'는 배경 이미지를 컨테이너에 맞게 채우면서 비율을 유지 */
   background-position: center;
   height: 100vh;
   color: #fff;
   position: relative;
+  background-attachment: fixed; /* 이 속성으로 이미지가 스크롤 시 고정되도록 함 */
 }
 
 .header {
