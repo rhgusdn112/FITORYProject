@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
-<head th:replace="common/common :: head"></head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{common/common}"></head>
 <body>
     <!-- 헤더 조각 삽입 -->
-    <header th:insert="common/header :: header"></header>
+    <header th:replace= "~{common/header :: header}"></header>
 
     <!-- 메인 콘텐츠 -->
     <main class="main-content">
@@ -12,6 +12,6 @@
     </main>
 
     <!-- 푸터 조각 삽입 -->
-    <footer th:insert="common/footer :: footer"></footer>
+    <footer th:replace="~{common/footer :: footer}"></footer>
 </body>
 </html>

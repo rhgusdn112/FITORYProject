@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.RequestAttributes;
@@ -114,4 +115,28 @@ public class MemberController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+		/** 회원 페이지로 이동
+		 * @return
+		 */
+		@GetMapping("/memberMyPage")
+		public String memberMyPage(
+				@SessionAttribute("memberLogin") Member memberLogin,
+				Model model
+				) {
+			
+			String[] arr = memberLogin.getMemberAddress().split(",");
+			
+			model.addAttribute("우편번호", arr[0]);
+			model.addAttribute("주소", arr[1]);
+			model.addAttribute("상세주소", arr[2]);
+			
+			
+			
+			return "/member/memberMyPage";
+		}
+		
+		
+
 }
