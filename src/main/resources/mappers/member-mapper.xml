@@ -3,7 +3,7 @@
 <mapper namespace="edu.kh.fit.member.mapper.MemberMapper">
 	
 	<!-- 로그인 -->
-	<select id="loginMember"
+	<select id="memberLogin"
 			resultType="Member">
 		SELECT
 			MEMBER_NO,
@@ -13,8 +13,7 @@
 			MEMBER_TEL, 
 			MEMBER_ADDRESS, 
 			PROFILE_IMG, 
-			AUTHORITY,
-			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
+			AUTHORITY
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND   MEMBER_DEL_FL = 'N'

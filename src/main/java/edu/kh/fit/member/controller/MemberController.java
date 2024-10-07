@@ -21,7 +21,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("member")
 @SessionAttributes("memberLogin")
 @RequiredArgsConstructor
 public class MemberController {
@@ -39,8 +38,8 @@ public class MemberController {
 	 */
 	@PostMapping("login")
 	public String memberLogin(
-			@RequestParam("memberEmail") String memberEmail,
-			@RequestParam("memberPw")		 String memberPw,
+			@RequestParam("username") String memberEmail,
+			@RequestParam("password")		 String memberPw,
 			@RequestParam(name = "saveEmail", required = false) String saveEmail,
 			Model model,
 			RedirectAttributes ra,
