@@ -1,79 +1,70 @@
-/* header.css */
-
-.header-container {
+.header {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  background-color: #D9D9D9;
-  padding: 10px 20px;
-  border-bottom: 2px solid #ccc;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f0f0;
+  position: relative;
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
+.menu-icon {
+  font-size: 1.5em;
+  color: #333;
 }
 
-.menu-icon img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .logo {
   font-family: 'Volkhov', serif;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1.2;
-  color: #FFFFFF;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: 20px;
+  font-size: 2.5em;
+  color: #333;
 }
 
-.auth-links {
+.nav-centered {
   display: flex;
-  gap: 20px;
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: #000000;
-  margin-right: 20px;
+  gap: 15px;
+  position: absolute;
+  right: 20px;
+  top: 0;
 }
 
 .nav-item {
-  color: #000;
+  font-family: 'Kalnia', sans-serif;
+  font-size: 1em;
+  color: #333;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.nav-item:hover {
-  color: #555;
-}
-
-.search-container {
-  margin-top: 10px;
+.search-bar {
   display: flex;
   align-items: center;
+  gap: 5px;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 9999px;
+  padding: 5px 10px;
 }
 
 .search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 20px 0 0 20px;
-  width: 200px;
+  border: none;
   outline: none;
+  font-size: 16px;
+  color: #757575;
 }
 
-.search-button {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-left: none;
-  background-color: #fff;
-  border-radius: 0 20px 20px 0;
+.search-button,
+.clear-button {
+  background: none;
+  border: none;
+  font-size: 16px;
   cursor: pointer;
+  color: #000;
 }
-
