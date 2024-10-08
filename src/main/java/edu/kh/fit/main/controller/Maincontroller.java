@@ -39,5 +39,12 @@ public class Maincontroller {
  		return "login/findPw";
  	}
 
+ 	@GetMapping("cart")
+ 	public String cart() {
+ 		return "member/cart";
+ 	}
+ 	
+ 	
+
 }
 

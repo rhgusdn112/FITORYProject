@@ -399,27 +399,42 @@ DROP TABLE "MEMBER";
 
 CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bbed29c745f1a6ea447acf4d9ec8a7d2fe7c1767
 SELECT MEMBER_NO
 FROM MEMBER;
 
 INSERT INTO "MEMBER"
 VALUES(
+<<<<<<< HEAD
 	1, 'member01@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+=======
+	SEQ_MEMBER_NO.NEXTVAL, 'member01@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+>>>>>>> bbed29c745f1a6ea447acf4d9ec8a7d2fe7c1767
 	'샘플1', '01012341234', NULL, NULL, NULL, NULL,
 	CURRENT_DATE, DEFAULT, DEFAULT 	
 );
 
 INSERT INTO "MEMBER"
 VALUES(
+<<<<<<< HEAD
 	2, 'member02@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+=======
+	SEQ_MEMBER_NO.NEXTVAL, 'member02@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+>>>>>>> bbed29c745f1a6ea447acf4d9ec8a7d2fe7c1767
 	'샘플2', '01012341234', NULL, NULL, NULL, NULL,
 	CURRENT_DATE, DEFAULT, DEFAULT 	
 );
 
 INSERT INTO "MEMBER"
 VALUES(
+<<<<<<< HEAD
 	3, 'member03@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+=======
+	SEQ_MEMBER_NO.NEXTVAL, 'member03@kh.or.kr', '$2a$10$905RzW3sO8.TyWtb9RXztuBdNORK5dBrndjhYamv7ResalyFqqeNy',
+>>>>>>> bbed29c745f1a6ea447acf4d9ec8a7d2fe7c1767
 	'샘플3', '01012341234', NULL, NULL, NULL, NULL,
 	CURRENT_DATE, DEFAULT, DEFAULT 	
 );
@@ -427,6 +442,7 @@ VALUES(
 COMMIT;
 
 SELECT * 
+<<<<<<< HEAD
 FROM "MEMBER";
 
 
@@ -434,3 +450,6 @@ DELETE
 FROM "MEMBER"
 WHERE MEMBER_NO = 15;
 
+=======
+FROM "MEMBER";
+>>>>>>> bbed29c745f1a6ea447acf4d9ec8a7d2fe7c1767
