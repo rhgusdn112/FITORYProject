@@ -1,3 +1,4 @@
+/* 전체 HTML과 body의 기본 스타일 설정 */
 body, html {
   margin: 0;
   padding: 0;
@@ -7,8 +8,9 @@ body, html {
   overflow: hidden;
 }
 
+/* 컨테이너 설정: 배경 이미지와 위치 설정 */
 .container {
-  background-image: url('../images/main-background1.jpg');
+  background-image: url('../images/main-background.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -18,6 +20,7 @@ body, html {
   transition: background-image 5s ease-in-out; /* 배경 이미지의 부드러운 전환 */
 }
 
+/* 헤더 스타일: 화면 좌측 상단에 위치 */
 .header {
   position: absolute;
   top: 20px;
@@ -28,37 +31,49 @@ body, html {
   width: calc(100% - 40px); /* 화면 좌우 여백을 고려 */
 }
 
+/* 로고 컨테이너: 로고와 부제목을 세로로 정렬 */
 .logo-container {
   display: flex;
   flex-direction: column;
 }
 
+/* 로고 스타일 */
 .logo {
   font-family: 'Serif', sans-serif;
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: bold;
   margin: 0;
   color: #fff;
 }
 
+/* 부제목 스타일 */
 .subtitle {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #ccc;
   margin-top: -10px;
 }
 
+/* 네비게이션 메뉴 스타일 */
 .nav {
   display: flex;
   gap: 20px;
 }
 
+/* 네비게이션 아이템 스타일 */
 .nav-item {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
+  transition: color 0.3s ease;
 }
 
+/* 로그인과 카트 링크 호버 시 색상 변경 */
+.nav-item:hover {
+  color: #f05a28;
+}
+
+/* 검색 메뉴 컨테이너: 오른쪽 상단에 위치 */
 .search-menu-container {
   position: absolute;
   top: 100px;
@@ -68,6 +83,7 @@ body, html {
   align-items: flex-end;
 }
 
+/* 검색 바 스타일 */
 .search-bar {
   display: flex;
   margin-bottom: 15px;
@@ -76,6 +92,7 @@ body, html {
   border-radius: 20px;
 }
 
+/* 검색 입력창 스타일 */
 .search-input {
   padding: 5px;
   font-size: 1em;
@@ -85,24 +102,25 @@ body, html {
   background: transparent;
 }
 
-.search-button {
+/* 검색 버튼과 삭제 버튼 스타일 */
+.search-button, .clear-button {
   padding: 5px;
   font-size: 1em;
   cursor: pointer;
   background-color: transparent;
   border: none;
   color: #333;
+  margin-left: 5px;
 }
 
-.clear-button {
-  padding: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #333;
+/* 돋보기 아이콘 스타일 추가 */
+.search-button::before {
+  content: '\f002'; /* FontAwesome 돋보기 아이콘 코드 */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
 
+/* 메뉴 스타일 */
 .menu {
   display: flex;
   flex-direction: column;
@@ -110,14 +128,16 @@ body, html {
   gap: 5px;
 }
 
+/* 메뉴 아이템 스타일 */
 .menu-item {
   color: #fff;
-  font-size: 1.4em;
+  font-size: 1.2em;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
+/* 메뉴 아이템 호버 시 색상 변경 */
 .menu-item:hover {
   color: #f05a28;
 }
