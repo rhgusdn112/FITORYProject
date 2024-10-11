@@ -5,7 +5,12 @@
   justify-content: space-between;
   padding: 20px;
   background-color: #f0f0f0;
-  position: relative;
+  position: fixed; /* 화면 상단에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 헤더 아래에 그림자 추가 */
 }
 
 /* 메뉴 아이콘 스타일 */
