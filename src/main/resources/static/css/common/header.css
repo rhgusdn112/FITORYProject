@@ -1,3 +1,4 @@
+/* 헤더 전체 스타일 설정 */
 .header {
   display: flex;
   align-items: center;
@@ -7,11 +8,13 @@
   position: relative;
 }
 
+/* 메뉴 아이콘 스타일 */
 .menu-icon {
   font-size: 1.5em;
   color: #333;
 }
 
+/* 로고 영역 스타일 */
 .logo-container {
   display: flex;
   align-items: center;
@@ -25,21 +28,48 @@
   color: #333;
 }
 
-.nav-centered {
-  display: flex;
-  gap: 15px;
-  position: absolute;
-  right: 20px;
+/* 사이드 메뉴 스타일 (왼쪽에서 나오는 메뉴 설정) */
+.side-menu {
+  position: fixed;
   top: 0;
+  left: -250px; /* 왼쪽에서 시작 */
+  width: 250px;
+  height: 100%;
+  background: #f0f0f0;
+  transition: left 0.3s; /* 메뉴가 열릴 때의 애니메이션 효과 */
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.nav-item {
-  font-family: 'Kalnia', sans-serif;
-  font-size: 1em;
+.side-menu.open {
+  left: 0; /* 메뉴가 열리면 왼쪽 끝으로 나옴 */
+}
+
+/* 닫기 아이콘 스타일 */
+.side-menu .close-icon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+/* 네비게이션 리스트 스타일 */
+.side-menu nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-menu nav ul li {
+  padding: 15px;
+}
+
+/* 네비게이션 링크 스타일 */
+.side-menu nav ul li a {
   color: #333;
   text-decoration: none;
+  font-size: 1.2em;
 }
 
+/* 검색 바 영역 스타일 */
 .search-bar {
   display: flex;
   align-items: center;
