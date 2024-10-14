@@ -22,8 +22,17 @@ public class Trainner {
 	private String trainnerTel;
 	private String trainnerAddress;  
 	private String profileImg;
-	private String qualification;
+	private int    sales;
 	private String enrollDate;
 	private String trainnerDelFl;
-	private String authorityTrainner;
+	private String gender;
+	
+	
+	
+	
+	// 강사 자격정보 생성을 위한 필드생성
+	private int qualificationNo;
+	private String qualification;
+	private String award;
+	private String career;
 }

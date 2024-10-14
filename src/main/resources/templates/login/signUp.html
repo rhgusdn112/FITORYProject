@@ -1,12 +1,145 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitory - 회원가입</title>
-    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 가입</title>
+
+  <th:block th:replace="~{common/common}"></th:block>
+
+  <link rel="stylesheet" href="/css/login/signUp.css">
 </head>
-  <h1> 여기도 회원가입 회원/ 강사로 나눠서 선택할 수 있게 만들어 주세요</h1>  
+<body>
+  <th:block th:replace="~{common/header}"></th:block>
+
+  <main>
+    <!-- 헤더 추가 -->
+    <div class="container">
+      <section class="signUp-content">
+        <h2>회원가입</h2>
+            <div class="signUp-options">
+                <input type="radio" id="member" name="signUpType" value="member" checked>
+                <label for="member" class="signUp-option">일반 회원가입</label>
+                <input type="radio" id="trainer" name="signUpType" value="trainer">
+                <label for="trainer" class="signUp-option">강사 회원가입</label>
+            </div>
+  
+        <form action="signUp" method="POST" name="signUpForm" id="signUp-form">
+  
+          <!-- 이메일 입력 -->
+          <label for="memberEmail">
+            <span class="required">*</span> 아이디(EMAIL)
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="memberEmail" id="memberEmail" 
+            placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
+            
+            <button id="sendAuthKeyBtn" type="button">중복검사</button>
+          </div>
+          
+          <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+  
+  
+  
+          <!-- 인증번호 입력 -->
+          <label for="emailCheck">
+            <span class="required">*</span> 인증번호
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="authKey" id="authKey" placeholder="이메일 인증 확인" maxlength="6" autocomplete="off" >
+            
+            <button id="checkAuthKeyBtn" type="button">인증확인</button>
+          </div>
+  
+          <span class="signUp-message" id="authKeyMessage"></span>
+                          <!-- 인증번호가 일치하지 않습니다 -->
+          
+  
+          <!-- 비밀번호/비밀번호 확인 입력 -->
+          <label for="memberPw">
+            <span class="required">*</span> 비밀번호
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="password" name="memberPw" id="memberPw" 
+            placeholder="비밀번호 입력" maxlength="20" >
+          </div>
+  
+          <div class="signUp-input-area">
+            <input type="password" name="memberPwConfirm" id="memberPwConfirm" 
+            placeholder="비밀번호를 확인해주세요" maxlength="20" >
+          </div>
+  
+          <!-- 정규 표현식 -->
+          <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+  
+          <!-- 닉네임 입력 -->
+          <label for="memberNickname">
+            <span class="required">*</span> 닉네임
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="memberNickname" id="memberNickname" placeholder="닉네임" maxlength="10" >
+          </div>
+  
+          <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 3~10글자</span>
+  
+
+          <!-- 주소 입력 -->
+          <label for="memberBirth">
+            <span class="required">*</span> 생년월일
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="memberBirth" placeholder="YYYYMMDD" maxlength="8" id="memberBirth">                       
+          </div>
+
+
+          <!-- 전화번호 입력 -->
+          <label for="memberTel">
+            <span class="required">*</span> 전화번호
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="memberTel" id="memberTel" placeholder="(- 없이 숫자만 입력)" maxlength="11">
+          </div>
+
+          <!-- 인증번호 입력 -->
+          <label for="emailCheck">
+            <span class="required">*</span> 인증번호
+          </label>
+  
+          <div class="signUp-input-area">
+            <input type="text" name="authKey" id="authKey" placeholder="인증번호를 입력해주세요" maxlength="6" autocomplete="off" >
+            
+            <button id="checkAuthKeyBtn" type="button">인증확인</button>
+          </div>
+    
+          <span class="telMessage" id="authKeyMessage"></span>
+                                    <!-- 인증번호가 일치하지 않습니다 -->
+  
+          <div class="signUp-input-area">
+            <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+          </div>
+  
+          <button id="signUpBtn">가입하기</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- 푸터 추가 -->
+  <!-- <th:block th:replace="~{common/footer}"></th:block> -->
+
+  <!-- 다음 주소 API 추가 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+  <!-- 회원 가입 JS 추가 -->
+  <script src="/js/login/signup.js"></script>
+
 </body>
 </html>
+
+

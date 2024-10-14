@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@SessionAttributes("memberLogin")
+@SessionAttributes("member")
 @RequiredArgsConstructor
 public class MemberController {
 	
@@ -119,21 +119,12 @@ public class MemberController {
 		/** 회원 페이지로 이동
 		 * @return
 		 */
-		@GetMapping("/memberMyPage")
+		@GetMapping("/MyPage")
 		public String memberMyPage(
-				@SessionAttribute("memberLogin") Member memberLogin,
-				Model model
+				@SessionAttribute("memberLogin") Member memberLogin
 				) {
 			
-			String[] arr = memberLogin.getMemberAddress().split(",");
-			
-			model.addAttribute("우편번호", arr[0]);
-			model.addAttribute("주소", arr[1]);
-			model.addAttribute("상세주소", arr[2]);
-			
-			
-			
-			return "/member/memberMyPage";
+			return "/member/MyPage";
 		}
 		
 		
