@@ -29,7 +29,6 @@ public class Trainner {
 	
 	
 	
-	
 	// 강사 자격정보 생성을 위한 필드생성
 	private int qualificationNo;
 	private String qualification;
