@@ -38,9 +38,7 @@ public class MemberServiceImpl implements MemberService{
 		String encPw = encorder.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
 		
-		if(inputMember.getMemberAddress().equals(",,")) {
-			inputMember.setMemberAddress(null);
-		}
+		
 		
 		int result = mapper.signUp(inputMember);
 		
