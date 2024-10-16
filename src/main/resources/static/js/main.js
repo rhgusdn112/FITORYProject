@@ -1,68 +1,126 @@
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.location.pathname === '/') { // 웰컴 페이지에서만 적용
+  console.log('DOM fully loaded and parsed'); // 디버깅용 로그
+
+  if (window.location.pathname === '/') {
     let images = ['main-background1.jpg', 'main-background2.jpg'];
     let container = document.querySelector('.container');
-    let currentIndex = Math.floor(Math.random() * images.length);
+    if (container) {
+      let currentIndex = Math.floor(Math.random() * images.length);
 
-    // 미리 배경 이미지 로드
-    images.forEach((img) => {
-      let image = new Image();
-      image.src = `../images/${img}`;
-    });
+      // 이미지 미리 로드하여 빠른 전환 준비
+      images.forEach((img) => {
+        let image = new Image();
+        image.src = `../images/${img}`;
+      });
 
-    // 초기 배경 이미지 설정
-    container.style.backgroundImage = `url('../images/${images[currentIndex]}')`;
-
-    // 10초마다 배경 이미지 변경
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length;
+      // 초기 배경 이미지 설정
       container.style.backgroundImage = `url('../images/${images[currentIndex]}')`;
-    }, 10000);
+
+      // 10초마다 배경 이미지 변경
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        container.style.backgroundImage = `url('../images/${images[currentIndex]}')`;
+      }, 10000);
+
+      // 컨테이너 클릭 시 메인 페이지로 리디렉션
+      container.addEventListener('click', () => {
+        console.log('Container clicked, redirecting to /main'); // 디버깅용 로그
+        window.location.href = '/main';
+      });
+    }
   }
 
-  // 검색 바 상호작용
+  // 사이드 메뉴 기능을 위한 요소 가져오기
+  const sideMenu = document.getElementById('side-menu');
+  const menuButton = document.querySelector('.menu-icon');
+  const closeButton = document.querySelector('.close-icon');
+
+  // 사이드 메뉴 가시성 토글 함수
+  function toggleMenu() {
+    if (sideMenu) {
+      console.log('Toggling side menu visibility'); // 디버깅용 로그
+      sideMenu.classList.toggle('open');
+      if (sideMenu.classList.contains('open')) {
+        sideMenu.style.left = '0';
+      } else {
+        sideMenu.style.left = '-300px';
+      }
+    }
+  }
+
+  // 메뉴 버튼 클릭 시 사이드 메뉴 열기/닫기
+  if (menuButton) {
+    menuButton.addEventListener('click', (event) => {
+      console.log('Menu button clicked'); // 디버깅용 로그
+      event.stopPropagation();
+      toggleMenu();
+    });
+  }
+
+  // 닫기 버튼 클릭 시 사이드 메뉴 닫기
+  if (closeButton) {
+    closeButton.addEventListener('click', (event) => {
+      console.log('Close button clicked'); // 디버깅용 로그
+      event.stopPropagation();
+      toggleMenu();
+    });
+  }
+
+  // 문서의 다른 부분 클릭 시 사이드 메뉴 닫기
+  if (sideMenu) {
+    document.addEventListener('click', (event) => {
+      if (sideMenu.classList.contains('open')) {
+        const clickedInsideMenu = sideMenu.contains(event.target);
+        const clickedMenuButton = menuButton && menuButton.contains(event.target);
+        if (!clickedInsideMenu && !clickedMenuButton) {
+          console.log('Click detected outside side menu, closing menu'); // 디버깅용 로그
+          sideMenu.classList.remove('open');
+          sideMenu.style.left = '-300px';
+        }
+      }
+    });
+  }
+
+  // 검색 바 상호작용 요소
   const searchInput = document.querySelector('.search-input');
   const clearButton = document.querySelector('.clear-button');
   const searchButton = document.querySelector('.search-button');
 
-  // 검색 입력 시 삭제 버튼 표시
-  searchInput.addEventListener('input', () => {
-    clearButton.style.display = searchInput.value ? 'inline' : 'none';
-  });
+  if (searchInput && clearButton && searchButton) {
+    // 입력에 따라 클리어 버튼 표시 또는 숨기기
+    searchInput.addEventListener('input', () => {
+      console.log(`Search input value changed: ${searchInput.value}`); // 디버깅용 로그
+      clearButton.style.display = searchInput.value ? 'inline' : 'none';
+    });
 
-  // 삭제 버튼 클릭 시 입력창 비우기
-  clearButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    searchInput.value = '';
-    clearButton.style.display = 'none';
-  });
+    // 클리어 버튼 클릭 시 검색 입력 초기화
+    clearButton.addEventListener('click', (event) => {
+      console.log('Clear button clicked'); // 디버깅용 로그
+      event.stopPropagation();
+      searchInput.value = '';
+      clearButton.style.display = 'none';
+    });
 
-  // 돋보기 버튼 클릭 시 페이지 리다이렉트 방지
-  searchButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
+    // 검색 버튼 클릭 시 이벤트 전파 방지
+    searchButton.addEventListener('click', (event) => {
+      console.log('Search button clicked'); // 디버깅용 로그
+      event.stopPropagation();
+    });
 
-  // 검색 바 클릭 시 페이지 리다이렉트 방지
-  searchInput.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-
-  // 배경과 로고 클릭 시 메인 페이지로 리다이렉트
-  container.addEventListener('click', () => {
-    window.location.href = '/main';
-  });
+    // 검색 입력 클릭 시 이벤트 전파 방지
+    searchInput.addEventListener('click', (event) => {
+      console.log('Search input clicked'); // 디버깅용 로그
+      event.stopPropagation();
+    });
+  }
 });
 
-// 사이드 메뉴 열고 닫기 기능을 위한 JavaScript 함수
-function toggleMenu() {
-  const menu = document.getElementById('side-menu');
-  menu.classList.toggle('open'); // 'open' 클래스가 있으면 제거, 없으면 추가
-}
 
-// 맨 위로 이동하는 함수
+// 페이지 맨 위로 부드럽게 스크롤
 function scrollToTop() {
+  console.log('scrollToTop function called'); // 디버깅용 로그
   window.scrollTo({
     top: 0,
-    behavior: 'smooth' // 스크롤을 부드럽게 올리기
+    behavior: 'smooth'
   });
 }
