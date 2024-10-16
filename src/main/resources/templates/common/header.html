@@ -3,7 +3,7 @@
     <header class="header">
         <!-- 메뉴 아이콘 클릭 시 사이드 메뉴를 열기 위한 아이콘 -->
         <div class="menu-icon" onclick="toggleMenu()">
-            <img src="/images/menu-icon.gif" alt="Menu Icon" style="width: 24px; height: 24px;">
+            <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
         </div>
         <!-- 로고 영역 -->
         <div class="logo-container">
@@ -11,40 +11,65 @@
                 <h1 class="logo">FITORY</h1>
             </a>
         </div>
-        <!-- 사이드 메뉴 영역 -->
-        <div id="side-menu" class="side-menu">
-            <!-- 사이드 메뉴 닫기 아이콘 -->
-            <div class="close-icon" onclick="toggleMenu()">
-                <img src="/images/menu-icon.gif" alt="Close Icon" style="width: 24px; height: 24px;">
-            </div>
+        <!-- 검색 바와 네비게이션 메뉴 영역 -->
+        <div class="search-nav-container">
             <!-- 네비게이션 메뉴 (로그인 여부에 따른 메뉴 항목) -->
             <nav>
-                <ul>
-                    <!-- 로그인된 사용자의 경우 MyPage, Logout, Cart -->
-                    <li th:if="${#authentication?.principal != null}">
-                        <a th:href="@{/mypage}" class="nav-item">MyPage</a>
-                    </li>
-                    <li th:if="${#authentication?.principal != null}">
-                        <a th:href="@{/logout}" class="nav-item">Logout</a>
-                    </li>
-                    <!-- 로그인 여부와 관계없이 Cart는 항상 표시 -->
-                    <li>
-                        <a th:href="@{/cart}" class="nav-item">Cart</a>
-                    </li>
-                    <!-- 로그인되지 않은 사용자의 경우 LogIn -->
-                    <li th:if="${#authentication?.principal == null}">
-                        <a th:href="@{/login}" class="nav-item">LogIn</a>
-                    </li>
-                </ul>
+                <div class="nav-item-wrapper" th:if="${#authentication?.principal != null}">
+                    <a th:href="@{/mypage}" class="nav-item">MyPage</a>
+                </div>
+                <div class="nav-item-wrapper" th:if="${#authentication?.principal != null}">
+                    <a th:href="@{/logout}" class="nav-item">Logout</a>
+                </div>
+                <!-- 로그인 여부와 관계없이 Cart는 항상 표시 -->
+                <div class="nav-item-wrapper">
+                    <a th:href="@{/cart}" class="nav-item">Cart</a>
+                </div>
+                <!-- 로그인되지 않은 사용자의 경우 LogIn -->
+                <div class="nav-item-wrapper" th:if="${#authentication?.principal == null}">
+                    <a th:href="@{/login}" class="nav-item">LogIn</a>
+                </div>
             </nav>
-        </div>
-        <!-- 검색 바 영역 -->
-        <div class="search-bar">
-            <input type="text" placeholder="Search" class="search-input" oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
-            <button class="clear-button" onclick="document.querySelector('.search-input').value = ''; this.style.display = 'none';" style="display: none;">X</button>
-            <button class="search-button"><i class="fa fa-search"></i></button>
+            <!-- 검색 바 영역 -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search" class="search-input" oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
+                <button class="clear-button" onclick="document.querySelector('.search-input').value = ''; this.style.display = 'none';" style="display: none;">X</button>
+                <button class="search-button"><i class="fa fa-search"></i></button>
+            </div>
         </div>
     </header>
-    <!-- JavaScript 파일 링크 추가 -->
-    <script src="/js/main.js"></script>
+    <!-- 사이드 메뉴 영역 -->
+    <div id="side-menu" class="side-menu">
+        <!-- 사이드 메뉴 닫기 아이콘 -->
+        <div class="close-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
+        </div>
+        <!-- 사이드 메뉴 항목 -->
+        <nav>
+            <div class="nav-item-wrapper" th:if="${#authentication?.principal != null}">
+                <a th:href="@{/mypage}" class="nav-item">My Page</a>
+            </div>
+            <div class="nav-item-wrapper" th:if="${#authentication?.principal == null}">
+                <a th:href="@{/login}" class="nav-item">LogIn</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/teacher}" class="nav-item">TEACHER</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/home-training}" class="nav-item">Home Training</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/home-gym}" class="nav-item">Home Gym</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/buy}" class="nav-item">BUY</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/cart}" class="nav-item">CART</a>
+            </div>
+            <div class="nav-item-wrapper">
+                <a th:href="@{/customer-service}" class="nav-item">고객센터</a>
+            </div>
+        </nav>
+    </div>
 </div>
