@@ -1,105 +1,188 @@
-/* 헤더 전체 스타일 설정 */
+:root {
+  /* CSS 변수 정의: 다양한 색상, 폰트, 스타일 설정을 위한 CSS 변수들 정의 */
+  --m3syslighton-surface-variant: rgba(73, 69, 79, 1); /* 표면 색상 */
+  --m-3syslighterror: rgba(179, 38, 30, 1); /* 에러 색상 */
+  --m3-body-small-font-family: "Roboto", Helvetica; /* 작은 본문 폰트 패밀리 */
+  --m3-body-small-font-weight: 400; /* 작은 본문 폰트 굵기 */
+  --m3-body-small-font-size: 12px; /* 작은 본문 폰트 크기 */
+  --m3-body-small-letter-spang: 0.40000ci00059604645px; /* 작은 본문 글자 간격 */
+  --m3-body-small-line-height: 16px; /* 작은 본문 줄 간격 */
+  --m3-body-small-font-style: normal; /* 작은 본문 폰트 스타일 */
+  --single-line-body-base-font-family: "Inter", Helvetica; /* 기본 본문 폰트 패밀리 */
+  --single-line-body-base-font-weight: 400; /* 기본 본문 폰트 굵기 */
+  --single-line-body-base-font-size: 16px; /* 기본 본문 폰트 크기 */
+  --single-line-body-base-letter-spacing: 0px; /* 기본 본문 글자 간격 */
+  --single-line-body-base-line-height: 100%; /* 기본 본문 줄 간격 */
+  --single-line-body-base-font-style: normal; /* 기본 본문 폰트 스타일 */
+  --m3-title-small-font-family: "Roboto", Helvetica; /* 작은 제목 폰트 패밀리 */
+  --m3-title-small-font-weight: 500; /* 작은 제목 폰트 굵기 */
+  --m3-title-small-font-size: 14px; /* 작은 제목 폰트 크기 */
+  --m3-title-small-letter-spacing: 0.10000000149011612px; /* 작은 제목 글자 간격 */
+  --m3-title-small-line-height: 20px; /* 작은 제목 줄 간격 */
+  --m3-title-small-font-style: normal; /* 작은 제목 폰트 스타일 */
+}
+
+* {
+  -webkit-font-smoothing: antialiased; /* 글꼴 렌더링을 부드럽게 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+
+html, body {
+  margin: 0; /* 기본 여백 제거 */
+  height: 100%; /* 화면 전체 높이 사용 */
+  font-family: var(--single-line-body-base-font-family); /* 기본 폰트 설정 */
+  padding-top: 100px; /* 고정 헤더 높이만큼의 상단 패딩 설정 */
+}
+
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #f0f0f0;
-  position: fixed; /* 화면 상단에 고정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 헤더 아래에 그림자 추가 */
+  display: flex; /* 헤더 영역을 플렉스 컨테이너로 설정 */
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: space-between; /* 양쪽 끝에 자식 요소들을 정렬 */
+  background-color: black; /* ***** 가독성을 위해 임시로 black 설정 ***** */
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  padding: 10px 20px; /* 내부 여백 설정 */
+  position: fixed; /* 상단에 고정되도록 설정 */
+  top: 0; /* 화면 상단에 고정 */
+  left: 0; /* 왼쪽 정렬 */
+  width: 100%; /* 화면 전체 너비 사용 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  height: 100px; /* 헤더 높이 설정 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 헤더에 그림자 추가 */
 }
 
-/* 메뉴 아이콘 스타일 */
 .menu-icon {
-  font-size: 1.5em;
-  color: #333;
+  cursor: pointer; /* 클릭 가능한 커서 표시 */
+  width: 24px;
+  height: 24px;
 }
 
-/* 로고 영역 스타일 */
 .logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+  text-align: center; /* 로고를 중앙 정렬 */
+  flex-grow: 1; /* 로고 영역이 가능한 공간을 차지하도록 설정 */
+}
+
+.logo-link {
+  color: #ffffff; /* 로고 링크 텍스트 색상 */
 }
 
 .logo {
-  font-family: 'Volkhov', serif;
-  font-size: 2.5em;
-  color: #333;
+  font-family: "Volkhov-BoldItalic", Helvetica; /* 폰트 설정 */
+  font-weight: 700; /* 폰트 굵기 설정 */
+  font-style: italic; /* 이탤릭체 설정 */
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  font-size: 36px; /* 폰트 크기 설정 */
+  text-shadow: 0px 4px 4px #00000040; /* 텍스트에 그림자 추가 */
+  margin: 0; /* 기본 여백 제거 */
 }
 
-/* 사이드 메뉴 스타일 (왼쪽에서 나오는 메뉴 설정) */
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -250px; /* 왼쪽에서 시작 */
-  width: 250px;
-  height: 100%;
-  background: #f0f0f0;
-  transition: left 0.3s; /* 메뉴가 열릴 때의 애니메이션 효과 */
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.search-nav-container {
+  display: flex; /* 검색 바와 네비게이션 메뉴를 열로 정렬 */
+  flex-direction: column;
+  align-items: flex-end; /* 오른쪽 정렬 */
+  gap: 10px; /* 요소 사이의 간격 */
 }
 
-.side-menu.open {
-  left: 0; /* 메뉴가 열리면 왼쪽 끝으로 나옴 */
+.nav-item-wrapper {
+  display: inline-block; /* 네비게이션 항목을 인라인 블록으로 표시 */
 }
 
-/* 닫기 아이콘 스타일 */
-.side-menu .close-icon {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
+.nav-item {
+  padding: 10px 15px; /* 내부 여백 설정 */
+  text-decoration: none; /* 텍스트 밑줄 제거 */
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  display: inline-block;
+  transition: 0.3s; /* 호버 시 애니메이션 설정 */
 }
 
-/* 네비게이션 리스트 스타일 */
-.side-menu nav ul {
-  list-style-type: none;
-  padding: 0;
+.nav-item:hover {
+  background-color: #575757; /* 호버 시 배경색 변경 */
+  border-radius: 5px; /* 모서리를 둥글게 설정 */
 }
 
-.side-menu nav ul li {
-  padding: 15px;
-}
-
-/* 네비게이션 링크 스타일 */
-.side-menu nav ul li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-
-/* 검색 바 영역 스타일 */
 .search-bar {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: absolute;
-  right: 20px;
-  top: 50px;
-  background: #ffffff;
-  border: 1px solid #d9d9d9;
-  border-radius: 9999px;
-  padding: 5px 10px;
+  display: flex; /* 검색 바 요소를 가로로 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  gap: 8px; /* 요소 사이의 간격 */
+  background-color: #ffffff; /* 검색 바 배경색 설정 */
+  border-radius: 9999px; /* 모서리를 둥글게 설정 */
+  padding: 8px 12px; /* 내부 여백 설정 */
+  border: 1px solid #d9d9d9; /* 테두리 설정 */
 }
 
 .search-input {
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: #757575;
+  border: none; /* 테두리 제거 */
+  outline: none; /* 아웃라인 제거 */
+  flex: 1; /* 검색 입력창이 남은 공간을 채우도록 설정 */
+  padding: 0 8px; /* 내부 여백 설정 */
+  font-size: 16px; /* 폰트 크기 설정 */
 }
 
-.search-button,
 .clear-button {
   background: none;
   border: none;
+  cursor: pointer; /* 클릭 가능한 커서 표시 */
+  color: #757575; /* 버튼 색상 설정 */
   font-size: 16px;
-  cursor: pointer;
-  color: #000;
+  display: none; /* 기본적으로 숨김 */
+}
+
+.search-input:not(:placeholder-shown) + .clear-button {
+  display: inline; /* 검색어 입력 시 클리어 버튼 표시 */
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer; /* 클릭 가능한 커서 표시 */
+  color: #757575; /* 버튼 색상 설정 */
+  font-size: 16px;
+}
+
+.fa-search {
+  font-size: 16px; /* 검색 아이콘 크기 설정 */
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -300px; /* 기본적으로 화면 밖에 위치 */
+  width: 300px;
+  height: 100%;
+  background-color: black; /* ***** 가독성을 위해 임시로 black 설정 ***** */
+  color: #ffffff; /* 텍스트 색상 */
+  overflow-x: hidden; /* 가로 스크롤 숨김 */
+  transition: left 0.3s ease; /* left 속성 애니메이션 추가 */
+  padding-top: 60px; /* 상단 여백 설정 */
+  z-index: 2000; /* 사이드 메뉴가 모든 요소 위에 오도록 높임 */
+}
+
+.side-menu.open {
+  left: 0; /* 메뉴가 열릴 때 화면 안으로 */
+}
+
+
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer; /* 클릭 가능한 커서 표시 */
+  width: 24px;
+  height: 24px;
+}
+
+.side-menu .nav-item-wrapper {
+  padding: 15px 20px; /* 네비게이션 항목의 내부 여백 설정 */
+  display: block; /* 항목들을 한 줄로 정렬 */
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+}
+
+.side-menu .nav-item {
+  text-decoration: none; /* 텍스트 밑줄 제거 */
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  display: block;
+  transition: 0.3s; /* 호버 시 애니메이션 설정 */
+}
+
+.side-menu .nav-item:hover {
+  background-color: #575757; /* 호버 시 배경색 변경 */
 }
