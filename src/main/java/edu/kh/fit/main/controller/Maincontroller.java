@@ -24,8 +24,8 @@ public class Maincontroller {
 	 	return "login/login";
  	}
 	
- 	@GetMapping("signup")
- 	public String signup() {
+ 	@GetMapping("signUp")
+ 	public String signUp() {
  		return "login/signUp";
  	}
  
