@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITORY - Main Page</title>
+    <th:block th:replace="~{common/common}"></th:block>
+    <!-- 페이지 전용 CSS 파일은 각 팀원이 추가 -->
+</head>
+<body>
+
+    <!-- 공통 헤더 삽입 -->
+    <header>
+    <div th:replace="~{common/common :: header}"></div>
+</header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main>
+        <h1>Welcome to FITORY!</h1>
+        <p>Main content goes here...</p>
+    </main>
+
+    <!-- 공통 푸터 삽입 -->
+    <div th:replace="~{common/footer :: footer}"></div>
+
+    <!-- 페이지 전용 JS 파일은 각 팀원이 추가 -->
+</body>
+</html>
