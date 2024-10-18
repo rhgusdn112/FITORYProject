@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FITORY</title>
-    <link rel="stylesheet" th:href="@{/css/common/header.css}">
-    <link rel="stylesheet" th:href="@{/css/common/footer.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Font Awesome에서 아이콘을 사용하기 위한 외부 CDN 링크 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<!-- 헤더 스타일 시트를 포함하여 헤더 레이아웃과 디자인을 정의 -->
+<link rel="stylesheet" th:href="@{/css/common/header.css}">
 
-</head>
-<body>
-<div th:fragment="cssLinks">
-    <link rel="stylesheet" th:href="@{/css/common/header.css}">
-    <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+<!-- 푸터 스타일 시트를 포함하여 푸터 레이아웃과 디자인을 정의 -->
+<link rel="stylesheet" th:href="@{/css/common/footer.css}">
 
-</div>
+<!-- 로그인 여부에 따른 헤더 로드 (나중에 사용할 예정) -->
+<!--
+<div th:if="${#authentication?.principal == null}" th:replace="common/header :: header"></div>
+<div th:if="${#authentication?.principal?.role == 'MEMBER'}" th:replace="common/memberHeader :: header"></div>
+<div th:if="${#authentication?.principal?.role == 'TRAINER'}" th:replace="common/trainerHeader :: header"></div>
+-->
+
+<!-- 메인 페이지의 자바스크립트 파일을 포함. 주로 페이지 동작 관련 로직이 담김 -->
 <script th:src="@{/js/main.js}"></script>
-</body>
-</html>

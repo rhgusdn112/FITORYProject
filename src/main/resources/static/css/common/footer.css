@@ -28,7 +28,6 @@
 .footer-info {
   margin-top: 10px;
   font-size: 13px;
-  line-height: 1.4;
 }
 
 /* 푸터 링크 섹션 스타일 */
@@ -36,10 +35,10 @@
   display: flex;
   flex-wrap: wrap;
   text-align: left;
-  gap: 100px; /* 섹션 간의 간격을 넓힘 */
+  gap: 120px; /* 섹션 간의 간격을 넓힘 */
   justify-content: center; /* 왼쪽에 맞춰 배치하되 전체적으로 우측으로 이동 */
   flex-grow: 1; /* 나머지 공간을 채우도록 설정 */
-  margin-left: 100px; /* 고객 센터와의 간격을 주기 위해 좌측 여백 추가 */
+  margin-left: 120px; /* 고객 센터와의 간격을 주기 위해 좌측 여백 추가 */
 }
 
 .footer-links h4 {
