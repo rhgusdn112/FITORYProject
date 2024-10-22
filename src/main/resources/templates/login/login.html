@@ -22,19 +22,19 @@
                 <label for="trainer" class="login-option">강사 로그인</label>
             </div>
 
-            <div class="login-form">
+            <form action="/login" method="post" id="login-form">
                 <div class="input-group">
                     <label for="email">아이디(Email)</label>
-                    <input type="text" id="email" placeholder="아이디">
+                    <input type="text" id="memberEmail" name="memberEmail" placeholder="아이디">
                 </div>
 
                 <div class="input-group">
                     <label for="password">비밀번호</label>
-                    <input type="password" id="password" placeholder="비밀번호">
+                    <input type="password" id="password" name="password" placeholder="비밀번호">
                 </div>
 
                 <button class="login-button">로그인</button>
-            </div>
+            </form>
 
             <div class="login-footer">
                 <a href="/signUp">회원가입</a> |
