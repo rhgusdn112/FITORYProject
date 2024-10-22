@@ -1,6 +1,6 @@
-package edu.kh.fit.trainner.service;
+package edu.kh.fit.trainer.service;
 
-import edu.kh.fit.trainner.dto.Trainer;
+import edu.kh.fit.trainer.dto.Trainer;
 
 public interface TrainerService {
 	
@@ -16,7 +16,7 @@ public interface TrainerService {
 	 * @param inputTrainner
 	 * @return
 	 */
-	int signUp(Trainer inputTrainner);
+	int signUp(Trainer inputTrainer);
 
 
 

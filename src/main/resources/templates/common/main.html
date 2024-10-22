@@ -18,6 +18,8 @@
         <div style="height: 2000px;"></div>
     </main>
 
+    <main th:if= "${session.memberLogin}"></main>
+
     <!-- 푸터 조각 삽입 -->
     <footer th:replace="~{common/footer :: footer}"></footer>
 </body>
