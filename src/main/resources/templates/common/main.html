@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="~{common/common}"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitory</title>
+</head>
 <body>
+     <!-- common 조각 삽입(header 포함) -->
+    <block th:replace="~{common/common}"></block>
 
     <!-- 메인 콘텐츠 -->
     <main th:if= "${session.memberLogin == null}" class="main-content">
