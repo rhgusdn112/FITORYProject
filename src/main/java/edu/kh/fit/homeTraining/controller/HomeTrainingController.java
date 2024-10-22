@@ -1,4 +1,4 @@
-package edu.kh.fit.controller;
+package edu.kh.fit.homeTraining.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

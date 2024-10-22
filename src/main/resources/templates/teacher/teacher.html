@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitory - Teacher Profiles</title>
     <link rel="stylesheet" th:href="@{/css/teacher/teacher.css}">
-    <link th:href="@{/css/common/header.css}" rel="stylesheet">
-    <link th:href="@{/css/common/footer.css}" rel="stylesheet">
+    <head th:replace="~{common/common}"></head>
 </head>
 <body>
-
-    <!-- header fragment include -->
-    <div th:replace="common/header :: header"></div>
 
     <!-- 메인 콘텐츠 -->
     <main>
@@ -55,7 +51,7 @@
     </main>
 
    <!-- footer fragment include -->
-   <div th:replace="common/footer :: footer"></div>
+   <footer th:replace="~{common/footer :: footer}"></footer> <!-- 공통 푸터 -->
 
     <script src="/js/teacher/teacher.js"></script>
 </body>
