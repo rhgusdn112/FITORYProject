@@ -19,12 +19,13 @@ public class Member {
 	private String memberEmail;
 	private String memberPw;
 	private String memberName;
+	private String memberNickname;
 	private String memberTel;
 	private String memberBirthday;
 	private String profileImg;
 	private int    height;
 	private int    weight;
-	private String enroolDate;
+	private String enrollDate;
 	private String memberDelFl;
 	private int    memberFlag;
 }
