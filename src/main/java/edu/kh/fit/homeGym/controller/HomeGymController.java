@@ -13,7 +13,7 @@ public class HomeGymController {
 	private final HomeGymService service;
 	
   // 클래스 목록을 보여주는 페이지
-  @GetMapping("/homegym")
+  @GetMapping("/homeGym")
   public String getClassList() {
       return "home-gym";
   }

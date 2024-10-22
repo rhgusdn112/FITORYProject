@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Common Resources</title>
-    <link rel="stylesheet" th:href="@{/css/common/header.css}">
-    <link rel="stylesheet" th:href="@{/css/common/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/login/login.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMrg8x4ujnbT7RswejWl72OXvxPvE6OpkNFffI" crossorigin="anonymous">
-    <script th:src="@{/js/main.js}"></script>
-</head>
-<body>
 <div th:fragment="cssLinks">
     <link rel="stylesheet" th:href="@{/css/common/header.css}">
-    <link rel="stylesheet" th:href="@{/css/common/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/login/login.css}">
-    <script th:src="@{/js/main.js}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </div>
-</body>
-</html>
+
+<!-- 세션 상태에 따른 헤더 삽입 -->
+<div th:if="${session.memberLogin != null}">
+    <!-- 멤버가 로그인한 경우 -->
+    <header th:replace="~{common/memberHeader :: header}"></header>
+</div>
+
+<div th:if="${session.trainerLogin != null}">
+    <!-- 강사가 로그인한 경우 -->
+    <header th:replace="~{common/trainerHeader :: header}"></header>
+</div>
+
+<div th:if="${session.memberLogin == null && session.trainerLogin == null}">
+    <!-- 로그인이 안 된 경우 -->
+    <header th:replace="~{common/header :: header}"></header>
+</div>
+
+<script th:src="@{/js/main.js}"></script>

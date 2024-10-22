@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitory - Home Training</title>
-    <head th:replace="~{common/common}"></head>
     <link rel="stylesheet" href="/css/home-training.css"> <!-- CSS 파일 연결 -->
-    
-</head>
+   
 <body>
+  
+    <!-- header fragment include -->
+    <block th:replace="~{common/common}"></block>
 
     <!-- 메인 콘텐츠 -->
     <main>
@@ -110,6 +111,6 @@
     </main>
 
     <!-- footer fragment include -->
-    <footer th:replace="~{common/footer :: footer}"></footer> <!-- 공통 푸터 -->
+    <div th:replace="common/footer :: footer"></div> <!-- 공통 푸터 -->
 </body>
 </html>

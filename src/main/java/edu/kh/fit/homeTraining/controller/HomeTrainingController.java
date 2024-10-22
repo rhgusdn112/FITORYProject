@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeTrainingController {
 
   // 클래스 목록을 보여주는 페이지
-  @GetMapping("/hometraining")
+  @GetMapping("/homeTraining")
   public String getClassList() {
       return "home-training";
   }
