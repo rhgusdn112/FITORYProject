@@ -145,7 +145,7 @@ body, html {
 }
 
 /* 로그인 폼 스타일 */
-.login-form {
+#login-form {
   margin: 20px 0; /* 위아래 여백 설정 */
 }
 

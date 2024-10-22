@@ -38,8 +38,8 @@ public class MemberController {
 	 */
 	@PostMapping("login")
 	public String memberLogin(
-			@RequestParam("username") String memberEmail,
-			@RequestParam("password")		 String memberPw,
+			@RequestParam("memberEmail") String memberEmail,
+			@RequestParam("password")	String memberPw,
 			@RequestParam(name = "saveEmail", required = false) String saveEmail,
 			Model model,
 			RedirectAttributes ra,
@@ -54,23 +54,8 @@ public class MemberController {
 		}else {
 			model.addAttribute("memberLogin", memberLogin);
 			
-			//----------------------------------------------------------------
-			/* 이메일 저장 코드(Cookie) */
-			Cookie cookie = new Cookie("saveEmail", memberEmail);
-			
-			cookie.setPath("/"); 
-			
-			if(saveEmail == null) { 
-				cookie.setMaxAge(0); 
-														  
-			}else { 
-				cookie.setMaxAge(60 * 60 * 24 * 30); 
-			}
-		
-			resp.addCookie(cookie);
-			//----------------------------------------------------------------
 		}
-		return "redirect:/"; 
+		return "redirect:/main"; 
 	}
 	
 	/** 로그아웃
@@ -104,7 +89,7 @@ public class MemberController {
 		if(result > 0) {
 			path = "/";
 			message 
-				= inputMember.getMemberNickname() + "님의 가입을 환영합니다";
+				= inputMember.getMemberName() + "님의 가입을 환영합니다";
 		} else {
 			path = "signUp";
 			message = "회원 가입 실패...";
