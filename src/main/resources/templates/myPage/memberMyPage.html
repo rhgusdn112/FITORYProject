@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Page</title>
-  <link rel="stylesheet" href="../../static/css/myPage/noMyPage-style.css">
+  <link rel="stylesheet" href="../../static/css/myPage/memberMyPage-style.css">
   <link rel="stylesheet" href="../../static/css/globals.css" />
   <link rel="stylesheet" href="../../static/css/styleguide.css" />
+  <link rel="stylesheet" href="../../static/css/common/header.css" />
   <style>
     @font-face {
   font-family: 'MaruBuriSemiBold';
@@ -17,51 +18,40 @@
 </head>
 <body>
   <main>
-    <div id="temp1"></div>
-    <div id="temp2"></div>
-    <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
-    <th:block th:replace="~{myPage/noSide}"></th:block> -->
+    <main>
+      <div id="temp1"></div>
+      <div id="temp2"></div>
+      
+      <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
+      <th:block th:replace="~{myPage/side}"></th:block> -->
+    </main>
   </main>
-  <div class="main">
+  <form class="main">
       <div class="main-my-page">My Page</div>
-      <div class="overlap-group">
         <div class="main-box">
-          <button class="top">
-            <div class="state-layer">
-              <div class="tab-contents">
-                <div class="label">▲</div>
-              </div>
-            </div>
-          </button>
-          <input class="box" placeholder="이메일 입력"></input>
           <div class="email">아이디(Email)</div>
-          <input class="box-2" placeholder="이메일 인증"></input>
-          <div class="email-ok">이메일 인증</div>
-          <input class="box-3" placeholder="이름 작성"></input>
+          <input class="box" placeholder="이메일 입력">
           <div class="name">이름</div>
-          <input class="box-4" placeholder="YYYYMMDD"></input>
+          <input class="box" placeholder="이름 작성">
           <div class="birth">생년월일</div>
-          <input class="box-5" placeholder="'-' 를 제외한 숫자만 입력해주세요."></input>
+          <input class="box" placeholder="YYYYMMDD">
           <div class="tel">전화번호</div>
-          <input class="box-6" placeholder="선택사항입니다.">
-          <div class="inHight">cm</div>
-          </input>
-          <div class="hight">키</div>
-          <input class="box-7" placeholder="선택사항입니다.">
-          <div class="inWeight">kg</div>
-          </input>
-          <div class="weight">몸무게</div>
-          <input class="box-8" placeholder="선택사항입니다."></input>
+          <input class="box" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
+          <div class="hight inHight">키</div>
+          <input class="box" placeholder="선택사항입니다.">        
+          <div class="weight inWeight">몸무게</div>
+          <input class="box" placeholder="선택사항입니다.">
+          
           <div class="body">체형</div>
-          <input class="box-9" placeholder="선택사항입니다."></input>
+          <input class="box" placeholder="선택사항입니다.">
           <div class="die">다이어트</div>
-          <button class="update">
-            <div class="inUpdate">수정하기</div>
-          </button>
+          <input class="box" placeholder="선택사항입니다.">
+          <button class="update"> 수정하기 </button>
         </div>
-      </div>
-    </div>
-</body>
+        <button class="top">▲</button>
+    </form>
+    <div id="temp3"></div>
+  </body>
 
 <script>
   function loadFromHtml(path, selector){
@@ -73,9 +63,12 @@
   }
   /* header */
   const temp1 = document.querySelector("#temp1");
-  loadFromHtml("myPageHeader.html", temp1);
+  loadFromHtml("../common/memberHeader.html", temp1);
   /* side */
   const temp2 = document.querySelector("#temp2");
-  loadFromHtml("noSide.html", temp2);
+  loadFromHtml("../common/memberSideBar.html", temp2);
+  /* footer */
+  const temp3 = document.querySelector("#temp3");
+  loadFromHtml("../common/footer.html", temp3);
 </script>
 </html>
