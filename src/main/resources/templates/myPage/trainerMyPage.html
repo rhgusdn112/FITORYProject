@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <link rel="stylesheet" href="../../static/css/myPage/trainerMyPage-style.css">
+  <link rel="stylesheet" href="../../static/css/globals.css">
+  <link rel="stylesheet" href="../../static/css/styleguide.css">
+</head>
+<body>
+  <main>
+    <main>
+      <div id="temp1"></div>
+      <div id="temp2"></div>
+      <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
+      <th:block th:replace="~{myPage/side}"></th:block> -->
+    </main>
+  </main>
+
+  <div class="main">
+    <div class="main-my-page">My Page</div>
+      <div class="main-box">
+        <button class="top">
+          <div class="state-layer">
+            <div class="tab-contents">
+              <div class="label">▲</div>
+            </div>
+          </div>
+        </button>
+        <input class="box" placeholder="이메일 입력"></input>
+        <div class="email">아이디(Email)</div>
+        <input class="box-2" placeholder="이메일 인증"></input>
+        <div class="email-ok">이메일 인증</div>
+        <input class="box-3" placeholder="이름 작성"></input>
+        <div class="name">이름</div>
+        <input class="box-4" placeholder="YYYYMMDD"></input>
+        <div class="birth">생년월일</div>
+        <input class="box-5" placeholder="'-' 를 제외한 숫자만 입력해주세요."></input>
+        <div class="tel">전화번호</div>
+
+        <div class="main-in">자격사항</div>
+        <div class="sub-box">
+          <div class="main-into">자격 사항</div>
+          <div class="enroll">발급 기간</div>
+          <div class="date">작성일</div>
+          <input class="review-1" placeholder="자격사항을 작성해주세요.">
+          <div class="time-1">1분전</div>
+          <div class="day-1">2024.09.09</div>
+          </input>
+
+          <input class="review-2" placeholder="자격사항을 작성해주세요.">
+          <div class="time-2">23시간전</div>
+          <div class="day-2">2024.09.09</div>
+          </input>
+
+          <input class="review-3" placeholder="자격사항을 작성해주세요.">
+          <div class="time-3">3일전</div>
+          <div class="day-3">2024.09.09</div>
+          </input>
+
+          <input class="review-4" placeholder="자격사항을 작성해주세요.">
+          <div class="time-4">2024.10.01</div>
+          <div class="day-4">2024.09.09</div>
+          </input>
+
+          <input class="review-5" placeholder="자격사항을 작성해주세요.">
+          <div class="time-5">2024.10.01</div>
+          <div class="day-5">2024.09.09</div>
+          </input>
+
+          <input class="review-6" placeholder="자격사항을 작성해주세요.">
+          <div class="time-6">23시간전</div>
+          <div class="day-6">2024.09.09</div>
+          </input>
+
+          <input class="review-7" placeholder="자격사항을 작성해주세요.">
+          <div class="time-7">3일전</div>
+          <div class="day-7">2024.09.09</div>
+          </input>
+
+          <input class="review-8" placeholder="자격사항을 작성해주세요.">
+          <div class="time-8">2024.10.01</div>
+          <div class="day-8">2024.09.09</div>
+          </input>
+
+          <input class="review-9" placeholder="자격사항을 작성해주세요.">
+          <div class="time-9">2024.10.01</div>
+          <div class="day-9">2024.09.09</div>
+          </input>
+
+          <input class="review-10" placeholder="자격사항을 작성해주세요.">
+          <div class="time-10">2024.10.01</div>
+          <div class="day-10">2024.09.09</div>
+          </input> 
+        </div>
+        <div class="profile">프로필 사진(2장 필수)</div>
+        <div class="profile-box">
+          <img class="img" src="img/pro-1.svg" />
+          <img class="pro-2" src="img/pro-2.svg" />
+          <img class="pro-3" src="img/pro-3.svg" />
+        </div>
+        <button class="upload" >
+          <div class="profile-2">프로필 사진 바꾸기</div>
+        </button>
+
+        <input class="box-6" placeholder="키를 입력해주세요.">
+        <div class="inHight">cm</div>
+        </input>
+        <div class="hight">키</div>
+
+        <input class="box-7" placeholder="몸무게를 입력해주세요.">
+        <div class="inWeight">kg</div>
+        </input>
+        <div class="weight">몸무게</div>
+
+        <button class="update">
+          <div class="inUpdate">수정하기</div>
+        </button>
+      </div>
+    </div>
+
+</body>
+
+<script>
+  function loadFromHtml(path, selector) {
+    fetch(path)
+      .then(resp => resp.text())
+      .then(result => {
+        selector.outerHTML = result;
+      })
+  }
+  /* header */
+  const temp1 = document.querySelector("#temp1");
+  loadFromHtml("myPageHeader.html", temp1);
+  /* side */
+  const temp2 = document.querySelector("#temp2");
+  loadFromHtml("trainerSideBar.html", temp2);
+</script>
+</html>
