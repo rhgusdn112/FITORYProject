@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
-    <link rel="stylesheet" href="paymentPage.css">
+    <link rel="stylesheet" href="../../static/css/payments/payments.css">
 </head>
 <body>
     <div class="payment-container">
-        <h2>결제 정보</h2>
-        <form id="paymentForm">
+        <h2>주문서</h2>
+        <form id="paymentForm" th:action="@{/payments/request}" method="post">
             <label for="amount">결제 금액:</label>
-            <input type="text" id="amount" name="amount" required>
+            <input type="text" id="amount" name="amount" th:value="${order.amount}" readonly>
 
             <label for="name">이름:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" th:value="${order.name}" readonly>
 
             <label for="email">이메일:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" th:value="${order.email}" readonly>
 
-            <button type="button" id="payButton">결제하기</button>
+            <button type="submit" id="payButton">결제하기</button>
         </form>
     </div>
-    <script src="paymentPage.js"></script>
+    <script src="../../static/js/payments/payments.js"></script>
 </body>
 </html>
