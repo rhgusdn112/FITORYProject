@@ -1,0 +1,428 @@
+.div-wrapper {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.div-wrapper .div {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1439px;
+  height: 1024px;
+  position: relative;
+}
+
+.div-wrapper .overlap {
+  position: absolute;
+  width: 1439px;
+  height: 125px;
+  top: -3px;
+  left: 0;
+}
+
+.div-wrapper .value {
+  position: relative;
+  flex: 1;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #757575;
+  font-size: var(--single-line-body-base-font-size);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.div-wrapper .header-my-page {
+  position: absolute;
+  top: 11px;
+  left: 1124px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "Kalnia-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+.div-wrapper .side-my-acti {
+  top: 185px;
+  left: 20px;
+  font-family: "MaruBuri-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 23px;
+  position: absolute;
+  text-shadow: 0px 4px 4px #00000040;
+  color: #ffffff99;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.div-wrapper .main-class {
+  position: absolute;
+  top: 158px;
+  left: 313px;
+  text-shadow: 0px 4px 4px #00000040;
+  font-family: "MaruBuri-ExtraLight", Helvetica;
+  font-weight: 200;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.div-wrapper .select {
+  position: absolute;
+  height: 20px;
+  top: 176px;
+  left: 1137px;
+  font-family: "MaruBuri-ExtraLight", Helvetica;
+  font-weight: 200;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.10px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.div-wrapper #all-check-box {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 170px;
+  right: 160px;
+}
+
+.div-wrapper .arr {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  font-family: "MaruBuri-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 12px;
+  white-space: nowrap;
+}
+
+.div-wrapper .overlap-group {
+  position: absolute;
+  width: 1134px;
+  height: 780px;
+  top: 210px;
+  left: 284px;
+}
+
+.div-wrapper .main-box {
+  display: flex;
+  flex-direction: column;
+  width: 1111px;
+  height: 758px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 5px solid;
+  border-color: #d9d9d9;
+}
+
+.div-wrapper .top-btn {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 730px;
+  left: 1084px;
+  background-color: #00000040;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.div-wrapper .top-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px 16px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.div-wrapper .top-in-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 0px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.div-wrapper .top-in {
+  position: relative;
+  width: fit-content;
+  font-family: var(--m3-title-small-font-family);
+  font-weight: var(--m3-title-small-font-weight);
+  color: var(--m3syslighton-surface-variant);
+  font-size: var(--m3-title-small-font-size);
+  text-align: center;
+  letter-spacing: var(--m3-title-small-letter-spacing);
+  line-height: var(--m3-title-small-line-height);
+  white-space: nowrap;
+  font-style: var(--m3-title-small-font-style);
+}
+
+/* checkBox */
+.div-wrapper #checkbox-1 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  right: 0px;
+}
+.div-wrapper #checkbox-2 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  right: 0px;
+}
+.div-wrapper #checkbox-3 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  right: 0px;
+}
+.div-wrapper #checkbox-4 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  right: 0px;
+}
+
+.div-wrapper .textbox-1 {
+  top: 50px;
+  left: 340px;
+  position: absolute;
+  width: 645px;
+  height: 137px;
+  font-family: "MaruBuri-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: left;
+}
+
+.div-wrapper .textbox-2 {
+  top: 200px;
+  left: 340px;
+  position: absolute;
+  width: 645px;
+  height: 137px;
+  font-family: "MaruBuri-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.10px;
+  line-height: 30px;
+}
+
+.div-wrapper .textbox-3 {
+  top: 350px;
+  left: 340px;
+  position: absolute;
+  width: 645px;
+  height: 137px;
+  font-family: "MaruBuri-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.10px;
+  line-height: 30px;
+}
+
+.div-wrapper .textbox-4 {
+  top: 500px;
+  left: 334px;
+  position: absolute;
+  width: 645px;
+  height: 137px;
+  font-family: "MaruBuri-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.10px;
+  line-height: 30px;
+}
+.div-wrapper .img {
+  top: 66px;
+  left: 248px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+.div-wrapper .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #00000040;
+  border-radius: 100px 0px 0px 100px;
+  overflow: hidden;
+  border: 1px solid;
+}
+
+.div-wrapper .state-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.div-wrapper .label-text {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "MaruBuri-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.10px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.div-wrapper .delete {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  margin-left: -1px;
+}
+
+.div-wrapper .state-layer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  border-radius: 0px 100px 100px 0px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000040;
+
+}
+/* 수정 버튼 */
+.div-wrapper .button-style {
+  display: flex;
+  width: 891px;
+  height: 88px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 660px;
+  left: 110px;
+}
+
+.div-wrapper .see {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+/* 이미지 */
+.div-wrapper .photo-1 {
+  top: auto;
+  left: -300px;
+  position: absolute;
+  width: 250px;
+  height: 135px;
+}
+
+.div-wrapper .photo-2 {
+  top: auto;
+  left: -300px;
+  position: absolute;
+  width: 250px;
+  height: 135px;
+}
+
+.div-wrapper .photo-3 {
+  top: auto;
+  left: -300px;
+  position: absolute;
+  width: 250px;
+  height: 135px;
+}
+
+.div-wrapper .photo-4 {
+  top: auto;
+  left: -300px;
+  position: absolute;
+  width: 250px;
+  height: 135px;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; 
+  margin-top: 20px; 
+}
+
+.pagination a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
