@@ -34,7 +34,7 @@ public class MemberController {
 	 * @param resp
 	 * @return redirect:/ (메인페이지로 리다이렉트)
 	 */
-	@PostMapping("login")
+	@PostMapping("member/login")
 	public String memberLogin(
 			@RequestParam("email") String memberEmail,
 			@RequestParam("password")		 String memberPw,
