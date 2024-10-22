@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+
 /* 메인 콘텐츠 중앙 정렬 */
 main {
   text-align: center;
@@ -9,7 +15,6 @@ main {
 main h1 {
   font-size: 2.5rem;
   margin-bottom: 60px;
-  font-family: 'Times New Roman', serif;
 }
 
 /* 프로필 섹션 */
@@ -35,7 +40,7 @@ main h1 {
 .profile p {
   margin-top: 10px; /* 이미지와 텍스트 사이의 간격을 유지 */
   font-size: 1.3rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Times New Roman', serif;
 }
 
 /* 페이지네이션 스타일 */

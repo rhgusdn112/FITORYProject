@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitory - Trainer Profiles</title>
+  <link rel="stylesheet" th:href="@{/css/trainer/trainer.css}">
+</head>
+
+<body>
+
+  <!-- header fragment include -->
+  <block th:replace="~{common/common}"></block>
+
+  <!-- 메인 콘텐츠 -->
+  <main>
+    <section class="content-management">
+      <h1>컨텐츠 관리</h1>
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>신고 내역 + 작자</th>
+            <th>신고자</th>
+            <th>신고일</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>한정</td>
+            <td>신고자</td>
+            <td>2024.10.01</td>
+            <td><button class="detail-btn">상세보기</button></td>
+          </tr>
+          <tr>
+            <td>한정</td>
+            <td>관리자</td>
+            <td>2024.10.01</td>
+            <td><button class="detail-btn">상세보기</button></td>
+          </tr>
+          <!-- 반복적인 행들 추가 -->
+        </tbody>
+      </table>
+
+      <!-- 페이지네이션 -->
+      <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer fragment include -->
+  <footer th:replace="~{common/footer :: footer}"></footer> <!-- 공통 푸터 -->
+
+  <script src="/js/teacher/teacher.js"></script>
+</body>
+
+</html>

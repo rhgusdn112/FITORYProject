@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@SessionAttributes("member")
+@SessionAttributes("memberLogin")
 @RequiredArgsConstructor
 public class MemberController {
 	
@@ -36,7 +36,7 @@ public class MemberController {
 	 * @param resp
 	 * @return redirect:/ (메인페이지로 리다이렉트)
 	 */
-	@PostMapping("login")
+	@PostMapping("member/login")
 	public String memberLogin(
 			@RequestParam("memberEmail") String memberEmail,
 			@RequestParam("password")	String memberPw,

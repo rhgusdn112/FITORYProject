@@ -1,32 +1,199 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitory</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fitory</title>
+	<link rel="stylesheet" href="/css/common/main.css"> <!-- CSS 파일 연결 -->
 </head>
+
 <body>
-     <!-- common 조각 삽입(header 포함) -->
-    <block th:replace="~{common/common}"></block>
+	<!-- common 조각 삽입(header 포함) -->
+	<block th:replace="~{common/common}"></block>
 
-    <!-- 메인 콘텐츠 -->
-    <main th:if= "${session.memberLogin == null}" class="main-content">
-        <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
-        <p>(비로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
-        <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
-        <div style="height: 2000px;"></div>
-    </main>
+	<!-- 로그인 여부에 따른 콘텐츠 표시 -->
+	<main th:if="${session.memberLogin == null}" class="main-content">
+		<!-- NEW TRAINER PROFILE 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2>NEW TRAINER PROFILE</h2>
+				<a th:href="@{/trainer}" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>강연희 | 홈트레이닝</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>고유리 | 홈트레이닝</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>김민지 | 홈트레이닝</p>
+					</div>
+				</div>
+				<button class="slider-btn right-btn">&gt;</button>
+			</div>
+		</section>
 
-    <main th:if= "${session.memberLogin != null}" class="main-content">
-        <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
-        <p>(로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
-        <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
-        <div style="height: 2000px;"></div>
-    </main>
+		<!-- NEW Home Training 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2>NEW Home Training</h2>
+				<a href="@{/homeTraining}" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>등운동은 역시 나임</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>울끈불끈 팔만들기</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>이게 다이어트다</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher5.jpg" alt="Training Image">
+						<p>이게 다이어트다</p>
+					</div>
+				</div>
+				<button class="slider-btn right-btn">&gt;</button>
+			</div>
+		</section>
 
-    <main th:if= "${session.memberLogin}"></main>
+		<!-- NEW Home Gym 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2>NEW Home Gym</h2>
+				<a href="@{/homeGym}" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>운동 짬킹한테서 배우는 홈트</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>울끈불끈 팔만들기</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>이게 다이어트다</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher3.jpg" alt="Gym Image">
+						<p>운동 짬킹한테서 배우는 홈트</p>
+					</div>
+					<button class="slider-btn right-btn">&gt;</button>
+				</div>
+		</section>
+	</main>
 
-    <!-- 푸터 조각 삽입 -->
-    <footer th:replace="~{common/footer :: footer}"></footer>
+	<!-- 로그인 상태일 때 콘텐츠 -->
+	<main th:if="${session.memberLogin != null}" class="main-content">
+		<h2>로그인 상태입니다. 환영합니다!</h2>
+		<p>로그인 후 정보를 확인할 수 있습니다.</p>
+
+		<!-- NEW TRAINER PROFILE 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2>NEW TRAINER PROFILE</h2>
+				<a href="#" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>강연희 | 홈트레이닝</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>고유리 | 홈트레이닝</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Teacher Profile">
+						<p>김민지 | 홈트레이닝</p>
+					</div>
+				</div>
+				<button class="slider-btn right-btn">&gt;</button>
+			</div>
+		</section>
+
+		<!-- NEW Home Training 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2> NEW Home Training</h2>
+				<a href="#" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>등운동은 역시 나임</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>울끈불끈 팔만들기</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Training Image">
+						<p>이게 다이어트다</p>
+					</div>
+				</div>
+				<button class="slider-btn right-btn">&gt;</button>
+			</div>
+		</section>
+
+		<!-- NEW Home Gym 섹션 -->
+		<section class="class-section">
+			<div class="section-header">
+				<h2>NEW Home Gym</h2>
+				<a href="#" class="more-link">더보기</a>
+			</div>
+			<hr class="section-divider">
+			<div class="slider-container">
+				<button class="slider-btn left-btn">&lt;</button>
+				<div class="class-list">
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>운동 짬킹한테서 배우는 홈트</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>울끈불끈 팔만들기</p>
+					</div>
+					<div class="class-item">
+						<img src="/images/teacher7.jpg" alt="Gym Image">
+						<p>이게 다이어트다</p>
+					</div>
+				</div>
+				<button class="slider-btn right-btn">&gt;</button>
+			</div>
+		</section>
+	</main>
+
+	<!-- 푸터 조각 삽입 -->
+	<footer th:replace="~{common/footer :: footer}"></footer>
+
+	<script src="/js/slider.js"></script> <!-- 슬라이더 기능을 위한 JavaScript 연결 -->
 </body>
+
 </html>
