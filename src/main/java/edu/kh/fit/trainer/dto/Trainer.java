@@ -1,4 +1,4 @@
-package edu.kh.fit.trainner.dto;
+package edu.kh.fit.trainer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,8 +1,8 @@
-package edu.kh.fit.trainner.mapper;
+package edu.kh.fit.trainer.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import edu.kh.fit.trainner.dto.Trainer;
+import edu.kh.fit.trainer.dto.Trainer;
 
 @Mapper
 public interface TrainerMapper {

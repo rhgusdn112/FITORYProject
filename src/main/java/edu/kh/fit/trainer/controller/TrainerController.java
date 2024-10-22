@@ -1,4 +1,4 @@
-package edu.kh.fit.trainner.controller;
+package edu.kh.fit.trainer.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.fit.trainner.dto.Trainer;
-import edu.kh.fit.trainner.service.TrainerService;
+import edu.kh.fit.trainer.dto.Trainer;
+import edu.kh.fit.trainer.service.TrainerService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("trainner")
-@SessionAttributes("trainnerLogin")
+@RequestMapping("traiNer")
+@SessionAttributes("trainerLogin")
 public class TrainerController {
 	
 	private final TrainerService service;
