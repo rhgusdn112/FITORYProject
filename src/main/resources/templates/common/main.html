@@ -10,22 +10,24 @@
     <block th:replace="~{common/common}"></block>
 
     <!-- 메인 콘텐츠 -->
-    <main th:if= "${session.memberLogin == null}" class="main-content">
-        <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
-        <p>(비로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
-        <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
-        <div style="height: 2000px;"></div>
-    </main>
+     
+    <th:block th:unless= "${session.memberLogin}">
+        <main class="main-content">
+            <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
+            <p>(비로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
+            <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
+            <div style="height: 2000px;"></div>
+        </main>
+    </th:block>
 
-    <main th:if= "${session.memberLogin != null}" class="main-content">
-        <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
-        <p>(로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
-        <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
-        <div style="height: 2000px;"></div>
-    </main>
-
-    <main th:if= "${session.memberLogin}"></main>
-
+    <th:block th:if= "${session.memberLogin}">
+        <main class="main-content">
+            <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
+            <p>(로그인)이 페이지는 헤더와 푸터가 조각 넣기로 구성되었습니다.</p>
+            <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
+            <div style="height: 2000px;"></div>
+        </main>
+    </th:block>
     <!-- 푸터 조각 삽입 -->
     <footer th:replace="~{common/footer :: footer}"></footer>
 </body>
