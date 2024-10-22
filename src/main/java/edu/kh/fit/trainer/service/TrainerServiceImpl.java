@@ -1,10 +1,10 @@
-package edu.kh.fit.trainner.service;
+package edu.kh.fit.trainer.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import edu.kh.fit.trainner.dto.Trainer;
-import edu.kh.fit.trainner.mapper.TrainerMapper;
+import edu.kh.fit.trainer.dto.Trainer;
+import edu.kh.fit.trainer.mapper.TrainerMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
