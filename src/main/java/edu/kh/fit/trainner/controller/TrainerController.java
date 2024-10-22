@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.member.service.MemberService;
-import edu.kh.fit.trainner.dto.Trainner;
-import edu.kh.fit.trainner.service.TrainnerService;
+import edu.kh.fit.trainner.dto.Trainer;
+import edu.kh.fit.trainner.service.TrainerService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +21,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("trainner")
 @SessionAttributes("trainnerLogin")
-public class TrainnerController {
+public class TrainerController {
 	
-	private final TrainnerService service;
+	private final TrainerService service;
 	
 	/**
 	 * (강사)로그인 서비스
@@ -38,27 +36,27 @@ public class TrainnerController {
 	 * @return
 	 */
 	@PostMapping("login")
-	public String trainnerLogin(
-			@RequestParam("trainnerEmail") String trainnerEmail,
-			@RequestParam("trainnerPw")		 String trainnerPw,
+	public String trainerLogin(
+			@RequestParam("trainerEmail") String trainerEmail,
+			@RequestParam("trainerPw")		 String trainerPw,
 			@RequestParam(name = "saveEmail", required = false) String saveEmail,
 			Model model,
 			RedirectAttributes ra,
 			HttpServletResponse resp
 			) {
 		
-		Trainner trainnerLogin = service.trainnerLogin(trainnerEmail, trainnerPw);
+		Trainer trainerLogin = service.trainerLogin(trainerEmail, trainerPw);
 		
-		if(trainnerLogin == null) { 
+		if(trainerLogin == null) { 
 			ra.addFlashAttribute("message", "해당하는 정보가 없습니다.");
 		}else {
 
-			model.addAttribute("trainnerLogin", trainnerLogin);
+			model.addAttribute("trainerLogin", trainerLogin);
 			
 			
 			//----------------------------------------------------------------
 			/* 이메일 저장 코드(Cookie) */
-			Cookie cookie = new Cookie("saveEmail", trainnerEmail);
+			Cookie cookie = new Cookie("saveEmail", trainerEmail);
 			
 			cookie.setPath("/"); 
 			
@@ -94,10 +92,10 @@ public class TrainnerController {
 	 */
 	@PostMapping("signUp")
 	public String signUp(
-			@ModelAttribute Trainner inputTrainner,
+			@ModelAttribute Trainer inputTrainer,
 			RedirectAttributes ra	) {
 		
-		int result = service.signUp(inputTrainner);
+		int result = service.signUp(inputTrainer);
 		
 		String message = null;
 		String path    = null;
@@ -105,7 +103,7 @@ public class TrainnerController {
 		if(result > 0) {
 			path = "/";
 			message 
-				= inputTrainner.getTrainnerNickname() + "님의 가입을 환영합니다";
+				= inputTrainer.getTrainerNickname() + "님의 가입을 환영합니다";
 		} else {
 			path = "signUp";
 			message = "회원 가입 실패...";
