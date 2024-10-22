@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 사이드 메뉴 기능을 위한 요소 가져오기
   const sideMenu = document.getElementById('side-menu');
-  const menuButton = document.querySelector('.menu-icon');
-  const closeButton = document.querySelector('.close-icon');
+  const menuButton = document.querySelector('.header-menu-icon'); // 클래스명 변경
+  const closeButton = document.querySelector('.header-close-icon'); // 클래스명 변경
 
   // 사이드 메뉴 가시성 토글 함수
   function toggleMenu() {
@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 검색 바 상호작용 요소
-  const searchInput = document.querySelector('.search-input');
-  const clearButton = document.querySelector('.clear-button');
-  const searchButton = document.querySelector('.search-button');
+  const searchInput = document.querySelector('.header-search-input'); // 클래스명 변경
+  const clearButton = document.querySelector('.header-clear-button'); // 클래스명 변경
+  const searchButton = document.querySelector('.header-search-button'); // 클래스명 변경
 
   if (searchInput && clearButton && searchButton) {
     // 입력에 따라 클리어 버튼 표시 또는 숨기기
@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
 
 // 페이지 맨 위로 부드럽게 스크롤
 function scrollToTop() {

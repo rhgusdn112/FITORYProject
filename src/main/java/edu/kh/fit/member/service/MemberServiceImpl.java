@@ -24,9 +24,9 @@ public class MemberServiceImpl implements MemberService{
 			
 			if(memberLogin == null)	return null;
 
-			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
-				return null;
-			}
+//			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
+//				return null;
+//			}
 				
 			return memberLogin;
 		}
@@ -37,7 +37,6 @@ public class MemberServiceImpl implements MemberService{
 
 		String encPw = encorder.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
-		
 		
 		
 		int result = mapper.signUp(inputMember);

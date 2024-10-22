@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class TeacherController {
 
-    @GetMapping("/teacher")
+    @GetMapping("/trainer")
     public String teacherPage() {
-        return "teacher/teacher";  // templates/teacher/teacher.html로 이동
+        return "trainer/trainer";  // templates/teacher/teacher.html로 이동
     }
    
 }

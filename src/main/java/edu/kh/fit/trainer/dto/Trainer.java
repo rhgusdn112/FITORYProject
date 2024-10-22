@@ -1,4 +1,4 @@
-package edu.kh.fit.trainner.dto;
+package edu.kh.fit.trainer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,18 +13,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Trainner {
+public class Trainer {
 	
-	private int trainnerNo;       
-	private String trainnerEmail;    
-	private String trainnerPw;
-	private String trainnerNickname;
-	private String trainnerTel;
-	private String trainnerAddress;  
+	private int trainerNo;       
+	private String trainerEmail;    
+	private String trainerPw;
+	private String trainerNickname;
+	private String trainerTel;
+	private String trainerAddress;  
 	private String profileImg;
 	private int    sales;
 	private String enrollDate;
-	private String trainnerDelFl;
+	private String trainerDelFl;
 	private String gender;
 	
 	
