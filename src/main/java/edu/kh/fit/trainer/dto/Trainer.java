@@ -15,23 +15,23 @@ import lombok.ToString;
 @Builder
 public class Trainer {
 	
-	private int trainerNo;       
-	private String trainerEmail;    
-	private String trainerPw;
-	private String trainerNickname;
-	private String trainerTel;
-	private String trainerAddress;  
-	private String profileImg;
-	private int    sales;
-	private String enrollDate;
-	private String trainerDelFl;
-	private String gender;
+	private int trainerNo; // 강사 번호
+	private String trainerEmail; // 강사 이메일
+	private String trainerPw; // 강사 비밀번호(암호화)
+	private String trainerNickname; // 강사명
+	private String trainerTel; // 강사 전화번호
+	private String trainerAddress; // 강사 주소
+	private String profileImg; // 프로필 이미지 경로
+	private int    sales; // 매출
+	private String enrollDate; // 가입일
+	private String trainerDelFl; // 탈퇴여부('Y', 'N')
+	private String gender; // 성별(남, 여)
 	
 	
 	
 	// 강사 자격정보 생성을 위한 필드생성
-	private int qualificationNo;
-	private String qualification;
-	private String award;
-	private String career;
+	private int qualificationNo; // 자격 정보 번호
+	private String qualification; // 자격 정보
+	private String award; // 수상 내역
+	private String career; // 이력
 }
