@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,6 +31,15 @@ public class BoardController {
 
 	private final BoardService service;
 	
+  @GetMapping("/{classNo}")
+  public String getBoardByClassNo(
+  		@PathVariable("classNo") int classNo,
+  		@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+  		Model model) {
+  	if(classNo == 1) return "board/homeTraining";
+  	else if(classNo == 2) return "board/homeGym";
+  	else return "error/404";
+  }
 	
 	/**
 	 * @param classNo
@@ -52,7 +62,11 @@ public class BoardController {
 		@SessionAttribute(value="trainerLogin", 
 		required=false) Trainer trainerLogin
 		) throws ParseException {
-		
+
+
+
+
+
 		// SQL 수행에 필요한 파라미터들 Map으로 묶기
 		Map<String, Object> map = new HashMap<>();
 		map.put("classNo", classNo);

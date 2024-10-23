@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="edu.kh.fit.mypage.mapper.TrainerMyPageMapper">
+
+	<!-- 강사 마이페이지 업데이트 -->
+	<update id="trainerUpdate">
+		UPDATE "TRAINER"
+		SET TRAINER_NAME = {trainerName}, TRAINER_TEL = #{trainerTel}
+		WHERE TRAINER_NO = #{trainerNo}
+	</update>
+
+	<!-- 프로필 이미지 수정 -->
+	<update id="profile">
+		UPDATE "TRAINER"
+		SET PROFILE_IMG = #{url}
+		WHERE TRAINER_NO = #{trainerNo}
+	</update>
+	
+</mapper>

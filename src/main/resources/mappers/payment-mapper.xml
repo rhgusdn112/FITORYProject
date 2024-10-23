@@ -3,16 +3,40 @@
 
 <mapper namespace="edu.kh.fit.payment.mapper.PaymentMapper">
 
-    <select id="selectPaymentClass" parameterType="_int" resultType="edu.kh.fit.payment.dto.Payment">
-        SELECT *
-        FROM PAYMENT
-        WHERE BOARD_NO = #{boardNo}
+    <!-- 주문 정보 조회 -->
+    <select id="selectOrderInfoById" parameterType="int" resultType="edu.kh.fit.payment.dto.Payment">
+        SELECT
+        p.ORDER_NO,
+        p.PAYMENT_MEMBER,
+        p.PAYMENT_BOARD,
+        p.PAYMENT_DATE,
+        p.PAYMENT_ID,
+        p.PAYMENT_METHOD,
+        p.PAYMENT_STATUS,
+        p.PAYMENT_AMOUNT,
+        p.PAYMENT_CURRENCY,
+        m.MEMBER_NAME AS customerName,
+        m.EMAIL AS customerEmail,
+        m.PHONE AS customerPhone,
+        b.BOARD_TITLE AS classTitle
+        FROM PAYMENT p
+        JOIN MEMBER m ON p.PAYMENT_MEMBER = m.MEMBER_ID
+        JOIN BOARD b ON p.PAYMENT_BOARD = b.BOARD_ID
+        WHERE p.ORDER_NO = #{orderNo}
     </select>
 
+    <!-- 결제 요청 -->
+    <select id="selectPaymentClass" parameterType="int" resultType="edu.kh.fit.payment.dto.Payment">
+        SELECT *
+        FROM PAYMENT
+        WHERE PAYMENT_BOARD = #{paymentBoard}
+    </select>
+
+    <!-- 결제 상태 업데이트 -->
     <update id="updatePaymentStatus" parameterType="map">
         UPDATE PAYMENT
-        SET STATUS = #{status}
-        WHERE BOARD_NO = #{boardNo}
+        SET PAYMENT_STATUS = #{status}
+        WHERE ORDER_NO = #{orderNo}
     </update>
 
 </mapper>

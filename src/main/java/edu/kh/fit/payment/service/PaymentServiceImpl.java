@@ -9,18 +9,23 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentMapper mapper;
 
     @Override
-    public Payment selectPaymentClass(int boardNo) {
-        return mapper.selectPaymentClass(boardNo);
+    public Payment selectOrderInfo(int orderNo) {
+        return mapper.selectOrderInfoById(orderNo);
     }
 
     @Override
-    @Transactional
-    public void updatePaymentStatus(int boardNo, String status) {
-        mapper.updatePaymentStatus(boardNo, status);
+    public void updatePaymentStatus(int orderNo, String status) {
+        mapper.updatePaymentStatus(orderNo, status);
+    }
+    
+    @Override
+    public Payment selectPaymentClass(int orderNo) {
+    	return mapper.selectPaymentClass(orderNo);
     }
 }
