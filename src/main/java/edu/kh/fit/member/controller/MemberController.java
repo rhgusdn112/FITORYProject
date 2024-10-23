@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("member")
+/* @RequestMapping("member") */
 @SessionAttributes("memberLogin")
 @RequiredArgsConstructor
 public class MemberController {
