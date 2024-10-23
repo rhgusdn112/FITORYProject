@@ -6,42 +6,35 @@
   <title>Document</title>
 </head>
 <body>
-
-  <!-- header -->
-
+  <main>
+    <main>
+      <th:block th:replace="~{common//memberHeader}"></th:block>
+      <th:block th:replace="~{common/memberSideBar}"></th:block>
+    </main>
+  </main>
   <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
-    <th:block th:if="${session.adminLogin}">
       <div class="main-my-page">My Page</div>
         <div class="main-box">
-          <div class="number">관리자 번호</div>
-          <input type="text" name="adminNomal" id="adminEmail" class="box" placeholder="이메일 입력">
           <div class="email">아이디(Email)</div>
-          <input type="text" name="adminNomal" id="adminEmail" class="box" placeholder="이메일 입력">
-          <div class="name">관리자명</div>
-          <input type="text" name="adminNomal" id="adminName" class="box" placeholder="이름 작성">
+          <input type="text" name="memberNomal" id="memberEmail" class="box" placeholder="이메일 입력">
+          <div class="name">이름</div>
+          <input type="text" name="memberNomal" id="memberName" class="box" placeholder="이름 작성">
           <div class="birth">생년월일</div>
-          <input type="text" name="adminNomal" id="adminBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
+          <input type="text" name="memberNomal" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
           <div class="tel">전화번호</div>
-          <input type="text" name="adminNomal" id="adminTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
+          <input type="text" name="memberNomal" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
           <div class="hight inHight">키</div>
-          <input type="text" name="adminCheck" id="adminhight" class="box" placeholder="선택사항입니다.">        
+          <input type="text" name="memberCheck" id="memberhight" class="box" placeholder="선택사항입니다.">        
           <div class="weight inWeight">몸무게</div>
-          <input type="text" name="adminCheck" id="adminWeight" class="box" placeholder="선택사항입니다.">
+          <input type="text" name="memberCheck" id="memberWeight" class="box" placeholder="선택사항입니다.">
           
           <div class="body">체형</div>
-          <input type="text" name="adminCheck" id="adminBody" class="box" placeholder="선택사항입니다.">
+          <input type="text" name="memberCheck" id="memberBody" class="box" placeholder="선택사항입니다.">
           <div class="die">다이어트</div>
-          <input type="text" name="adminCheck" id="adminDie" class="box" placeholder="선택사항입니다.">
+          <input type="text" name="memberCheck" id="memberDie" class="box" placeholder="선택사항입니다.">
           <button class="update" id="updateBtn"> 수정하기 </button>
         </div>
         <button id="topBtn" class="top">▲</button>
-      </th:block>
     </form>
-
-
-    <!-- footer -->
-
-   
-
 </body>
 </html>

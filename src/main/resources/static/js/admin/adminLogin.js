@@ -1,13 +1,9 @@
-const loginBtn = document.querySelector("#loginBtn");
-
-
-
-
-loginBtn.addEventListener('click', ()=> {
+document.getElementById('loginBtn').addEventListener('click', function() {
+  
   const form = document.getElementById('loginForm');
 
   // action 속성 변경
-  form.action = '/admin/login';
+  form.action = '/member/login';
   
   // 폼 제출
   form.submit();
