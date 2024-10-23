@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.kh.fit.homeGym.service.HomeGymService;
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("homeGym")
+@RequestMapping("/homeGym")
 @RequiredArgsConstructor
 @Controller
 public class HomeGymController {
@@ -17,6 +17,6 @@ public class HomeGymController {
   // 클래스 목록을 보여주는 페이지
   @GetMapping("")
   public String getClassList() {
-      return "/homeGym/home-gym";
+      return "homeGym/home-gym";
   }
 }
