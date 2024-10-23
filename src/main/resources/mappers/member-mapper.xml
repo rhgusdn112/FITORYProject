@@ -8,14 +8,16 @@
 		SELECT
 			MEMBER_NO,
 			MEMBER_EMAIL, 
-			MEMBER_NAME, 
+			MEMBER_NICKNAME, 
 			MEMBER_PW,
-			MEMBER_TEL, 
-			MEMBER_BIRTHDAY,
-			PROFILE_IMG, 
+			MEMBER_TEL,
+			MEMBER_BIRTHDAY, 
+			PROFILE_IMG,
 			HEIGHT,
 			WEIGHT,
-			TO_CHAR(ENROOL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
+			TO_CHAR(ENROOL_DATE, 
+			'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
+			MEMBER_FLAG
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND   MEMBER_DEL_FL = 'N'
@@ -28,8 +30,9 @@
 		SEQ_MEMBER_NO.NEXTVAL, 
 		#{memberEmail}, 
 		#{memberPw},
-	 	#{memberName}, 
+	 	#{memberNickname}, 
 	 	#{memberTel}, 
+	 	#{memberAddress}
 	 	, NULL, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 </mapper>
