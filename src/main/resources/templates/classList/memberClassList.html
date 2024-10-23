@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="../../static/css/classList/memberClassList.css">
   <style>
     @font-face {
-  font-family: 'MaruBuriSemiBold';
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
-}
+      font-family: 'MaruBuriSemiBold';
+      src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+      src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+    }
   </style>
 </head>
 
@@ -24,78 +24,87 @@
       <th:block th:replace="~{myPage/side}"></th:block> -->
     </main>
   </main>
-  <div class="div-wrapper">
-    <div class="div">
-      <div class="overlap">
 
-        <div class="main-class">강의 목록</div>
-        <button class="select" type="checkBox">모두 선택</button>
-        <img class="all-check-box" src="img/checkbox-4.svg" />
-        <button class="arr">정렬 방식 ▽</button>
-        <table class="main-box">
-          <div class="overlap-group">
-
-        <!-- 탑버튼 -->
-            <div class="top-btn">
-              <div class="top-box">
-                <div class="top-in-box">
-                  <div class="top-in">▲</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- box -->
-            <p class="textbox-1">
-              Title : 움직임의 이해<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
-              강진형 | HomeTraining
-            </p>
-            <p class="textbox-2">
-              Title : 플랭크 기초<br />설명 : 플랭크 이거 보면<br />다들 그냥 함<br />강사 : 고현우 | HomeTraining
-            </p>
-            <p class="textbox-3">
-              Title : 헬창만 들어와<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
-              김대현 | HomeGym
-            </p>
-            <p class="textbox-4">
-              Title : 오늘은 하체다<br />설명 : 매번 상체만 하는게 아닌<br />하체도 해줘야 한단다<br />강사 : 성상민 |
-              HomeGym
-            </p>
-            <div class="button">
-              <div class="see">
-                <div class="container">
-                  <button class="state-layer">
-                    <div class="label-text">선택한 강의 보기</div>
-                  </button>
-                </div>
-              </div>
-              <div class="delete">
-                <div class="state-layer-wrapper">
-                  <bnutton class="state-layer">
-                    <div class="label-text">선택한 강의 삭제</div>
-                  </bnutton>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="main">
+    <div class="main-class">강의 목록</div>
+    <input type="checkbox" id="checkbox" class="all-check-box">
+    <div class="select">모두 선택</div>
+    <button>정렬 방식</button>
+      <div class="main-box">
+        <table>
+          <tbody>
+            <th>Title</th>
+            <th>설명</th>
+            <th>강사</th>
+          </tbody>
         </table>
+          <p class="textbox">
+            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList1.jpg" /> -->
+            <input type="checkbox" id="checkbox">
+            Title : 움직임의 이해<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
+            강진형 | HomeTraining
+          </p>
+          <p class="textbox">
+            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList2.jpg" /> -->
+            <input type="checkbox" id="checkbox">
+            Title : 플랭크 기초<br />설명 : 플랭크 이거 보면<br />다들 그냥 함<br />강사 : 고현우 | HomeTraining
+          </p>
+          <p class="textbox">
+            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList3.jpg" /> -->
+            <input type="checkbox" id="checkbox">
+            Title : 헬창만 들어와<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
+            김대현 | HomeGym
+          </p>
+          <p class="textbox">
+            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList4.jpg" /> -->
+            <input type="checkbox" id="checkbox">
+            Title : 오늘은 하체다<br />설명 : 매번 상체만 하는게 아닌<br />하체도 해줘야 한단다<br />강사 : 성상민 |
+            HomeGym
+          </p>
+            <button class="see">선택한 강의 보기</button>
+            <button class="delete">선택한 강의 삭제</button>
+            <!-- 페이지 -->
+            <div class="pagination">
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+              <a href="#">6</a>
+              <a href="#">7</a>
+              <a href="#">8</a>
+              <a href="#">9</a>
+              <a href="#">10</a>
+          </div>
+        </div>
+        <!-- 탑버튼 -->
+        <button class="top">▲</button>
+        </div>
       </div>
     </div>
+  </div>
+    <div id="temp3"></div>
+  </div>
+
+  <script>
+    function loadFromHtml(path, selector) {
+      fetch(path)
+        .then(resp => resp.text())
+        .then(result => {
+          selector.outerHTML = result;
+        })
+    }
+    /* header */
+    const temp1 = document.querySelector("#temp1");
+    loadFromHtml("../common/memberHeader.html", temp1);
+    /* side */
+    const temp2 = document.querySelector("#temp2");
+    loadFromHtml("../common/memberSideBar.html", temp2);
+    /* footer */
+    const temp3 = document.querySelector("#temp3");
+    loadFromHtml("../common/footer.html", temp3);
+  </script>
 </body>
 
-<script>
-  function loadFromHtml(path, selector) {
-    fetch(path)
-      .then(resp => resp.text())
-      .then(result => {
-        selector.outerHTML = result;
-      })
-  }
-  /* header */
-  const temp1 = document.querySelector("#temp1");
-  loadFromHtml("myPage/myPageHeader.html", temp1);
-  /* side */
-  const temp2 = document.querySelector("#temp2");
-  loadFromHtml("mypage/memberSideBar.html", temp2);
-</script>
 
 </html>

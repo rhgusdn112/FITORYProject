@@ -6,17 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Page</title>
   <link rel="stylesheet" href="../../static/css/myPage/trainerMyPage-style.css">
-  <link rel="stylesheet" href="../../static/css/globals.css">
-  <link rel="stylesheet" href="../../static/css/styleguide.css">
 </head>
 
 <body>
   <main>
     <main>
-      <div id="temp1"></div>
-      <div id="temp2"></div>
-      <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
-      <th:block th:replace="~{myPage/side}"></th:block> -->
+      <th:block th:replace="~{common/memberHeader}"></th:block>
+      <th:block th:replace="~{commone/memberSideBar}"></th:block>
     </main>
   </main>
 
@@ -24,7 +20,7 @@
     <div class="main-my-page">My Page</div>
     <div class="main-box">
       <div class="email">아이디(Email)</div>
-      <input class="box" placeholder="이메일 입력">
+      <input type="text" name="email" class="box" placeholder="이메일 입력">
       <div class="name">이름</div>
       <input class="box" placeholder="이름 작성">
       <div class="birth">생년월일</div>
@@ -75,25 +71,9 @@
   <button class="top">▲ </button>
   </div>
   <div id="temp3"></div>
+
+  <!-- 푸터 -->
+  <th:block th:replace="~{common/footer}"></th:block>
+  <script src="/js/myPage/memberMyPage.js"></script>
 </body>
-
-<script>
-  function loadFromHtml(path, selector) {
-    fetch(path)
-      .then(resp => resp.text())
-      .then(result => {
-        selector.outerHTML = result;
-      })
-  }
-  /* header */
-  const temp1 = document.querySelector("#temp1");
-  loadFromHtml("../common/trainerHeader.html", temp1);
-  /* side */
-  const temp2 = document.querySelector("#temp2");
-  loadFromHtml("../common/trainerSideBar.html", temp2);
-  /* footer */
-  const temp3 = document.querySelector("#temp3");
-  loadFromHtml("../common/footer.html", temp2);
-</script>
-
 </html>

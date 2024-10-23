@@ -38,7 +38,7 @@ html, body {
   display: flex; /* 헤더 영역을 플렉스 컨테이너로 설정 */
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: space-between; /* 양쪽 끝에 자식 요소들을 정렬 */
-  background-color: black; /* ***** 가독성을 위해 임시로 black 설정 ***** */
+  background-color: #bfbfbf; /* ***** 가독성을 위해 임시로 black 설정 ***** */
   color: #ffffff; /* 텍스트 색상 흰색 */
   padding: 10px 20px; /* 내부 여백 설정 */
   position: fixed; /* 상단에 고정되도록 설정 */
@@ -47,7 +47,6 @@ html, body {
   width: 100%; /* 화면 전체 너비 사용 */
   z-index: 1000; /* 다른 요소 위에 표시 */
   height: 100px; /* 헤더 높이 설정 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 헤더에 그림자 추가 */
 }
 
 .menu-icon {

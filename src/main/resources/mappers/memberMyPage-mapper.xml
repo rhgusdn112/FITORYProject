@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="edu.kh.fit.mypage.mapper.MemberMyPageMapper">
+
+	<!-- 회원 마이페이지 수정 -->
+	<update id="memberUpdate">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = MEMBER_NAME = {memberName}, MEMBER_TEL = #{memberTel}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	
+</mapper>
