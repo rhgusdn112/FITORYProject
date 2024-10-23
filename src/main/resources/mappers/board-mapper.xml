@@ -9,6 +9,11 @@
 		
 		
 	</resultMap> !-->
+<!--     <resultMap type="Board" id="board_rm">
+        <id property="boardNo" column="BOARD_NO"/>
+        
+        
+    </resultMap> -->
 
 	<!-- 게시글 상세 조회 -->
 	<select id="selectDetail" 
