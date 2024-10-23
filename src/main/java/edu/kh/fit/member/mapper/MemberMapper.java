@@ -13,4 +13,7 @@ public interface MemberMapper {
 	// (회원) 회원가입
 	int signUp(Member inputMember);
 
+	// 이메일 중복검사
+	int emailCheck(String email);
+
 }
