@@ -1,72 +1,72 @@
 <div th:fragment="header">
   <!-- 헤더 영역 시작 -->
-  <header class="header">
+  <header class="header-container">
     <!-- 메뉴 아이콘 클릭 시 사이드 메뉴를 열기 위한 아이콘 -->
-    <div class="menu-icon" onclick="toggleMenu()">
+    <div class="header-menu-icon" onclick="toggleMenu()">
       <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
     </div>
     <!-- 로고 영역 -->
-    <div class="logo-container">
-      <a th:href="@{/main}" class="logo-link">
-        <h1 class="logo">FITORY</h1>
+    <div class="header-logo-container">
+      <a th:href="@{/main}" class="header-logo-link">
+        <h1 class="header-logo-text">FITORY</h1>
       </a>
     </div>
     <!-- 검색 바와 네비게이션 메뉴 영역 -->
-    <div class="search-nav-container">
+    <div class="header-search-nav-container">
       <!-- 네비게이션 메뉴 -->
       <nav>
         <!-- 마이페이지 관련 항목 -->
-        <div class="nav-item-wrapper">
-          <a href="/mypage" class="nav-item">MyPage</a>
+        <div class="header-nav-item-wrapper">
+          <a href="/mypage" class="header-nav-item">MyPage</a>
         </div>
         <!-- 로그아웃 관련 항목 -->
-        <div class="nav-item-wrapper">
-          <a href="/logout" class="nav-item">Logout</a>
+        <div class="header-nav-item-wrapper">
+          <a href="/member/logout" class="header-nav-item">Logout</a>
         </div>
         <!-- 장바구니 관련 항목 -->
-        <div class="nav-item-wrapper">
-          <a href="/cart" class="nav-item">Cart</a>
+        <div class="header-nav-item-wrapper">
+          <a href="/cart" class="header-nav-item">Cart</a>
         </div>
       </nav>
       <!-- 검색 바 영역 -->
-      <div class="search-bar">
-        <input type="text" placeholder="Search" class="search-input"
+      <div class="header-search-bar">
+        <input type="text" placeholder="Search" class="header-search-input"
           oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
-        <button class="clear-button"
-          onclick="document.querySelector('.search-input').value = ''; this.style.display = 'none';"
+        <button class="header-clear-button"
+          onclick="document.querySelector('.header-search-input').value = ''; this.style.display = 'none';"
           style="display: none;">X</button>
-        <button class="search-button"><i class="fa fa-search"></i></button>
+        <button class="header-search-button"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </header>
   <!-- 사이드 메뉴 영역 -->
-  <div id="side-menu" class="side-menu">
+  <div id="side-menu" class="header-side-menu">
     <!-- 사이드 메뉴 닫기 아이콘 -->
-    <div class="close-icon" onclick="toggleMenu()">
+    <div class="header-close-icon" onclick="toggleMenu()">
       <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
     </div>
     <!-- 사이드 메뉴 항목 -->
     <nav>
-      <div class="nav-item-wrapper">
-        <a href="mypage" class="nav-item">My Page</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/mypage" class="header-nav-item">My Page</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="teacher" class="nav-item">TEACHER</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/trainer" class="header-nav-item">Trainer</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="home-training" class="nav-item">Home Training</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/homeTraining" class="header-nav-item">Home Training</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="home-gym" class="nav-item">Home Gym</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/homeGym" class="header-nav-item">Home Gym</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="/buy" class="nav-item">BUY</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/buy" class="header-nav-item">BUY</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="/cart" class="nav-item">CART</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/cart" class="header-nav-item">CART</a>
       </div>
-      <div class="nav-item-wrapper">
-        <a href="/customer-service" class="nav-item">고객센터</a>
+      <div class="header-nav-item-wrapper">
+        <a href="/customerservice" class="header-nav-item">고객센터</a>
       </div>
     </nav>
   </div>

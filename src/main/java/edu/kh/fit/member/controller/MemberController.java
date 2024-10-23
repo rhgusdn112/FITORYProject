@@ -5,23 +5,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@SessionAttributes("member")
+@RequestMapping("member")
+/* @RequestMapping("member") */
+@SessionAttributes("memberLogin")
 @RequiredArgsConstructor
 public class MemberController {
 	
@@ -38,9 +38,8 @@ public class MemberController {
 	 */
 	@PostMapping("login")
 	public String memberLogin(
-			@RequestParam("memberEmail") String memberEmail,
-			@RequestParam("password")	String memberPw,
-			@RequestParam(name = "saveEmail", required = false) String saveEmail,
+			@RequestParam("email") String memberEmail,
+			@RequestParam("password")		 String memberPw,
 			Model model,
 			RedirectAttributes ra,
 			HttpServletResponse resp
@@ -53,7 +52,6 @@ public class MemberController {
 												"아이디 혹은 패스워드가 일치하지 않습니다.");
 		}else {
 			model.addAttribute("memberLogin", memberLogin);
-			
 		}
 		return "redirect:/main"; 
 	}
@@ -66,7 +64,7 @@ public class MemberController {
 		
 		status.setComplete();
 		
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	
 	
@@ -89,7 +87,7 @@ public class MemberController {
 		if(result > 0) {
 			path = "/";
 			message 
-				= inputMember.getMemberName() + "님의 가입을 환영합니다";
+				= inputMember.getMemberNickname() + "님의 가입을 환영합니다";
 		} else {
 			path = "signUp";
 			message = "회원 가입 실패...";
@@ -111,6 +109,30 @@ public class MemberController {
 			
 			return "/member/MyPage";
 		}
+		
+		
+		/** 이메일 중복 검사(비동기)
+		 * @param email : 입력된 이메일
+		 * @return 0 : 중복X / 1: 중복
+		 */
+		@ResponseBody // 반환 값을 응답 본문(ajax 코드)로 반환
+		@GetMapping("emailCheck")
+		public int emailCheck(
+				@RequestParam("email") String email
+				) {
+			return service.emailCheck(email);
+		}
+
+//		/** 전화번호 검사(비동기)
+//		 * @param tel
+//		 * @return
+//		 */
+//		@ResponseBody
+//		@GetMapping("telCheck")
+//		public int telcheck(
+//				@RequestParam("tel") String tel) {
+//			return service.telCheck(tel);
+//		}
 		
 		
 

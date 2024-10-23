@@ -10,11 +10,13 @@
 			MEMBER_EMAIL, 
 			MEMBER_PW,
 			MEMBER_NAME, 
-			MEMBER_TEL, 
+			MEMBER_TEL,
 			MEMBER_BIRTHDAY, 
-			PROFILE_IMG, 
-			TO_CHAR(ENROOL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROOL_DATE,
-			MEMBER_FLAG
+			PROFILE_IMG,
+			HEIGHT,
+			WEIGHT,
+			TO_CHAR(ENROOL_DATE, 
+			'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND   MEMBER_DEL_FL = 'N'
@@ -32,4 +34,22 @@
 	 	#{memberAddress}
 	 	, NULL, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
+	
+		<!-- 이메일 중복검사  -->
+		<select id="emailCheck"
+			resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{email}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+	<!-- 전화번호 -->
+		<select id="telCheck"
+			resultType="_int">
+		SELECT COUNT(*)		
+		FROM "MEMBER"
+		WHERE MEMBER_TEL = #{tel}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
 </mapper>

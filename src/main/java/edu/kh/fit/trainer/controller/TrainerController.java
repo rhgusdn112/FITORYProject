@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("traiNer")
+@RequestMapping("trainer")
 @SessionAttributes("trainerLogin")
 public class TrainerController {
 	
@@ -112,6 +112,11 @@ public class TrainerController {
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
+	}
+	
+	@GetMapping("trainer")
+	public String trainerPage() {
+		return "trainer/trainer";
 	}
 	
 }
