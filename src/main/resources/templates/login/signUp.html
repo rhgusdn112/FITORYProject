@@ -253,7 +253,7 @@
 </head>
 <body>
   <!-- 헤더 조각 -->
-  <block th:replace="~{common/common}"></block>
+
   <main>
     <div class="signUp-container">
       <section class="signUp">
@@ -261,7 +261,7 @@
 
         <form action="signUp" method="post" name="signUpForm" id="signUpForm">
           <div class="signUp-options">
-            <input type="radio" id="member" name="signUpType" value="member" checked>
+            <input type="radio" id="member" name="signUpType" value="member"  checked>
             <label for="member" class="signUp-option">일반 회원가입</label>
             <input type="radio" id="trainer" name="signUpType" value="trainer" >
             <label for="trainer" class="signUp-option">강사 회원가입</label>
@@ -360,7 +360,7 @@
           <!-- 강사 회원가입 클릭 시 -->
           <div class="signUp-content" id="trainerContent" style="display:none">
             <label class="trainerEmail">
-              *<span class="required">아이디(Email)</span>
+              <span class="required">아이디(Email)</span>
             </label>
             <div class="signUp-input-area">
               <input type="text" name="email" id="email"
@@ -463,7 +463,7 @@
   </main>
 
   <!-- 푸터 조각 -->
-  <footer th:replace="~{common/footer :: footer}"></footer>
+  <!-- <th:block th:replace="~{common/footer}"></th:block> -->
   
   <script src="/js/signUp/signUp.js"></script>
 </body>

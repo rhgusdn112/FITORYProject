@@ -1,23 +1,4 @@
-    // 라디오 버튼 클릭 시 내용 전환
-    const memberRadio = document.getElementById('member');
-    const trainerRadio = document.getElementById('trainer');
-    const memberContent = document.getElementById('memberContent');
-    const trainerContent = document.getElementById('trainerContent');
-
-    memberRadio.addEventListener('change', () => {
-        if (memberRadio.checked) {
-            memberContent.style.display = 'block';
-            trainerContent.style.display = 'none';
-        }
-    });
-
-    trainerRadio.addEventListener('change', () => {
-        if (trainerRadio.checked) {
-            memberContent.style.display = 'none';
-            trainerContent.style.display = 'block';
-        }
-    });
-
+const 
 
 
 //-----------------------------------------------------------------------
