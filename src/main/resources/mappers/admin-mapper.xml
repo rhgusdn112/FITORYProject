@@ -9,8 +9,8 @@
 			ADMIN_NO,
 			EMAIL, 
 			PW,
-			NICKNAME, 
-			MEMBER_TEL,
+			NICKNAME,
+			DEL_FL
 		FROM "ADMIN"
 		WHERE EMAIL = #{adminEmail}
 		AND   DEL_FL = 'N'
