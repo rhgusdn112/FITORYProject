@@ -1,0 +1,66 @@
+/* 메인 콘텐츠 중앙 정렬 */
+main {
+  text-align: center;
+  padding: 160px 0 80px; /* 상단과 하단의 패딩을 좀 더 크게 설정 */
+}
+
+/* 타이틀 스타일 */
+main h1 {
+  font-size: 2.5rem; /* 제목 크기를 약간 더 크게 */
+  margin-bottom: 60px; /* 제목과 프로필 사이의 간격을 늘림 */
+  font-family: 'Times New Roman', serif;
+}
+
+/* 프로필 섹션 */
+.teacher-profiles {
+  display: flex;
+  justify-content: center;
+  gap: 80px; /* 프로필 간 간격을 더 넓게 설정 */
+  margin-bottom: 60px;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 220px; /* 이미지 크기를 살짝 더 크게 설정 */
+  height: 320px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 그림자를 약간 더 강하게 */
+}
+
+.profile p {
+  margin-top: 15px; /* 이미지와 텍스트 사이의 간격을 늘림 */
+  font-size: 1.3rem; /* 텍스트 크기를 약간 더 크게 설정 */
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
+  margin-top: 20px; /* 페이지네이션과 콘텐츠 사이의 간격 */
+}
+
+.pagination a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 12px; /* 버튼 크기를 작게 설정 */
+  font-size: 0.9rem; /* 글꼴 크기를 작게 설정 */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination a.active {
+  background-color: #333;
+  color: white;
+}

@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("trainer")
+@RequestMapping("traiNer")
 @SessionAttributes("trainerLogin")
 public class TrainerController {
 	
@@ -114,11 +114,4 @@ public class TrainerController {
 		return "redirect:" + path;
 	}
 	
-	/** NEW TRAINER PROFILE 화면 이동
-	 * @return
-	 */
-	@GetMapping("")
-  public String trainerPage() {
-      return "trainer/trainer";  // templates/teacher/teacher.html로 이동
-  }
 }
