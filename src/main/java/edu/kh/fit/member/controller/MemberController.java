@@ -36,11 +36,10 @@ public class MemberController {
 	 * @param resp
 	 * @return redirect:/ (메인페이지로 리다이렉트)
 	 */
-	@PostMapping("member/login")
+	@PostMapping("login")
 	public String memberLogin(
 			@RequestParam("email") String memberEmail,
 			@RequestParam("password")		 String memberPw,
-			@RequestParam(name = "saveEmail", required = false) String saveEmail,
 			Model model,
 			RedirectAttributes ra,
 			HttpServletResponse resp
@@ -65,7 +64,7 @@ public class MemberController {
 		
 		status.setComplete();
 		
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	
 	

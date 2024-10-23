@@ -10,7 +10,7 @@ const checkObj = {
   "pw"       : false,
   "pwConfirm": false,
   "name" : false,
-  "tel" : false
+  "tel" : false,
   "telConfirm" : false
 };
 
@@ -101,6 +101,7 @@ email.addEventListener("input", e=>{
 // 1) 전화번호 유효성 검사에 사용되는 요소 얻어오기
 const tel = document.querySelector("#tel");
 const textMessage = document.querySelector("#textMessage");
+const telConfirm = document.querySelector("#telConfirm");
 
 // 2) 전화번호 메시지 미리 작성
 const telMessageObj = {}; // 빈 객체
@@ -246,7 +247,7 @@ function checkPw(){
 PwConfirm.addEventListener("input", ()=>{
 
   // 비밀번호 input에 작성된 값이 유효한 형식일때만 비교
-  if( checkObj.Pw === true ){
+  if( checkObj.pw === true ){
     checkPw();
     return;
   }
