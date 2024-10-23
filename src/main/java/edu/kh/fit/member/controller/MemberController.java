@@ -54,23 +54,8 @@ public class MemberController {
 		}else {
 			model.addAttribute("memberLogin", memberLogin);
 			
-			//----------------------------------------------------------------
-			/* 이메일 저장 코드(Cookie) */
-			Cookie cookie = new Cookie("saveEmail", memberEmail);
-			
-			cookie.setPath("/"); 
-			
-			if(saveEmail == null) { 
-				cookie.setMaxAge(0); 
-														  
-			}else { 
-				cookie.setMaxAge(60 * 60 * 24 * 30); 
-			}
-		
-			resp.addCookie(cookie);
-			//----------------------------------------------------------------
 		}
-		return "redirect:/"; 
+		return "redirect:/main"; 
 	}
 	
 	/** 로그아웃
@@ -81,7 +66,7 @@ public class MemberController {
 		
 		status.setComplete();
 		
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	
 	

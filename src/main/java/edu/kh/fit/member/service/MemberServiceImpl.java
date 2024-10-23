@@ -2,6 +2,7 @@ package edu.kh.fit.member.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.mapper.MemberMapper;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
@@ -24,9 +26,9 @@ public class MemberServiceImpl implements MemberService{
 			
 			if(memberLogin == null)	return null;
 
-			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
-				return null;
-			}
+//			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
+//				return null;
+//			}
 				
 			return memberLogin;
 		}
