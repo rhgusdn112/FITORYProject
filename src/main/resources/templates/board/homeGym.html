@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitory - Home Gym</title>
-<<<<<<<< HEAD:src/main/resources/templates/board/homeGym.html
     <link rel="stylesheet" href="/css/board/board.css"> <!-- CSS 파일 연결 -->
-========
-    <link rel="stylesheet" href="/css/home-gym.css"> <!-- CSS 파일 연결 -->
-    <link th:href="@{/css/common/header.css}" rel="stylesheet"> <!-- 헤더 CSS 파일 연결 -->
-    <link th:href="@{/css/common/footer.css}" rel="stylesheet"> <!-- 푸터 CSS 파일 연결 -->
->>>>>>>> origin/main:src/main/resources/templates/home-gym.html
 </head>
 <body>
-  
     <!-- header fragment include -->
-    <div th:replace="common/header :: header"></div> <!-- 공통 헤더 -->
+    <block th:replace="~{common/common}"></block>
 
     <!-- 메인 콘텐츠 -->
     <main>
