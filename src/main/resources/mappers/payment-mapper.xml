@@ -3,22 +3,47 @@
 
 <mapper namespace="edu.kh.fit.payment.mapper.PaymentMapper">
 
-    <!-- 주문 정보 조회 -->
-    <select id="selectOrderInfoById" parameterType="int" resultType="edu.kh.fit.payment.dto.Payment">
-        SELECT
-        p.ORDER_NO,
-        p.PAYMENT_MEMBER,
-        p.PAYMENT_BOARD,
-        p.PAYMENT_DATE,
-        p.PAYMENT_ID,
-        p.PAYMENT_METHOD,
-        p.PAYMENT_STATUS,
-        p.PAYMENT_AMOUNT,
-        p.PAYMENT_CURRENCY,
-        m.MEMBER_NAME AS customerName,
-        m.EMAIL AS customerEmail,
-        m.PHONE AS customerPhone,
-        b.BOARD_TITLE AS classTitle
+    <!-- 결제 정보 삽입 -->
+    <insert id="insertPayment" parameterType="edu.kh.fit.payment.dto.Payment">
+        INSERT INTO PAYMENT (
+            ORDER_NO,
+            PAYMENT_MEMBER,
+            PAYMENT_BOARD,
+            PAYMENT_DATE,
+            PAYMENT_ID,
+            PAYMENT_METHOD,
+            PAYMENT_STATUS,
+            PAYMENT_AMOUNT,
+            PAYMENT_CURRENCY
+        ) VALUES (
+            #{orderNo},
+            #{paymentMember},
+            #{paymentBoard},
+            #{paymentDate},
+            #{paymentId},
+            #{paymentMethod},
+            #{status},
+            #{paymentAmount},
+            #{currency}
+        )
+    </insert>
+
+    <!-- 결제 정보 조회 -->
+    <select id="selectPaymentById" parameterType="_int" resultType="payment">
+        SELECT 
+            p.ORDER_NO,
+            p.PAYMENT_MEMBER,
+            p.PAYMENT_BOARD,
+            p.PAYMENT_DATE,
+            p.PAYMENT_ID,
+            p.PAYMENT_METHOD,
+            p.PAYMENT_STATUS,
+            p.PAYMENT_AMOUNT,
+            p.PAYMENT_CURRENCY,
+            m.MEMBER_NAME AS customerName,
+            m.EMAIL AS customerEmail,
+            m.PHONE AS customerPhone,
+            b.BOARD_TITLE AS classTitle
         FROM PAYMENT p
         JOIN MEMBER m ON p.PAYMENT_MEMBER = m.MEMBER_ID
         JOIN BOARD b ON p.PAYMENT_BOARD = b.BOARD_ID
@@ -26,10 +51,10 @@
     </select>
 
     <!-- 결제 요청 -->
-    <select id="selectPaymentClass" parameterType="int" resultType="edu.kh.fit.payment.dto.Payment">
-        SELECT *
+    <select id="selectPaymentClass" parameterType="_int" resultType="payment">
+        SELECT ORDER_NO
         FROM PAYMENT
-        WHERE PAYMENT_BOARD = #{paymentBoard}
+        WHERE ORDER_NO = 1
     </select>
 
     <!-- 결제 상태 업데이트 -->
