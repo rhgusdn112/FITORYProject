@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("traiNer")
+@RequestMapping("trainer")
 @SessionAttributes("trainerLogin")
 public class TrainerController {
 	
