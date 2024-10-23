@@ -53,6 +53,18 @@ public class BoardController {
 		required=false) Trainer loginTrainer
 		) throws ParseException {
 
+  @GetMapping("homeGym")
+  public String getHomeGymList() {
+      return "board/homeGym";
+  }
+  
+  // 클래스 목록을 보여주는 페이지
+  @GetMapping("homeTraining")
+  public String getHomeTrainingList() {
+      return "board/homeTraining";
+  }
+
+
 		
 		// SQL 수행에 필요한 파라미터들 Map으로 묶기
 		Map<String, Integer> map = new HashMap<>();

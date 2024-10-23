@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -35,11 +36,10 @@ public class MemberController {
 	 * @param resp
 	 * @return redirect:/ (메인페이지로 리다이렉트)
 	 */
-	@PostMapping("member/login")
+	@PostMapping("login")
 	public String memberLogin(
 			@RequestParam("email") String memberEmail,
 			@RequestParam("password")		 String memberPw,
-			@RequestParam(name = "saveEmail", required = false) String saveEmail,
 			Model model,
 			RedirectAttributes ra,
 			HttpServletResponse resp
@@ -64,7 +64,7 @@ public class MemberController {
 		
 		status.setComplete();
 		
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	
 	
@@ -109,6 +109,30 @@ public class MemberController {
 			
 			return "/member/MyPage";
 		}
+		
+		
+		/** 이메일 중복 검사(비동기)
+		 * @param email : 입력된 이메일
+		 * @return 0 : 중복X / 1: 중복
+		 */
+		@ResponseBody // 반환 값을 응답 본문(ajax 코드)로 반환
+		@GetMapping("emailCheck")
+		public int emailCheck(
+				@RequestParam("email") String email
+				) {
+			return service.emailCheck(email);
+		}
+
+//		/** 전화번호 검사(비동기)
+//		 * @param tel
+//		 * @return
+//		 */
+//		@ResponseBody
+//		@GetMapping("telCheck")
+//		public int telcheck(
+//				@RequestParam("tel") String tel) {
+//			return service.telCheck(tel);
+//		}
 		
 		
 

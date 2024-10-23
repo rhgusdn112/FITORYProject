@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mubatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="edu.kh.fit.payment.mapper.PaymentMapper">
 
-	<select id="selectPaymentClass" resultType="_int">
-		SELECT PAYMENT
-		FROM BOARD
-		WHERE BOARD_NO = #{boardNo} 
-	</select>
+    <select id="selectPaymentClass" parameterType="_int" resultType="edu.kh.fit.payment.dto.Payment">
+        SELECT *
+        FROM PAYMENT
+        WHERE BOARD_NO = #{boardNo}
+    </select>
+
+    <update id="updatePaymentStatus" parameterType="map">
+        UPDATE PAYMENT
+        SET STATUS = #{status}
+        WHERE BOARD_NO = #{boardNo}
+    </update>
+
 </mapper>
