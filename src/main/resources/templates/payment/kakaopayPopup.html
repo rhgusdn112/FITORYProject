@@ -1,0 +1,20 @@
+<script>
+  function requestPay() {
+    PortOne.requestPayment({
+      storeId: "store-ba2da415-5565-47a5-a9fc-9b9cddb04d32",
+      paymentId: "testm2k9975q",
+      orderName: "고현우",
+      totalAmount: 100,
+      currency: "KRW",
+      channelKey: "channel-key-f6cb3945-2949-4400-994b-c6315da5140b",
+      payMethod: "EASY_PAY",
+      easyPay: {
+        easyPayProvider: "KAKAOPAY",
+        useFreeInterestFromMall: false,
+      },
+      customer: {
+        fullName: "테스트",
+      },
+    });
+  }
+</script>

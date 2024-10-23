@@ -1,27 +1,26 @@
 package edu.kh.fit.payment.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.payment.dto.PaymentDTO;
+import edu.kh.fit.payment.dto.Payment;
 import edu.kh.fit.payment.mapper.PaymentMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
-public class PaymentServiceImpl implements PaymentService{
+public class PaymentServiceImpl implements PaymentService {
 
-	private final PaymentMapper mapper;
-	
-	// 결제정보 얻어오기
-	@Override
-	public PaymentDTO selectPaymentClass(int boardNo) {
-		return mapper.selectPaymentClass(boardNo);
-	}
-	
+    private final PaymentMapper mapper;
+
+    @Override
+    public Payment selectPaymentClass(int boardNo) {
+        return mapper.selectPaymentClass(boardNo);
+    }
+
+    @Override
+    @Transactional
+    public void updatePaymentStatus(int boardNo, String status) {
+        mapper.updatePaymentStatus(boardNo, status);
+    }
 }
-	

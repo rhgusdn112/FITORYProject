@@ -2,6 +2,7 @@ package edu.kh.fit.member.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.mapper.MemberMapper;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
@@ -43,5 +45,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 		return result;
+	}
+	
+	// 이메일 중복검사
+	@Override
+	public int emailCheck(String email) {
+		return mapper.emailCheck(email);
 	}
 }
