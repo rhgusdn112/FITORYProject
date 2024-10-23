@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <link rel="stylesheet" href="../../static/css/myPage/memberMyPage-style.css">
+  <link rel="stylesheet" href="../../static/css/common/header.css" />
+  <style>
+    @font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+  </style>
+</head>
+<body>
+  <main>
+    <main>
+      <th:block th:replace="~{common//memberHeader}"></th:block>
+      <th:block th:replace="~{common/memberSideBar}"></th:block>
+    </main>
+  </main>
+  <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+      <div class="main-my-page">My Page</div>
+        <div class="main-box">
+          <div class="email">아이디(Email)</div>
+          <input type="text" name="memberNomal" id="memberEmail" class="box" placeholder="이메일 입력">
+          <div class="name">이름</div>
+          <input type="text" name="memberNomal" id="memberName" class="box" placeholder="이름 작성">
+          <div class="birth">생년월일</div>
+          <input type="text" name="memberNomal" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
+          <div class="tel">전화번호</div>
+          <input type="text" name="memberNomal" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
+          <div class="hight inHight">키</div>
+          <input type="text" name="memberCheck" id="memberhight" class="box" placeholder="선택사항입니다.">        
+          <div class="weight inWeight">몸무게</div>
+          <input type="text" name="memberCheck" id="memberWeight" class="box" placeholder="선택사항입니다.">
+          
+          <div class="body">체형</div>
+          <input type="text" name="memberCheck" id="memberBody" class="box" placeholder="선택사항입니다.">
+          <div class="die">다이어트</div>
+          <input type="text" name="memberCheck" id="memberDie" class="box" placeholder="선택사항입니다.">
+          <button class="update" id="updateBtn"> 수정하기 </button>
+        </div>
+        <button id="topBtn" class="top">▲</button>
+    </form>
+
+  <!-- 푸터 -->
+  <th:block th:replace="~{common/footer}"></th:block>
+  <script src="/js/myPage/memberMyPage.js"></script>
+  </body>
+</html>

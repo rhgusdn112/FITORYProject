@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+
+input::placeholder {
+	text-align: left;
+	font-size: 15px;
+}
+
+.main {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	min-height: 100vh;
+	min-width: 50vw;
+	padding-left: 20%;
+	margin: auto;
+	justify-content: center;
+	/* border: 1px solid; */
+	padding-right: 3%;
+}
+
+/* main 박스 */
+.main-box {
+	border: 5px solid;
+	color: #bfbfbf;
+	margin: auto;
+	margin-top: 3%;
+	min-height: 100hv;
+	padding-right: 20%;
+	padding: 3%;
+}
+
+.main-class {
+	color: black;
+	font-size: 32px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+}
+
+.select{
+	color: black;
+	font-size: 14px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+  float: right;
+}
+
+#checkbox{
+	float: right;
+  display: flex;
+}
+
+/* #all-check-box{
+
+} */
+
+/* 수정하기 버튼 */
+.see {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	color: #bfbfbf;
+	padding: 0.8% 1%;
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+	width: 50%;
+  border-radius: 20px 0px 0px 20px;
+  float: left;
+  background-color: #bfbfbf00;
+}
+.delete{
+  font-family: "MaruBuriSemiBold", Helvetica;
+	color: rgb(255, 255, 255);
+	background-color: #bfbfbf;
+	padding: 0.8% 1%;
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+	width: 50%;
+  float: right;
+  border-radius: 0px 20px 20px 0px;
+}
+
+.see:hover {
+  background-color: #bfbfbf;
+  color: rgb(255, 255, 255);
+}
+.delete:hover {
+	color: rgba(78, 78, 78, 0.200);
+  background-color: rgb(255, 255, 255)
+}
+
+/* 탑버튼 */
+.top {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	color: rgb(255, 255, 255);
+	background-color: #bfbfbf;
+	padding: 1%;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	position: sticky;
+	float: right;
+}
+
+.top:hover {
+	color: rgba(78, 78, 78, 0.200);
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
+  margin-top: 2%; /* 페이지네이션과 콘텐츠 사이의 간격 */
+  font-size: 15px;
+  padding: 8% 0% 0% 0%;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #bfbfbf;
+  padding: 10%; 
+}
