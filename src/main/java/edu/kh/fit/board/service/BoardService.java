@@ -10,6 +10,6 @@ public interface BoardService {
 	 * @param map
 	 * @return
 	 */
-	Board selectDetail(Map<String, Integer> map);
+	Board selectDetail(Map<String, Object> map);
 
 }
