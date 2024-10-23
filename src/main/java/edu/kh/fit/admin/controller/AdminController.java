@@ -10,7 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.service.AdminService;
-import edu.kh.fit.member.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,10 +20,22 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
 	
 	private final AdminService service;
+
+	@GetMapping("")
+	public String admin() {
+		return "admin/admin";
+	}
+	
 	
 	@GetMapping("contents")
 	public String Contents() {
 		return "admin/contents";
+	}
+	
+	
+	@GetMapping("login")
+	public String adminLogin() {
+		return "admin/adminLogin";
 	}
 	
 	
@@ -48,11 +59,10 @@ public class AdminController {
 		if(adminLogin == null) {
 			ra.addFlashAttribute("message",
 												"아이디 혹은 패스워드가 일치하지 않습니다.");
-			return "redirect:/admin";
 		}else {
 			model.addAttribute("adminLogin", adminLogin);
-			return "/adminMyPage"; 
 		}
+		return "redirect:/admin";
 	}
 		
 }

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitory - 로그인</title>
     <link rel="stylesheet" th:href="@{/css/login/login.css}">
-    <link th:href="@{/css/common/header.css}" rel="stylesheet">
-    <link th:href="@{/css/common/footer.css}" rel="stylesheet">
 </head>
 <body>
     <!-- header fragment include -->
@@ -36,10 +34,14 @@
                 <a href="/find-password">비밀번호 찾기</a>
             </div>
         </form>
+
+
     </div>
 
     <!-- footer fragment include -->
     <div th:replace="~{common/footer :: footer}"></div>
 
+    <script src="/js/admin/adminLogin.js"></script>
+    
 </body>
 </html>

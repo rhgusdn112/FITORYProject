@@ -49,10 +49,7 @@ public class Maincontroller {
  		return "member/cart";
  	}
  	
- 	@GetMapping("admin")
- 	public String admin() {
- 		return "admin/adminLogin";
- 	}
+
  	
 }
 

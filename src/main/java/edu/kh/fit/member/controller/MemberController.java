@@ -85,7 +85,7 @@ public class MemberController {
 		if(result > 0) {
 			path = "/";
 			message 
-				= inputMember.getMemberNickname() + "님의 가입을 환영합니다";
+				= inputMember.getMemberName() + "님의 가입을 환영합니다";
 		} else {
 			path = "signUp";
 			message = "회원 가입 실패...";
