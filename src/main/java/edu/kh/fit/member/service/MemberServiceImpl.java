@@ -24,9 +24,9 @@ public class MemberServiceImpl implements MemberService{
 			
 			if(memberLogin == null)	return null;
 
-//			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
-//				return null;
-//			}
+			if( !encorder.matches(encorder.encode(memberPw), memberLogin.getMemberPw()) ){
+				return null;
+			}
 				
 			return memberLogin;
 		}

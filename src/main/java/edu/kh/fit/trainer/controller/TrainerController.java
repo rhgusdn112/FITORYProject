@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("traiNer")
 @SessionAttributes("trainerLogin")
 public class TrainerController {
 	
@@ -51,8 +52,24 @@ public class TrainerController {
 		}else {
 
 			model.addAttribute("trainerLogin", trainerLogin);
+			
+			
+			//----------------------------------------------------------------
+			/* 이메일 저장 코드(Cookie) */
+			Cookie cookie = new Cookie("saveEmail", trainerEmail);
+			
+			cookie.setPath("/"); 
+			
+			if(saveEmail == null) { 
+				cookie.setMaxAge(0); 
+			}else { 
+				cookie.setMaxAge(60 * 60 * 24 * 30);
+			}
+		
+			resp.addCookie(cookie);
+			//----------------------------------------------------------------
 		}
-		return "redirect:/main"; // 메인페이지 리다이렉트
+		return "redirect:/"; // 메인페이지 리다이렉트
 	}
 
 	/** 로그아웃
@@ -63,7 +80,7 @@ public class TrainerController {
 		
 		status.setComplete();
 		
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	
 	
