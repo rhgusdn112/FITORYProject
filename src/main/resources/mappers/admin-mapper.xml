@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.kh.fit.admin.mapper.AdminMapper">
+	
+	<!-- 로그인 -->
+	<select id="adminLogin"
+			resultType="admin">
+		SELECT
+			ADMIN_NO,
+			EMAIL, 
+			PW,
+			NICKNAME, 
+			MEMBER_TEL,
+		FROM "ADMIN"
+		WHERE EMAIL = #{adminEmail}
+		AND   DEL_FL = 'N'
+	</select>
+	
+</mapper>

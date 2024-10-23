@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -38,11 +37,10 @@ public class MemberController {
 	 */
 	@PostMapping("login")
 	public String memberLogin(
-			@RequestParam("email") String memberEmail,
-			@RequestParam("password")		 String memberPw,
+			@RequestParam("email")    String memberEmail,
+			@RequestParam("password") String memberPw,
 			Model model,
-			RedirectAttributes ra,
-			HttpServletResponse resp
+			RedirectAttributes ra
 			) {
 		
 		Member memberLogin = service.memberLogin(memberEmail, memberPw);
