@@ -64,8 +64,6 @@ public class BoardController {
       return "board/homeTraining";
   }
 
-
-		
 		// SQL 수행에 필요한 파라미터들 Map으로 묶기
 		Map<String, Integer> map = new HashMap<>();
 		map.put("boardCode", classNo);

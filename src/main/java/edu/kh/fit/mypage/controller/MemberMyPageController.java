@@ -3,6 +3,7 @@ package edu.kh.fit.mypage.controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("memberMyPage")
 public class MemberMyPageController {
 	private final MemberMyPageService service;
+	
+	
+	@GetMapping("")
+	public String myPage() {
+		return "/myPage/memberMyPage";
+	}
+	
 	
 	/** 회원 정보 수정
 	 * @param loginMember
@@ -39,7 +47,7 @@ public class MemberMyPageController {
 		if(update > 0) {
 		memberLogin.setMemberName(updateMember.getMemberName());
 		memberLogin.setMemberTel(updateMember.getMemberTel());
-		message = "회원 정보가 수정되었습니다.";
+		message = "정보가 수정되었습니다.";
 		} else {
 			message = "정보 수정이 실패하였습니다.";
 			return "redirect:info";
