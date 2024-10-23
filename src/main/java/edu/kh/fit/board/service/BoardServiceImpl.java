@@ -15,7 +15,7 @@ public class BoardServiceImpl implements BoardService{
 	private final BoardMapper mapper;
 	
 	@Override
-		public Board selectDetail(Map<String, Integer> map) {
+		public Board selectDetail(Map<String, Object> map) {
 		
 			return mapper.selectDetail(map);
 		}

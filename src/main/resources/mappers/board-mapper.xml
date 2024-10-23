@@ -5,5 +5,35 @@
 <select id="selectDetail" resultMap="board_rm">
 	
 	
+		<id property="boardNo" column="BOARD_NO"/>
+		
+		
+	</resultMap> -->
+
+	<!-- 게시글 상세 조회 -->
+	<select id="selectDetail" 
+	resultType="Board">
+		SELECT
+			BOARD_NO,
+			TITLE,
+			DETAIL,
+			CLASS_NO,
+			HITS,
+			B.TRAINER_NO,
+			TRAINER_NICKNAME,
+			PROFILE_IMG,
+			PAY,
+
+			TO_CHAR(UPLOAD_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+			AS UPLOAD_DATE,
+
+			TO_CHAR(BILLING_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+			AS BILLING_DATE
+
+			FROM "BOARD" B
+			JOIN "TRAINER" T ON (B.TRAINER_NO = T.TRAINER_NO)
+			WHERE BOARD_NO = #{boardNo}
+			AND CLASS_NO = #{classNo}
 	</select>
+
 </mapper>

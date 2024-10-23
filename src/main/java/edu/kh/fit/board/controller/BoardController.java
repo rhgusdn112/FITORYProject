@@ -57,36 +57,38 @@ public class BoardController {
 		@PathVariable("boardNo") int boardNo,
 		Model model,
 		RedirectAttributes ra,
-		@SessionAttribute(value="loginMember", 
-		 required=false) Member loginMember,
-		@SessionAttribute(value="loginTrainer", 
-		required=false) Trainer loginTrainer
+		@SessionAttribute(value="memberLogin", 
+		 required=false) Member memberLogin,
+		@SessionAttribute(value="trainerLogin", 
+		required=false) Trainer trainerLogin
 		) throws ParseException {
 
 
 
+
+
 		// SQL 수행에 필요한 파라미터들 Map으로 묶기
-		Map<String, Integer> map = new HashMap<>();
-		map.put("boardCode", classNo);
+		Map<String, Object> map = new HashMap<>();
+		map.put("classNo", classNo);
 		map.put("boardNo", boardNo);
 		
 		/* 강사가 로그인이 되어있는 경우
 		 * trainerNo를 map에 추가
 		 * 로그인된 트레이너 정보와 함께 'trainer' 타입을 전달
 		 */
-		if(loginTrainer != null) {
-			map.put("trainerNo", loginTrainer.getTrainerNo());
+		if(trainerLogin != null) {
+			map.put("trainerNo", trainerLogin.getTrainerNo());
 		  model.addAttribute("userType", "trainer");
-      model.addAttribute("user", loginTrainer);
+      model.addAttribute("user", trainerLogin);
 		}
 		/* 회원이 로그인이 되어있는 경우
 		 * memberNo를 map에 추가 
 		 * 로그인된 회원 정보와 함께 'member' 타입을 전달
 		 */
-		else if(loginMember != null) {
-			map.put("memberNo", loginMember.getMemberNo());
+		else if(memberLogin != null) {
+			map.put("memberNo", memberLogin.getMemberNo());
 		  model.addAttribute("userType", "member");
-      model.addAttribute("user", loginMember);
+      model.addAttribute("user", memberLogin);
 		}	
 		/* 비회원일 경우
 		 * userType을 guest로 전달
@@ -101,10 +103,11 @@ public class BoardController {
 		/* 게시글 상세조회 결과가 없을 경우*/
 			if(board == null) {
 			ra.addFlashAttribute("message", "게시글이 존재하지 않습니다");
-			return "redirect:/board/" + classNo;
+			// return "redirect:/board/" + classNo; 추후 변경 임시로 메인페이지 리다이렉트
+			return "redirect:/main";			
 		}	
 		
-		
+		model.addAttribute("board", board);
 			
 		
 		return "board/boardDetail";
