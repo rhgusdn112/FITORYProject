@@ -35,22 +35,4 @@
 	 	#{memberAddress}
 	 	, NULL, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
-	
-		<!-- 이메일 중복검사  -->
-		<select id="emailCheck"
-			resultType="_int">
-		SELECT COUNT(*)
-		FROM "MEMBER"
-		WHERE MEMBER_EMAIL = #{email}
-		AND MEMBER_DEL_FL = 'N'
-	</select>
-	
-	<!-- 전화번호 -->
-		<select id="telCheck"
-			resultType="_int">
-		SELECT COUNT(*)		
-		FROM "MEMBER"
-		WHERE MEMBER_TEL = #{tel}
-		AND MEMBER_DEL_FL = 'N'
-	</select>
 </mapper>

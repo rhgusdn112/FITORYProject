@@ -147,7 +147,7 @@
       font-family: "MaruBuriSemiBold", Helvetica;
       color: black;
       display: flex;
-      margin: 0% 0% 2% 0%;
+      margin: 0% 0% 2%          0%;
       font-size: 20px;
     }
 
@@ -269,15 +269,14 @@
     
           <!-- 일반 회원가입 클릭 시 -->
           <div class="signUp-content" id="memberContent" style="display:block">
-            <label for="email">
-              *<span class="required">아이디(Email)</span>
+            <label for="memberEmail">
+              *<span class="required">*아이디(Email)</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="email" id="email"
+              <input type="text" name="memberEmail" id="memberEmail"
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
               <button id="emailAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
-            <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
       
             <label for="emailCheck">
               *<span class="required">이메일 인증</span>
@@ -292,7 +291,7 @@
              *<span class="required">이름</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="name" id="name"
+              <input type="text" name="memberName" id="memberName"
               placeholder="이름 입력" maxlength="6" autocomplete="off">
             </div>
       
@@ -300,25 +299,23 @@
               *<span class="required">비밀번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="password" name="pw" id="pw"
+              <input type="text" name="memberPw" id="memberPw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
-            <span class="signUp-message" id="pw">메일을 받을 수 있는 이메일을 입력해주세요.</span>
       
             <label for="PwCheck">
              *<span class="required">비밀번호 확인</span>
             </label>
             <div class="signUp-input-area">
-              <input type="password" name="pwCheck" id="pwCheck"
+              <input type="text" name="PwCheck" id="PwCheck"
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
             </div>
-            <span class="signUp-message" id="pwConfirm">메일을 받을 수 있는 이메일을 입력해주세요.</span>
       
             <label for="memberBirthday">
               <span class="required">생일</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="birthday" id="birthday"
+              <input type="text" name="memberBirthday" id="memberBirthday"
               placeholder="YYYYMMDD" maxlength="8" autocomplete="off">
             </div>
       
@@ -326,13 +323,11 @@
               *<span class="required">전화번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="tel" id="tel"
+              <input type="text" name="memberTel" id="memberTel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
               <button id="telAuthKeyBtn" type="button">인증하기</button>
             </div>      
-
-            <span class="signUp-text" id="textMessage">문자를 받을 수 있는 전화번호를 입력해주세요.</span>
-
+      
             <label for="memberTel">
               *<span class="required">전화번호 인증확인</span>
             </label>
@@ -341,7 +336,6 @@
               placeholder="인증번호를 입력해주세요" maxlength="6" autocomplete="off">
               <button id="telCheckBtn" type="button">인증하기</button>
             </div>  
-            <span class="signUp-text" id="textConfirm">인증번호를 입력해주세요.</span>
 
             <label for="provision" id="provision">
               <span class="required"> <약관> </span>
@@ -358,17 +352,15 @@
       
 
           <!-- 강사 회원가입 클릭 시 -->
-          <div class="signUp-content" id="trainerContent" style="display:none">
+          <div class="signUp-content" id="trainerContent" style="display:block">
             <label class="trainerEmail">
               <span class="required">아이디(Email)</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="email" id="email"
+              <input type="text" name="trainerEmail" id="trainerEmail"
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
               <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
-
-            <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
             
             <label for="emailCheck">
               *<span class="required">이메일 인증</span>
@@ -379,48 +371,46 @@
               <button id="checkAuthKeyBtn" type="button">인증하기</button>
             </div>
         
-            <label for="name">
+            <label for="trainerName">
               *<span class="required">이름</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="name" id="name"
+              <input type="text" name="trainerName" id="trainerName"
               placeholder="이름 입력" maxlength="6" autocomplete="off">
             </div>
         
-            <label for="pw">
+            <label for="trainerPw">
               *<span class="required">비밀번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="pw" id="pw"
+              <input type="text" name="trainerPw" id="trainerPw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
         
-            <label for="pwCheck">
+            <label for="PwCheck">
              *<span class="required">비밀번호 확인</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="pwCheck" id="pwCheck"
+              <input type="text" name="PwCheck" id="PwCheck"
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
             </div>
         
-            <label for="birthday">
+            <label for="trainerBirthday">
               <span class="required">생일</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="birthday" id="birthday"
+              <input type="text" name="trainerBirthday" id="trainerBirthday"
               placeholder="YYYYMMDD" maxlength="8" autocomplete="off">
             </div>
         
-            <label for="tel">
+            <label for="trainerTel">
               *<span class="required">전화번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="tel" id="tel"
+              <input type="text" name="trainerTel" id="trainerTel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
               <button id="telAuthKeyBtn" type="button">인증하기</button>
             </div>      
-
-            <span class="signUp-text" id="textMessage">문자를 받을 수 있는 전화번호를 입력해주세요.</span>
         
             <label for="trainerTel">
               *<span class="required">전화번호 인증확인</span>

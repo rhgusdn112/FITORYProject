@@ -15,11 +15,6 @@ import lombok.RequiredArgsConstructor;
 public class Maincontroller {
 	private final MainService service;
 	
-	@GetMapping("")
-	public String index() {
-		return "index";
-	}
-	
 	@GetMapping("main")
 	public String main() {
 		return "common/main";
