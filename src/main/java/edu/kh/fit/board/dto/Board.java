@@ -33,6 +33,10 @@ public class Board {
 	private float 	grade;							// 평점
 	private int			pay;								// 가격
 	
+	// TRAINER 테이블 JOIN 컬럼
+	private String trainerNickname;
+	
+	
 	// 필요 시 추가 예정
 	
 }

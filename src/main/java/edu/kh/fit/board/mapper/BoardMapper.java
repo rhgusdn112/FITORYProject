@@ -13,6 +13,6 @@ public interface BoardMapper {
 	 * @param map 
 	 * @return board
 	 */
-	Board selectDetail(Map<String, Integer> map);
+	Board selectDetail(Map<String, Object> map);
 
 }

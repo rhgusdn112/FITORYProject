@@ -1,48 +1,38 @@
 <div id="commentArea">
-	<!-- 댓글 목록 -->
 	<div class="comment-list-area">
+			<ul id="commentList" th:fragment="comment-list">
+					<li class="comment-row">
+							<p class="comment-writer">
+									<span>닉네임 1</span>
+									<span class="comment-date">2024-10-23</span>
+							</p>
+							<p class="comment-content">이것은 첫 번째 댓글입니다.</p>
+					</li>
 
-		<ul id="commentList" th:fragment="comment-list">
+					<li class="comment-row">
+							<p class="comment-writer">
+									<span>닉네임 2</span>
+									<span class="comment-date">2024-10-23</span>
+							</p>
+							<p class="comment-content">이것은 두 번째 댓글입니다.</p>
+					</li>
 
-			<!-- 대댓글(자식)인 경우 child-comment 클래스 추가 -->
-			<li class="comment-row" 
-					th:each="comment : ${board.commentList} " 
-					th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
-					th:object="${comment}"
-					th:id="|c*{commentNo}|"
-					th:data-comment-no="*{commentNo}">
-
-				<th:block th:if="*{commentDelFl} == 'Y'">
-					삭제된 댓글 입니다
-				</th:block>
-
-				<th:block th:if="*{commentDelFl} == 'N'">
-					<p class="comment-writer">
-						<!-- 프로필 이미지 없을 경우 -->
-						<img th:unless="*{profileImg}" th:src="#{user.default.image}">
-						<!-- 프로필 이미지 있을 경우 -->
-						<img th:if="*{profileImg}" th:src="*{profileImg}">
-	
-						<span th:text="*{memberNickname}">닉네임</span>
-						<span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
-					</p>
-	
-					<p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
-	
-					<!-- 버튼 영역 -->
-					<div class="comment-btn-area">
-						<button class="child-comment-btn">답글</button>
-	
-						<th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
-							<button class="update-comment-btn">수정</button>
-							<button class="delete-comment-btn">삭제</button>
-						</th:block>
-						<!-- 로그인 회원과 댓글 작성자가 같은 경우 -->
-	
-					</div>
-				</th:block>
-
-			</li>
-
-		</ul>
+					<li class="comment-row">
+							<p class="comment-writer">
+									<span>닉네임 3</span>
+									<span class="comment-date">2024-10-23</span>
+							</p>
+							<p class="comment-content">이것은 세 번째 댓글입니다.</p>
+					</li>
+			</ul>
 	</div>
+
+	<!-- 페이지네이션 -->
+	<div class="pagination">
+			<ul>
+					<li><a href="?page=0" class="active">1</a></li>
+					<li><a href="?page=1">2</a></li>
+					<li><a href="?page=2">3</a></li>
+			</ul>
+	</div>
+</div>
