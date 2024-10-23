@@ -49,7 +49,5 @@ public class Maincontroller {
  		return "member/cart";
  	}
  	
- 	
-
 }
 

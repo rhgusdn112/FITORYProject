@@ -14,6 +14,17 @@ import lombok.extern.slf4j.Slf4j;
 
 public class BoardController {
 
+	
+  @GetMapping("homeGym")
+  public String getHomeGymList() {
+      return "board/homeGym";
+  }
+  
+  // 클래스 목록을 보여주는 페이지
+  @GetMapping("homeTraining")
+  public String getHomeTrainingList() {
+      return "board/homeTraining";
+  }
 
 	@GetMapping("boardDetail")
 	public String boardDetail() {
