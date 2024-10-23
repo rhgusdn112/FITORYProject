@@ -5,28 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Page</title>
-  <link rel="stylesheet" href="../../static/css/myPage/trainerMyPage-style.css">
+  <link rel="stylesheet" href="/css/myPage/trainerMyPage-style.css">
 </head>
 
 <body>
   <main>
     <main>
       <th:block th:replace="~{common/memberHeader}"></th:block>
-      <th:block th:replace="~{commone/memberSideBar}"></th:block>
+      <th:block th:replace="~{common/memberSideBar}"></th:block>
     </main>
   </main>
 
   <form class="main">
     <div class="main-my-page">My Page</div>
     <div class="main-box">
-      <div class="email">아이디(Email)</div>
-      <input type="text" name="email" class="box" placeholder="이메일 입력">
-      <div class="name">이름</div>
-      <input class="box" placeholder="이름 작성">
-      <div class="birth">생년월일</div>
-      <input class="box" placeholder="YYYYMMDD">
-      <div class="tel">전화번호</div>
-      <input class="box" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
+        <div class="email">아이디(Email)</div>
+        <input type="text" name="memberNomal" id="memberEmail" class="box" placeholder="이메일 입력">
+        <div class="name">이름</div>
+        <input type="text" name="memberNomal" id="memberName" class="box" placeholder="이름 작성">
+        <div class="birth">생년월일</div>
+        <input type="text" name="memberNomal" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
+        <div class="tel">전화번호</div>
+        <input type="text" name="memberNomal" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
       <div class="main-in">자격사항</div>
       <table class="qualification-table">
         <thead>
@@ -52,28 +52,31 @@
 
       <div class="profile">프로필 사진(2장 필수)</div>
       <div class="profile-box">
-        <img class="img" src="/FITORYProject/src/main/resources/static/images/classList1.jpg" />
-        <img class="img" src="/FITORYProject/src/main/resources/static/images/classList4.jpg" />
-        <img class="img" src="/FITORYProject/src/main/resources/static/images/classList3.jpg" />
+        <form action="profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
+          <div class="profile-image-area">
+            <img th:with="user=#{user.default.image}" th:src="${session.trainerLogin.profileImg ?: user }" id="profileImg">
+          </div>
+          <span id="deleteImage">x</span>
+        <div id="upload" class="profile-btn-area">
+          <input type="file" name="profileImg" id="imageInput" accept="image/*">
+          <button class="upload">프로필 사진 바꾸기</button>
+        </div>
       </div>
-      <button class="upload">프로필 사진 바꾸기</button>
 
       <div class="hight inHight">키</div>
-      <input class="box" placeholder="키를 입력해주세요.">
-
+      <input type="text" name="memberCheck" id="memberhight" class="box" placeholder="선택사항입니다.">        
       <div class="weight inWeight">몸무게</div>
-      <input class="box" placeholder="몸무게를 입력해주세요.">
+      <input type="text" name="memberCheck" id="memberWeight" class="box" placeholder="선택사항입니다.">
 
       <button class="update"> 수정하기 </button>
 
     </div>
   </form>
-  <button class="top">▲ </button>
+  <button class="top"> ▲ </button>
   </div>
-  <div id="temp3"></div>
 
   <!-- 푸터 -->
-  <th:block th:replace="~{common/footer}"></th:block>
+  <th:block th:replace="~{common/footer::footer}"></th:block>
   <script src="/js/myPage/memberMyPage.js"></script>
 </body>
 </html>

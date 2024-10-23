@@ -10,5 +10,11 @@
 		WHERE TRAINER_NO = #{trainerNo}
 	</update>
 
+	<!-- 프로필 이미지 수정 -->
+	<update id="profile">
+		UPDATE "TRAINER"
+		SET PROFILE_IMG = #{url}
+		WHERE TRAINER_NO = #{trainerNo}
+	</update>
 	
 </mapper>
