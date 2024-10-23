@@ -114,4 +114,9 @@ public class TrainerController {
 		return "redirect:" + path;
 	}
 	
+	@GetMapping("trainer")
+	public String trainerPage() {
+		return "trainer/trainer";
+	}
+	
 }
