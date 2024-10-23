@@ -27,4 +27,5 @@ public class Payment {
 	 private String customerName;       // 결제자 이름
 	 private String customerEmail;      // 결제자 이메일
 	 private String customerPhone;      // 결제자 전화번호
+	 private String orderNo;			// 주문번호
 }
