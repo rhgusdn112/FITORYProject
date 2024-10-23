@@ -33,6 +33,7 @@
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: space-between; /* 자식 요소를 양쪽 끝에 배치 */
   background-color: black; /* 헤더 배경색을 검정으로 설정 */
+  background-color: #bfbfbf; /* 헤더 배경색을 검정으로 설정 */
   color: #ffffff; /* 헤더 텍스트 색상을 흰색으로 설정 */
   padding: 10px 20px; /* 내부 여백 설정 */
   position: fixed; /* 헤더를 상단에 고정 */

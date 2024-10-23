@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <head th:replace="~{common/common}"></head>
 </head>
+
 <body>
-  <!-- 헤더 조각 삽입 -->
-  <header th:replace= "~{common/header :: header}"></header>
+  <!-- common 조각 삽입(header 포함) -->
+  <block th:replace="~{common/common}"></block>
 
   <h1>
     FITORY 회원의 마이페이지 입니다.
   </h1>
-  
+
   <!-- 푸터 조각 삽입 -->
   <footer th:replace="~{common/footer :: footer}"></footer>
 </body>
+
 </html>

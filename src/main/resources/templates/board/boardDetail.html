@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitory</title>
+  <script src="https://www.youtube.com/iframe_api"></script> <!-- YouTube IFrame API -->
+  <link rel="stylesheet" href="/css/board/boardDetail.css">
+</head>
+
+<body>
+  <!-- common 조각 삽입(header 포함) -->
+  <th:block th:replace="~{common/common}"></th:block>
+  <!-- 메인 콘텐츠 -->
+
+
+  <script>
+    console.log('isLoggedIn:', isLoggedIn);  // 콘솔에 로그인 상태 출력
+  </script>
+ <!-- 메인 콘텐츠 -->
+ <main class="main-content">
+  <h2>FITORY 메인 페이지에 오신 것을 환영합니다</h2>
+  <!-- 유튜브 영상 삽입 -->
+  <div id="video-container">
+    <div id="youtube-player"></div>
+  </div>
+
+  <!-- 팝업 모달 -->
+  <div id="video-popup" class="popup" style="display: none;">
+    <h2>영상을 이어보시겠습니까?</h2>
+    <div class="popup-buttons">
+      <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
+      <button id="stop-video" class="popup-btn stop">영상 그만보기</button>
+    </div>
+  </div>
+</main>
+
+
+  <main class="main-content">
+    <h2>댓글 페이지(조각넣기)</h2>
+    <p>댓글이요~</p>
+    <!-- 추가된 내용: 스크롤을 위한 긴 콘텐츠 -->
+    <div style="height: 2000px;"></div>
+  </main>
+
+
+  </th:block>
+  <!-- 푸터 조각 삽입 -->
+  <footer th:replace="~{common/footer :: footer}"></footer>
+
+  <!-- JavaScript 파일 연결 -->
+  <script src="/js/board/boardDetail.js"></script>
+</body>
+
+</html>
