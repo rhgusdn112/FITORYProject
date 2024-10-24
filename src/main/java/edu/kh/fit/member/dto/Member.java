@@ -28,4 +28,13 @@ public class Member {
 	private String enrollDate;
 	private String memberDelFl;
 	private int    memberFlag;
+	
+  // 댓글 관련 필드 선언
+  private int countComment; // 작성한 댓글 수
+  private String reviewContent;   // 
+  
+  // 신고 관련 필드 선언
+  private int reportNo;
+  private String reportDetail;
+  
 }

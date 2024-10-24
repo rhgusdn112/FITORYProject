@@ -1,5 +1,7 @@
 package edu.kh.fit.member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("member")
 /* @RequestMapping("member") */
 @SessionAttributes("memberLogin")
-@RequiredArgsConstructor
 public class MemberController {
-	
-	private final MemberService service;
+	@Autowired
+	private MemberService service;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	/** (회원) 로그인 서비스
 	 * @param memberEmail
@@ -132,6 +136,84 @@ public class MemberController {
 //			return service.telCheck(tel);
 //		}
 		
+		
+		/** 비밀번호 확인
+		 * @return
+		 */
+		@GetMapping("checkPw")
+		public String memberPw() {
+			return "member/memberCheckPw";
+		}
+		
+		/** 회원 정보 수정 비밀번호 확인
+		 * @param memberLogin
+		 * @param memberPw
+		 * @param ra
+		 * @return
+		 */
+		@PostMapping("checkPw")
+		public String memberCheckPw(@SessionAttribute("memberLogin") Member memberLogin,
+																@RequestParam("memberPw") String memberPw,
+																 RedirectAttributes ra) {
+//			int result = memberLogin.getMemberNo();
+			String password = service.memberCheckPw(memberPw);
+			String path = null;
+			String message = null;
+			if(encoder.matches(memberPw, password)) {
+				path = "memberMyPage";
+				message = "성공";
+			} else {
+				path = "memberMyPage";
+				message = "실패";
+			}
+			ra.addAttribute("message", message);
+			return "redirect:" + path;
+		}
+		
+		
+		
+		
+		@GetMapping("memberMyPage")
+		public String myPage(
+				Model model, 
+				@SessionAttribute("memberLogin") Member memberLogin
+				) {
+			model.addAttribute("currentPage", "memberMyPage");
+//		  model.addAttribute("memberLogin", memberLogin);
+			
+		  model.addAttribute("isLoggedIn", true);
+			return "/member/memberMyPage";
+		}
+		
+		/** 회원 정보 수정
+		 * @param loginMember
+		 * @param updateMember : memberTel, memberName
+		 * @param ra
+		 * @return
+		 */
+		@PostMapping("memberMyPage")
+		public String memberMyPage(@SessionAttribute("memberLogin") Member memberLogin, @ModelAttribute Member updateMember, RedirectAttributes ra) {
+
+			int memberNo = memberLogin.getMemberNo();
+			updateMember.setMemberNo(memberNo);
+			int update = service.memberUpdate(updateMember);
+			
+			String message = null;
+			String path = null;
+			
+			if(update > 0) {
+			memberLogin.setMemberName(updateMember.getMemberName());
+			memberLogin.setMemberTel(updateMember.getMemberTel());
+			message = "정보가 수정되었습니다.";
+			path = "memberMyPage";
+			} else {
+				message = "정보 수정이 실패하였습니다.";
+				path = "memberMyPage";
+				return "redirect:memberMyPage";
+			}
+			ra.addFlashAttribute("message", message);
+			return "redirect:" + path;
+		}
 		
 
 }

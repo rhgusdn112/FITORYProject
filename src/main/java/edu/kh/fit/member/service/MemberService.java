@@ -23,4 +23,12 @@ public interface MemberService {
 	 */
 	int emailCheck(String email);
 
+	/** 회원 정보 수정 비밀번호 확인
+	 * @param memberPw
+	 * @return
+	 */
+	String memberCheckPw(String memberPw);
+
+	int memberUpdate(Member updateMember);
+
 }

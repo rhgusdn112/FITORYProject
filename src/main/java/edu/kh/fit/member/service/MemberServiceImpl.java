@@ -52,4 +52,17 @@ public class MemberServiceImpl implements MemberService{
 	public int emailCheck(String email) {
 		return mapper.emailCheck(email);
 	}
+
+	// 회원 정보 수정 비밀번호 확인
+	@Override
+	public String memberCheckPw(String memberPw) {
+		
+		
+		return mapper.memberCheckPw(memberPw);
+	}
+
+	@Override
+	public int memberUpdate(Member updateMember) {
+		return mapper.memberUpdate(updateMember);
+	}
 }

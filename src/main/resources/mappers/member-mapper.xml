@@ -51,4 +51,21 @@
 		WHERE MEMBER_TEL = #{tel}
 		AND MEMBER_DEL_FL = 'N'
 	</select>
+	
+	<!-- 회원 정보 수정 비밀번호 확인 -->
+		<select id="memberCheckPw" resultType="Member">
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_PW = #{memberPw}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+		<!-- 회원 마이페이지 수정 -->
+	<update id="memberUpdate">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = #{memberPw}, MEMBER_NAME = {memberName}, MEMBER_TEL = #{memberTel}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	
 </mapper>

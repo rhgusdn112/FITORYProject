@@ -16,4 +16,9 @@ public interface MemberMapper {
 	// 이메일 중복검사
 	int emailCheck(String email);
 
+	// 회원 정보 수정 비밀번호 확인
+	String memberCheckPw(String memberPw);
+
+	int memberUpdate(Member updateMember);
+
 }
