@@ -45,50 +45,29 @@
     <div class="header-close-icon" onclick="toggleMenu()">
       <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
     </div>
-    <!-- 고정된 사이드 메뉴 항목 (mypage나 cart에 있을 때만) -->
+    <!-- 사이드 메뉴 항목 -->
     <nav>
-      <div th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
-        <div class="header-nav-item-wrapper">
-          <a href="/mypage" class="header-nav-item">My Page</a>
-        </div>
-        <div class="header-nav-item-wrapper">
-          <a href="/cart" class="header-nav-item">CART</a>
-        </div>
+      <div class="header-nav-item-wrapper">
+        <a href="/mypage" class="header-nav-item">My Page</a>
       </div>
-      <!-- 상황에 따라 다르게 나오는 메뉴들 -->
       <div class="header-nav-item-wrapper">
         <a href="/trainer" class="header-nav-item">Trainer</a>
       </div>
       <div class="header-nav-item-wrapper">
         <a href="/homeTraining" class="header-nav-item">Home Training</a>
       </div>
-      <!-- 나머지 사이드 메뉴들 -->
+      <div class="header-nav-item-wrapper">
+        <a href="/homeGym" class="header-nav-item">Home Gym</a>
+      </div>
+      <div class="header-nav-item-wrapper">
+        <a href="/buy" class="header-nav-item">BUY</a>
+      </div>
+      <div class="header-nav-item-wrapper">
+        <a href="/cart" class="header-nav-item">CART</a>
+      </div>
+      <div class="header-nav-item-wrapper">
+        <a href="/customerservice" class="header-nav-item">고객센터</a>
+      </div>
     </nav>
   </div>
-
-  <!-- 사이드 메뉴 항목 -->
-  <nav>
-    <div class="header-nav-item-wrapper">
-      <a href="/mypage" class="header-nav-item">My Page</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/trainer" class="header-nav-item">Trainer</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/homeTraining" class="header-nav-item">Home Training</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/homeGym" class="header-nav-item">Home Gym</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/buy" class="header-nav-item">BUY</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/cart" class="header-nav-item">CART</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/customerservice" class="header-nav-item">고객센터</a>
-    </div>
-  </nav>
-</div>
 </div>
