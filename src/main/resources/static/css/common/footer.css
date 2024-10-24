@@ -1,11 +1,24 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.main-content {
+  min-height: calc(100vh - 100px - 200px); /* 전체 뷰포트 높이에서 헤더와 푸터의 높이를 뺀 값 */
+  box-sizing: border-box;
+}
+
 .footer {
-  background-color: #f0f0f0;
+  background-color: #bfbfbf;
   padding: 20px;
   color: #333;
   position: relative;
   width: 100%; /* 푸터를 화면 전체에 꽉 차게 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
+  z-index: 2500;
+  margin: 0; /* 여백 제거하여 화면 아래 부분을 꽉 채우도록 설정 */
 }
+
 
 .footer-content {
   display: flex;
@@ -14,7 +27,6 @@
   justify-content: flex-start; /* 고객센터 섹션과 링크 섹션 간격 넓히기 */
   flex-wrap: wrap;
   gap: 80px; /* 고객 센터와 푸터 링크 섹션 간의 간격을 넓힘 */
-  /* margin: 0 auto; 화면 중앙 정렬 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
 }
 
@@ -65,3 +77,4 @@
   bottom: 20px;
   z-index: 1000;
 }
+

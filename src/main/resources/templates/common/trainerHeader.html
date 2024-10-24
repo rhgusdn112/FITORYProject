@@ -8,7 +8,7 @@
     <!-- 로고 영역 -->
     <div class="header-logo-container">
       <a th:href="@{/main}" class="header-logo-link">
-        <h1 class="header-logo-text">FITORY</h1>
+        <h1 class="header-logo-text">강사 로그인</h1>
       </a>
     </div>
     <!-- 검색 바와 네비게이션 메뉴 영역 -->
@@ -39,6 +39,35 @@
       </div>
     </div>
   </header>
+
+  <!-- 고정된 사이드바 영역 -->
+  <div id="side-bar" class="header-side-bar" th:if="${isLoggedIn} and (${currentPage} == 'trainerMyPage' or ${currentPage} == 'cart')">
+    <div class="side-item">
+      <a href="/admin/myPage" class="side-page">My Page</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/trainer" class="side-2">강사 관리 및 조회</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/dashBoard" class="side-3">대시보드</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/question" class="side-4">자주묻는 질문</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/content" class="side-5">컨텐츠 관리</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/query" class="side-6">1:1 문의</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/board" class="side-7">공지사항</a>
+    </div>
+  </div>
+
   <!-- 사이드 메뉴 영역 -->
   <div id="side-menu" class="header-side-menu">
     <!-- 사이드 메뉴 닫기 아이콘 -->
