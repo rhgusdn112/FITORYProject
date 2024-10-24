@@ -127,7 +127,7 @@ input::placeholder {
   right: 14px;
   bottom: -37px;
 }
-/* 체형 */
+/* 체형
 .body{
   font-family: "MaruBuriSemiBold", Helvetica;
   color: black;
@@ -136,14 +136,14 @@ input::placeholder {
   font-size: 20px;
 }
 
-/* 다이어트 */
+다이어트 
 .die{
   font-family: "MaruBuriSemiBold", Helvetica;
   color: black;
   display: flex;  
   margin: 0% 0% 2% 0%;
   font-size: 20px;
-}
+} */
 
 /* 수정하기 버튼 */
 .update{

@@ -89,7 +89,7 @@ public class MemberController {
 		if(result > 0) {
 			path = "/";
 			message 
-				= inputMember.getMemberNickname() + "님의 가입을 환영합니다";
+				= inputMember.getMemberName() + "님의 가입을 환영합니다";
 		} else {
 			path = "signUp";
 			message = "회원 가입 실패...";
@@ -155,23 +155,19 @@ public class MemberController {
 		public String memberCheckPw(@SessionAttribute("memberLogin") Member memberLogin,
 																@RequestParam("memberPw") String memberPw,
 																 RedirectAttributes ra) {
-//			int result = memberLogin.getMemberNo();
-			String password = service.memberCheckPw(memberPw);
+			boolean check = service.memberCheckPw(memberLogin.getMemberNo(), memberPw);
 			String path = null;
 			String message = null;
-			if(encoder.matches(memberPw, password)) {
+			if(check) {
 				path = "memberMyPage";
 				message = "성공";
 			} else {
-				path = "memberMyPage";
+				path = "checkPw";
 				message = "실패";
 			}
-			ra.addAttribute("message", message);
+			ra.addFlashAttribute("message", message);
 			return "redirect:" + path;
 		}
-		
-		
-		
 		
 		@GetMapping("memberMyPage")
 		public String myPage(
@@ -182,7 +178,7 @@ public class MemberController {
 //		  model.addAttribute("memberLogin", memberLogin);
 			
 		  model.addAttribute("isLoggedIn", true);
-			return "/member/memberMyPage";
+			return "/myPage/memberMyPage";
 		}
 		
 		/** 회원 정보 수정
@@ -204,6 +200,9 @@ public class MemberController {
 			if(update > 0) {
 			memberLogin.setMemberName(updateMember.getMemberName());
 			memberLogin.setMemberTel(updateMember.getMemberTel());
+			memberLogin.setHeight(updateMember.getHeight());
+			memberLogin.setWeight(updateMember.getWeight());
+
 			message = "정보가 수정되었습니다.";
 			path = "memberMyPage";
 			} else {

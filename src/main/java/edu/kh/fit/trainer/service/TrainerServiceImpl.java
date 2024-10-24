@@ -45,4 +45,11 @@ public class TrainerServiceImpl implements TrainerService{
 						
 		return result;
 	}
+
+	// 강사 정보 수정 비밀번호 확인
+	@Override
+	public boolean trainerCheckPw(int trainerNo, String trainerPw) {
+		String encodePw = mapper.trainerCheckPw(trainerNo);
+		return encorder.matches(trainerPw, encodePw);
+	}
 }
