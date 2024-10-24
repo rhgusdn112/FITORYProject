@@ -43,7 +43,7 @@
   <!-- 고정된 사이드바 영역 -->
   <div id="side-bar" class="header-side-bar" th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
     <div class="side-item">
-      <a href="/admin/myPage" class="side-page">My Page</a>
+      <a href="/member/checkPw" class="side-page">My Page</a>
     </div>
     <div class="side-item">
       <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="header-nav-item-wrapper">
-        <a href="/trainer/checkPw" class="header-nav-item">Trainer</a>
+        <a href="/trainer" class="header-nav-item">Trainer</a>
       </div>
       <div class="header-nav-item-wrapper">
         <a href="/homeTraining" class="header-nav-item">Home Training</a>

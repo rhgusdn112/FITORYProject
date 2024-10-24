@@ -21,8 +21,6 @@ public class Member {
 	private String memberName;
 	private String memberTel;
 	private String memberBirthday;
-	private int    height;
-	private int    weight;
 	private String enrollDate;
 	private String memberDelFl;
 	private int    memberFlag;
