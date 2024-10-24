@@ -3,15 +3,11 @@
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
-
-
-input::placeholder {
-	text-align: left;
-	font-size: 15px;
+* {
+  font-family: "MaruBuriSemiBold", Helvetica;
 }
 
 .main {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 50vw;
 	padding-left: 20%;
@@ -26,14 +22,26 @@ input::placeholder {
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 100hv;
-	padding-right: 20%;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
 	padding: 3%;
+	min-width: 50vw;
 }
-.activities{
-  color:  #757575;
+
+.main-title{
+	color:  #525252;
 	font-size: 32px;
-	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
+  text-align: center;
+}
+
+.box {
+  border: 1px solid;
+  color: #bfbfbf;
+  justify-content: center;
+  display: flex;
+  margin: 2% 0% 2%;
+  padding: 5px;
+  width: 100%;
 }

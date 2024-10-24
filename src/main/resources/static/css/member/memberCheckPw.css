@@ -12,12 +12,12 @@ input::placeholder {
 .main {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
-	min-width: 80vw;
-	height: 100px;
+	min-width: 50vw;
+	padding-left: 20%;
 	margin: auto;
 	justify-content: center;
 	/* border: 1px solid; */
-	padding: 10% 10% 10% 10%;
+	padding-right: 3%;
 }
 
 /* main 박스 */
@@ -25,14 +25,15 @@ input::placeholder {
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 100hv;
-	height: 25%;
-	padding: 15%;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
+	padding: 3%;
+	min-width: 50vw;
 }
 
 .password {
-	color: black;
+	color:  #757575;
 	font-size: 32px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -40,7 +41,7 @@ input::placeholder {
 
 .box {
   border: 1px solid;
-  color:black;
+  color: #757575;
   font-family: "MaruBuriSemiBold", Helvetica;
   justify-content: center;
   display: flex;
@@ -80,6 +81,6 @@ input::placeholder {
   color: rgb(255, 255, 255);
 }
 .passBtn:hover {
-	color: rgba(78, 78, 78, 0.200);
+	color: #757575;
   background-color: rgb(255, 255, 255)
 }

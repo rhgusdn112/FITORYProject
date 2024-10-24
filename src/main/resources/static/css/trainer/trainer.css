@@ -48,7 +48,7 @@ main h1 {
 
 .pagination a {
   text-decoration: none;
-  color: black;
+  color:  #757575;
   padding: 8px 12px; /* 버튼 크기를 작게 설정 */
   font-size: 0.9rem; /* 글꼴 크기를 작게 설정 */
   border: 1px solid #ddd;

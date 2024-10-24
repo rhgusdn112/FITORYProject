@@ -25,13 +25,15 @@ input::placeholder {
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 100hv;
-	padding-right: 20%;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
 	padding: 3%;
+	min-width: 50vw;
 }
+
 .main-class {
-	color: black;
+	color:#757575;
 	font-size: 32px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -39,7 +41,7 @@ input::placeholder {
 
 .box {
   border: 1px solid;
-  color:black;
+  color:#757575;
   font-family: "MaruBuriSemiBold", Helvetica;
   justify-content: center;
   display: flex;
@@ -49,7 +51,7 @@ input::placeholder {
 }
 
 #selectType{
-	color: black;
+	color:#757575;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -66,6 +68,7 @@ input::placeholder {
 img {
 	display: inline-flex;
 	border : 1px solid;
+	
 }
 tr>td{
 	border: 1px solid;
@@ -75,7 +78,7 @@ tr>td{
 	padding: 20%;
 }
 .select{
-	color: black;
+	color: #757575;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -113,7 +116,7 @@ tr>td{
   color: rgb(255, 255, 255);
 }
 .delete:hover {
-	color: rgba(78, 78, 78, 0.200);
+	color:#757575;
   background-color: rgb(255, 255, 255)
 }
 
@@ -131,7 +134,7 @@ tr>td{
 }
 
 .top:hover {
-	color: rgba(78, 78, 78, 0.200);
+	color:#757575;
 }
 
 /* 페이지네이션 스타일 */
