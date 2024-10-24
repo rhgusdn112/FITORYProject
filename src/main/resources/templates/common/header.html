@@ -36,34 +36,36 @@
         </div>
     </header>
     <!-- 사이드 메뉴 영역 -->
-    <div id="side-menu" class="header-side-menu">
-        <!-- 사이드 메뉴 닫기 아이콘 -->
-        <div class="header-close-icon" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
+<th:block>
+        <div id="side-menu" class="header-side-menu">
+            <!-- 사이드 메뉴 닫기 아이콘 -->
+            <div class="header-close-icon" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars" style="font-size: 33px;"></i>
+            </div>
+            <!-- 사이드 메뉴 항목 -->
+            <nav>
+                <div class="header-nav-item-wrapper">
+                    <a href="login" class="header-nav-item">LogIn</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="trainer" class="header-nav-item">Trainer</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="/board/homeTraining" class="header-nav-item">Home Training</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="/board/homeGym" class="header-nav-item">Home Gym</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="/buy" class="header-nav-item">BUY</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="/cart" class="header-nav-item">CART</a>
+                </div>
+                <div class="header-nav-item-wrapper">
+                    <a href="/customer-service" class="header-nav-item">고객센터</a>
+                </div>
+            </nav>
         </div>
-        <!-- 사이드 메뉴 항목 -->
-        <nav>
-            <div class="header-nav-item-wrapper">
-                <a href="login" class="header-nav-item">LogIn</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="trainer" class="header-nav-item">Trainer</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="/board/homeTraining" class="header-nav-item">Home Training</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="/board/homeGym" class="header-nav-item">Home Gym</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="/buy" class="header-nav-item">BUY</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="/cart" class="header-nav-item">CART</a>
-            </div>
-            <div class="header-nav-item-wrapper">
-                <a href="/customer-service" class="header-nav-item">고객센터</a>
-            </div>
-        </nav>
-    </div>
+</th:block>
 </div>
