@@ -2,6 +2,7 @@ package edu.kh.fit.mypage.service;
 
 import java.io.File;
 
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
-import edu.kh.fit.mypage.dto.TrainerMyPage;
 import edu.kh.fit.mypage.mapper.TrainerMyPageMapper;
 import edu.kh.fit.trainer.dto.Trainer;
 import lombok.RequiredArgsConstructor;

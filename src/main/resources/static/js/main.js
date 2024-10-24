@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed'); // 디버깅용 로그
 
   if (window.location.pathname === '/') {
     let images = ['main-background1.jpg', 'main-background2.jpg'];
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 컨테이너 클릭 시 메인 페이지로 리디렉션
       container.addEventListener('click', () => {
-        console.log('Container clicked, redirecting to /main'); // 디버깅용 로그
         window.location.href = '/main';
       });
     }
@@ -38,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 사이드 메뉴 가시성 토글 함수
   function toggleMenu() {
     if (sideMenu) {
-      console.log('Toggling side menu visibility'); // 디버깅용 로그
       sideMenu.classList.toggle('open');
       if (sideMenu.classList.contains('open')) {
         sideMenu.style.left = '0';
@@ -51,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 메뉴 버튼 클릭 시 사이드 메뉴 열기/닫기
   if (menuButton) {
     menuButton.addEventListener('click', (event) => {
-      console.log('Menu button clicked'); // 디버깅용 로그
       event.stopPropagation();
       toggleMenu();
     });
@@ -60,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 닫기 버튼 클릭 시 사이드 메뉴 닫기
   if (closeButton) {
     closeButton.addEventListener('click', (event) => {
-      console.log('Close button clicked'); // 디버깅용 로그
       event.stopPropagation();
       toggleMenu();
     });
@@ -73,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickedInsideMenu = sideMenu.contains(event.target);
         const clickedMenuButton = menuButton && menuButton.contains(event.target);
         if (!clickedInsideMenu && !clickedMenuButton) {
-          console.log('Click detected outside side menu, closing menu'); // 디버깅용 로그
           sideMenu.classList.remove('open');
           sideMenu.style.left = '-300px';
         }
@@ -89,13 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchInput && clearButton && searchButton) {
     // 입력에 따라 클리어 버튼 표시 또는 숨기기
     searchInput.addEventListener('input', () => {
-      console.log(`Search input value changed: ${searchInput.value}`); // 디버깅용 로그
       clearButton.style.display = searchInput.value ? 'inline' : 'none';
     });
 
     // 클리어 버튼 클릭 시 검색 입력 초기화
     clearButton.addEventListener('click', (event) => {
-      console.log('Clear button clicked'); // 디버깅용 로그
       event.stopPropagation();
       searchInput.value = '';
       clearButton.style.display = 'none';
@@ -103,13 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 검색 버튼 클릭 시 이벤트 전파 방지
     searchButton.addEventListener('click', (event) => {
-      console.log('Search button clicked'); // 디버깅용 로그
       event.stopPropagation();
     });
 
     // 검색 입력 클릭 시 이벤트 전파 방지
     searchInput.addEventListener('click', (event) => {
-      console.log('Search input clicked'); // 디버깅용 로그
       event.stopPropagation();
     });
   }
@@ -117,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 페이지 맨 위로 부드럽게 스크롤
 function scrollToTop() {
-  console.log('scrollToTop function called'); // 디버깅용 로그
   window.scrollTo({
     top: 0,
     behavior: 'smooth'

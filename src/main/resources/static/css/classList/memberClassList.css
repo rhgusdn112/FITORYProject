@@ -46,6 +46,14 @@ input::placeholder {
   float: right;
 }
 
+.container > #selectType{
+	color: black;
+	font-size: 14px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+  float: right;
+}
+
 #checkbox{
 	float: right;
   display: flex;
@@ -56,7 +64,7 @@ input::placeholder {
 } */
 
 /* 수정하기 버튼 */
-.see {
+.update {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
@@ -81,7 +89,7 @@ input::placeholder {
   border-radius: 0px 20px 20px 0px;
 }
 
-.see:hover {
+.update:hover {
   background-color: #bfbfbf;
   color: rgb(255, 255, 255);
 }

@@ -1,6 +1,7 @@
 package edu.kh.fit.mypage.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -24,7 +25,11 @@ public class TrainerMyPageController {
 	private final TrainerMyPageService service;
 	
 	@GetMapping("")
-	public String myPage() {
+	public String myPage(
+			Model model, 
+			@SessionAttribute("trainerLogin") Trainer trainerLogin) {
+		model.addAttribute("currentPage", "trainerMyPage");
+	  model.addAttribute("isLoggedIn", trainerLogin != null);
 		return "myPage/trainerMyPage";
 	}
 	
