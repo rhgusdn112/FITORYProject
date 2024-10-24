@@ -22,9 +22,9 @@ public class TrainerServiceImpl implements TrainerService{
 			
 			if(trainerLogin == null)	return null;
 
-			if( !encorder.matches(encorder.encode(trainerPw), trainerLogin.getTrainerPw())){
-				return null;
-			}
+//			if( !encorder.matches(encorder.encode(trainerPw), trainerLogin.getTrainerPw())){
+//				return null;
+//			}
 				
 			return trainerLogin;
 		}

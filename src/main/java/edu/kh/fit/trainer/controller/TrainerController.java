@@ -37,12 +37,10 @@ public class TrainerController {
 	 */
 	@PostMapping("login")
 	public String trainerLogin(
-			@RequestParam("trainerEmail") String trainerEmail,
-			@RequestParam("trainerPw")		 String trainerPw,
-			@RequestParam(name = "saveEmail", required = false) String saveEmail,
+			@RequestParam("email") String trainerEmail,
+			@RequestParam("password")		 String trainerPw,
 			Model model,
-			RedirectAttributes ra,
-			HttpServletResponse resp
+			RedirectAttributes ra
 			) {
 		
 		Trainer trainerLogin = service.trainerLogin(trainerEmail, trainerPw);
@@ -53,23 +51,8 @@ public class TrainerController {
 
 			model.addAttribute("trainerLogin", trainerLogin);
 			
-			
-			//----------------------------------------------------------------
-			/* 이메일 저장 코드(Cookie) */
-			Cookie cookie = new Cookie("saveEmail", trainerEmail);
-			
-			cookie.setPath("/"); 
-			
-			if(saveEmail == null) { 
-				cookie.setMaxAge(0); 
-			}else { 
-				cookie.setMaxAge(60 * 60 * 24 * 30);
-			}
-		
-			resp.addCookie(cookie);
-			//----------------------------------------------------------------
 		}
-		return "redirect:/"; // 메인페이지 리다이렉트
+		return "redirect:/main"; // 메인페이지 리다이렉트
 	}
 
 	/** 로그아웃
