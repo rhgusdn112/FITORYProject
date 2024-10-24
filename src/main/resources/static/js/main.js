@@ -112,3 +112,5 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
+
+const admin = location.pathname.split("/")[0];

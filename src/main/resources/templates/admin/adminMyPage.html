@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>관리자 비밀번호 변경 페이지</title>
 </head>
 <body>
-  <main>
-    <main>
-      <th:block th:replace="~{common//memberHeader}"></th:block>
-      <th:block th:replace="~{common/memberSideBar}"></th:block>
-    </main>
-  </main>
-  <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+
+  
+  <form action="/admin/myPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
       <div class="main-my-page">My Page</div>
-        <div class="main-box" h:object="${adminLogin}">
+        <div class="main-box" th:object="${session.adminLogin}">
           
           <div class="email">아이디(Email)</div>
-          <span th:text="*{email}">아이디</span>
+          <span th:text="${session.adminLogin.email}">아이디</span>
           
           <div class="name">이름</div>
-          <span th:text="*{nickname}">이름</span>
+          <span th:text="${session.adminLogin.nickname}">이름</span>
 
           <div class="password">비밀번호</div>
           <input type="password" id="password" name="password" placeholder="변경할 비밀번호를 입력하세요."> <!-- 비밀번호 변경 -->
@@ -30,16 +26,11 @@
           <input type="password" id="pwConfirm" name="pwConfirm" placeholder="변경할 비밀번호를 다시 입력해주세요"> <!-- 비밀번호 확인 -->
           <span id="checkPw" name="checkPw">변경할 비밀번호를 다시 입력해주세요.</span>
 
-          <button class="update" id="updateBtn"> 비밀번호 변경하기 </button>
+          <button type="button" class="update" id="updateBtn"> 비밀번호 변경하기 </button>
         </input>
         <button id="topBtn" class="top">▲</button>
     </form>
  
     <script src="/js/admin/adminMyPage.js"></script>
-
-    <script th:inline="javascript">
-      // 서버에서 전달받은 adminLogin 객체를 JSON 형태로 변환하여 JavaScript 변수에 담음
-      const adminLogin = /*[[${adminLogin}]]*/ {};  // adminLogin 객체를 JSON으로 변환
-    </script>
 </body>
 </html>

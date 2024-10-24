@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+section > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input::placeholder {
+	text-align: left;
+	font-size: 15px;
+}
+
+.main-my-page {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	min-height: 100vh;
+	min-width: 50vw;
+	padding-left: 20%;
+	margin: auto;
+	justify-content: center;
+	/* border: 1px solid; */
+	padding-right: 3%;
+  padding-top: 8%;
+}
+
+form{
+  color: black;
+	font-size: 32px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+}
+
+
+/* main 박스 */
+table {
+	border: 5px solid;
+	color: #bfbfbf;
+	margin: auto;
+	margin-top: 3%;
+	min-height: 100hv;
+  width: 100%;
+	padding-right: 20%;
+	padding: 3%;
+}
+
+table > tr > th {
+  font-color: rgba(0, 0, 0, 0.37);
+}
