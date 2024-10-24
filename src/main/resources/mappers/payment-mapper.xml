@@ -3,33 +3,27 @@
 
 <mapper namespace="edu.kh.fit.payment.mapper.PaymentMapper">
 
-    <!-- 결제 정보 삽입 -->
-    <insert id="insertPayment" parameterType="edu.kh.fit.payment.dto.Payment">
+    <!-- 결제자 정보 삽입 -->
+    <insert id="insertPayment" parameterType="Payment">
         INSERT INTO PAYMENT (
             ORDER_NO,
             PAYMENT_MEMBER,
             PAYMENT_BOARD,
             PAYMENT_DATE,
             PAYMENT_ID,
-            PAYMENT_METHOD,
-            PAYMENT_STATUS,
-            PAYMENT_AMOUNT,
-            PAYMENT_CURRENCY
+            PAYMENT_AMOUNT
         ) VALUES (
             #{orderNo},
             #{paymentMember},
             #{paymentBoard},
             #{paymentDate},
             #{paymentId},
-            #{paymentMethod},
-            #{status},
-            #{paymentAmount},
-            #{currency}
+            #{paymentAmount}
         )
     </insert>
 
     <!-- 결제 정보 조회 -->
-    <select id="selectPaymentById" parameterType="_int" resultType="payment">
+    <select id="selectPaymentById" parameterType="_int" resultType="Payment">
         SELECT 
             p.ORDER_NO,
             p.PAYMENT_MEMBER,
@@ -50,18 +44,28 @@
         WHERE p.ORDER_NO = #{orderNo}
     </select>
 
-    <!-- 결제 요청 -->
-    <select id="selectPaymentClass" parameterType="_int" resultType="payment">
-        SELECT ORDER_NO
-        FROM PAYMENT
-        WHERE ORDER_NO = 1
+    
+    <!-- 주문 번호 생성 -->
+    <select id="getOrderNo" resultType ="string">
+    	SELECT
+			REPLACE(
+	  			TO_CHAR(CURRENT_DATE, 'YYYYMMDD')
+	    		||
+				TO_CHAR(SEQ_ORDER_NO.NEXTVAL, '0000'),
+				' ', ''
+			) ORDER_NO
+		FROM DUAL
     </select>
-
-    <!-- 결제 상태 업데이트 -->
-    <update id="updatePaymentStatus" parameterType="map">
-        UPDATE PAYMENT
-        SET PAYMENT_STATUS = #{status}
-        WHERE ORDER_NO = #{orderNo}
-    </update>
+    
+    <!-- 결제자 정보 -->
+	<select id="getPaymentDetail" parameterType="string" resultType="Payment">
+		SELECT
+			PAYMENT_ID AS paymentId,
+			ORDER_NO AS orderNo,
+			PAYMENT_AMOUNT AS paymentAmount,
+			PAYMENT_MEMBER AS paymentMember
+		FROM PAYMENT
+		WHERE PAYMENT_ID = #{paymentId}
+	</select>
 
 </mapper>

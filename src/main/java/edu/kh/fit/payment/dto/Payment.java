@@ -28,4 +28,11 @@ public class Payment {
 	 private String customerEmail;      // 결제자 이메일
 	 private String customerPhone;      // 결제자 전화번호
 	 private int orderNo;				// 주문번호
+	 
+	 
+	 
+	 private String getPaymentId;		// 결제한 사람의 ID
+	 private String getOrderName;		// 결제한 사람의 영상제목
+	 private int getTotalAmount;		// 결제한 영상의 금액
+	 private String getCustomerName;	// 결제한 사람의 주문자명
 }
