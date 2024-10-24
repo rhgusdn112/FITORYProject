@@ -36,10 +36,6 @@ public class TrainerServiceImpl implements TrainerService{
 		String encPw = encorder.encode(inputTrainer.getTrainerPw());
 		inputTrainer.setTrainerPw(encPw);
 		
-		if(inputTrainer.getTrainerAddress().equals(",,")) {
-			inputTrainer.setTrainerAddress(null);
-		}
-		
 		
 		int result = mapper.signUp(inputTrainer);
 						

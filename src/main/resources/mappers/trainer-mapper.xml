@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="du.kh.fit.trainer.mapper.TrainerMapper">
+<mapper namespace="edu.kh.fit.trainer.mapper.TrainerMapper">
 	
 	<!-- (강사) 로그인 서비스 -->
-	<select id="loginTrainer"
+	<select id="trainerLogin"
 			resultType="Trainer">
 		SELECT
 			TRAINER_NO,
@@ -14,12 +14,10 @@
 			PROFILE_IMG, 
 			SALES,
 			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE,
-			GENDER,
-			QUALIFICATION_NO
+			GENDER
 		FROM "TRAINER"
-		JOIN "QUALIFICATION" USING(TRAINER_NO)
 		WHERE TRAINER_EMAIL = #{trainerEmail}
-		AND   TRAINNER_DEL_FL = 'N'
+		AND   TRAINNER_DEL_FL = 'N';
 	</select>
 
 
