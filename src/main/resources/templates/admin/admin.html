@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/login/login.css}">
 </head>
 <body>
-  관리자 페이지
 
-  로그인 후 이용바랍니다.
+  <th:block th:replace="~{common/common}"></th:block>
 
   
-  <th:block th:unless="${session.adminLogin}">
-    <div class="main-my-page">로그인 후 이용바랍니다.</div>
-      <div class="main-box"><form class="login-container" action="/login" method="post" id="loginForm" >
-        <h2>관리자 로그인</h2>
+  <div th:if="${session.adminLogin != null}"class="main-my-page">
+    <h2>myPage </h2>
+
+    <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+        <div class="main-box" h:object="${adminLogin}">
+          
+          <div class="email">아이디(Email)</div>
+          <span th:text="*{email}">아이디</span>
+          
+          <div class="name">이름</div>
+          <span th:text="*{nickname}">이름</span>
+
+          <div class="password">비밀번호</div>
+          <input type="password" id="password" name="password" placeholder="변경할 비밀번호를 입력하세요."> <!-- 비밀번호 변경 -->
+          <span id="pwMessage" name="pwMessage">변경할 비밀번호를 입력하세요.</span>
+          
+          <div class="pwConfirm">비밀번호 확인</div>
+          <input type="password" id="pwConfirm" name="pwConfirm" placeholder="변경할 비밀번호를 다시 입력해주세요"> <!-- 비밀번호 확인 -->
+          <span id="checkPw" name="checkPw">변경할 비밀번호를 다시 입력해주세요.</span>
+
+          <button class="update" id="updateBtn"> 비밀번호 변경하기 </button>
+        </input>
+        <button id="topBtn" class="top">▲</button>
+
         
-        <div class="login-form">
-            <div class="input-group">
-                <label for="email">아이디(Email)</label>
-                <input type="text" id="email" name="email" placeholder="아이디">
-            </div>
-
-            <div class="input-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호">
-            </div>
-
-            <button type="button" class="login-button" id="loginBtn">로그인</button>
-        </div>
-
-        <div class="login-footer">
-            <a href="/find-id">ID 찾기</a> |
-            <a href="/find-password">비밀번호 찾기</a>
-        </div>
     </form>
 
-    </div>
-    <button id="topBtn" class="top">▲</button>
-  </th:block>
+  </div>
 
+  <div th:if="${session.adminLogin == null}" class="main-box">
+    <form class="login-container"  id="loginForm" >
+      <h2>관리자 페이지</h2>
+      <h3>로그인 후 이용바랍니다.</h3>
+      
+        <a href="/admin/login">로그인 페이지로 이동</a>
+
+    </form>
+  </div>
+   
+    
+  
+  
+  <script src="/js/admin/adminLoginjs"></script>
+  <script th:if="${message}">
+    alert("아이디 혹은 패스워드가 일치하지 않습니다.");
+  </script>
 </body>
 </html>
