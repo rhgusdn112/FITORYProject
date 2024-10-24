@@ -65,7 +65,7 @@
   /* 화면 전체 너비를 차지 */
   z-index: 1000;
   /* 다른 요소들보다 위에 표시 */
-  height: 100px;
+  height: 10%;
   /* 고정된 헤더 높이 */
 }
 
@@ -220,7 +220,7 @@
   /* 헤더 아래에 위치하도록 설정 */
   left: 0;
   /* 화면 왼쪽에 고정 */
-  width: 300px;
+  width: 18%;
   /* 사이드바 너비 */
   height: calc(100% - 100px);
   /* 화면 전체 높이에서 헤더 높이를 뺀 값 사용 */
@@ -269,13 +269,13 @@
   /* 사이드 메뉴를 화면에 고정 */
   top: 0;
   /* 상단에 위치 */
-  left: -300px;
+  left: -600px;
   /* 기본적으로 화면 밖에 위치 */
-  width: 300px;
+  width: 18%;
   /* 사이드 메뉴 너비 */
   height: 100%;
   /* 화면 전체 높이 사용 */
-  background-color: black;
+  background-color:  #575757;
   /* 배경색을 검정으로 설정 */
   color: #ffffff;
   /* 텍스트 색상 흰색 */
@@ -330,7 +330,7 @@
 }
 
 .header-side-menu .header-nav-item:hover {
-  background-color: #575757;
+  background-color: #bfbfbf;
   /* 호버 시 배경색 변경 */
 }
 

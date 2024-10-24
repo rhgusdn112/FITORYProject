@@ -175,7 +175,6 @@ public class MemberController {
 				@SessionAttribute("memberLogin") Member memberLogin
 				) {
 			model.addAttribute("currentPage", "memberMyPage");
-//		  model.addAttribute("memberLogin", memberLogin);
 			
 		  model.addAttribute("isLoggedIn", true);
 			return "/myPage/memberMyPage";
@@ -200,8 +199,6 @@ public class MemberController {
 			if(update > 0) {
 			memberLogin.setMemberName(updateMember.getMemberName());
 			memberLogin.setMemberTel(updateMember.getMemberTel());
-			memberLogin.setHeight(updateMember.getHeight());
-			memberLogin.setWeight(updateMember.getWeight());
 
 			message = "정보가 수정되었습니다.";
 			path = "memberMyPage";

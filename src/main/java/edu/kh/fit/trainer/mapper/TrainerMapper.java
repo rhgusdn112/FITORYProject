@@ -17,4 +17,10 @@ public interface TrainerMapper {
 	// 강사 정보 수정 비밀번호 확인
 	String trainerCheckPw(int trainerNo);
 
+	// 강사 정보 수정
+	int updateTrainer(Trainer inputTrainer);
+
+	// 강사 사진 수정
+	int profile(Object object, int trainerNo);
+
 }

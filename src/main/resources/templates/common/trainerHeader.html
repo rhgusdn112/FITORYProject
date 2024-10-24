@@ -17,15 +17,11 @@
       <nav>
         <!-- 마이페이지 관련 항목 -->
         <div class="header-nav-item-wrapper">
-          <a href="/mypage" class="header-nav-item">MyPage</a>
+          <a href="/trainer/checkPw" class="header-nav-item">MyPage</a>
         </div>
         <!-- 로그아웃 관련 항목 -->
         <div class="header-nav-item-wrapper">
           <a href="/trainer/logout" class="header-nav-item">Logout</a>
-        </div>
-        <!-- 장바구니 관련 항목 -->
-        <div class="header-nav-item-wrapper">
-          <a href="/cart" class="header-nav-item">Cart</a>
         </div>
       </nav>
       <!-- 검색 바 영역 -->
@@ -43,7 +39,7 @@
   <!-- 고정된 사이드바 영역 -->
   <div id="side-bar" class="header-side-bar" th:if="${isLoggedIn} and (${currentPage} == 'trainerMyPage' or ${currentPage} == 'cart')">
     <div class="side-item">
-      <a href="/admin/myPage" class="side-page">My Page</a>
+      <a href="/trainer/checkPw" class="side-page">My Page</a>
     </div>
     <div class="side-item">
       <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
@@ -77,7 +73,7 @@
     <!-- 사이드 메뉴 항목 -->
     <nav>
       <div class="header-nav-item-wrapper">
-        <a href="/mypage" class="header-nav-item">My Page</a>
+        <a href="/trainer/checkPw" class="header-nav-item">My Page</a>
       </div>
       <div class="header-nav-item-wrapper">
         <a href="/trainer" class="header-nav-item">Trainer</a>
