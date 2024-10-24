@@ -51,7 +51,7 @@ public class Maincontroller {
  	
  	@GetMapping("admin")
  	public String admin() {
- 		return "admin/adminLogin";
+ 		return "admin/admin";
  	}
  	
 }

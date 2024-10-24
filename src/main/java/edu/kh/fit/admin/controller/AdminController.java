@@ -22,10 +22,16 @@ public class AdminController {
 	
 	private final AdminService service;
 	
+	
 	@GetMapping("contents")
 	public String Contents() {
 		return "admin/contents";
 	}
+	
+  @GetMapping("login")
+  public String adminLogin() {
+      return "admin/adminLogin";
+  }
 	
 	
 	/** 관리자 로그인
@@ -48,11 +54,10 @@ public class AdminController {
 		if(adminLogin == null) {
 			ra.addFlashAttribute("message",
 												"아이디 혹은 패스워드가 일치하지 않습니다.");
-			return "redirect:/admin";
 		}else {
 			model.addAttribute("adminLogin", adminLogin);
-			return "/adminMyPage"; 
 		}
+		return "redirect:/admin"; 
 	}
 		
 }
