@@ -31,7 +31,7 @@ public class Board {
 	private int 	 	trainerNo;					// 작성자(강사) 번호
 	private int	   	classNo;						// 게시판 번호
 	private float 	grade;							// 평점
-	private int			pay;								// 가격
+	private int			payment;								// 가격
 	
 	// TRAINER 테이블 JOIN 컬럼
 	private String trainerNickname;

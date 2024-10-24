@@ -32,9 +32,31 @@
 		#{trainerPw},
 	 	#{trainerNickname}, 
 	 	#{trainerTel}, 
-	 	#{trainerAddress},
 	 	NULL,
 	 	#{qualification} <!-- 자격증 번호 or 사진 -->
 	 	DEFAULT, DEFAULT, DEFAULT)
 	</insert>
+	
+	<!-- 회원 정보 수정 비밀번호 확인 -->
+	<select id="trainerCheckPw" resultType="string">
+		SELECT TRAINER_PW
+		FROM "TRAINER"
+		WHERE TRAINER_NO = #{trainerNo}
+		AND TRAINNER_DEL_FL = 'N'
+	</select>
+	
+	<!-- 강사 정보 수정 -->
+	<update id="updateTrainer">
+		UPDATE "TRAINER"
+		SET TRAINER_NICKNAME = #{trainerNickname}, TRAINER_TEL = #{trainerTel}
+		WHERE TRAINER_NO = #{trainerNo}
+	</update>
+	
+	<!-- 프로필 이미지 수정 -->
+	<update id="profile">
+		UPDATE "TRAINER"
+		SET PROFILE_IMG = #{url}
+		WHERE TRAINER_NO = #{trainerNo}
+	</update>
+	
 </mapper>

@@ -13,11 +13,14 @@ input::placeholder {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 50vw;
-	padding-left: 20%;
+	padding-left: 10%;
 	margin: auto;
+	margin-top: 5%;
+	margin-left: 10%;
 	justify-content: center;
 	/* border: 1px solid; */
 	padding-right: 3%;
+	margin-bottom: 5%;
 }
 
 /* main 박스 */
@@ -25,10 +28,11 @@ input::placeholder {
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 100hv;
-	padding-right: 20%;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
 	padding: 3%;
+	min-width: 50vw;
 }
 
 .main-my-page {
@@ -36,6 +40,8 @@ input::placeholder {
 	font-size: 32px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
+	padding-top: 60px;
+	padding-bottom: 2%;
 }
 
 /* 아이디 */
@@ -150,7 +156,7 @@ input::placeholder {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	color: black;
 	display: flex;
-	margin: 0% 10% 2% 0%;
+	margin: 0% 10% 0% 0%;
 	font-size: 20px;
 }
 
@@ -168,6 +174,7 @@ input::placeholder {
 	margin: auto;
 	min-height: 100hv;
 	padding: 2% 2% 2% 2%;
+	margin-bottom: 5%;
 }
 
 
@@ -181,106 +188,30 @@ form[name='myPageFrm']{position: relative;}
   cursor: pointer;
 }
 
-/* 이미지 버튼 영역 */
-.profile-btn-area{
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: 2%;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
-	border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-btn-area > *{
-  width: 110px;
-  height: 33px;
-  padding: 5px 10px;
-
-  border: 1px solid black;
-  background-color: #bfbfbf;
-  font-size: 14px;
-  cursor: pointer;
-  text-align: center;
-}
-
-#imageInput{ display: none;}
-
-.profile-btn-area > button{
-  background-color: #bfbfbf;
-  color : white;
-  margin-left: 2px;
-}
-
 /* 프로필 사진 수정 버튼 */
 .upload {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: 2%;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
-	border-radius: 20px;
-}
-
-/* 키 */
-.hight {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: black;
-	display: flex;
-	margin: 2% 0% 2% 0%;
-	font-size: 20px;
-	position: relative;
-}
-
-.inHight::after {
-	content: 'cm';
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #bfbfbf;
-	font-size: 16px;
-	position: absolute;
-	right: 14px;
-	bottom: -180%;
-}
-
-/* 몸무게 */
-.weight {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: black;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-	position: relative;
-}
-
-.inWeight::after {
-	content: 'kg';
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #bfbfbf;
-	font-size: 16px;
-	position: absolute;
-	right: 14px;
-	bottom: -180%;
+  font-family: "MaruBuriSemiBold", Helvetica;
+  color: rgb(255, 255, 255);
+  background-color: #bfbfbf;
+  padding: 0.8% 1%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 20px;
 }
 
 /* 수정하기 버튼 */
 .update {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: auto;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
-	border-radius: 20px;
+  font-family: "MaruBuriSemiBold", Helvetica;
+  color: rgb(255, 255, 255);
+  background-color: #bfbfbf;
+  padding: 0.8% 1%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .update:hover {
