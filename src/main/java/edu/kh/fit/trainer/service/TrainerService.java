@@ -19,5 +19,13 @@ public interface TrainerService {
 	int signUp(Trainer inputTrainer);
 
 
+	/** 강사 정보 수정 비밀번호 확인
+	 * @param trainerNo
+	 * @param trainerPw
+	 * @return
+	 */
+	boolean trainerCheckPw(int trainerNo, String trainerPw);
+
+
 
 }

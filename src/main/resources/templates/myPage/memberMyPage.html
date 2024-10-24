@@ -17,7 +17,7 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
   
-  <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+  <form action="/member/memberMyPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
       <div class="main-my-page">My Page</div>
         <div class="main-box">
           <div class="email">아이디(Email)</div>
@@ -32,11 +32,6 @@
           <input type="text" name="memberCheck" id="memberhight" class="box" placeholder="선택사항입니다.">        
           <div class="weight inWeight">몸무게</div>
           <input type="text" name="memberCheck" id="memberWeight" class="box" placeholder="선택사항입니다.">
-          
-          <div class="body">체형</div>
-          <input type="text" name="memberCheck" id="memberBody" class="box" placeholder="선택사항입니다.">
-          <div class="die">다이어트</div>
-          <input type="text" name="memberCheck" id="memberDie" class="box" placeholder="선택사항입니다.">
           <button class="update" id="updateBtn"> 수정하기 </button>
         </div>
         <button id="topBtn" class="top"> ▲ </button>

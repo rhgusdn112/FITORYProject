@@ -17,7 +17,7 @@
       <nav>
         <!-- 마이페이지 관련 항목 -->
         <div class="header-nav-item-wrapper">
-          <a href="/mypage" class="header-nav-item">MyPage</a>
+          <a href="/member/checkPw" class="header-nav-item">MyPage</a>
         </div>
         <!-- 로그아웃 관련 항목 -->
         <div class="header-nav-item-wrapper">
@@ -76,11 +76,16 @@
     </div>
     <!-- 사이드 메뉴 항목 -->
     <nav>
-      <div class="header-nav-item-wrapper">
-        <a href="/mypage" class="header-nav-item">My Page</a>
+      <div th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
+        <div class="header-nav-item-wrapper">
+          <a href="/member/checkPw" class="header-nav-item">My Page</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/cart" class="header-nav-item">CART</a>
+        </div>
       </div>
       <div class="header-nav-item-wrapper">
-        <a href="/trainer" class="header-nav-item">Trainer</a>
+        <a href="/trainer/checkPw" class="header-nav-item">Trainer</a>
       </div>
       <div class="header-nav-item-wrapper">
         <a href="/homeTraining" class="header-nav-item">Home Training</a>
@@ -99,4 +104,29 @@
       </div>
     </nav>
   </div>
+
+  <!-- 사이드 메뉴 항목 -->
+  <nav>
+    <div class="header-nav-item-wrapper">
+      <a href="/member/checkPw" class="header-nav-item">My Page</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/trainer" class="header-nav-item">Trainer</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/homeTraining" class="header-nav-item">Home Training</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/homeGym" class="header-nav-item">Home Gym</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/buy" class="header-nav-item">BUY</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/cart" class="header-nav-item">CART</a>
+    </div>
+    <div class="header-nav-item-wrapper">
+      <a href="/customerservice" class="header-nav-item">고객센터</a>
+    </div>
+  </nav>
 </div>

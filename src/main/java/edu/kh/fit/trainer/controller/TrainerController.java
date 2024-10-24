@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
 import jakarta.servlet.http.Cookie;
@@ -100,6 +102,50 @@ public class TrainerController {
 	@GetMapping("trainer")
 	public String trainerPage() {
 		return "trainer/trainer";
+	}
+	
+	/** 비밀번호 확인
+	 * @return
+	 */
+	@GetMapping("checkPw")
+	public String memberPw() {
+		return "member/memberCheckPw";
+	}
+	
+	/** 회원 정보 수정 비밀번호 확인
+	 * @param memberLogin
+	 * @param memberPw
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("checkPw")
+	public String memberCheckPw(@SessionAttribute("trainerLogin") Trainer trainerLogin,
+															@RequestParam("trainerPw") String trainerPw,
+															 RedirectAttributes ra) {
+		boolean check = service.trainerCheckPw(trainerLogin.getTrainerNo(), trainerPw);
+		String path = null;
+		String message = null;
+		if(check) {
+			path = "trainerMyPage";
+			message = "성공";
+		} else {
+			path = "checkPw";
+			message = "실패";
+		}
+		ra.addFlashAttribute("message", message);
+		return "redirect:" + path;
+	}
+	
+	@GetMapping("trainerMyPage")
+	public String myPage(
+			Model model, 
+			@SessionAttribute("trainerLogin") Trainer trainerLogin
+			) {
+		model.addAttribute("currentPage", "trainerMyPage");
+//	  model.addAttribute("memberLogin", memberLogin);
+		
+	  model.addAttribute("isLoggedIn", true);
+		return "/myPage/trainerMyPage";
 	}
 	
 }
