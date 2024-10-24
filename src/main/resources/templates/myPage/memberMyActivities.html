@@ -21,84 +21,76 @@
   <div class="main">
     <div class="activities">내 활동 내역</div>
     <div class="main-box">
-      <table>
-      <thead>
-        <th>비고</th>
-        <th>|</th>
-        <th>작성일</th>
-      </thead>
-      <tbody>
-      <th:block th:if="${#lists.isEmpty(boardList)}">
-        <tr>
-          <th colspan="6">작성한 댓글이 없습니다.</th>
-        </tr>
-      </th:block>
-
-      <!-- 게시글이 존재할 때 -->
-      <th:block th:unless="${#lists.isEmpty(boardList)}">
-        <tr th:each="board : ${boardList}" th:object="${board}">
-          <td>
-            <!-- 썸네일 추가 -->
-            <!-- <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail"> -->
-            <a th:unless="${param.key}"
-              th:href="@{/board/{boardCode}/{boardNo} (boardCode=${boardCode}, boardNo=*{boardNo})}"
-              th:text="*{boardTitle}">댓글 내용</a>
-
-            <!-- 검색인 경우 -->
-            <a th:if="${param.key}"
-              th:href="@{/board/{boardCode}/{boardNo} (boardCode=${boardCode}, 
-                        boardNo=*{boardNo}, key=${param.key}, query=${param.query})}"
-              th:text="*{boardTitle}">게시글 제목</a>
-          </td>
-
-          <!-- 작성자 닉네임 -->
-          <td th:text="*{memberNickname}">작성자</td>
-
-          <!-- 작성일 -->
-          <td th:text="*{boardWriteDate}">2023-10-26</td>
-          <button>삭제</button>
-          <button>수정</button>
-        </tr>
-      </th:block>
-    </tbody>
-  </table>
-</div>
-      <button class="top">▲</button>
-      <!-- 페이지 -->
-      <div class="pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">7</a>
-        <a href="#">8</a>
-        <a href="#">9</a>
-        <a href="#">10</a>
+      <div class="container">
+        <select name="select" id="selectType">
+          <option value="recent">최신순</option>
+          <option value="populer">인기순</option>
+          <option value="review">리뷰순</option>
+        </select>
+      </div>
+      <input type="checkbox" id="checkbox" class="all-check-box">
+      <div class="select">모두 선택</div>
+        <div class="main-box">
+          <table>
+            <thead>
+              <th>비고</th>
+              <th>|</th>
+              <th>작성일</th>
+            </thead>
+            <tbody>
+              <td>
+                <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
+                <td th:text="*{boardContent}">내 활동 제목</td>
+                <td th:text="*{boardTypeNo}">게시판 종류</td>
+                <td th:text="*{boardWriteDate}">2024-10-24</td>
+                <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">삭제</button>
+                <button class="see" th:if="${session.trainerLongin}" id="updateBtn">수정</button>
+              </td>
+            </tbody>
+          </table>
+  
+              <!-- 페이지 -->
+              <div class="pagination">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+            </div>
+          </div>
+          <!-- 탑버튼 -->
+          <button class="top">▲</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div id="temp3"></div>
-  </div>
-
-  <script>
-    function loadFromHtml(path, selector) {
-      fetch(path)
-        .then(resp => resp.text())
-        .then(result => {
-          selector.outerHTML = result;
-        })
-    }
-    /* header */
-    const temp1 = document.querySelector("#temp1");
-    loadFromHtml("../common/memberHeader.html", temp1);
-    /* side */
-    const temp2 = document.querySelector("#temp2");
-    loadFromHtml("../common/memberSideBar.html", temp2);
-    /* footer */
-    const temp3 = document.querySelector("#temp3");
-    loadFromHtml("../common/footer.html", temp3);
-  </script>
-</body>
-
-</html>
+      <div id="temp3"></div>
+    </div>
+  
+    <script>
+      function loadFromHtml(path, selector) {
+        fetch(path)
+          .then(resp => resp.text())
+          .then(result => {
+            selector.outerHTML = result;
+          })
+      }
+      /* header */
+      const temp1 = document.querySelector("#temp1");
+      loadFromHtml("../common/trainerHeader.html", temp1);
+      /* side */
+      const temp2 = document.querySelector("#temp2");
+      loadFromHtml("../common/trainerSideBar.html", temp2);
+      /* footer */
+      const temp3 = document.querySelector("#temp3");
+      loadFromHtml("../common/footer.html", temp3);
+    </script>
+  </body>
+  
+  
+  </html>

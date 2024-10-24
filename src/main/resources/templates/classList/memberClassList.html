@@ -29,7 +29,13 @@
     <div class="main-class">강의 목록</div>
     <input type="checkbox" id="checkbox" class="all-check-box">
     <div class="select">모두 선택</div>
-    <button>정렬 방식</button>
+    <div class="container">
+      <select name="select" id="selectType">
+        <option value="recent">최신순</option>
+        <option value="populer">인기순</option>
+        <option value="review">리뷰순</option>
+      </select>
+    </div>
       <div class="main-box">
         <table>
           <tbody>
@@ -61,7 +67,7 @@
             Title : 오늘은 하체다<br />설명 : 매번 상체만 하는게 아닌<br />하체도 해줘야 한단다<br />강사 : 성상민 |
             HomeGym
           </p>
-            <button class="see">선택한 강의 보기</button>
+            <button class="update">선택한 강의 보기</button>
             <button class="delete">선택한 강의 삭제</button>
             <!-- 페이지 -->
             <div class="pagination">

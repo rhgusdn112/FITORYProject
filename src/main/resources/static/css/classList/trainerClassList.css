@@ -30,7 +30,6 @@ input::placeholder {
 	padding-right: 20%;
 	padding: 3%;
 }
-
 .main-class {
 	color: black;
 	font-size: 32px;
@@ -38,12 +37,25 @@ input::placeholder {
 	text-shadow: 10px #bfbfbf;
 }
 
-.select{
+.box {
+  border: 1px solid;
+  color:black;
+  font-family: "MaruBuriSemiBold", Helvetica;
+  justify-content: center;
+  display: flex;
+  margin: 2% 0% 2%;
+  padding: 5px;
+  width: 100%;
+}
+
+#selectType{
 	color: black;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
-  float: right;
+	float: right;
+	padding-bottom: 5%;
+	margin-bottom: 30%;
 }
 
 #checkbox{
@@ -51,12 +63,27 @@ input::placeholder {
   display: flex;
 }
 
-/* #all-check-box{
-
-} */
+img {
+	display: inline-flex;
+	border : 1px solid;
+}
+tr>td{
+	border: 1px solid;
+	box-sizing: content-box;
+	display: flex;
+	margin: 30%;
+	padding: 20%;
+}
+.select{
+	color: black;
+	font-size: 14px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+  /* float: right; */
+}
 
 /* 수정하기 버튼 */
-.see {
+.update {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
@@ -81,7 +108,7 @@ input::placeholder {
   border-radius: 0px 20px 20px 0px;
 }
 
-.see:hover {
+.update:hover {
   background-color: #bfbfbf;
   color: rgb(255, 255, 255);
 }

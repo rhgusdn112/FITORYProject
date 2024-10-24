@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비밀번호 인증</title>
+</head>
+<body>
+  
+  <body>
+    <main>
+      <main>
+        <th:block th:replace="~{common//memberHeader}"></th:block>
+      </main>
+    </main>
+    <form action="checkPw" method="POST" name="myPageCheck" id="myPageCheck" class="main">
+      <div class="main-box">
+        <div class="password">비밀번호</div>
+        <input type="password" name="memberCheckPw" id="password" class="box" placeholder="비밀번호를 입력해주세요.">
+        <button class="loginBtn">로그인</button>
+        <button class="passBtn">비밀번호 찾기</button>
+      </div>
+    </form>
+    <th:block th:replace="~{common/footer::footer}"></th:block>
+    <script src="/js/member/memberCheckPw.js"></script>
+  </body>
+  </html>
