@@ -5,19 +5,19 @@
 }
 
 input::placeholder {
-	text-align: left;
+	text-align: center;
 	font-size: 15px;
 }
 
 .main {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
-	min-width: 50vw;
-	padding-left: 20%;
+	min-width: 80vw;
+	height: 100px;
 	margin: auto;
 	justify-content: center;
 	/* border: 1px solid; */
-	padding-right: 3%;
+	padding: 10% 10% 10% 10%;
 }
 
 /* main 박스 */
@@ -27,44 +27,30 @@ input::placeholder {
 	margin: auto;
 	margin-top: 3%;
 	min-height: 100hv;
-	padding-right: 20%;
-	padding: 3%;
+	height: 25%;
+	padding: 15%;
 }
 
-.main-class {
+.password {
 	color: black;
 	font-size: 32px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
 }
 
-.select{
-	color: black;
-	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
-  float: right;
-}
-
-.container > #selectType{
-	color: black;
-	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
-  float: right;
-}
-
-#checkbox{
-	float: right;
+.box {
+  border: 1px solid;
+  color:black;
+  font-family: "MaruBuriSemiBold", Helvetica;
+  justify-content: center;
   display: flex;
+  margin: 2% 0% 2%;
+  padding: 5px;
+  width: 100%;
 }
 
-/* #all-check-box{
-
-} */
-
-/* 수정하기 버튼 */
-.update {
+/* 버튼 */
+.loginBtn {
 	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
@@ -76,7 +62,7 @@ input::placeholder {
   float: left;
   background-color: #bfbfbf00;
 }
-.delete{
+.passBtn{
   font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
@@ -89,45 +75,11 @@ input::placeholder {
   border-radius: 0px 20px 20px 0px;
 }
 
-.update:hover {
+.loginBtn:hover {
   background-color: #bfbfbf;
   color: rgb(255, 255, 255);
 }
-.delete:hover {
+.passBtn:hover {
 	color: rgba(78, 78, 78, 0.200);
   background-color: rgb(255, 255, 255)
-}
-
-/* 탑버튼 */
-.top {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 1%;
-	width: 40px;
-	height: 40px;
-	border-radius: 100%;
-	position: sticky;
-	float: right;
-}
-
-.top:hover {
-	color: rgba(78, 78, 78, 0.200);
-}
-
-/* 페이지네이션 스타일 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
-  margin-top: 2%; /* 페이지네이션과 콘텐츠 사이의 간격 */
-  font-size: 15px;
-  padding: 8% 0% 0% 0%;
-}
-
-.pagination a {
-  text-decoration: none;
-  color: #bfbfbf;
-  padding: 10%; 
 }
