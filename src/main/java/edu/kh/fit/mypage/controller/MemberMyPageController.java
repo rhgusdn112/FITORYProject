@@ -2,6 +2,7 @@ package edu.kh.fit.mypage.controller;
 
 import java.util.Map;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.mypage.dto.MemberMyPage;
 import edu.kh.fit.mypage.service.MemberMyPageService;
 import lombok.RequiredArgsConstructor;
 
@@ -42,7 +42,7 @@ public class MemberMyPageController {
 	 * @return
 	 */
 	@PostMapping("info")
-	public String memberMyPage(@SessionAttribute("memberLogin") MemberMyPage memberLogin, @ModelAttribute MemberMyPage updateMember, RedirectAttributes ra) {
+	public String memberMyPage(@SessionAttribute("memberLogin") Member memberLogin, @ModelAttribute Member updateMember, RedirectAttributes ra) {
 
 		int memberNo = memberLogin.getMemberNo();
 		updateMember.setMemberNo(memberNo);

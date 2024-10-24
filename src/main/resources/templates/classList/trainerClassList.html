@@ -27,41 +27,58 @@
 
   <div class="main">
     <div class="main-class">강의 목록</div>
+    <div class="container">
+      <select name="select" id="selectType">
+        <option value="recent">최신순</option>
+        <option value="populer">인기순</option>
+        <option value="review">리뷰순</option>
+      </select>
+    </div>
     <input type="checkbox" id="checkbox" class="all-check-box">
     <div class="select">모두 선택</div>
       <div class="main-box">
-        <table>
+        <table class="box">
           <tbody>
-            <th>Title</th>
-            <th>설명</th>
-            <th>강사</th>
+            <tbody>
+              <!-- 게시글 리스트를 반복하여 출력 -->
+              <tr th:each="post : ${posts}">
+              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <td th:text="${boardTitle}">제목</td>
+              <td th:text="${boardContent}">설명</td>
+              <td th:text="${trainerNickname}">강사</td>
+              <td th:text=" ${boardCategory}">카테고리</td>
+              <td><input type="checkbox" class="checkbox"></td>
+            </tr>
+              <tr th:each="post : ${posts}">
+              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <td th:text="${boardTitle}">제목</td>
+              <td th:text="${boardContent}">설명</td>
+              <td th:text="${trainerNickname}">강사</td>
+              <td th:text=" ${boardCategory}">카테고리</td>
+              <td><input type="checkbox" class="checkbox"></td>
+            </tr>
+              <tr th:each="post : ${posts}">
+              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <td th:text="${boardTitle}">제목</td>
+              <td th:text="${boardContent}">설명</td>
+              <td th:text="${trainerNickname}">강사</td>
+              <td th:text=" ${boardCategory}">카테고리</td>
+              <td><input type="checkbox" class="checkbox"></td>
+            </tr>
+            </tr>
+              <tr th:each="post : ${posts}">
+              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <td th:text="${boardTitle}">제목</td>
+              <td th:text="${boardContent}">설명</td>
+              <td th:text="${trainerNickname}">강사</td>
+              <td th:text=" ${boardCategory}">카테고리</td>
+              <td><input type="checkbox" class="checkbox"></td>
+            </tr>
           </tbody>
         </table>
-          <p class="textbox">
-            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList1.jpg" /> -->
-            <input type="checkbox" id="checkbox">
-            Title : 움직임의 이해<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
-            강진형 | HomeTraining
-          </p>
-          <p class="textbox">
-            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList2.jpg" /> -->
-            <input type="checkbox" id="checkbox">
-            Title : 플랭크 기초<br />설명 : 플랭크 이거 보면<br />다들 그냥 함<br />강사 : 고현우 | HomeTraining
-          </p>
-          <p class="textbox">
-            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList3.jpg" /> -->
-            <input type="checkbox" id="checkbox">
-            Title : 헬창만 들어와<br />설명 : 모든 움직임은 어디서부터 시작을하는가<br />어쩌구 저쩌구<br />강사 :
-            김대현 | HomeGym
-          </p>
-          <p class="textbox">
-            <!-- <img class="photo" src="/FITORYProject/src/main/resources/static/images/classList4.jpg" /> -->
-            <input type="checkbox" id="checkbox">
-            Title : 오늘은 하체다<br />설명 : 매번 상체만 하는게 아닌<br />하체도 해줘야 한단다<br />강사 : 성상민 |
-            HomeGym
-          </p>
-            <button class="see">선택한 강의 수정</button>
-            <button class="delete">선택한 강의 삭제</button>
+            <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 수정</button>
+            <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
+
             <!-- 페이지 -->
             <div class="pagination">
               <a href="#">1</a>

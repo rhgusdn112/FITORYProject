@@ -10,8 +10,11 @@
 			EMAIL, 
 			PW,
 			NICKNAME, 
-			MEMBER_TEL,
+			DEL_FL,
+			AUTHORITY,
+			AUTHORITY_NO
 		FROM "ADMIN"
+		JOIN "AUTHORITY" USING(AUTHORITY_NO) 
 		WHERE EMAIL = #{adminEmail}
 		AND   DEL_FL = 'N'
 	</select>

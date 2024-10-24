@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/login/login.css}">
 </head>
 <body>
-  <main>
-    <main>
-      <th:block th:replace="~{common//memberHeader}"></th:block>
-      <th:block th:replace="~{common/memberSideBar}"></th:block>
-    </main>
-  </main>
-  <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
-      <div class="main-my-page">My Page</div>
+
+  <th:block th:replace="~{common/common}"></th:block>
+
+  
+  <div th:if="${session.adminLogin != null}"class="main-my-page">
+    <h2>myPage </h2>
+
+    <form action="info" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
         <div class="main-box" h:object="${adminLogin}">
           
           <div class="email">아이디(Email)</div>
@@ -33,13 +34,28 @@
           <button class="update" id="updateBtn"> 비밀번호 변경하기 </button>
         </input>
         <button id="topBtn" class="top">▲</button>
-    </form>
- 
-    <script src="/js/admin/adminMyPage.js"></script>
 
-    <script th:inline="javascript">
-      // 서버에서 전달받은 adminLogin 객체를 JSON 형태로 변환하여 JavaScript 변수에 담음
-      const adminLogin = /*[[${adminLogin}]]*/ {};  // adminLogin 객체를 JSON으로 변환
-    </script>
+        
+    </form>
+
+  </div>
+
+  <div th:if="${session.adminLogin == null}" class="main-box">
+    <form class="login-container"  id="loginForm" >
+      <h2>관리자 페이지</h2>
+      <h3>로그인 후 이용바랍니다.</h3>
+      
+        <a href="/admin/login">로그인 페이지로 이동</a>
+
+    </form>
+  </div>
+   
+    
+  
+  
+  <script src="/js/admin/adminLoginjs"></script>
+  <script th:if="${message}">
+    alert("아이디 혹은 패스워드가 일치하지 않습니다.");
+  </script>
 </body>
 </html>
