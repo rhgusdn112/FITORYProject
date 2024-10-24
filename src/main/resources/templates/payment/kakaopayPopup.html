@@ -1,31 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
+
+  <script th:inline="javascript">
+    const className = /*[[${className}]]*/ null; // 강의명
+    const classAmount = /*[[${classAmount}]]*/ 0; // 가격
+    const orderNo = /*[[${orderNo}]]*/ null; // 주문번호
+    const paymentName = /*[[${session.memberLogin.memberName}]]*/ null; // 주문자명
+  </script>
+
+  <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
   <script>
-    function requestPay() {
-      PortOne.requestPayment({
-        storeId: "store-ba2da415-5565-47a5-a9fc-9b9cddb04d32",
-        paymentId: "testm2k9975q",
-        orderName: "고현우",
-        totalAmount: 100,
-        currency: "KRW",
-        channelKey: "channel-key-f6cb3945-2949-4400-994b-c6315da5140b",
-        payMethod: "EASY_PAY",
-        easyPay: {
-          easyPayProvider: "KAKAOPAY",
-          useFreeInterestFromMall: false,
-        },
-        customer: {
-          fullName: "테스트",
-        },
-      });
+    console.log("결제")
+
+
+    async function requestPay() {
+      try {
+        // const paymentData = {
+        //   paymentMember: 123,
+        //   paymentBoard: 456,
+        //   classTitle: className,
+        //   paymentAmount: classAmount,
+        //   currency: "KRW",
+        //   customerName: "홍길동"
+        // };
+
+        const response = await fetch("/payment/request-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+
+        const resp = await PortOne.requestPayment({
+          storeId: data.storeId,
+          paymentId: orderNo,
+          orderName: className,
+          totalAmount: classAmount,
+          currency: "KRW",
+          channelKey: data.channelKey,
+          payMethod: "EASY_PAY",
+          easyPay: {
+            easyPayProvider: "KAKAOPAY",
+            useFreeInterestFromMall: false,
+          },
+          customer: {
+            fullName: paymentName,
+          }
+          
+          
+          
+        });
+
+        console.log(resp);
+
+
+
+        if (resp.code === 'FAILURE_TYPE_PG') {
+          console.error("결제 실패:", response);
+          alert("결제에 실패했습니다. 다시 시도해 주세요.");
+          location.href = location.pathname; // GET
+        } else {
+          console.log("결제 성공", response);
+          alert("결제가 성공적으로 완료되었습니다!");
+          // 주문 정보 insert (ajax) -> 성공 시 주문 결과 페이지로 location.href
+          fetch("/")
+        }
+        
+
+      } catch (error) {
+        console.error('결제 준비 중 오류 발생:', error);
+      }
     }
+
+    // 결제 상태 업데이트를 서버에 전달하는 함수
+    // function updatePaymentStatus(paymentId, status) {
+    //   // AJAX 요청으로 서버에 상태 업데이트
+    //   fetch('/payment/update-status', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ paymentId: paymentId, status: status }),
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       console.log('결제 상태 업데이트 결과:', data);
+    //     })
+    //     .catch((error) => {
+    //       console.error('결제 상태 업데이트 중 오류 발생 :', error);
+    //     });
+    // }
+
+    // 페이지 로드 후 결제 요청
+    document.addEventListener("DOMContentLoaded", () => {
+      requestPay();
+    });
   </script>
 </body>
-</html>
 
+</html>

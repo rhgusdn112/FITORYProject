@@ -11,12 +11,15 @@
   <form action="/admin/myPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
       <div class="main-my-page">My Page</div>
         <div class="main-box" th:object="${session.adminLogin}">
+
           
           <div class="email">아이디(Email)</div>
           <span th:text="${session.adminLogin.email}">아이디</span>
           
           <div class="name">이름</div>
-          <span th:text="${session.adminLogin.nickname}">이름</span>
+
+          <span th:text="${session.adminLogin.name}">이름</span>
+
 
           <div class="password">비밀번호</div>
           <input type="password" id="password" name="password" placeholder="변경할 비밀번호를 입력하세요."> <!-- 비밀번호 변경 -->
@@ -31,6 +34,8 @@
         <button id="topBtn" class="top">▲</button>
     </form>
  
+
     <script src="/js/admin/adminMyPage.js"></script>
+
 </body>
 </html>
