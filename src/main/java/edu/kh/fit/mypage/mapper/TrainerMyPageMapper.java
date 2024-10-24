@@ -2,7 +2,6 @@ package edu.kh.fit.mypage.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import edu.kh.fit.mypage.dto.TrainerMyPage;
 import edu.kh.fit.trainer.dto.Trainer;
 
 @Mapper

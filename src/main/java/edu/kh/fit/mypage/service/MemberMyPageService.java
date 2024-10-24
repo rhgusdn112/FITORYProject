@@ -1,6 +1,6 @@
 package edu.kh.fit.mypage.service;
 
-import edu.kh.fit.mypage.dto.MemberMyPage;
+import edu.kh.fit.member.dto.Member;
 
 public interface MemberMyPageService {
 
@@ -8,6 +8,6 @@ public interface MemberMyPageService {
 	 * @param updateMember
 	 * @return
 	 */
-	int memberUpdate(MemberMyPage updateMember);
+	int memberUpdate(Member updateMember);
 
 }

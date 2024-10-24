@@ -2,7 +2,7 @@ package edu.kh.fit.mypage.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import edu.kh.fit.mypage.dto.MemberMyPage;
+import edu.kh.fit.member.dto.Member;
 
 @Mapper
 public interface MemberMyPageMapper {
@@ -11,6 +11,6 @@ public interface MemberMyPageMapper {
 	 * @param updateMember
 	 * @return
 	 */
-	int memberUpdate(MemberMyPage updateMember);
+	int memberUpdate(Member updateMember);
 
 }
