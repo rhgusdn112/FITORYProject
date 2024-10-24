@@ -1,51 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payment Page</title>
-  <link rel="stylesheet" href="../../static/css/payment/payment.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문서 작성 페이지</title>
+    <script src="https://cdn.portone.io/sdk/v1/portone.min.js"></script>
+    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+    <script src="../../static/css/payment/payment.css"></script>
 </head>
-
 <body>
-     <!-- common 조각 삽입(header 포함) -->
-  <th:block th:replace="~{common/common}"></th:block>
-  
-  <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
-  
-  <button onclick="requestPay()">결제하기</button>
-  
-  <script>
-  function requestPay() {
-    PortOne.requestPayment({
-      storeId: "store-ba2da415-5565-47a5-a9fc-9b9cddb04d32",
-      paymentId: "testm2k9975q",
-      orderName: "고현우",
-      totalAmount: 100,
-      currency: "KRW",
-      channelKey: "channel-key-f6cb3945-2949-4400-994b-c6315da5140b",
-      payMethod: "EASY_PAY",
-      easyPay: {
-        easyPayProvider: "KAKAOPAY",
-        useFreeInterestFromMall: false,
-      },
-      customer: {
-        fullName: "테스트",
-      },
-    });
-  }
-  </script>
+    <h2>주문서 작성</h2>
+    <form id="paymentForm">
+        <div>
+            <label>주문자명: </label>
+            <span th:text="${payment.customerName}"></span>
+        </div>
+        <div>
+            <label>제목: </label>
+            <span th:text="${payment.classTitle}"></span>
+        </div>
+        <div>
+            <label>가격: </label>
+            <span th:text="${payment.paymentAmount}"></span>
+        </div>
 
+        <button type="button" onclick="requestPay()">결제하기</button>
+    </form>
 
+    <script>
+        // Thymeleaf가 서버에서 값을 렌더링하여 JavaScript 변수에 할당
+        const orderName = /*[[${payment.classTitle}]]*/ "";
+        const totalAmount = /*[[${payment.paymentAmount}]]*/ 0;
+        const customerName = /*[[${payment.customerName}]]*/ "";
 
-  <form action="/orderNo" method="GET">
+        function requestPay() {
+            PortOne.requestPayment({
+                storeId: "store-ba2da415-5565-47a5-a9fc-9b9cddb04d32",
+                paymentId: "testm2k9975q",
+                orderName: orderName,
+                totalAmount: totalAmount,
+                currency: "KRW",
+                channelKey: "channel-key-f6cb3945-2949-4400-994b-c6315da5140b",
+                payMethod: "EASY_PAY",
+                easyPay: {
+                    easyPayProvider: "KAKAOPAY",
+                    useFreeInterestFromMall: false,
+                },
+                customer: {
+                    fullName: customerName
+                },
+            });
+        }
+    </script>
 
-    
-  </form>
-
-  <!-- 푸터 조각 삽입 -->
-  <footer th:replace="~{common/footer :: footer}"></footer>
-
+   
 </body>
-
 </html>
