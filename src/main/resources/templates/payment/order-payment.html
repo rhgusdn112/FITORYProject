@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문/결제 정보 확인</title>
+    <!-- <link rel="stylesheet" href="../../static/css/payment/payment.css"> -->
+    <link rel="stylesheet" href="/css/payment/payment.css">
+</head>
+<body>
+    <div class="order-payment-container">
+        <h2>주문/결제 정보 확인</h2>
+        <div>
+            <label>주문자명:</label>
+            <span th:text="${session.memberLogin?.memberName}" id="customerName">회원명</span>
+        </div>
+        <div>
+            <label>제목:</label>
+            <span th:text="${board.title}" id="classTitle"></span>
+        </div>
+        <div>
+            <label>결제 금액:</label>
+            <span th:text="${board.payment}" id="paymentAmount"></span>
+        </div>
+
+        <button type="button" id="paymentBtn">결제하기</button>
+    </div>
+    
+    
+    <!-- <script src="../../static/js/payment/order-payment.js"></script> -->
+    <script src="/js/payment/order-payment.js"></script>
+</body>
+</html>

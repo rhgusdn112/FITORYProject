@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결제 내역</title>
+  <script src ="/css/payment/payment.css"></script>
+</head>
+<body>
+  <h1>결제 내역</h1>
+  <div id="payment-details">
+    <p><strong>결제 ID:</strong> 
+      <span th:text="${paymentId}"></span></p>
+    <p><strong>주문명:</strong> 
+      <span th:text="${orderName}"></span></p>
+    <p><strong>총 금액:</strong> 
+      <span th:text="${totalAmount}"></span></p>
+    <p><strong>고객명:</strong> 
+      <span th:text="${customerName}"></span></p>
+  </div>
+</body>
+</html>

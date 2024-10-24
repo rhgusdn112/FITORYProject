@@ -1,37 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{common/common}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문서 작성 페이지</title>
-    <script src="https://cdn.portone.io/sdk/v1/portone.min.js"></script>
     <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
     <script src="../../static/css/payment/payment.css"></script>
 </head>
 <body>
-    <h2>주문서 작성</h2>
-    <form action="/payment" id="paymentForm">
-        <div>
-            <label>주문자명: </label>
-            <span th:text="${payment.customerName}"></span>
-        </div>
-        <div>
-            <label>제목: </label>
-            <span th:text="${payment.classTitle}"></span>
-        </div>
-        <div>
-            <label>가격: </label>
-            <span th:text="${payment.paymentAmount}"></span>
-        </div>
-
-        <button type="button" onclick="requestPay()">결제하기</button>
-    </form>
-
     <script>
-        // Thymeleaf가 서버에서 값을 렌더링하여 JavaScript 변수에 할당
-        const orderName = /*[[${payment.classTitle}]]*/ "";
-        const totalAmount = /*[[${payment.paymentAmount}]]*/ 0;
-        const customerName = /*[[${payment.customerName}]]*/ "";
 
         function requestPay() {
             PortOne.requestPayment({
@@ -53,6 +30,7 @@
         }
     </script>
 
-   
+<footer th:replace="~{common/footer :: footer}"></footer>
+
 </body>
 </html>
