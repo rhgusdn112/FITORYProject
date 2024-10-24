@@ -2,7 +2,6 @@ package edu.kh.fit.mypage.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.kh.fit.mypage.dto.TrainerMyPage;
 import edu.kh.fit.trainer.dto.Trainer;
 
 public interface TrainerMyPageService {

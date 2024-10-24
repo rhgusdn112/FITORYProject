@@ -1,44 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+
+  </style>
 </head>
 <body>
-  관리자 페이지
 
-  로그인 후 이용바랍니다.
+  <div th:if="${session.adminLogin != null}"class="main-my-page">
 
+
+      <th:block th:if= "${session.adminLogin.authorityNo == 3}">
+
+        <h2>전체 관리자 페이지</h2>
+        <form action="/admin/all" method="post" id="trainerCare">
+          <h3>회원 관리 및 조회</h3>
+
+
+        </form>
+
+      
+      </th:block>
+
+<<<<<<< HEAD
   
   <th:block th:unless="${session.adminLogin}">
     <div class="main-my-page">로그인 후 이용바랍니다.</div>
       <div class="main-box"><form class="login-container" action="/login" method="post" id="loginForm" >
         <h2>관리자 로그인</h2>
+=======
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
         
-        <div class="login-form">
-            <div class="input-group">
-                <label for="email">아이디(Email)</label>
-                <input type="text" id="email" name="email" placeholder="아이디">
-            </div>
 
-            <div class="input-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호">
-            </div>
+  </div>
 
-            <button type="button" class="login-button" id="loginBtn">로그인</button>
-        </div>
+  <div th:if="${session.adminLogin == null}" class="main-my-page">
+    
+    <form class="login-container"  id="loginForm" >
+      <table>
+        <tr>
+          <th>로그인 후 이용바랍니다.</th>
+        </tr>
+        <tr>
+          <th>
+            <a href="/admin/login">로그인 페이지로 이동</a>
+          </th>
+        </tr>
+        
+        
+      </table>
 
-        <div class="login-footer">
-            <a href="/find-id">ID 찾기</a> |
-            <a href="/find-password">비밀번호 찾기</a>
-        </div>
     </form>
-
-    </div>
-    <button id="topBtn" class="top">▲</button>
-  </th:block>
-
+  </div>
+   
+    
+  
+  
+  <script src="/js/admin/adminLoginjs"></script>
+  
+  
+  <script th:if="${message}">
+    alert("아이디 혹은 패스워드가 일치하지 않습니다.");
+  </script>
 </body>
 </html>

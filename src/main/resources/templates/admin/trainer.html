@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/admin/member" method="post" id="memberCare">
+    <h3>
+      <a href="/admin/member">강사 관리 및 조회</a>
+    </h3>
+
+    <table boarder="1" >
+      <thead>
+        <tr>
+          <th>회원번호</th>
+          <th>|</th>
+          <th>아이디</th>
+          <th>|</th>
+          <th>이름</th>
+          <th>|</th>
+          <th>가입일</th>
+          <th>|</th>
+          <th>댓글 수</th>
+          <th>|</th>
+          <th>누적 신고</th>
+          <th>|</th>
+          <th>
+            <button type="menu">정렬방식▽</button>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <th:block th:if= "${#lists.isEmpty(memberList)}">
+          <tr>
+            <th colspan="13">&nbsp;</th>
+          </tr>
+          <tr>
+            <th colspan="13">회원이 존재하지 않습니다.</th>
+          </tr>
+        </th:block>
+
+        <th:block th:if= "${#lists.isEmpty(memberList)}"></th:block>
+          <tr th:each= "member:${memberList}" th:object="${member}">
+            <td th:text="*{memberNo}">회원번호</td>
+            <td th:text="*{memberEmail}">아이디</td>
+            <td th:text="*{memberName}">이름</td>
+            <td th:text="*{enrollDate}">가입일</td>
+            <td th:text="*{countComment}">댓글 수</td>
+            <td th:text="*{memberFlag}">누적신고</td>
+          </tr>
+        </th:block> 
+      </tbody>
+
+    </table>
+  </form>
+</body>
+</html>

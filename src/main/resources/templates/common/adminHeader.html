@@ -1,0 +1,48 @@
+<div th:fragment="header">
+  <!-- 헤더 영역 시작 -->
+  <header class="header-container">
+    <!-- 로고 영역 -->
+    <div class="header-logo-container">
+      <a th:href="@{/admin}" class="header-logo-link">
+        <h1 class="header-logo-text">관리자 로그인</h1>
+      </a>
+    </div>
+    <!-- 검색 바와 네비게이션 메뉴 영역 -->
+    <div class="header-search-nav-container">
+      <!-- 네비게이션 메뉴 -->
+      <nav>
+        <!-- 로그아웃 관련 항목 -->
+        <th:block th:if= "${session.adminLogin}">
+          <div class="header-nav-item-wrapper" >
+            <a href="/admin/logout" class="header-nav-item">Logout</a>
+          </div>
+        </th:block>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 고정된 사이드바 영역 -->
+   <th:block th:if="${session.adminLogin}"></th:block>
+  <div id="side-bar" class="header-side-bar">
+    <div class="side-item">
+      <a href="/admin/myPage" class="side-page">My Page</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/trainer" class="side-2">강사 관리 및 조회</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/question" class="side-4">자주묻는 질문</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/content" class="side-5">컨텐츠 관리</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/query" class="side-6">1:1 문의</a>
+    </div>
+    <div class="side-item">
+      <a href="/admin/board" class="side-7">공지사항</a>
+    </div>
+  </div>

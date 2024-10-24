@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비밀번호 인증</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="../../static/css/trainer/trainerCheckPw.css">
+=======
+  <link rel="stylesheet" href="/css/trainer/trainerCheckPw.css">
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
 </head>
 <body>
   <main>
     <main>
+<<<<<<< HEAD
       <th:block th:replace="~{common//trainerHeader}"></th:block>
     </main>
   </main>
@@ -19,9 +24,24 @@
       <input type="password" name="trainerCheckPw" id="password" class="box" placeholder="비밀번호를 입력해주세요.">
       <button class="loginBtn">로그인</button>
       <button class="passBtn">비밀번호 찾기</button>
+=======
+      <th:block th:replace="~{common/common}"></th:block>
+    </main>
+  </main>
+  <form action="/trainer/checkPw" method="POST" name="myPageCheck" id="myPageCheck" class="main">
+    <div class="main-box">
+      <div class="password">비밀번호를 입력해주세요.</div>
+      <input type="password" name="trainerPw" id="password" class="box" placeholder="비밀번호를 입력해주세요.">
+      <button class="loginBtn" id="loginBtn">로그인</button>
+      <button class="passBtn" id="passBtn">비밀번호 찾기</button>
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
     </div>
   </form>
   <th:block th:replace="~{common/footer::footer}"></th:block>
   <script src="/js/trainer/trainerCheckPw.js"></script>
+<<<<<<< HEAD
+=======
+  <script src="javascript"></script>
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
 </body>
 </html>

@@ -9,14 +9,9 @@
 </head>
 
 <body>
-  <main>
-    <main>
-      <th:block th:replace="~{common/memberHeader}"></th:block>
-      <th:block th:replace="~{common/memberSideBar}"></th:block>
-    </main>
-  </main>
+      <th:block th:replace="~{common/common}"></th:block>
 
-  <form class="main">
+  <form action="/trainer/trainerMyPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
     <div class="main-my-page">My Page</div>
     <div class="main-box">
         <div class="email">아이디(Email)</div>
@@ -54,21 +49,15 @@
       <div class="profile-box">
         <form action="profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
           <div class="profile-image-area">
-            <img th:with="user=#{user.default.image}" th:src="${session.trainerLogin.profileImg ?: user }" id="profileImg">
+            <img th:with="trainer=#{trainer.default.image}" th:src="${session.trainerLogin.profileImg ?: trainer }" id="profileImg">
           </div>
           <span id="deleteImage">x</span>
         <div id="upload" class="profile-btn-area">
-          <input type="file" name="profileImg" id="imageInput" accept="image/*">
-          <button class="upload">프로필 사진 바꾸기</button>
+          <button class="upload" type="file" name="profileImg" id="imageInput" accept="image/*">프로필 사진 선택</button>
         </div>
       </div>
 
-      <div class="hight inHight">키</div>
-      <input type="text" name="memberCheck" id="memberhight" class="box" placeholder="선택사항입니다.">        
-      <div class="weight inWeight">몸무게</div>
-      <input type="text" name="memberCheck" id="memberWeight" class="box" placeholder="선택사항입니다.">
-
-      <button class="update"> 수정하기 </button>
+      <button class="update" id="update"> 수정하기 </button>
 
     </div>
   </form>

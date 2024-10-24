@@ -30,6 +30,7 @@
       </div>
       <input type="checkbox" id="checkbox" class="all-check-box">
       <div class="select">모두 선택</div>
+<<<<<<< HEAD
         <div class="main-box">
           <table>
             <thead>
@@ -38,6 +39,16 @@
               <th>작성일</th>
             </thead>
             <tbody>
+=======
+      <div class="main-box">
+      <table>
+        <thead>
+          <th>비고</th>
+          <th>|</th>
+          <th>작성일</th>
+        </thead>
+        <tbody>
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
               <td>
                 <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
                 <td th:text="*{boardContent}">내 활동 제목</td>
@@ -85,7 +96,11 @@
       loadFromHtml("../common/trainerHeader.html", temp1);
       /* side */
       const temp2 = document.querySelector("#temp2");
+<<<<<<< HEAD
       loadFromHtml("../common/trainerSideBar.html", temp2);
+=======
+      loadFromHtml("../common/memberSideBar.html", temp2);
+>>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
       /* footer */
       const temp3 = document.querySelector("#temp3");
       loadFromHtml("../common/footer.html", temp3);

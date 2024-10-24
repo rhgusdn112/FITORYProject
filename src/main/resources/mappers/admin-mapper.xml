@@ -10,10 +10,45 @@
 			EMAIL, 
 			PW,
 			NICKNAME, 
-			MEMBER_TEL,
+			DEL_FL,
+			AUTHORITY,
+			AUTHORITY_NO
 		FROM "ADMIN"
+		JOIN "AUTHORITY" USING(AUTHORITY_NO) 
 		WHERE EMAIL = #{adminEmail}
 		AND   DEL_FL = 'N'
 	</select>
+	
+	<select id="memberList"
+					resultType="Member"	>
+				SELECT 
+				    M.MEMBER_NO,
+				    M.MEMBER_EMAIL,
+				    M.MEMBER_NAME,
+				    M.MEMBER_TEL,
+				    M.MEMBER_BIRTHDAY,
+				    M.HEIGHT,
+				    M.WEIGHT,
+				    TO_CHAR(M.ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE,
+				    COUNT(R.COMMENT_NO) AS COMMENT_COUNT
+				FROM 
+				    MEMBER M
+				LEFT JOIN 
+				    REVIEW R ON M.MEMBER_NO = R.MEMBER_NO
+				GROUP BY 
+				    M.MEMBER_NO, 
+				    M.MEMBER_EMAIL, 
+				    M.MEMBER_NAME, 
+				    M.MEMBER_TEL, 
+				    M.MEMBER_BIRTHDAY, 
+				    M.HEIGHT, 
+				    M.WEIGHT, 
+				    M.ENROLL_DATE
+				ORDER BY 
+				    M.MEMBER_NO
+	</select>
+	
+	
+	
 	
 </mapper>

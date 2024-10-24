@@ -20,4 +20,9 @@ public class Admin {
 	private String nickname;
 	private String delFl;
 	
+	
+	// 관리자 권한 테이블 연결
+	private int authorityNo;
+	private String autority;
+	
 }

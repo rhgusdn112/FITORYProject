@@ -1,5 +1,7 @@
 package edu.kh.fit.admin.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +31,11 @@ public class AdminServiceImpl implements AdminService{
 //		}
 			
 		return adminLogin;
-
-		
 		}
+	
+	// 회원 목록 조회
+	@Override
+	public List<Member> memberList() {
+		return mapper.memberList();
+	}
 }

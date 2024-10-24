@@ -1,40 +1,177 @@
-/* 팝업 모달 스타일 */
+/* 게시글 페이지 스타일 정의 - 이 섹션은 게시글 페이지의 전반적인 스타일을 정의하는 부분입니다. */
+
+.main-content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "MaruBuri-Light", Helvetica;
+  /* 메인 콘텐츠 영역의 스타일을 정의하여 페이지 레이아웃을 설정합니다. 최대 너비, 중앙 정렬 및 패딩을 지정합니다. */
+}
+
+/* 게시글 제목 스타일 */
+.board-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 게시글 헤더 섹션 스타일 */
+.board-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 10px;
+}
+
+/* 작성자 정보 스타일 */
+.board-writer {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* 게시글 추가 정보 스타일 */
+.board-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* YouTube 영상 플레이어 스타일 */
+#youtube-player {
+  width: 100%;
+  height: 450px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* 팝업 모달 스타일 - 팝업을 화면 중앙에 배치하고 스타일을 정의 */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f9f9f9;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
   border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 3000;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
   text-align: center;
-  z-index: 2000;
   width: 60%;
 }
 
-/* 팝업 버튼 스타일 */
+/* 팝업 버튼 섹션 스타일 */
 .popup-buttons {
+  margin-top: 15px;
   display: flex;
   justify-content: center;
-  margin-top: 15px;
 }
 
+/* 팝업 버튼 스타일 */
 .popup-btn {
   padding: 10px 20px;
+  font-size: 1em;
   border: none;
   border-radius: 20px;
-  font-size: 1rem;
   cursor: pointer;
   margin: 0 10px;
 }
 
+/* 팝업 '영상 이어보기' 버튼 스타일 - '영상 이어보기' 버튼의 스타일을 정의합니다. */
 .popup-btn.continue {
   background-color: #ccc;
   color: #000;
 }
 
+/* 팝업 '영상 그만보기' 버튼 스타일 */
 .popup-btn.stop {
   background-color: #f0f0f0;
   color: #555;
+}
+
+/* 댓글 섹션 스타일 정의 */
+.comment-list {
+  margin-top: 30px;
+}
+
+/* 댓글 항목 스타일 */
+.comment-item {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* 댓글 작성자 스타일 */
+.comment-author {
+  font-weight: bold;
+  color: #333;
+}
+
+/* 댓글 텍스트 스타일 */
+.comment-text {
+  margin-top: 5px;
+  font-size: 0.95em;
+  color: #555;
+}
+
+/* 게시글 페이지 스타일 정의 - 피그마에서 따온 내용 반영 */
+.wrapper {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.post-container {
+  background-color: #ffffff;
+  width: 1439px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.post-date,
+.post-rating {
+  font-size: 14px;
+  color: #666;
+}
+
+.review {
+  background-color: #f0f0f0;
+  padding: 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.review-text {
+  font-size: 16px;
+  color: #000;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-item {
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
 }

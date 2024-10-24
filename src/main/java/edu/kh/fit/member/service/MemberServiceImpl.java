@@ -7,10 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
@@ -51,5 +53,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int emailCheck(String email) {
 		return mapper.emailCheck(email);
+	}
+
+	// 회원 정보 수정 비밀번호 확인
+	@Override
+	public boolean memberCheckPw(int memberNo, String memberPw) {
+		// log.debug("암호화 : {}", encorder.encode(memberPw));
+		
+		String encodePw = mapper.memberCheckPw(memberNo);
+		return encorder.matches(memberPw, encodePw);
+	}
+
+	// 회원 정보 수정
+	@Override
+	public int memberUpdate(Member updateMember) {
+		return mapper.memberUpdate(updateMember);
 	}
 }
