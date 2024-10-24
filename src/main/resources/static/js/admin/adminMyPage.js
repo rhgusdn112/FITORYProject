@@ -11,14 +11,10 @@ const pwCheck = document.querySelector("#pwCheck");
 const pwMessageObj = {}; // 빈 객체
 pwMessageObj.normal = "영어,숫자,특수문자 1글자 이상, 6~20자 사이로 입력하세요";
 pwMessageObj.invalid = "유효하지 않은 비밀번호 형식입니다.";
+pwMessageObj.valid = "유효한 비밀번호 형식입니다.";
 pwMessageObj.error = "기존 비밀번호와 동일합니다.";
-pwMessageObj.check = "유효한 비밀번호 형식입니다.";
+pwMessageObj.check = "변경할 비밀번호가 일치합니다.";
 
-const pwCheckobj = {};
-pwCheckobj.normal = "변경할 비밀번호를 다시 입력하세요.";
-pwCheckobj.invalid = "유효하지 않은 비밀번호 형식입니다.";
-pwCheckobj.error = "변경할 비밀번호가 일치하지 않습니다.";
-pwCheckobj.check = "변경할 비밀번호가 일치 합니다.";
 
 
 
@@ -27,7 +23,6 @@ password.addEventListener("input", () => {
   const inputPw = password.ariaValueMax.trim();
 
   if(inputPw.length == 0){
-    pwMessage.innerText = pwMessageObj.normal;
     
      // 비밀번호 메시지를 normal 상태 메시지로 변경
      pwMessage.innerText = pwMessageObj.normal;
@@ -55,7 +50,7 @@ password.addEventListener("input", () => {
   }
 
   // 형식에 맞는 경우
-  pwMessage.innerText = pwMessageObj.check;
+  pwMessage.innerText = pwMessageObj.valid;
   pwMessage.classList.add("confirm"); 
   pwMessage.classList.remove("error");
 
@@ -69,48 +64,30 @@ password.addEventListener("input", () => {
     return;
   }
 
-  // 비밀번호 확인 정규 표현식 객체
-  const pwLengthCheck = inputPwCheck.length >= 6 && inputPwCheck.length <= 20;
-  const pwLetterCheck = /[a-zA-Z]/.test(inputPwCheck); // 영어 알파벳 포함
-  const pwNumberCheck = /\d/.test(inputPwCheck); // 숫자 포함
-  const pwSpecialCharCheck = /[!@#_-]/.test(inputPwCheck); // 특수문자 포함
+  
+  function checkPw(){
 
-  if ( !(pwLengthCheck && pwLetterCheck && pwNumberCheck && pwSpecialCharCheck) ) {
-    pwCheckobj.innerText = pwCheckobj.invalid; // 유효하지 않은 때 메시지
-    pwCheckobj.classList.add("error"); // 빨간 글씨 추가
-    pwCheckobj.classList.remove("confirm"); // 초록 글씨 삭제
-    return;
-  }
-});
+    // 같은 경우
+    if(password.value === PwConfirm.value){
+      pwMessageObj.innerText = pwMessageObj.check;
+      pwMessageObj.classList.add("confirm");
+      pwMessageObj.classList.remove("error");
+      return;
+    }
 
-function checkPw(){
-
-  // 같은 경우
-  if(Pw.value === PwConfirm.value){
-    pwCheckobj.innerText = pwCheckobj.check;
-    pwCheckobj.classList.add("confirm");
-    pwCheckobj.classList.remove("error");
-    return;
+    // 다른 경우
+    pwMessageObj.innerText = pwMessageObj.error;
+    pwMessageObj.classList.add("error");
+    pwMessageObj.classList.remove("confirm");
   }
 
-  // 다른 경우
-  pwCheckobj.innerText = pwCheckobj.error;
-  pwCheckobj.classList.add("error");
-  pwCheckobj.classList.remove("confirm");
-}
 
+  /* ----- 비밀번호 확인이 입력 되었을 때  ----- */
+  PwConfirm.addEventListener("input", ()=>{
 
-/* ----- 비밀번호 확인이 입력 되었을 때  ----- */
-PwConfirm.addEventListener("input", ()=>{
-
-  // 비밀번호 input에 작성된 값이 유효한 형식일때만 비교
-  if( checkObj.pw === true ){
-    checkPw();
-    return;
-  }
+    // 비밀번호 input에 작성된 값이 유효한 형식일때만 비교
+      checkPw();
+      return;
+  })
 });
 
-
-updateBtn.addEventListener("click", () => {
-
-});

@@ -4,70 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" th:href="@{/css/login/login.css}">
+  <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+
+  </style>
 </head>
 <body>
-  
+
   <div th:if="${session.adminLogin != null}"class="main-my-page">
-       
-      <th:block th:if= "${session.adminLogin.authorityNo == 1}">
 
-        <h2>회원 관리자 페이지</h2>
-        <form action="/admin/member" method="post" id="memberCare">
-          <h3>
-            <a href="/admin/member">회원 관리 및 조회</a>
-          </h3>
-
-          <table>
-            <thead>
-              <tr>
-                <th>회원번호</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>가입일</th>
-                <th>댓글 수</th>
-                <th>누적 신고</th>
-                <th>
-                  <button type="menu">정렬방식▽</button>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <th:block th:if= "${#lists.isEmpty(memberList)}">
-                <tr>
-                  <th colspan="6">회원이 존재하지 않습니다.</th>
-                </tr>
-              </th:block>
-
-              <th:block th:if= "${#lists.isEmpty(memberList)}"></th:block>
-                <tr th:each= "member:${memberList}" th:object="${member}">
-                  <td th:text="*{memberNo}">회원번호</td>
-                  <td th:text="*{memberEmail}">아이디</td>
-                  <td th:text="*{memberName}">이름</td>
-                  <td th:text="*{enrollDate}">가입일</td>
-                  <td th:text="*{countComment}">댓글 수</td>
-                  <td th:text="*{memberFlag}">누적신고</td>
-                </tr>
-              </th:block>  
-            </tbody>
-
-          </table>
-
-
-
-      </th:block>
-
-      <th:block th:if= "${session.adminLogin.authorityNo == 2}">
-
-        <h2>강사 관리자 페이지</h2>
-        <form action="/admin/trainer" method="post" id="trainerCare">
-          <h3>회원 관리 및 조회</h3>
-
-
-        </form>
-      
-      </th:block>
 
       <th:block th:if= "${session.adminLogin.authorityNo == 3}">
 
@@ -85,12 +29,21 @@
 
   </div>
 
-  <div th:if="${session.adminLogin == null}" class="main-box">
+  <div th:if="${session.adminLogin == null}" class="main-my-page">
+    
     <form class="login-container"  id="loginForm" >
-      <h2>관리자 페이지</h2>
-      <h3>로그인 후 이용바랍니다.</h3>
-      
-        <a href="/admin/login">로그인 페이지로 이동</a>
+      <table>
+        <tr>
+          <th>로그인 후 이용바랍니다.</th>
+        </tr>
+        <tr>
+          <th>
+            <a href="/admin/login">로그인 페이지로 이동</a>
+          </th>
+        </tr>
+        
+        
+      </table>
 
     </form>
   </div>
@@ -99,6 +52,8 @@
   
   
   <script src="/js/admin/adminLoginjs"></script>
+  
+  
   <script th:if="${message}">
     alert("아이디 혹은 패스워드가 일치하지 않습니다.");
   </script>

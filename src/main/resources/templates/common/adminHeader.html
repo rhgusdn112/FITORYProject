@@ -12,14 +12,17 @@
       <!-- 네비게이션 메뉴 -->
       <nav>
         <!-- 로그아웃 관련 항목 -->
-        <div class="header-nav-item-wrapper">
-          <a href="/admin/logout" class="header-nav-item">Logout</a>
-        </div>
+        <th:block th:if= "${session.adminLogin}">
+          <div class="header-nav-item-wrapper" >
+            <a href="/admin/logout" class="header-nav-item">Logout</a>
+          </div>
+        </th:block>
       </nav>
     </div>
   </header>
 
   <!-- 고정된 사이드바 영역 -->
+   <th:block th:if="${session.adminLogin}"></th:block>
   <div id="side-bar" class="header-side-bar">
     <div class="side-item">
       <a href="/admin/myPage" class="side-page">My Page</a>
@@ -29,9 +32,6 @@
     </div>
     <div class="side-item">
       <a href="/admin/trainer" class="side-2">강사 관리 및 조회</a>
-    </div>
-    <div class="side-item">
-      <a href="/admin/dashBoard" class="side-3">대시보드</a>
     </div>
     <div class="side-item">
       <a href="/admin/question" class="side-4">자주묻는 질문</a>
