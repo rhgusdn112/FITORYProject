@@ -2,43 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.board.mapper.BoardMapper">
 
-<!-- <select id="selectDetail" resultMap="board_rm">
-	
-	
-		<id property="boardNo" column="BOARD_NO"/>
-		
-		
-	</resultMap> !-->
-<!--     <resultMap type="Board" id="board_rm">
-        <id property="boardNo" column="BOARD_NO"/>
-        
-        
-    </resultMap> -->
+	<!-- <select id="selectDetail" resultMap="board_rm"> <id property="boardNo" 
+		column="BOARD_NO"/> </resultMap> ! -->
+	<!-- <resultMap type="Board" id="board_rm"> <id property="boardNo" column="BOARD_NO"/> 
+		</resultMap> -->
 
 	<!-- 게시글 상세 조회 -->
-	<select id="selectDetail" 
-	resultType="Board">
+	<select id="selectDetail" resultType="Board">
 		SELECT
-			BOARD_NO,
-			TITLE,
-			DETAIL,
-			CLASS_NO,
-			HITS,
-			B.TRAINER_NO,
-			TRAINER_NICKNAME,
-			PROFILE_IMG,
-			PAYMENT,
+		BOARD_NO,
+		TITLE,
+		DETAIL,
+		PATH,
+		CLASS_NO,
+		HITS,
+		B.TRAINER_NO,
+		TRAINER_NICKNAME,
+		PROFILE_IMG,
+		PAYMENT,
 
-			TO_CHAR(UPLOAD_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
-			AS UPLOAD_DATE,
+		TO_CHAR(UPLOAD_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+		AS
+		UPLOAD_DATE,
 
-			TO_CHAR(BILLING_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
-			AS BILLING_DATE
+		TO_CHAR(BILLING_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+		AS
+		BILLING_DATE
 
-			FROM "BOARD" B
-			JOIN "TRAINER" T ON (B.TRAINER_NO = T.TRAINER_NO)
-			WHERE BOARD_NO = #{boardNo}
-			AND CLASS_NO = #{classNo}
+		FROM "BOARD" B
+		JOIN "TRAINER" T ON (B.TRAINER_NO =
+		T.TRAINER_NO)
+		WHERE BOARD_NO = #{boardNo}
+		AND CLASS_NO = #{classNo}
 	</select>
 
+	<select id="selectCommentList" parameterType="int"
+		resultType="Comment">
+		SELECT R.*, M.MEMBER_NAME AS memberNickname
+		FROM REVIEW R
+		JOIN MEMBER M ON R.MEMBER_NO = M.MEMBER_NO
+		WHERE R.BOARD_NO =
+		#{boardNo}
+		AND R.REVIEW_DEL_FL = 'N'
+		ORDER BY R.REVIEW_WRITE_DATE DESC
+	</select>
+
+	<select id="hasReviewed" parameterType="map" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM REVIEW
+		WHERE
+			MEMBER_NO = #{memberNo}
+			AND BOARD_NO = #{boardNo}
+			AND REVIEW_DEL_FL = 'N'
+	</select>
 </mapper>

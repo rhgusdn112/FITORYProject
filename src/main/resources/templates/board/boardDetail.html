@@ -4,65 +4,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fitory</title>
+  <title>Fitory - Board Detail</title>
   <script src="https://www.youtube.com/iframe_api"></script> <!-- YouTube IFrame API -->
   <link rel="stylesheet" href="/css/board/boardDetail.css">
 </head>
 
 <body>
-  <!-- common 조각 삽입(header 포함) -->
+  <!-- 공통 조각 삽입 (헤더 포함) -->
   <th:block th:replace="~{common/common}"></th:block>
 
-  <!-- 메인 콘텐츠 -->
+  <!-- 메인 콘텐츠 영역 -->
   <main class="main-content" th:object="${board}">
 
-    <h1 class="board-title" th:text="*{title}">게시글 제목</h1>
+    <div class="wrapper">
+      <div class="post-container">
+        <div class="post-header">
+          <h2 class="post-title" th:text="*{title}">게시글 제목</h2>
+          <span class="post-date">작성일 정보 없음</span>
+          <span class="post-rating">별점 정보 없음</span>
+        </div>
+        
+        <div class="review">
+          <p class="review-text">한줄평 정보 없음</p>
+        </div>
 
-    <!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
-    <div class="board-header">
-      <div class="board-writer">
-        <span th:text="*{trainerNickname}">작성자 닉네임</span>
-      </div>
+        <!-- 유튜브 영상 삽입 -->
+        <div id="youtube-player" th:data-detail="${board.detail}"></div>
 
-      <div class="board-info">
-        <p>
-          <span>작성일</span>
-          <th:block th:text="*{uploadDate}"></th:block>
-        </p>
+        <!-- 팝업 모달 -->
+        <div id="video-popup" class="popup" style="display: none;">
+          <h2>영상을 이어보시겠습니까?</h2>
+          <div class="popup-buttons">
+            <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
+            <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
+          </div>
+        </div>
 
-        <!-- 수정한 게시글인 경우 -->
-        <p th:if="*{billingDate}">
-          <span>마지막 수정일</span>
-          <th:block th:text="*{billingDate}"></th:block>
-        </p>
-      </div>
-    </div>
-
-    <!-- 유튜브 영상 삽입 -->
-    <div id="youtube-player" th:data-detail="${board.detail}"></div>
-
-    <!-- 팝업 모달 -->
-    <div id="video-popup" class="popup" style="display: none;">
-      <h2>영상을 이어보시겠습니까?</h2>
-      <div class="popup-buttons">
-        <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
-        <button id="stop-video" class="popup-btn stop">영상 그만보기</button>
+     
       </div>
     </div>
 
-    [[${board}]]
   </main>
-  <!-- 댓글 조각 삽입 -->
-  <th:block th:replace="~{board/comment :: comment-list}"></th:block>
 
-
+  <!-- 댓글 섹션 삽입 -->
+  <th:block th:replace="~{board/comment :: comment-section}"></th:block>
 
   <!-- 푸터 조각 삽입 -->
   <footer th:replace="~{common/footer :: footer}"></footer>
 
   <script th:inline="javascript">
     // 서버에서 전달받은 board 객체를 JSON 형태로 변환하여 JavaScript 변수에 담음
-    var board = /*[[${board}]]*/ {};  // board 객체를 JSON으로 변환
+    var board = /*[[${board}]]*/ {};
     // 로그인 여부를 JavaScript 변수에 전달 (guest가 아닌 경우 true)
     var isLoggedIn = /*[[${userType != 'guest'}]]*/ false;
   </script>
