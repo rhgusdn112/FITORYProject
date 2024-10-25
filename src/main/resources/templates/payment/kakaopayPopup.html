@@ -23,15 +23,6 @@
 
     async function requestPay() {
       try {
-        // const paymentData = {
-        //   paymentMember: 123,
-        //   paymentBoard: 456,
-        //   classTitle: className,
-        //   paymentAmount: classAmount,
-        //   currency: "KRW",
-        //   customerName: "홍길동"
-        // };
-
         const response = await fetch("/payment/request-payment", {
           method: "POST",
           headers: {
@@ -75,7 +66,32 @@
           console.log("결제 성공", response);
           alert("결제가 성공적으로 완료되었습니다!");
           // 주문 정보 insert (ajax) -> 성공 시 주문 결과 페이지로 location.href
-          fetch("/")
+          
+          // 주문 정보 insert(ajax)
+          const orderResponse = await fetch("/order/insert", {
+            method : "POST",
+            headers : {
+              "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+              paymentId : data.paymentId,
+              orderNo : orderNo,
+              classTitle: className,
+              paymentAmount: classAmount,
+              currency: "KRW",
+              customerName: paymentName
+            })
+          });
+
+          const orderData = await orderResponse.json();
+          if (orderData.success) {
+            // 주문 결과 페이지로 이동
+            location.href = `/order/result?orderNo=${orderNo}`;
+          } else {
+            console.error("주문 정보 저장 실패:", orderData);
+            alert("주문 정보를 저장하는 데 실패했습니다. 다시 시도해 주세요.");
+          }
+
         }
         
 
@@ -83,25 +99,6 @@
         console.error('결제 준비 중 오류 발생:', error);
       }
     }
-
-    // 결제 상태 업데이트를 서버에 전달하는 함수
-    // function updatePaymentStatus(paymentId, status) {
-    //   // AJAX 요청으로 서버에 상태 업데이트
-    //   fetch('/payment/update-status', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ paymentId: paymentId, status: status }),
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       console.log('결제 상태 업데이트 결과:', data);
-    //     })
-    //     .catch((error) => {
-    //       console.error('결제 상태 업데이트 중 오류 발생 :', error);
-    //     });
-    // }
 
     // 페이지 로드 후 결제 요청
     document.addEventListener("DOMContentLoaded", () => {
