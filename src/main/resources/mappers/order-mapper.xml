@@ -20,4 +20,16 @@
 			)
 	</insert>
 
+	<!-- 결제 결과 정보 불러오기 -->
+	<select id="selectOrder" parameterType="order">
+		SELECT 
+			ORDER_NO AS orderNo,
+			ORDER_CLASS_NAME AS classTitle,
+			ORDER_CLASS_AMOUNT AS paymentAmount,
+			ORDER_MEMBER_NAME AS customerName
+		FROM
+			"ORDER"
+		WHERE
+			ORDER_NO = #{orderNo}
+	</select>
 </mapper>

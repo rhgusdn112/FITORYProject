@@ -10,4 +10,7 @@ public interface OrderMapper {
 	// 결제 정보 호출하기 
 	int insertOrder(Order order);
 
+	//주문 결과 불러오기
+	Order selectOrder(String orderNo);
+
 }

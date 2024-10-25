@@ -21,5 +21,11 @@ public class OrderServiceImpl implements OrderService{
 		int result = mapper.insertOrder(order);
 		return result> 0;
 	}
+	
+	// 주문 결과 불러오기
+	@Override
+	public Order selectOrder(String orderNo) {
+		return mapper.selectOrder(orderNo);
+	}
 
 }
