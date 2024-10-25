@@ -7,7 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.mapper.AdminMapper;
+import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import lombok.RequiredArgsConstructor;
 
@@ -40,8 +43,33 @@ public class AdminServiceImpl implements AdminService{
 		return mapper.memberList();
 	}
 	
+	// 강사 목록 조회
 	@Override
 	public List<Trainer> trainerList() {
 		return mapper.trainerList();
+	}
+	
+	// 주문내역 조회
+	@Override
+	public List<Order> selectOrderList(int memberNo) {
+		return mapper.selectOrderList(memberNo);
+	}
+	
+	// 댓글 목록 조회
+	@Override
+	public List<Comment> selectCommentList(int memberNo) {
+		return mapper.selectCommentList(memberNo);
+	}
+	
+	// 문의 내역 조회
+	@Override
+	public String selectQueryList(int memberNo) {
+		return mapper.selectQueryList(memberNo);
+	}
+	
+	// 신고 내역 조회
+	@Override
+	public List<Report> selectReportList(int memberNo) {
+		return mapper.selectReportList(memberNo);
 	}
 }

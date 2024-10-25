@@ -86,5 +86,63 @@
 	</select>
 	
 	
+	<!-- 주문내역 조회 -->
+	<select id="selectOrderList"
+					resultType="Order">
+		SELECT
+			ORDER_NO,
+			ORDER_TRAINER_NAME,
+			ORDER_CLASS_NAME,
+			ORDER_CLASS_AMOUNT
+		FROM "ORDER"
+		WHERE
+		 ORDER_MEMBER_NAME = (
+		 		SELECT MEMBER_NAME
+		 		FROM MEMBER
+		 		WHERE MEMBER_NO = #{memberNo});
+	</select>
+	
+	<!-- 댓글 목록조회 -->
+	<select id="selectCommentList"
+					resultType="Comment">
+			SELECT
+				COMMENT_NO,
+				REVIEW_CONTENT,
+				TO_CHAR(REVIEW_WRITE_DATE,'YYYY"년" MM"월" DD"일"),
+				NUMBER,
+				BOARD_NO
+			FROM "REVIEW"
+			WHERE MEMBER_NO = #{memberNo}
+			AND REVIEW_DEL_FL = 'N'
+	</select>
+	
+	<!-- 문의내역 조회 -->
+	<select id="selectQueryList"
+					resultType="Query">
+					SELECT 
+						QUERY_NO,
+						QUERY_DETAIL,
+						QUERY_DATE,
+						QUERY_TYPE,
+						STATUS						
+					FROM "QUERY"
+					WHERE QUERY_PK = #{memberNo}
+	</select>
+	
+	<!-- 신고내역 조회 -->
+	<select id="selectReportList"
+					resultType="Report">
+					SELECT
+						REPORT_NO,
+						REPORT_DETAIL,
+						TO_CHAR(REPORT_DATE,'YYYY"년" MM"월" DD"일"') AS REPORT_DATE,
+						REPORTER_TYPE,
+						ASSAILANT_TYPE,
+						ASSAILANT_PK,
+						STATUS
+					FROM "REPORT"
+					WHERE REPORTER_PK = #{memberNo}										
+	</select>
+	
 	
 </mapper>
