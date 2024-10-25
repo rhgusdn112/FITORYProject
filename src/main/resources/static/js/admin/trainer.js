@@ -1,6 +1,6 @@
-const memberList = document.querySelector("#memberList");
+const trainerList = document.querySelector("#trainerList");
 
-const selectMemberList = () => {
+const selectTrainerList = () => {
 
   fetch("/admin/trainerList")
   .then(response => {
@@ -10,7 +10,7 @@ const selectMemberList = () => {
   .then(list => {
 
     // console.log(list);
-    trainerList.innerHTML = "";
+    trainerList.innerText="";
 
     list.forEach(trainer => {
 
@@ -21,7 +21,7 @@ const selectMemberList = () => {
       td1.innerText = trainer.trainerNo;
 
       const td2 = document.createElement("td");
-      td2.innerText = trainer.mtrainerEmail;
+      td2.innerText = trainer.trainerEmail;
 
       const td3 = document.createElement("td");
       td3.innerText = trainer.trainerNickname;
@@ -30,23 +30,29 @@ const selectMemberList = () => {
       td4.innerText = trainer.enrollDate;
 
       const td5 = document.createElement("td");
-      const commentCount = document.createElement("a");
-      boardCount.innerText = trainer.countBoard;
-      td5.append(commentCount);
+      const boardCount = document.createElement("a");
+
+      boardCount.href = "/admin/board?trainerNo=" + trainer.trainerNo;
+      
+      boardCount.innerText = trainer.countBoardNo;
+      td5.append(boardCount);
 
       const td6 = document.createElement("td");
       const reportCount = document.createElement("a");
+
+      reportCount.href = "/admin/report?trainerNo=" + trainer.trainerNo;
+
       reportCount.innerText = trainer.trainerFlag;
       td6.append(reportCount);
 
       tr.append(td1, td2, td3, td4, td5, td6);
 
-      memberList.append(tr);
+      trainerList.append(tr);
     })
   })
   .catch(err => console.error(err));
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-  selectMemberList();
+  selectTrainerList();
 })

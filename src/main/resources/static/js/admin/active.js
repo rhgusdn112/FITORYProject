@@ -6,13 +6,20 @@ document.addEventListener("DOMContentLoaded",()=>{
   selectReportList();
 })
 
+// 회원번호 주소에서 받아오기
+const memberNo = location.href.split("=")[1];
+// console.log(memberNo);
 
 // 주문내역 조회
 const orderList = document.querySelector("#orderList");
 
 const selectOrderList = () => {
 
-  fetch("/admin/oderList")
+  fetch("/admin/oderList",{
+    method : "post",
+    headers : {"Content-Type":"application/json"},
+    body : memberNo
+  })
   .then(response => {
     if(response.ok) return response.json();
     throw new Error("조회 오류");
@@ -53,10 +60,10 @@ const commentList = document.querySelector("#commentList");
 
 const selectCommentList = () => {
 
-  fetch("/admin/commentList")
-  .then(response => {
-    if(response.ok) return response.json();
-    throw new Error("조회 오류");
+  fetch("/admin/commentList",{
+    method : "post",
+    headers : {"Content-Type":"application/json"},
+    body : memberNo
   })
   .then(list => {
 
@@ -72,9 +79,12 @@ const selectCommentList = () => {
       td1.innerText = comment.commentNo; // 번호
 
       const td2 = document.createElement("td");
-      td2.innerText = comment.commentDetatl; // 내용
+      td2.innerText = comment.reviewContent; // 내용
+      
+      const td2 = document.createElement("td");
+      td2.innerText = comment.reviewWriteDate; // 작성일자
 
-      tr.append(td1, td2);
+      tr.append(td1, td2, td3);
 
       commentList.append(tr);
     })
@@ -87,10 +97,10 @@ const queryList = document.querySelector("#queryList");
 
 const selectQueryList = () => {
 
-  fetch("/admin/queryList")
-  .then(response => {
-    if(response.ok) return response.json();
-    throw new Error("조회 오류");
+  fetch("/admin/queryList",{
+    method : "post",
+    headers : {"Content-Type":"application/json"},
+    body : memberNo
   })
   .then(list => {
 
@@ -106,9 +116,12 @@ const selectQueryList = () => {
       td1.innerText = query.queryNo; // 번호
 
       const td2 = document.createElement("td");
-      td2.innerText = query.queryTitle; // 내용
+      td2.innerText = query.queryType; // 문의 종류
 
-      tr.append(td1, td2);
+      const td3 = document.createElement("td");
+
+      td3.innerText = query.status; // 진행 상태
+      tr.append(td1, td2, td3);
 
       queryList.append(tr);
     })
@@ -121,10 +134,10 @@ const reportList = document.querySelector("#queryList");
 
 const selectReportList = () => {
 
-  fetch("/admin/reportList")
-  .then(response => {
-    if(response.ok) return response.json();
-    throw new Error("조회 오류");
+  fetch("/admin/reportList",{
+    method : "post",
+    headers : {"Content-Type":"application/json"},
+    body : memberNo
   })
   .then(list => {
 
@@ -141,8 +154,11 @@ const selectReportList = () => {
 
       const td2 = document.createElement("td");
       td2.innerText = report.reportTitle; // 내용
-
-      tr.append(td1, td2);
+      
+      const td3 = document.createElement("td");
+      td2.innerText = report.status; // 진행상태
+      
+      tr.append(td1, td2, td3);
 
       reportList.append(tr);
     })

@@ -43,4 +43,10 @@ public class Trainer {
 	private String qualification; // 자격 정보
 	private String award; // 수상 내역
 	private String career; // 이력
+	
+	// 강사가 작성한 게시글 생성을 위한 필드 생성
+	private int countBoardNo;
+	private int boardNo;
+	private int countReportNo;
+	
 }
