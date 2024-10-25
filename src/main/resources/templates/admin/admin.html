@@ -9,7 +9,6 @@
   </style>
 </head>
 <body>
-
   <div th:if="${session.adminLogin != null}"class="main-my-page">
 
 
@@ -50,9 +49,7 @@
    
     
   
-  
-  <script src="/js/admin/adminLoginjs"></script>
-  
+  <script th:src="@{/js/admin/adminLoginjs}"></script>
   
   <script th:if="${message}">
     alert("아이디 혹은 패스워드가 일치하지 않습니다.");

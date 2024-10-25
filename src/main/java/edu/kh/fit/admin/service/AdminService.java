@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.trainer.dto.Trainer;
 
 public interface AdminService {
 
@@ -18,5 +19,10 @@ public interface AdminService {
 	 * @return
 	 */
 	List<Member> memberList();
+
+	/** 강사 목록 조회
+	 * @return
+	 */
+	List<Trainer> trainerList();
 	
 }
