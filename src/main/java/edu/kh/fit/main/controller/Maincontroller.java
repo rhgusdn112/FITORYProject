@@ -44,7 +44,7 @@ public class Maincontroller {
 
  	@GetMapping("cart")
  	public String cart() {
- 		return "member/cart";
+ 		return "cart/cart";
  	}
  	
  	@GetMapping("admin")
