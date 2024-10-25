@@ -20,6 +20,6 @@ public interface MemberMapper {
 	String memberCheckPw(int memberNo);
 	
 	// 회원 정보 수정
-	int memberUpdate(Member updateMember);
+	int updateMember(Member inputMember);
 
 }

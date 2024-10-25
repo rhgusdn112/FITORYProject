@@ -39,7 +39,7 @@ public interface TrainerService {
 	 * @param trainerNo
 	 * @return
 	 */
-	String profile(MultipartFile profileImg, int trainerNo);
+	String profile(MultipartFile imgProfileList, int trainerNo);
 
 
 

@@ -31,7 +31,7 @@ input::placeholder {
 	padding: 3%;
 }
 .main-class {
-	color: black;
+	color: #292929;
 	font-size: 32px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -39,7 +39,7 @@ input::placeholder {
 
 .box {
   border: 1px solid;
-  color:black;
+  color:#292929;
   font-family: "MaruBuriSemiBold", Helvetica;
   justify-content: center;
   display: flex;
@@ -49,7 +49,7 @@ input::placeholder {
 }
 
 #selectType{
-	color: black;
+	color: #292929;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
@@ -75,7 +75,7 @@ tr>td{
 	padding: 20%;
 }
 .select{
-	color: black;
+	color: #292929;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;

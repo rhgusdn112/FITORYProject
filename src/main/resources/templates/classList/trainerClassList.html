@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>내 강의 목록</title>
-  <link rel="stylesheet" href="../../static/css/classList/memberClassList.css">
+  <link rel="stylesheet" href="/css/classList/memberClassList.css">
   <style>
     @font-face {
       font-family: 'MaruBuriSemiBold';
@@ -16,16 +16,9 @@
 </head>
 
 <body>
-  <main>
-    <main>
-      <div id="temp1"></div>
-      <div id="temp2"></div>
-      <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
-      <th:block th:replace="~{myPage/side}"></th:block> -->
-    </main>
-  </main>
+  <th:block th:replace="~{common/common}"></th:block>
 
-  <div class="main">
+  <form action="/trainer/trainerClassList" method="POST" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
     <div class="main-class">강의 목록</div>
     <div class="container">
       <select name="select" id="selectType">
@@ -36,91 +29,86 @@
     </div>
     <input type="checkbox" id="checkbox" class="all-check-box">
     <div class="select">모두 선택</div>
-      <div class="main-box">
-        <table class="box">
-          <tbody>
-            <tbody>
-              <!-- 게시글 리스트를 반복하여 출력 -->
-              <tr th:each="post : ${posts}">
+    <div class="main-box">
+      <table class="box">
+        <tbody>
+          <!-- 게시글 리스트를 반복하여 출력 -->
+          <tr th:each="post : ${posts}">
+            <th>
+              <div class="img-box">
+                <div class="boardImg">
+                  <label for="img1">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img2">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img3">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img4">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+              </div>
               <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
-              <td th:text="${boardTitle}">제목</td>
-              <td th:text="${boardContent}">설명</td>
-              <td th:text="${trainerNickname}">강사</td>
-              <td th:text=" ${boardCategory}">카테고리</td>
-              <td><input type="checkbox" class="checkbox"></td>
-            </tr>
-              <tr th:each="post : ${posts}">
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
-              <td th:text="${boardTitle}">제목</td>
-              <td th:text="${boardContent}">설명</td>
-              <td th:text="${trainerNickname}">강사</td>
-              <td th:text=" ${boardCategory}">카테고리</td>
-              <td><input type="checkbox" class="checkbox"></td>
-            </tr>
-              <tr th:each="post : ${posts}">
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
-              <td th:text="${boardTitle}">제목</td>
-              <td th:text="${boardContent}">설명</td>
-              <td th:text="${trainerNickname}">강사</td>
-              <td th:text=" ${boardCategory}">카테고리</td>
-              <td><input type="checkbox" class="checkbox"></td>
-            </tr>
-            </tr>
-              <tr th:each="post : ${posts}">
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
-              <td th:text="${boardTitle}">제목</td>
-              <td th:text="${boardContent}">설명</td>
-              <td th:text="${trainerNickname}">강사</td>
-              <td th:text=" ${boardCategory}">카테고리</td>
-              <td><input type="checkbox" class="checkbox"></td>
-            </tr>
-          </tbody>
-        </table>
-            <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 수정</button>
-            <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
+            </th>
+            <td>
+              <div th:text="|Title : ${boardTitle}|">제목 :</div>
+              <div th:text="|설명 : ${boardContent}|">설명 :</div>
+              <div th:text="|강사 : ${trainerNickname}|">강사 :</div>
+              <div th:text="|카테고리 : ${boardCategory}|">카테고리:</div>
+            </td>
+            <th><input type="checkbox" class="checkbox"></th>
+          </tr>
+        </tbody>
+      </table>
+      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 수정</button>
+      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
 
-            <!-- 페이지 -->
-            <div class="pagination">
-              <a href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">7</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">10</a>
-          </div>
-        </div>
-        <!-- 탑버튼 -->
-        <button class="top">▲</button>
-        </div>
+      <!-- 페이지 -->
+      <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
       </div>
     </div>
-  </div>
-    <div id="temp3"></div>
-  </div>
+    <!-- 탑버튼 -->
+    <button class="top">▲</button>
+  </form>
+  <th:block th:replace="~{common/footer::footer}"></th:block>
+  <script src="/js/classList/trainerMyPage.js"></script>
+  <script th:inline="javascript">
+    const imageList = /*[[${board.trainerImg}]]*/[];
+    const previewList = document.querySelectorAll('img.preview');
+    for (let img of imageList) {
+      previewList[img.imgOrder].src = img.imgPath + img.imgRename;
 
-  <script>
-    function loadFromHtml(path, selector) {
-      fetch(path)
-        .then(resp => resp.text())
-        .then(result => {
-          selector.outerHTML = result;
-        })
+      // 미리보기가 출력된 이미지 순서를 orderList에 추가
+      orderList.push(img.imgOrder);
     }
-    /* header */
-    const temp1 = document.querySelector("#temp1");
-    loadFromHtml("../common/trainerHeader.html", temp1);
-    /* side */
-    const temp2 = document.querySelector("#temp2");
-    loadFromHtml("../common/trainerSideBar.html", temp2);
-    /* footer */
-    const temp3 = document.querySelector("#temp3");
-    loadFromHtml("../common/footer.html", temp3);
   </script>
 </body>
-
 
 </html>

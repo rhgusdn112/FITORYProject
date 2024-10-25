@@ -4,21 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/myPage/memberMyActivities.css">
+  <title>내 활동 내역</title>
+  <link rel="stylesheet" href="/css/myPage/memberMyActivities.css">
 </head>
 
 <body>
-  <main>
-    <main>
-      <div id="temp1"></div>
-      <div id="temp2"></div>
-      <!-- <th:block th:replace="~{myPage/myPageHeader}"></th:block>
-      <th:block th:replace="~{myPage/side}"></th:block> -->
-    </main>
-  </main>
+  <th:block th:replace="~{common/common}"></th:block>
 
-  <div class="main">
+  <form action="/member/memberMyActivities" method="GET" name="myPageAct" id="myPageAct" class="main">
     <div class="activities">내 활동 내역</div>
     <div class="main-box">
       <div class="container">
@@ -39,6 +32,7 @@
         </thead>
         <tbody>
               <td>
+                <!-- <img src="../../static/images/teacher1.jpg"> -->
                 <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
                 <td th:text="*{boardContent}">내 활동 제목</td>
                 <td th:text="*{boardTypeNo}">게시판 종류</td>
@@ -66,31 +60,11 @@
           <!-- 탑버튼 -->
           <button class="top">▲</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-      <div id="temp3"></div>
     </div>
-  
-    <script>
-      function loadFromHtml(path, selector) {
-        fetch(path)
-          .then(resp => resp.text())
-          .then(result => {
-            selector.outerHTML = result;
-          })
-      }
-      /* header */
-      const temp1 = document.querySelector("#temp1");
-      loadFromHtml("../common/trainerHeader.html", temp1);
-      /* side */
-      const temp2 = document.querySelector("#temp2");
-      loadFromHtml("../common/memberSideBar.html", temp2);
-      /* footer */
-      const temp3 = document.querySelector("#temp3");
-      loadFromHtml("../common/footer.html", temp3);
-    </script>
+    <div th:replace="common/footer :: footer"></div>
+    <script src="/js/myPage/memberMyActivities.js"></script>
   </body>
-  
-  
   </html>

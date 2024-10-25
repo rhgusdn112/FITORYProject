@@ -1,7 +1,14 @@
-@font-face {
+@@font-face {
   font-family: 'MaruBuriSemiBold';
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+
+* {
+	justify-content: center;
+	align-items: center;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	margin: auto;
 }
 
 input::placeholder {
@@ -10,11 +17,9 @@ input::placeholder {
 }
 
 .main {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 80vw;
 	height: 100px;
-	margin: auto;
 	justify-content: center;
 	/* border: 1px solid; */
 	padding: 10% 10% 10% 10%;
@@ -26,50 +31,41 @@ input::placeholder {
 	color: #bfbfbf;
 	margin: auto;
 	margin-top: 3%;
-	min-height: 100hv;
+	min-height: 40vh;
 	height: 25%;
 	padding: 15%;
 }
 
 .password {
-	color: black;
+	color: #3b3b3b;
 	font-size: 32px;
-	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
 }
 
 .box {
   border: 1px solid;
-  color:black;
-  font-family: "MaruBuriSemiBold", Helvetica;
-  justify-content: center;
+  color:#3b3b3b;
   display: flex;
-  margin: 2% 0% 2%;
+  margin: 2% 0% 2% 0%;
   padding: 5px;
   width: 100%;
 }
 
 /* 버튼 */
 .loginBtn {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
 	margin: auto;
-	justify-content: center;
-	text-align: center;
 	width: 50%;
   border-radius: 20px 0px 0px 20px;
   float: left;
   background-color: #bfbfbf00;
 }
 .passBtn{
-  font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 0.8% 1%;
 	margin: auto;
-	justify-content: center;
-	text-align: center;
 	width: 50%;
   float: right;
   border-radius: 0px 20px 20px 0px;

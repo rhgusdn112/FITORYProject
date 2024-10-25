@@ -21,6 +21,8 @@ public interface TrainerMapper {
 	int updateTrainer(Trainer inputTrainer);
 
 	// 강사 사진 수정
-	int profile(Object object, int trainerNo);
+	int profile(String url, int trainerNo);
+
+
 
 }

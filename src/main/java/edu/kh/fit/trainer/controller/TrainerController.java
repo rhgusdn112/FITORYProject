@@ -151,7 +151,7 @@ public class TrainerController {
 	  model.addAttribute("isLoggedIn", true);
 		return "/myPage/trainerMyPage";
 	}
-
+	
 	/** 강사 페이지 수정
 	 * @param inputTrainer
 	 * @param trainerLogin
@@ -159,10 +159,13 @@ public class TrainerController {
 	 * @return
 	 */
 	@PostMapping("trainerMyPage")
-	public String updateInfo(@ModelAttribute Trainer inputTrainer, @SessionAttribute("trainerLogin") Trainer trainerLogin,
+	public String updateInfo(
+			@ModelAttribute Trainer inputTrainer, 
+			@SessionAttribute("trainerLogin") Trainer trainerLogin,
+			@RequestParam("imgProfile") List<MultipartFile> imgProfileList, 
 			RedirectAttributes ra) {
 
-		int trainerNo = inputTrainer.getTrainerNo();
+		int trainerNo = trainerLogin.getTrainerNo();
 		inputTrainer.setTrainerNo(trainerNo);
 
 		int result = service.updateTrainer(inputTrainer);
@@ -170,20 +173,15 @@ public class TrainerController {
 		String message = null;
 		if (result > 0) {
 			message = "수정이 되었습니다.";
-			inputTrainer.setTrainerNickname(inputTrainer.getTrainerNickname());
-			inputTrainer.setTrainerTel(inputTrainer.getTrainerTel());
-			
+			trainerLogin.setTrainerNickname(inputTrainer.getTrainerNickname());
+			trainerLogin.setTrainerTel(inputTrainer.getTrainerTel());
+			trainerLogin.setProfileImg(inputTrainer.getProfileImg());
 		} else
 			message = "수정에 실패하였습니다.";
 
 		ra.addFlashAttribute("message", message);
 
-		return "/myPage/trainerMyPage";
-	}
-	
-	@GetMapping("profile")
-	public String profile() {
-		return "myPage/profile";
+		return "redirect:/trainer/trainerMyPage";
 	}
 	
 	/** 프로필 이미지 수정
@@ -193,19 +191,30 @@ public class TrainerController {
 	 * @return
 	 */
 	@PostMapping("profile")
-	public String profile(@RequestParam("profileImg") MultipartFile profileImg,
+	public String profile(@RequestParam("imgProfile") MultipartFile imgProfileList,
 												@SessionAttribute("trainerLogin") Trainer trainerLogin,
 												RedirectAttributes ra) {
 		
 		// 1) login한 회원의 회원 번호 얻어오기
 		int trainerNo = trainerLogin.getTrainerNo();
-		String filePath = service.profile(profileImg, trainerNo);
+		String filePath = service.profile(imgProfileList, trainerNo);
 		String message = null;
 		message = "프로필 이미지가 변경되었습니다.";
 		trainerLogin.setProfileImg(filePath);
 		ra.addFlashAttribute("message", message);
 		
-		return "/myPage/profile";
+		return "/myPage/trainerMyPage";
 	}
+	
+	/* 내 강의 관리 바로가기 */
+	@GetMapping("")
+	public String trainerClassList(@SessionAttribute("trainerLogin") Trainer trainerLogin) {
+		return "/classList/trainerClassList";
+	}
+//	
+//	@PostMapping("trainerClassList")
+//	public String classList(){
+//		return null;
+//	}
 
 }

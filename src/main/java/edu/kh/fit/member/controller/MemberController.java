@@ -1,5 +1,7 @@
 package edu.kh.fit.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
+import edu.kh.fit.trainer.dto.Trainer;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -99,19 +103,6 @@ public class MemberController {
 		
 		return "redirect:" + path;
 	}
-	
-	
-		/** 회원 페이지로 이동
-		 * @return
-		 */
-		@GetMapping("/MyPage")
-		public String memberMyPage(
-				@SessionAttribute("memberLogin") Member memberLogin
-				) {
-			
-			return "/member/MyPage";
-		}
-		
 		
 		/** 이메일 중복 검사(비동기)
 		 * @param email : 입력된 이메일
@@ -169,6 +160,7 @@ public class MemberController {
 			return "redirect:" + path;
 		}
 		
+		/* 마이페이지 이동 */
 		@GetMapping("memberMyPage")
 		public String myPage(
 				Model model, 
@@ -187,29 +179,40 @@ public class MemberController {
 		 * @return
 		 */
 		@PostMapping("memberMyPage")
-		public String memberMyPage(@SessionAttribute("memberLogin") Member memberLogin, @ModelAttribute Member updateMember, RedirectAttributes ra) {
+		public String updateInfo(
+				@ModelAttribute Member inputMember, 
+				@SessionAttribute("memberLogin") Member memberLogin,
+				RedirectAttributes ra) {
 
 			int memberNo = memberLogin.getMemberNo();
-			updateMember.setMemberNo(memberNo);
-			int update = service.memberUpdate(updateMember);
-			
-			String message = null;
-			String path = null;
-			
-			if(update > 0) {
-			memberLogin.setMemberName(updateMember.getMemberName());
-			memberLogin.setMemberTel(updateMember.getMemberTel());
+			inputMember.setMemberNo(memberNo);
 
-			message = "정보가 수정되었습니다.";
-			path = "memberMyPage";
-			} else {
-				message = "정보 수정이 실패하였습니다.";
-				path = "memberMyPage";
-				return "redirect:memberMyPage";
-			}
+			int result = service.updateMember(inputMember);
+
+			String message = null;
+			if (result > 0) {
+				message = "수정이 되었습니다.";
+				memberLogin.setMemberName(inputMember.getMemberName());
+				memberLogin.setMemberTel(inputMember.getMemberTel());
+			} else message = "수정에 실패하였습니다.";
+
 			ra.addFlashAttribute("message", message);
-			return "redirect:" + path;
+
+			return "redirect:/member/memberMyPage";
 		}
 		
-
+		/* 내 강의 관리 바로가기 */
+		@GetMapping("")
+		public String memberClassList(@SessionAttribute("memberLigin") Member memberLogin) {
+			
+			
+			
+			return "/classList/memberClassList";
+		}
+		
+//		/* 내 활동 내역 바로가기 */
+//		@GetMapping("")
+//		public String memberMyActivities() {
+//			return "/myPage/memberMyActivities";
+//		}
 }

@@ -68,14 +68,14 @@ public class TrainerServiceImpl implements TrainerService{
 		return mapper.updateTrainer(inputTrainer);
 	}
 
-
+	// 프로필 사진 수정
 	@Override
-	public String profile(MultipartFile profileImg, int trainerNo) {
-		if(profileImg.isEmpty()) {
+	public String profile(MultipartFile imgProfileList, int trainerNo) {
+		if(imgProfileList.isEmpty()) {
 			int result = mapper.profile(null, trainerNo);
 			return null;
 		}
-		String rename = FileUtil.rename(profileImg.getOriginalFilename());
+		String rename = FileUtil.rename(imgProfileList.getOriginalFilename());
 		String url = profileWebPath + rename;
 		
 		int result = mapper.profile(url, trainerNo);
@@ -83,7 +83,7 @@ public class TrainerServiceImpl implements TrainerService{
 		try {
 			File folder = new File(profileFolderPath);
 			if(!folder.exists()) folder.mkdirs();
-			profileImg.transferTo(new File(profileFolderPath + rename));
+			imgProfileList.transferTo(new File(profileFolderPath + rename));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
