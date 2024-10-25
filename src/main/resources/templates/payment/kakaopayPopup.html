@@ -10,6 +10,9 @@
 <body>
 
   <script th:inline="javascript">
+    const classNo = /*[[${classNo}]]*/ null; // 강의명
+    const orderMemberNo = /*[[${session.memberLogin.memberNo}]]*/ null; // 주문자 번호
+
     const className = /*[[${className}]]*/ null; // 강의명
     const classAmount = /*[[${classAmount}]]*/ 0; // 가격
     const orderNo = /*[[${orderNo}]]*/ null; // 주문번호
@@ -72,10 +75,10 @@
             },
             body : JSON.stringify({
               orderNo : orderNo,
-              classTitle: className,
-              paymentAmount: classAmount,
-              currency: "KRW",
-              customerName: paymentName
+              orderClassNo: classNo,
+              orderClassAmount: classAmount,
+              orderCurrency: "KRW",
+              orderMemberNo: orderMemberNo
             })
           });
 
