@@ -14,7 +14,7 @@
 
     <div class="main-box">
       <div class="main-title">TRAINER PROFILE</div>
-          <h2 class="trainerProfile" th:text="*{trainerProfile}">강사 프로필</h2>
+          <h2 class="profile" th:text="*{trainerProfile}">강사 프로필</h2>
           <span class="uploadDate">작성일 정보 없음</span>
           <span class="uploadRating">별점 정보 없음</span>
         </div>
@@ -30,8 +30,9 @@
             <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
             <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
           </div>
+          
         <div th:replace="common/footer :: footer"></div>
 
-        <script src="/js/teacher/teacher.js"></script>
+        <script src="/js/trainer/trainerProfile.js"></script>
 </body>
 </html>

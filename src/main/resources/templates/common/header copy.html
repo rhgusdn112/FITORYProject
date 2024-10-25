@@ -1,0 +1,50 @@
+<div th:fragment="header">
+    <!-- 헤더 영역 시작 -->
+    <header class="header">
+        <!-- 메뉴 아이콘 클릭 시 사이드 메뉴를 열기 위한 아이콘 -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <img src="/images/menu-icon.gif" alt="Menu Icon" style="width: 24px; height: 24px;">
+        </div>
+        <!-- 로고 영역 -->
+        <div class="logo-container">
+            <a th:href="@{/main}" class="logo-link">
+                <h1 class="logo">FITORY</h1>
+            </a>
+        </div>
+        <!-- 사이드 메뉴 영역 -->
+        <div id="side-menu" class="side-menu">
+            <!-- 사이드 메뉴 닫기 아이콘 -->
+            <div class="close-icon" onclick="toggleMenu()">
+                <img src="/images/menu-icon.gif" alt="Close Icon" style="width: 24px; height: 24px;">
+            </div>
+            <!-- 네비게이션 메뉴 (로그인 여부에 따른 메뉴 항목) -->
+            <nav>
+                <ul>
+                    <!-- 로그인된 사용자의 경우 MyPage, Logout, Cart -->
+                    <li th:if="${#authentication?.principal != null}">
+                        <a th:href="@{/mypage}" class="nav-item">MyPage</a>
+                    </li>
+                    <li th:if="${#authentication?.principal != null}">
+                        <a th:href="@{/logout}" class="nav-item">Logout</a>
+                    </li>
+                    <!-- 로그인 여부와 관계없이 Cart는 항상 표시 -->
+                    <li>
+                        <a th:href="@{/cart}" class="nav-item">Cart</a>
+                    </li>
+                    <!-- 로그인되지 않은 사용자의 경우 LogIn -->
+                    <li th:if="${#authentication?.principal == null}">
+                        <a th:href="@{/login}" class="nav-item">LogIn</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- 검색 바 영역 -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search" class="search-input" oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
+            <button class="clear-button" onclick="document.querySelector('.search-input').value = ''; this.style.display = 'none';" style="display: none;">X</button>
+            <button class="search-button"><i class="fa fa-search"></i></button>
+        </div>
+    </header>
+    <!-- JavaScript 파일 링크 추가 -->
+    <script src="/js/main.js"></script>
+</div>

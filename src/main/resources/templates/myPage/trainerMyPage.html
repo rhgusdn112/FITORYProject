@@ -11,17 +11,16 @@
 <body>
       <th:block th:replace="~{common/common}"></th:block>
 
-  <form action="/trainer/trainerMyPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+  <form action="/trainer/trainerMyPage" method="POST" enctype="multipart/form-data"  name="myPageUpdate" id="myPageInfo" class="main">
     <div class="main-my-page">My Page</div>
     <div class="main-box">
         <div class="email">아이디(Email)</div>
-        <input type="text" name="memberNomal" id="memberEmail" class="box" placeholder="이메일 입력">
+        <input type="text" name="trainerEmail" id="trainerEmail" class="box" placeholder="이메일 입력"
+        th:value="${session.trainerLogin.trainerEmail}" readonly>
         <div class="name">이름</div>
-        <input type="text" name="memberNomal" id="memberName" class="box" placeholder="이름 작성">
-        <div class="birth">생년월일</div>
-        <input type="text" name="memberNomal" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
+        <input type="text" name="trainerNickname" id="trainerName" class="box" placeholder="이름 작성" th:value="${session.trainerLogin.trainerNickname}">
         <div class="tel">전화번호</div>
-        <input type="text" name="memberNomal" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
+        <input type="text" name="trainerTel" id="trainerTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요." th:value="${session.trainerLogin.trainerTel}">
       <div class="main-in">자격사항</div>
       <table class="qualification-table">
         <thead>
@@ -29,31 +28,62 @@
             <th>자격사항</th>
             <th class="date-th">
               취득일
-              <button class="plus">+</button>
+              <button type="button" value="+" class="plus" id="plus">+</button>
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="tbody">
           <tr>
             <td>
               <input class="review" name="qName" placeholder="자격사항을 작성해주세요.">
             </td>
             <td>
-              <input type="date" name="qDate">
+              <input class="date" type="date" name="qDate">
             </td>
           </tr>
         </tbody>
       </table>
 
       <div class="profile">프로필 사진(2장 필수)</div>
+      <!-- <div class="img-box">
+        <div class="boardImg thumbnail">
+          <label for="img0">
+            <img class="preview">
+          </label>
+          <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+          <span class="delete-image">&times;</span>
+        </div>
+      </div>
+      <div class="img-box">
+        <div class="boardImg">
+          <label for="img1">
+            <img class="preview">
+          </label>
+          <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+          <span class="delete-image">&times;</span>
+        </div>
+        <div class="boardImg">
+          <label for="img2">
+            <img class="preview">
+          </label>
+          <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+          <span class="delete-image">&times;</span>
+        </div>
+        <div class="boardImg">
+          <label for="img3">
+            <img class="preview">
+          </label>
+          <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+          <span class="delete-image">&times;</span>
+        </div>
+      </div> -->
       <div class="profile-box">
-        <form action="profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
           <div class="profile-image-area">
-            <img th:with="trainer=#{trainer.default.image}" th:src="${session.trainerLogin.profileImg ?: trainer }" id="profileImg">
+            <img th:with="trainer=#{trainerImg}" th:src="${session.trainerLogin.profileImg ?: trainer}" id="profileImg">
           </div>
+          <div id="upload" class="profile-btn-area">
           <span id="deleteImage">x</span>
-        <div id="upload" class="profile-btn-area">
-          <button class="upload" type="file" name="profileImg" id="imageInput" accept="image/*">프로필 사진 선택</button>
+          <input class="upload" type="file" name="imgProfile" id="imageInput" accept="image/*"  placeholder="프로필 사진 선택">
         </div>
       </div>
 
@@ -66,6 +96,6 @@
 
   <!-- 푸터 -->
   <th:block th:replace="~{common/footer::footer}"></th:block>
-  <script src="/js/myPage/memberMyPage.js"></script>
+  <script src="/js/myPage/trainerMyPage.js"></script>
 </body>
 </html>

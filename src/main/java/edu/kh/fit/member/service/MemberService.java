@@ -1,6 +1,9 @@
 package edu.kh.fit.member.service;
 
+import java.util.List;
+
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 
 public interface MemberService {
 	
@@ -31,9 +34,15 @@ public interface MemberService {
 	boolean memberCheckPw(int memberNo, String memberPw);
 
 	/** 회원 업데이트
-	 * @param updateMember
+	 * @param inputMember
 	 * @return
 	 */
-	int memberUpdate(Member updateMember);
+	int updateMember(Member inputMember);
+
+	/** 내가 결제한 강의 조회
+	 * @param memberNo
+	 * @return
+	 */
+	List<Order> classList(int memberNo);
 
 }

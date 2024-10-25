@@ -11,7 +11,7 @@ html, body {
 .footer {
   background-color: #bfbfbf;
   padding: 20px;
-  color:  #757575;
+  color: #333;
   position: relative;
   width: 100%; /* 푸터를 화면 전체에 꽉 차게 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */

@@ -6,15 +6,16 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/admin/member" method="post" id="memberCare">
-    <h3>
-      <a href="/admin/member">강사 관리 및 조회</a>
-    </h3>
-
+  <section>
+    <h3>강사 관리 및 조회</h3>
+    <div>
+      <button type="menu">정렬방식▽</button>
+    </div>
+  
     <table boarder="1" >
       <thead>
         <tr>
-          <th>회원번호</th>
+          <th>강사번호</th>
           <th>|</th>
           <th>아이디</th>
           <th>|</th>
@@ -22,39 +23,31 @@
           <th>|</th>
           <th>가입일</th>
           <th>|</th>
-          <th>댓글 수</th>
+          <th>게시글 수</th>
           <th>|</th>
           <th>누적 신고</th>
-          <th>|</th>
-          <th>
-            <button type="menu">정렬방식▽</button>
-          </th>
         </tr>
       </thead>
-
-      <tbody>
-        <th:block th:if= "${#lists.isEmpty(memberList)}">
+  
+      <tbody id="trainerList">
           <tr>
-            <th colspan="13">&nbsp;</th>
-          </tr>
-          <tr>
-            <th colspan="13">회원이 존재하지 않습니다.</th>
-          </tr>
-        </th:block>
-
-        <th:block th:if= "${#lists.isEmpty(memberList)}"></th:block>
-          <tr th:each= "member:${memberList}" th:object="${member}">
-            <td th:text="*{memberNo}">회원번호</td>
-            <td th:text="*{memberEmail}">아이디</td>
-            <td th:text="*{memberName}">이름</td>
-            <td th:text="*{enrollDate}">가입일</td>
-            <td th:text="*{countComment}">댓글 수</td>
-            <td th:text="*{memberFlag}">누적신고</td>
+            <td>회원번호</td>
+            <td>아이디</td>
+            <td>이름</td>
+            <td>가입일</td>
+            <td>
+              <a>게시글 수</a>
+            </td>
+            <td>
+              <a>누적신고</a>
+            </td>
           </tr>
         </th:block> 
       </tbody>
-
+  
     </table>
-  </form>
+  </section>
+
+  <script th:src="@{/js/admin/trainer.js}"></script>
 </body>
 </html>

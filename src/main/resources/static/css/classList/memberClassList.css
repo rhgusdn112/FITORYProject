@@ -4,13 +4,16 @@
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
 
+*{
+	font-family: 'MaruBuriSemiBold';
+}
+
 input::placeholder {
 	text-align: left;
 	font-size: 15px;
 }
 
 .main {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 50vw;
 	padding-left: 20%;
@@ -32,24 +35,14 @@ input::placeholder {
 }
 
 .main-class {
-	color:  #757575;
+	color: #292929;
 	font-size: 32px;
-	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
 }
 
 .select{
-	color:  #757575;
+	color:#292929;
 	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
-  float: right;
-}
-
-.container > #selectType{
-	color:  #757575;
-	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
   float: right;
 }
@@ -59,13 +52,9 @@ input::placeholder {
   display: flex;
 }
 
-/* #all-check-box{
-
-} */
 
 /* 수정하기 버튼 */
 .update {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
 	margin: auto;
@@ -77,7 +66,6 @@ input::placeholder {
   background-color: #bfbfbf00;
 }
 .delete{
-  font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 0.8% 1%;
@@ -94,13 +82,12 @@ input::placeholder {
   color: rgb(255, 255, 255);
 }
 .delete:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
   background-color: rgb(255, 255, 255)
 }
 
 /* 탑버튼 */
 .top {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 1%;
@@ -112,7 +99,7 @@ input::placeholder {
 }
 
 .top:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
 }
 
 /* 페이지네이션 스타일 */
@@ -130,4 +117,23 @@ input::placeholder {
   text-decoration: none;
   color: #bfbfbf;
   padding: 10%; 
+}
+
+.box{ width: 100%;}
+.box > tbody > tr {
+	padding: 10%;
+	margin: 10%;
+}
+.box > tbody > tr > th:first-child{
+	width: 20%;
+	color: #292929;
+}
+.box > tbody > tr > th:last-child{
+	width: 5%;
+	color: #292929;
+}
+
+.box > tbody > tr > td{
+	width: 75%;
+	color: #292929;
 }

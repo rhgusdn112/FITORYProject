@@ -25,12 +25,26 @@ public class Trainer {
 	private String enrollDate; // 가입일
 	private String trainnerDelFl; // 탈퇴여부('Y', 'N')
 	private String gender; // 성별(남, 여)
-	
-	
-	
+
+//댓글 관련 필드 선언
+ private int countComment; // 작성한 댓글 수
+ private int commentNo;
+ private String reviewContent;   // 댓글 
+ 
+ // 신고 관련 필드 선언
+ private int countReport;
+ private int reportNo;
+ private String reportDetail;
+
 	// 강사 자격정보 생성을 위한 필드생성
 	private int qualificationNo; // 자격 정보 번호
 	private String qualification; // 자격 정보
 	private String award; // 수상 내역
 	private String career; // 이력
+	
+	// 강사가 작성한 게시글 생성을 위한 필드 생성
+	private int countBoardNo;
+	private int boardNo;
+	private int countReportNo;
+	
 }

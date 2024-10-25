@@ -1,49 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 <body>
-  <h3>회원 관리 및 조회</h3>
-  <button type="menu">정렬방식▽</button>
-</div>
 
-<table boarder="1" >
-  <thead>
-    <tr>
-      <th>회원번호</th>
-      <th>|</th>
-      <th>아이디</th>
-      <th>|</th>
-      <th>이름</th>
-      <th>|</th>
-      <th>가입일</th>
-      <th>|</th>
-      <th>댓글 수</th>
-      <th>|</th>
-      <th>누적 신고</th>
-    </tr>
-  </thead>
+  <section>
+    <h3>회원 관리 및 조회</h3>
+    <div>
+      <button type="button" id="btn">정렬방식▽</button>
+    </div>
+  
+    <table boarder="1" style="border-collapse: collapse;">
+      <thead id="thead">
+        <tr>
+          <th>회원번호</th>
+          <th>|</th>
+          <th>아이디</th>
+          <th>|</th>
+          <th>이름</th>
+          <th>|</th>
+          <th>가입일</th>
+          <th>|</th>
+          <th>누적 신고</th>
+          <th>|</th>
+          <th>활동 내역</th>
+        </tr>
+      </thead>
+  
+      <tbody id="memberList">
+          <tr>
+            <td>회원번호</td>
+            <td>아이디</td>
+            <td>이름</td>
+            <td>가입일</td>
+            <td>
+              <a>댓글 수</a>
+            </td>
+            <td>
+              <a>누적신고</a>
+            </td>
+          </tr>
+        </th:block> 
+      </tbody>
+  
+    </table>
+  </section>
 
-  <tbody id="memberList">
-      <tr>
-        <td>회원번호</td>
-        <td>아이디</td>
-        <td>이름</td>
-        <td>가입일</td>
-        <td>
-          <a href="/admin/comment">댓글 수</a>
-        </td>
-        <td>
-          <a href="/admin/flag">누적신고</a>
-        </td>
-      </tr>
-    </th:block> 
-  </tbody>
-
-</table>
-</form>
+  <script th:src="@{/js/admin/member.js}"></script>
 </body>
 </html>
