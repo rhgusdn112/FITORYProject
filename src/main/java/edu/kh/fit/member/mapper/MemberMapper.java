@@ -1,8 +1,11 @@
 package edu.kh.fit.member.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 
 @Mapper
 public interface MemberMapper {
@@ -21,5 +24,7 @@ public interface MemberMapper {
 	
 	// 회원 정보 수정
 	int updateMember(Member inputMember);
+
+	List<Order> classList(int memberNo);
 
 }

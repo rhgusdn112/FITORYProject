@@ -65,7 +65,7 @@
                   <span class="delete-image">&times;</span>
                 </div>
               </div>
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <img th:if="${post.thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
             </th>
             <td>
               <div th:text="|Title : ${boardTitle}|">제목 :</div>
@@ -77,8 +77,8 @@
           </tr>
         </tbody>
       </table>
-      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 수정</button>
-      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
+      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">전체 선택</button>
+      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택 해제</button>
 
       <!-- 페이지 -->
       <div class="pagination">

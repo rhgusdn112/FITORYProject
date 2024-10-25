@@ -15,15 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
-import edu.kh.fit.payment.dto.Payment;
-import edu.kh.fit.trainer.dto.Trainer;
-import lombok.RequiredArgsConstructor;
+import edu.kh.fit.payment.dto.Order;
 
 @Controller
 @RequestMapping("member")
@@ -204,15 +200,17 @@ public class MemberController {
 		}
 		
 		/* 내 강의 관리 바로가기 */
-		@GetMapping("")
-		public String memberClassList(@SessionAttribute("memberLigin") Member memberLogin,
-																	@RequestParam("paymentBoard") Payment paymentBoard,
-																	@RequestParam("trainerNo") Trainer trainerNo,
-																	@RequestParam("title") Board title,
-																	@RequestParam("detail") Board detaile,
-																	RedirectAttributes ra) {
+		@GetMapping("memberClassList")
+		public String memberClassList(
+				@SessionAttribute("memberLogin") Member memberLogin,
+				@RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
+				Model model) {
 			
+			// 내 강의 조회 서비스
+			int memberNo = memberLogin.getMemberNo();
+			List<Order> orderList = service.classList(memberNo);
 			
+			model.addAttribute("orderList", orderList);
 			
 			return "/classList/memberClassList";
 		}
