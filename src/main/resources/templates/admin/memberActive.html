@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/css/myPage/memberMyActivities.css">
+</head>
+
+<body>
+  
+  <section class = "orderTable">
+    <table border="1">
+      <thead> <!-- 주문 내역  -->
+        <tr>
+          <th>번호</th>
+          <th>|</th>
+          <th>상품명</th>
+          <th>|</th>
+          <th>가격</th>
+          <th>|</th>
+          <th>결제일</th>
+          <!-- <th>|</th>
+          <th>환불</th>
+          <th>|</th>
+          <th>신고</th> -->
+        </tr>
+      </thead>
+
+      <tbody id="orderList"> <!-- list 목록화 -->
+        <tr>
+          <td>1</td>
+          <td>boardTitle</td>
+          <td>가격</td>
+          <td>결제일</td>
+          <!-- <th>환불</th>
+          <th>신고</th> -->
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class = "commentTable">
+    <table border="1">
+      <thead> <!-- 댓글 작성 내역  -->
+        <th>번호</th>
+        <th>|</th>
+        <th>댓글 내용</th>
+      </thead>
+
+      <tbody id="commentList"> <!-- list 목록화 -->
+        <td>1</td>
+        <td>boardTitle</td>
+      </tbody>
+    </table>
+  </section>
+
+  <section class = "queryTable">
+    <table border="1">
+      <thead> <!-- 문의 내역  -->
+        <th>번호</th>
+        <th>|</th>
+        <th>문의 제목</th>
+      </thead>
+
+      <tbody id="queryList"> <!-- list 목록화 -->
+        <td>1</td>
+        <td>boardTitle</td>
+      </tbody>
+    </table>
+  </section>
+  
+  <section class = "reportTable">
+    <table border="1">
+      <thead> <!-- 신고 내역  -->
+        <th>번호</th>
+        |
+        <th>신고 제목</th>
+      </thead>
+
+      <tbody id="reportList"> <!-- list 목록화 -->
+        <td>1</td>
+        <td>boardTitle</td>
+      </tbody>
+    </table>
+  </section>
+  
+    <script th:src="@{/js/admin/active.js}"></script>
+  </body>
+  </html>

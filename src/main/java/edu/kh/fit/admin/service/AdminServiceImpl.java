@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.mapper.AdminMapper;
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.trainer.dto.Trainer;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -37,5 +38,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Member> memberList() {
 		return mapper.memberList();
+	}
+	
+	@Override
+	public List<Trainer> trainerList() {
+		return mapper.trainerList();
 	}
 }

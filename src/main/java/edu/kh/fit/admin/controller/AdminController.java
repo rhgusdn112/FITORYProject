@@ -16,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.service.AdminService;
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.trainer.dto.Trainer;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +40,16 @@ public class AdminController {
   public String adminLogin(
   		) {
       return "admin/adminLogin";
+  }
+  
+  @GetMapping("member")
+  public String member() {
+  	return "admin/member";
+  }
+
+  @GetMapping("trainer")
+  public String trainer() {
+  	return "admin/trainer";
   }
   
   @GetMapping("myPage")
@@ -100,12 +112,30 @@ public class AdminController {
 		}
 	}
 	
+	/**
+	 * 비동기로 회원 목록 조회 
+	 * @return
+	 */
+	@GetMapping("memberList")
 	@ResponseBody
-	@GetMapping("member")
 	public List<Member> memberList(){
 		return  service.memberList();
 	}
+	
+	@GetMapping("active")
+	public String memberActiveList() {
+		return "/admin/memberActive";
+	}
 		
+	/**
+	 * 비동기로 회원 목록 조회
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("trainerList")
+	public List<Trainer> trainerList(){
+		return  service.trainerList();
+	}
 }
 	
 	
