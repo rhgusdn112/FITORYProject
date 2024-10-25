@@ -66,7 +66,9 @@ public class MemberServiceImpl implements MemberService{
 
 	// 회원 정보 수정
 	@Override
-	public int memberUpdate(Member updateMember) {
-		return mapper.memberUpdate(updateMember);
+	public int updateMember(Member inputMember) {
+		return mapper.updateMember(inputMember);
 	}
+
+
 }

@@ -61,9 +61,9 @@
 	</select>
 	
 		<!-- 회원 마이페이지 수정 -->
-	<update id="memberUpdate">
+	<update id="updateMember">
 		UPDATE "MEMBER"
-		SET MEMBER_PW = #{memberPw}, MEMBER_NAME = {memberName}, MEMBER_TEL = #{memberTel}
+		SET MEMBER_NAME = #{memberName}, MEMBER_TEL = #{memberTel}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 

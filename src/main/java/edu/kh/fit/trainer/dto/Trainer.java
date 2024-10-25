@@ -26,8 +26,6 @@ public class Trainer {
 	private String trainnerDelFl; // 탈퇴여부('Y', 'N')
 	private String gender; // 성별(남, 여)
 	
-	
-	
 	// 강사 자격정보 생성을 위한 필드생성
 	private int qualificationNo; // 자격 정보 번호
 	private String qualification; // 자격 정보

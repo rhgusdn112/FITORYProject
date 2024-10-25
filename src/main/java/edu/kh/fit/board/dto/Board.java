@@ -36,7 +36,23 @@ public class Board {
 	// TRAINER 테이블 JOIN 컬럼
 	private String trainerNickname;
 	
+	// 보드 타입
+	private int boardTypeNo; // 게시판 번호
+	private String boardTypeName; // 썸네일 이미지
 	
-	// 필요 시 추가 예정
+	// 이미지 관련
+	private int imgNo; // 이미지 번호
+	private String imgPath; // 요청 경로
+	private String imgOriginalName; // 원본명
+	private String imgRename; // 변경명
+	private int imgOrder; // 이미지 순서
+	
+	// 보드 영상 관련 
+	private int videoNo; // 동영상 번호
+	private String videoPath; // 요청 경로
+	private String videoOriginalName; // 원본명
+	private String videoRename; // 변경명
+	private int videoOrder; // 동영상 순서
+	
 	
 }

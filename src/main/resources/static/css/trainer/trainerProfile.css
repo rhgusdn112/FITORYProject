@@ -3,26 +3,18 @@
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
-
 * {
-	justify-content: center;
-	align-items: center;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	margin: auto;
-}
-
-input::placeholder {
-	text-align: center;
-	font-size: 15px;
+  font-family: "MaruBuriSemiBold", Helvetica;
 }
 
 .main {
 	min-height: 100vh;
-	min-width: 80vw;
-	height: 100px;
+	min-width: 50vw;
+	padding-left: 20%;
+	margin: auto;
 	justify-content: center;
 	/* border: 1px solid; */
-	padding: 10% 10% 10% 10%;
+	padding-right: 3%;
 }
 
 /* main 박스 */
@@ -30,52 +22,26 @@ input::placeholder {
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 40vh;
-	height: 25%;
-	padding: 15%;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
+	padding: 3%;
+	min-width: 50vw;
 }
 
-.password {
-	color: black;
+.main-title{
+	color:  #525252;
 	font-size: 32px;
 	text-shadow: 10px #bfbfbf;
+  text-align: center;
 }
 
 .box {
   border: 1px solid;
-  color:black;
+  color: #bfbfbf;
+  justify-content: center;
   display: flex;
-  margin: 2% 0% 2% 0%;
+  margin: 2% 0% 2%;
   padding: 5px;
   width: 100%;
-}
-
-/* 버튼 */
-.loginBtn {
-	color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: auto;
-	width: 50%;
-  border-radius: 20px 0px 0px 20px;
-  float: left;
-  background-color: #bfbfbf00;
-}
-.passBtn{
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: auto;
-	width: 50%;
-  float: right;
-  border-radius: 0px 20px 20px 0px;
-}
-
-.loginBtn:hover {
-  background-color: #bfbfbf;
-  color: rgb(255, 255, 255);
-}
-.passBtn:hover {
-	color: rgba(78, 78, 78, 0.200);
-  background-color: rgb(255, 255, 255)
 }

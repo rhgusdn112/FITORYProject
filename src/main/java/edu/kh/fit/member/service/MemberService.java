@@ -31,9 +31,9 @@ public interface MemberService {
 	boolean memberCheckPw(int memberNo, String memberPw);
 
 	/** 회원 업데이트
-	 * @param updateMember
+	 * @param inputMember
 	 * @return
 	 */
-	int memberUpdate(Member updateMember);
+	int updateMember(Member inputMember);
 
 }
