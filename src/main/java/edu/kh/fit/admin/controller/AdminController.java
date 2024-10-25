@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.service.AdminService;
 import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
