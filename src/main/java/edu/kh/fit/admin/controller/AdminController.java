@@ -37,7 +37,7 @@ public class AdminController {
 	
 	private final AdminService service;
 	
-	
+	/* forward 메서드 */
 	@GetMapping("contents")
 	public String Contents() {
 		return "admin/contents";
@@ -59,6 +59,17 @@ public class AdminController {
   	return "admin/trainer";
   }
   
+	
+	@GetMapping("active")
+	public String memberActiveList() {
+		return "/admin/memberActive";
+	}
+	
+
+	
+	
+	
+	//------------------------------------------------------------------------------------
   @GetMapping("myPage")
   public String myPage(
   		@SessionAttribute("adminLogin") Admin adminLogin,
@@ -119,6 +130,9 @@ public class AdminController {
 		}
 	}
 	
+	
+	/* ***************** 비동기 목록 조회 메서드 ***************************** */
+	
 	/**
 	 * 비동기로 회원 목록 조회 
 	 * @return
@@ -128,11 +142,7 @@ public class AdminController {
 	public List<Member> memberList(){
 		return  service.memberList();
 	}
-	
-	@GetMapping("active")
-	public String memberActiveList() {
-		return "/admin/memberActive";
-	}
+
 		
 	/**
 	 * 비동기로 회원 목록 조회
@@ -184,6 +194,11 @@ public class AdminController {
 
 		return service.selectReportList(memberNo);
 	}
+	
+	
+	
+	
+	
 }
 	
 	
