@@ -126,7 +126,9 @@
 						QUERY_TYPE,
 						STATUS						
 					FROM "QUERY"
-					WHERE QUERY_PK = #{memberNo}
+					WHERE QUERY_PK = 
+						if num = memerN o  
+						#{memberNo}
 	</select>
 	
 	<!-- 신고내역 조회 -->
