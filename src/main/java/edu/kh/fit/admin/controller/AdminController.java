@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,10 +16,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.service.AdminService;
+import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.member.service.MemberService;
+import edu.kh.fit.payment.dto.Order;
+import edu.kh.fit.trainer.dto.Trainer;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @Slf4j
 @Controller
@@ -39,6 +47,16 @@ public class AdminController {
   public String adminLogin(
   		) {
       return "admin/adminLogin";
+  }
+  
+  @GetMapping("member")
+  public String member() {
+  	return "admin/member";
+  }
+
+  @GetMapping("trainer")
+  public String trainer() {
+  	return "admin/trainer";
   }
   
   @GetMapping("myPage")
@@ -101,12 +119,71 @@ public class AdminController {
 		}
 	}
 	
+	/**
+	 * 비동기로 회원 목록 조회 
+	 * @return
+	 */
+	@GetMapping("memberList")
 	@ResponseBody
-	@GetMapping("member")
 	public List<Member> memberList(){
 		return  service.memberList();
 	}
+	
+	@GetMapping("active")
+	public String memberActiveList() {
+		return "/admin/memberActive";
+	}
 		
+	/**
+	 * 비동기로 회원 목록 조회
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("trainerList")
+	public List<Trainer> trainerList(){
+		return  service.trainerList();
+	}
+	
+	/** 비동기로 회원번호와 일치하는 주문내역 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("orderList")
+	public List<Order> orderList(
+			@RequestBody int memberNo){
+		return service.selectOrderList(memberNo);
+	}
+	
+	/** 비동기로 회원번호와 일치하는 댓글 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("commentList")
+	public List<Comment> commentList(
+		@RequestBody int memberNo	){
+		return service.selectCommentList(memberNo);
+	}
+	
+	/** 비동기로 회원번호와 일치하는 문의 내역 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("queryList")
+	public String selectQueryList(
+			@RequestBody int memberNo) {
+		return service.selectQueryList(memberNo);
+	}
+	
+	@ResponseBody
+	@PostMapping("reportList")
+	public List<Report> selectReportList(
+			@RequestBody int memberNo){
+
+		return service.selectReportList(memberNo);
+	}
 }
 	
 	
