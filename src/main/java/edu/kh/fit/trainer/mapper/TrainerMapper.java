@@ -3,6 +3,7 @@ package edu.kh.fit.trainer.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.trainer.dto.Trainer;
@@ -29,6 +30,10 @@ public interface TrainerMapper {
 	// 강사 강의 목록 조회
 	List<Board> classList(int trainerNo);
 
-	List<Trainer> detailTrainer(Trainer trainerNo);
+	// 강사 상세 정보 조회
+	List<Trainer> detailTrainer(int trainerNo, RowBounds bounds);
+	
+	// 페이지 네이션
+	int qualificationList(int trainerNo);
 
 }

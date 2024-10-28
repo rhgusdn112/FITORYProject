@@ -71,9 +71,18 @@
     
     <!-- 강사 상세조회 -->
     <select id="detailTrainer" resultType="Trainer">
-    	SELECT PROFILE_IMG, TRAINER_NICKNAME, QUALIFICATION_NO, QUALIFICATION, AWARD
-		FROM TRAINER
-		JOIN QUALIFICATION USING(TRAINER_NO)
+	    SELECT PROFILE_IMG, QUALIFICATION_NO, QUALIFICATION, AWARD, CAREER, QUALIFICATION_DATE
+	    FROM QUALIFICATION
+	    JOIN TRAINER USING(TRAINER_NO)
+	    WHERE TRAINER_NO = #{trainerNo} <!-- 수정된 부분 -->
+	    ORDER BY QUALIFICATION_DATE DESC
+	</select>
+    
+    <!-- 강사 자격사항 상세조회 -->
+    <select id="qualificationList" resultType="_int">
+    	SELECT COUNT(*)
+		FROM QUALIFICATION
 		WHERE TRAINER_NO = #{trainerNo}
+		ORDER BY QUALIFICATION_DATE DESC
     </select>
 </mapper>
