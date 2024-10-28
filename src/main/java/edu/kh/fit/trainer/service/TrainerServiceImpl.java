@@ -94,19 +94,6 @@ public class TrainerServiceImpl implements TrainerService{
 		}
 		return profileWebPath + rename;
 	}
-	
-	/* 강사 강의 목록 조회 */
-	@Override
-	public List<Board> classList(int trainerNo) {
-		return mapper.classList(trainerNo);
-	}
-
-	/* 강사 상세정보 조회 */
-	@Override
-	public List<Trainer> detailTrainer(Trainer trainerNo) {
-		return mapper.detailTrainer(trainerNo);
-	}
-
 
 	/* 강사 강의 목록 조회 */
 	@Override

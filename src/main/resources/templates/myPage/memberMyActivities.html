@@ -11,7 +11,7 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
 
-  <form action="/member/memberMyActivities" method="GET" name="myPageAct" id="myPageAct" class="main">
+  <form action="/member/memberMyActivities/{memberNo}" method="GET" name="myPageAct" id="myPageAct" class="main">
     <div class="activities">내 활동 내역</div>
     <div class="main-box">
       <div class="container">
@@ -24,45 +24,46 @@
       <input type="checkbox" id="checkbox" class="all-check-box">
       <div class="select">모두 선택</div>
       <div class="main-box">
-      <table>
-        <thead>
-          <th>비고</th>
-          <th>|</th>
-          <th>작성일</th>
-        </thead>
-        <tbody>
-              <td>
-                <!-- <img src="../../static/images/teacher1.jpg"> -->
-                <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
-                <td><a th:text="*{boardContent}">내 활동 제목</a></td>
-                <td th:text="*{boardTypeNo}">게시판 종류</td>
-                <td th:text="*{boardWriteDate}">2024-10-24</td>
-              </td>
-            </tbody>
-          </table>
-  
-              <!-- 페이지 -->
-              <div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-            </div>
-          </div>
-          <!-- 탑버튼 -->
-          <button class="top">▲</button>
-          </div>
-        </form>
+        <table>
+          <thead>
+            <th>비고</th>
+            <th>|</th>
+            <th>작성일</th>
+          </thead>
+          <tbody>
+            <tr th:each="review:${reviews}">
+              <!-- <img src="../../static/images/teacher1.jpg"> -->
+              <td><img th:if="*{board.thumbnail}" th:src="${board.thumbnail}" class="list-thumbnail"></td>
+              <td><a th:text="${review.reviewContent != null ? review.reviewContent : review.queryDetail}">내 활동 제목</a></td>
+              <td th:text="*{boardTypeName}">게시판 종류</td>
+              <td th:text="*{boardWriteDate}">2024-10-24</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 페이지 -->
+        <div class="pagination">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">6</a>
+          <a href="#">7</a>
+          <a href="#">8</a>
+          <a href="#">9</a>
+          <a href="#">10</a>
+        </div>
       </div>
+      <!-- 탑버튼 -->
+      <button class="top">▲</button>
     </div>
-    </div>
-    <div th:replace="common/footer :: footer"></div>
-    <script src="/js/myPage/memberMyActivities.js"></script>
-  </body>
-  </html>
+  </form>
+  </div>
+  </div>
+  </div>
+  <div th:replace="common/footer :: footer"></div>
+  <script src="/js/myPage/memberMyActivities.js"></script>
+</body>
+
+</html>
