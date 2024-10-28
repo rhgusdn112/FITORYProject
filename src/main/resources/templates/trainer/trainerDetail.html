@@ -10,14 +10,14 @@
 
 <body>
   <block th:replace="~{common/common}"></block>
-  <form action="/trainer/{trainerNo:[0-9]+}" method="GET" name="trainerDetailCheck" id="trainerCheck" class="main"
+  <form action="/trainer/trainerDetail/${trainerNo}" method="GET" name="trainerDetailCheck" id="trainerCheck" class="main"
     th:object="${trainerNo}">
 
     <div class="main-title">TRAINEL PROPLE</div>
     <div class="main-box">
       <div class="profile-box">
         <div class="profile-image-area">
-          <img th:with="trainer=#{trainerImg}" th:src="${session.trainerLogin.trainerImg ?: trainer}" id="profileImg">
+          <img th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
         </div>
       </div>
       <button class="watch" id="watch"> 강사 영상 보러가기 </button>
@@ -25,15 +25,22 @@
     <table class="qualification-table">
       <thead>
         <tr>
-          <th>자격사항</th>
-          <th class="date-th">취득일</th>
+          <td>자격사항</td>
+          <td class="date-th">취득일</td>
         </tr>
       </thead>
       <tbody id="tbody">
+        <tr th:each="qualification:${qualificationList}" th:object="${qualification}">
+          <!-- <td>
+            <th:block th:if="*{type == '리뷰'}">
+              <a th:href="|/board/*{commentNo}|" th:text="*{reviewContent}">자격 정보</a>
+            </th:block>
+          </td> -->
         <tr>
           <td th:text="${qualification}">자격 정보</td>
-          <td th:text="${career}">문의 종류</td>
+          <td th:text="${qualificationNo}">취득일</td>
         </tr>
+
           <!-- 페이지 -->
           <div class="pagination" th:object="${pagination}">
 
@@ -42,7 +49,6 @@
 
             <!-- 이전 목록 마지막 번호로 이동 -->
             <a href="#">&lt;</a>
-
 
             <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
               <li th:if="${i} == *{currentPage}">

@@ -234,10 +234,10 @@ public class MemberController {
 	public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 		Map<String, Object> map = service.memberMyActivities(memberLogin.getMemberNo(), cp);
-
 		
 		model.addAttribute("reviewList", (List<Comment>)map.get("reviewList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
 		return "/myPage/memberMyActivities";
+	}
 }
