@@ -20,6 +20,15 @@ public interface BoardService {
 
 	// 사용자가 해당 게시글에 이미 리뷰를 작성했는지 확인
 	boolean hasReviewed(Map<String, Object> params);
-  
 
+	
+  /**
+   * 사용자가 해당 게시글에 대해 결제했는지 여부 확인
+   * @param memberNo
+   * @param boardNo
+   * @return 결제 여부 (true/false)
+   */
+  boolean checkPaymentStatus(int memberNo, int boardNo);
 }
+
+

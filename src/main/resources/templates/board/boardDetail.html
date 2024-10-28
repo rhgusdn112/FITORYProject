@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitory - Board Detail</title>
-  <script src="https://www.youtube.com/iframe_api"></script> <!-- YouTube IFrame API -->
   <link rel="stylesheet" href="/css/board/boardDetail.css">
 </head>
 
@@ -15,32 +14,34 @@
 
   <!-- 메인 콘텐츠 영역 -->
   <main class="main-content" th:object="${board}">
+    <br><br>
+
+    <span th:text="${userType}"></span> <!-- userType이 제대로 출력되는지 확인 -->
 
     <div class="wrapper">
       <div class="post-container">
-        <div class="post-header">
-          <h2 class="post-title" th:text="*{title}">게시글 제목</h2>
-          <span class="post-date">작성일 정보 없음</span>
-          <span class="post-rating">별점 정보 없음</span>
-        </div>
+        <!-- 비디오 플레이어 삽입 -->
+        <div id="video-player" th:data-user-type="${userType}" th:data-class-no="*{classNo}" th:data-board-no="*{boardNo}"></div>
         
-        <div class="review">
-          <p class="review-text">한줄평 정보 없음</p>
+        <div class="post-header">
+          <h1 class="post-title" th:text="*{title}">게시글 제목</h1>
+          <span class="post-board-name" th:text="*{classNo == 1 ? 'Home Training' : 'Home Gym'}">게시판 이름</span>
+          <span class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</span>
+          <span class="post-rating" th:text="*{rating} + '점'">별점 정보 없음</span>
         </div>
-
-        <!-- 유튜브 영상 삽입 -->
-        <div id="youtube-player" th:data-detail="${board.detail}"></div>
 
         <!-- 팝업 모달 -->
         <div id="video-popup" class="popup" style="display: none;">
-          <h2>영상을 이어보시겠습니까?</h2>
+          <h1>영상을 이어보시겠습니까?</h1>
           <div class="popup-buttons">
             <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
             <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
           </div>
         </div>
 
-     
+        <!-- 유튜브 영상 삽입 (주석처리) -->
+        <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
+
       </div>
     </div>
 
@@ -55,8 +56,7 @@
   <script th:inline="javascript">
     // 서버에서 전달받은 board 객체를 JSON 형태로 변환하여 JavaScript 변수에 담음
     var board = /*[[${board}]]*/ {};
-    // 로그인 여부를 JavaScript 변수에 전달 (guest가 아닌 경우 true)
-    var isLoggedIn = /*[[${userType != 'guest'}]]*/ false;
+    var userType = /*[['${userType}']]*/ '';
   </script>
 
   <!-- JavaScript 파일 연결 -->

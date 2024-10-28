@@ -56,4 +56,16 @@
 			AND BOARD_NO = #{boardNo}
 			AND REVIEW_DEL_FL = 'N'
 	</select>
+	
+	
+	<select id="hasPaidForBoard" parameterType="map" resultType="String">
+    SELECT  
+    	NVL((SELECT PAYMENT_FL
+       	FROM PAYMENT P 
+       	WHERE B.BOARD_NO = P.PAYMENT_BOARD
+       	AND P.PAYMENT_MEMBER = #{memberNo}
+       ), 'N') PAYMENT_FL
+	FROM BOARD B
+	WHERE B.BOARD_NO = #{boardNo}
+	</select>
 </mapper>
