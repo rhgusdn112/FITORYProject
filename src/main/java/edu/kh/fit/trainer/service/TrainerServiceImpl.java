@@ -66,6 +66,8 @@ public class TrainerServiceImpl implements TrainerService{
 	@Override
 	public boolean trainerCheckPw(int trainerNo, String trainerPw) {
 		String encodePw = mapper.trainerCheckPw(trainerNo);
+		// 강사 자격사항 mapper 추가
+		
 		return encorder.matches(trainerPw, encodePw);
 	}
 

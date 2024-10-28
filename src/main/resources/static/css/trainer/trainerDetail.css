@@ -13,61 +13,110 @@ input::placeholder {
 	font-size: 15px;
 }
 
+/* 메인 타이틀 */
+.main-title {
+	color: #2d2d2d;
+	font-size: 32px;
+	text-shadow: 10px #434343;
+	padding-top: 20%;
+	padding-bottom: 2%;
+	text-align: center;
+}
+
 .main {
-	min-height: 100vh;
+	min-height: 200vh;
 	min-width: 50vw;
-	padding-left: 10%;
-	margin: auto;
-	margin-top: 5%;
-	margin-left: 10%;
+	margin-top: 3%;
 	justify-content: center;
 	/* border: 1px solid; */
-	padding-right: 3%;
-	margin-bottom: 5%;
+	padding: 0% 5% 0% 5%;
+	margin-bottom: 10%;
 }
 
 /* main 박스 */
-.main-box {
+.main-box{
 	border: 5px solid;
 	color: #bfbfbf;
 	margin: auto;
 	padding-top: 2%;
-	min-height: 100vh;
-	padding-right: 10%;
+	min-height: 200vh;
 	padding: 3%;
 	min-width: 50vw;
 }
 
-.main-title {
-	color: #2d2d2d;
-	font-size: 32px;
-	text-shadow: 10px #bfbfbf;
-	padding-top: 60px;
-	padding-bottom: 2%;
+/* 트레이너 이미지 */
+.profile-box{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 30vh;
+}
+.profile-image{
+	color: #bfbfbf;
+	min-height: 30vh;
+	min-width: 80vw;
+	margin: auto;
+	justify-content: center;
+	align-items: center; 
+	display: flex;
+
 }
 
-
-/* 자격사항 */
-.main-in {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+.subProfile-box{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 25vh;
+	justify-content: space-between;
+	align-items: center;
 	display: flex;
-	font-size: 20px;
+	padding: 3% 0% 3% 0%;
+}
+.subProfile-image{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 20vh;
+	padding: 3% 14.5%;
+	justify-content: space-between;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 프로필 사진 수정 버튼 */
+.watch {
+	color: rgb(255, 255, 255);
+	background-color: #bfbfbf;
+	padding: 0.8% 1%;
+	margin: 4% 2% 4% 0%;
+	justify-content: center;
+	text-align: center;
+	width: 30%;
+  float: right;
+  border-radius: 20px 20px 20px 20px;
+}
+.watch:hover {
+	color: #757575;
 }
 
 /* 자격 테이블 */
 .qualification-table {
+	border: 1px #2d2d2d;
 	width: 100%;
 	padding: 2%;
+	height: 5%;
+	width: 100%;
 }
 .qualification-table td:first-child{
 	width: 80%;
 	padding: 0% 1% 1% 0%;
+	margin-bottom: 3%;
+	float: left;
 }
 .qualification-table td:last-child{
 	width: 20%;
 	padding: 0% 1% 1% 0%;
+	margin-bottom: 3%;
+	float: right;
 }
+
 .qualification-table tr>th {
 	color: #bfbfbf;
 	display: column;
@@ -76,89 +125,9 @@ input::placeholder {
 	text-align: left;
 }
 
-.date-th{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 5px;
-}
-
-.qualification-table input{
-	height: 30px;
-	width: 100%;
-}
-
-/* 프로필 사진 */
-.profile {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 10% 0% 0%;
-}
-
-.img {
-	padding: 2% 0% 0% 2%;
-	margin: auto;
-	justify-content: center;
-	display: column; 
-  width: 32.5%;
-  height: 15%;
-	border: 5px solid;
-  color: #bfbfbf;
-}
-.profile-box{
-	border: 5px solid;
-	color: #bfbfbf;
-	margin: auto;
-	min-height: 100hv;
-	padding: 2% 2% 2% 2%;
-	margin-bottom: 5%;
-}
-
-
-/* 삭제버튼 */
-form[name='myPageFrm']{position: relative;}
-
-#deleteImage{
-  position: absolute;
-  top: 0px;
-  right: 240px;
-  cursor: pointer;
-}
-
-/* 프로필 사진 수정 버튼 */
-.upload {
-  font-family: "MaruBuriSemiBold", Helvetica;
-  color: rgb(255, 255, 255);
-  background-color: #bfbfbf;
-  padding: 0.8% 1%;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  border-radius: 20px;
-}
-
-/* 수정하기 버튼 */
-.update {
-  font-family: "MaruBuriSemiBold", Helvetica;
-  color: rgb(255, 255, 255);
-  background-color: #bfbfbf;
-  padding: 0.8% 1%;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  border-radius: 20px;
-}
-
-.update:hover {
-	color: #757575;
-}
 
 /* 탑버튼 */
-.top {
-	font-family: "MaruBuriSemiBold", Helvetica;
+/* .top {
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 1%;
@@ -167,8 +136,25 @@ form[name='myPageFrm']{position: relative;}
 	border-radius: 100%;
 	position: sticky;
 	float: right;
-}
+} */
 
 .top:hover {
 	color: #757575;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
+  margin-top: 2%; /* 페이지네이션과 콘텐츠 사이의 간격 */
+  font-size: 15px;
+  padding: 8% 0% 0% 0%;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #bfbfbf;
+  padding: 10%; 
 }
