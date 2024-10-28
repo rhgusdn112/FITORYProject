@@ -14,14 +14,14 @@ import lombok.ToString;
 @ToString
 @Builder
 public class Comment {
-	private int   	commentNo; // 댓글 번호
-	private String 	reviewContent; // 댓글 내용
-	private String 	reviewWriteDate; // 댓글 작성일
-	private String 	reviewtDelFl; // 삭제 여부
-	private float 		number; // 평점
-	private int    	memberNo; // 회원 번호
+	private int 		commentNo; // 댓글 번호
+	private String 	reviewContent; // 리뷰 내용
+	private String 	reviewWriteDate; // 리뷰 작성일
+	private String 	reviewtDelFl; // 리뷰 삭제 여부 플래그
+	private float 	number; // 별점
+	private int 		memberNo; // 작성자 회원 번호
 	private int 		boardNo; // 게시글 번호
-	
+  
 	/* 댓글에 포함될 작성자명 */
-	private String memberNickname;
+	private String 	memberNickname; // 작성자 닉네임
 }
