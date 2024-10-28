@@ -55,5 +55,4 @@ public class Board {
 	private String videoRename; // 변경명
 	private int videoOrder; // 동영상 순서
 	
-	
 }
