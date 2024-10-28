@@ -22,4 +22,5 @@ public interface BoardMapper {
 
   // 사용자가 해당 게시글에 이미 리뷰를 작성했는지 확인
 	int hasReviewed(Map<String, Object> params);
+
 }
