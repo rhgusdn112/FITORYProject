@@ -12,8 +12,6 @@
 			MEMBER_NAME, 
 			MEMBER_TEL,
 			MEMBER_BIRTHDAY, 
-			HEIGHT,
-			WEIGHT,
 			TO_CHAR(ENROLL_DATE, 
 			'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
 		FROM "MEMBER"
@@ -30,8 +28,7 @@
 		#{memberPw},
 	 	#{memberNickname}, 
 	 	#{memberTel}, 
-	 	#{memberAddress}
-	 	, NULL, DEFAULT, DEFAULT, DEFAULT)
+	 	#{memberBirthday}, DEFAULT)
 	</insert>
 	
 		<!-- 이메일 중복검사  -->

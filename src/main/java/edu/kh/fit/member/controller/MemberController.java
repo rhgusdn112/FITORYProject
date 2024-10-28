@@ -234,7 +234,7 @@ public class MemberController {
     }
 		
 		/* 내 활동 내역 */
-		@GetMapping("memberMyActivities/{memberNo[0-9+]}")
+		@GetMapping("memberMyActivities")
 		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin, Model model) {
 			 List<Comment> reviews = new ArrayList();
 
@@ -250,6 +250,6 @@ public class MemberController {
 
        // 모델에 데이터 추가
        model.addAttribute("reviews", reviews);
-			return "/myPage/memberMyActivities/{memberNo[0-9+]}";
+			return "/myPage/memberMyActivities";
 		}
 }
