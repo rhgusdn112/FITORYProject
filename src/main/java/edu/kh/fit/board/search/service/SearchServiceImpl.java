@@ -1,5 +1,6 @@
 package edu.kh.fit.board.search.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +24,10 @@ public class SearchServiceImpl implements SearchService{
 		List<Board> homeGymVideos = mapper.searchByCategoryAndKeyword("홈짐",keyword);
 		List<Board> homeTrainingVideos = mapper.searchByCategoryAndKeyword("홈트레이닝",keyword);
 		
-		Map<String, Object> map
-			= Map.of("homeGymVideos", homeGymVideos, "homeTrainingVideos", homeTrainingVideos);
-		return map;
+		Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("homeGymVideos", homeGymVideos);
+        resultMap.put("homeTrainingVideos", homeTrainingVideos);
+		return resultMap;
 	}
 	
 }

@@ -33,7 +33,6 @@ public class OrderController {
 		
 		model.addAttribute("order", order);
 		
-		
 		return "/payment/orderResult";
 	}
 	
