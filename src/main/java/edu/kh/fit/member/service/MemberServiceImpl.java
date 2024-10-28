@@ -1,12 +1,16 @@
 package edu.kh.fit.member.service;
 
 import java.util.List;
-import java.util.Map
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.mapper.MemberMapper;
 import edu.kh.fit.payment.dto.Order;
@@ -80,10 +84,30 @@ public class MemberServiceImpl implements MemberService{
       return mapper.classList(memberNo);
   }
 
-  // 내 활동 내역
-	//@Override
-
-		//return mapper.memberMyActivities(map);
+	@Override
+	public Map<String, Object> memberMyActivities(int memberNo, int cp) {
+		
+		// 전체 리뷰/문의 개수 조회
+		int listCount = mapper.getMyReviewCount(memberNo);
+		
+		// 페이지네이션 계산
+		Pagination pagination = new Pagination(cp, listCount, 10, 10);
+		
+		// RowBounds 계산(앞에서 몇 행 건너 뛰고, 그 다음 몇 행 조회할 지 지정하는 객체)
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		
+		List<Comment> reviewList = mapper.selectMyReviewList(memberNo, bounds);
+		
+		
+		Map<String, Object> map = Map.of("reviewList", reviewList, "pagination", pagination);
+		
+		
+		return map;
+	}
 	
 
 

@@ -21,6 +21,7 @@ public class Comment {
 	private float 		number;
 	private int    	memberNo;
 	private int 		boardNo;
+	private String type;
 	
 	/* 댓글에 포함될 작성자명 */
 	private String memberNickname;

@@ -15,54 +15,71 @@
     <div class="activities">내 활동 내역</div>
     <div class="main-box">
       <div class="container">
-        <select name="select" id="selectType">
-          <option value="recent">최신순</option>
-          <option value="populer">인기순</option>
-          <option value="review">리뷰순</option>
-        </select>
       </div>
       <input type="checkbox" id="checkbox" class="all-check-box">
       <div class="select">모두 선택</div>
       <div class="main-box">
-      <table>
-        <thead>
-          <th>비고</th>
-          <th>|</th>
-          <th>작성일</th>
-        </thead>
-        <tbody>
+        <table>
+          <thead>
+            <th>비고</th>
+            <th>|</th>
+            <th>작성일</th>
+          </thead>
+          <tbody>
+            <tr th:each="review:${reviewList}" th:object="${review}">
               <td>
-                <!-- <img src="../../static/images/teacher1.jpg"> -->
-                <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
-                <td><a th:text="*{boardContent}">내 활동 제목</a></td>
-                <td th:text="*{boardTypeNo}">게시판 종류</td>
-                <td th:text="*{boardWriteDate}">2024-10-24</td>
+                <th:block th:if="*{type == '리뷰'}">
+                  <a th:href="|/board/*{commentNo}|" th:text="*{reviewContent}">리뷰 제목</a>
+                </th:block>
+                <th:block th:unless="*{type == '리뷰'}">
+                  <a th:href="|/query/*{commentNo}|" th:text="*{reviewContent}">1:1문의 제목</a>
+                </th:block>
               </td>
-            </tbody>
-          </table>
-  
-              <!-- 페이지 -->
-              <div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-            </div>
-          </div>
-          <!-- 탑버튼 -->
-          <button class="top">▲</button>
-          </div>
-        </form>
+              <td th:text="*{type}">게시판 종류</td>
+              <td th:text="*{reviewWriteDate}">2024-10-24</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 페이지 -->
+        <div class="pagination" th:object="${pagination}">
+
+          <!-- 첫 페이지로 이동 -->
+          <a href="#">&lt;&lt;</a>
+
+          <!-- 이전 목록 마지막 번호로 이동 -->
+          <a href="#">&lt;</a>
+
+
+          <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+            <li th:if="${i} == *{currentPage}">
+              <a class="current" th:text="${i}">현재 페이지</a>
+            </li>
+
+            <!-- 보고있지 않은 페이지 -->
+            <li th:unless="${i} == *{currentPage}">
+              <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
+            </li>
+          </th:block>
+
+          <!-- 다음 목록 시작 번호로 이동 -->
+          <a href="#">&gt;</a>
+
+          <!-- 끝 페이지로 이동 -->
+          <a href="#">&gt;&gt;</a>
+        </div>
       </div>
+      <!-- 탑버튼 -->
+      <button class="top">▲</button>
     </div>
-    </div>
-    <div th:replace="common/footer :: footer"></div>
-    <script src="/js/myPage/memberMyActivities.js"></script>
-  </body>
-  </html>
+  </form>
+  </div>
+  </div>
+  </div>
+  <script th:inline="javascript">
+    const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+  </script>
+  <div th:replace="common/footer :: footer"></div>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ package edu.kh.fit.member.service;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
 
@@ -47,9 +48,10 @@ public interface MemberService {
   List<Order> classList(int memberNo);
 
   /** 내 활동 내역
-   * @param map
+   * @param memberNo
    * @return
    */
-	int memberActivities(Map<String, Object> map);
+  Map<String, Object> memberMyActivities(int memberNo, int cp);
+
 
 }
