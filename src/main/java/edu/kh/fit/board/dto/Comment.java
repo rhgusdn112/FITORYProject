@@ -21,7 +21,7 @@ public class Comment {
 	private float 	number; // 별점
 	private int 		memberNo; // 작성자 회원 번호
 	private int 		boardNo; // 게시글 번호
-  
+
 	/* 댓글에 포함될 작성자명 */
 	private String 	memberNickname; // 작성자 닉네임
 }

@@ -18,7 +18,8 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
 
-  <form action="/trainer/trainerClassList" method="GET" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
+  <form action="/trainer/trainerClassList" method="GET" enctype="multipart/form-data" name="myPageClassList"
+    id="myPageList" class="main">
     <div class="main-class">강의 목록</div>
     <div class="container">
       <select name="select" id="selectType">
@@ -43,8 +44,8 @@
                   <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                   <span class="delete-image">&times;</span>
                 </div>
-              </th>
-              <img th:if="${post.thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+            </th>
+            <img th:if="${post.thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
             <td>
               <div th:text="|Title : ${boardTitle}|">제목 :</div>
               <div th:text="|설명 : ${boardContent}|">설명 :</div>
@@ -57,24 +58,41 @@
       </table>
       <button class="update" th:if="${session.trainerLongin}" id="updateBtn">전체 선택</button>
       <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택 해제</button>
+        <!-- 페이지 -->
+        <div class="pagination" th:object="${pagination}">
 
-      <!-- 페이지 -->
-      <div class="pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">7</a>
-        <a href="#">8</a>
-        <a href="#">9</a>
-        <a href="#">10</a>
+          <!-- 첫 페이지로 이동 -->
+          <a href="#">&lt;&lt;</a>
+
+          <!-- 이전 목록 마지막 번호로 이동 -->
+          <a href="#">&lt;</a>
+
+
+          <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+            <li th:if="${i} == *{currentPage}">
+              <a class="current" th:text="${i}">현재 페이지</a>
+            </li>
+
+            <!-- 보고있지 않은 페이지 -->
+            <li th:unless="${i} == *{currentPage}">
+              <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
+            </li>
+          </th:block>
+
+          <!-- 다음 목록 시작 번호로 이동 -->
+          <a href="#">&gt;</a>
+
+          <!-- 끝 페이지로 이동 -->
+          <a href="#">&gt;&gt;</a>
+        </div>
       </div>
-    </div>
-    <!-- 탑버튼 -->
-    <button class="top">▲</button>
+      <!-- 탑버튼 -->
+      <button class="top">▲</button>
   </form>
+  <script th:inline="javascript">
+    const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+  </script>
+
   <th:block th:replace="~{common/footer::footer}"></th:block>
   <script src="/js/classList/trainerMyPage.js"></script>
 </body>

@@ -1,10 +1,12 @@
 package edu.kh.fit.member.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
+import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
 
@@ -25,12 +27,21 @@ public interface MemberMapper {
 	
 	// 회원 정보 수정
 	int updateMember(Member inputMember);
+	
+	// 회원 결제 강의 목록 조회
+  List<Order> classList(int memberNo);
 
-	//회원 결제 강의 목록 조회
- List<Order> classList(int memberNo);
+  /** 
+   * @param memberNo
+   * @return
+   */
+	List<Comment> selectMyReviewList(int memberNo, RowBounds bounds);
 
- // 내 활동 내역
- int memberActivities(int memberNo);
+	/** 
+	 * @param memberNo
+	 * @return
+	 */
+	List<Query> selectMyQueryList(int memberNo);
 
-
+	int getMyReviewCount(int memberNo);
 }
