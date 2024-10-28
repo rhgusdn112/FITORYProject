@@ -1,11 +1,15 @@
 package edu.kh.fit.member.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.mapper.MemberMapper;
+import edu.kh.fit.payment.dto.Order;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,7 +70,21 @@ public class MemberServiceImpl implements MemberService{
 
 	// 회원 정보 수정
 	@Override
-	public int memberUpdate(Member updateMember) {
-		return mapper.memberUpdate(updateMember);
+	public int updateMember(Member inputMember) {
+		return mapper.updateMember(inputMember);
 	}
+	
+  // 회원 결제 강의 목록 조회
+  @Override
+  public List<Order> classList(int memberNo) {
+      return mapper.classList(memberNo);
+  }
+
+  // 내 활동 내역
+	@Override
+	public int memberActivities(Map<String, Object> map) {
+		return mapper.memberMyActivities(map);
+	}
+
+
 }

@@ -1,6 +1,7 @@
 package edu.kh.fit.trainer.service;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,8 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.mapper.TrainerMapper;
 import lombok.RequiredArgsConstructor;
@@ -68,14 +71,14 @@ public class TrainerServiceImpl implements TrainerService{
 		return mapper.updateTrainer(inputTrainer);
 	}
 
-
+	// 프로필 사진 수정
 	@Override
-	public String profile(MultipartFile profileImg, int trainerNo) {
-		if(profileImg.isEmpty()) {
+	public String profile(MultipartFile imgProfileList, int trainerNo) {
+		if(imgProfileList.isEmpty()) {
 			int result = mapper.profile(null, trainerNo);
 			return null;
 		}
-		String rename = FileUtil.rename(profileImg.getOriginalFilename());
+		String rename = FileUtil.rename(imgProfileList.getOriginalFilename());
 		String url = profileWebPath + rename;
 		
 		int result = mapper.profile(url, trainerNo);
@@ -83,13 +86,25 @@ public class TrainerServiceImpl implements TrainerService{
 		try {
 			File folder = new File(profileFolderPath);
 			if(!folder.exists()) folder.mkdirs();
-			profileImg.transferTo(new File(profileFolderPath + rename));
+			imgProfileList.transferTo(new File(profileFolderPath + rename));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new FileUploadFailException("프로필 이미지 수정에 실패하였습니다.");
 		}
 		return profileWebPath + rename;
+	}
+
+	/* 강사 강의 목록 조회 */
+	@Override
+	public List<Board> classList(int trainerNo) {
+		return mapper.classList(trainerNo);
+	}
+
+	/* 강사 상세정보 조회 */
+	@Override
+	public List<Trainer> detailTrainer(Trainer trainerNo) {
+		return mapper.detailTrainer(trainerNo);
 	}
 
 }

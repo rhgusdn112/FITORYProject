@@ -17,18 +17,22 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
   
-  <form action="/member/memberMyPage" method="POST" name="myPageUpdate" id="myPageInfo" class="main">
+  <form action="/member/memberMyPage" method="POST" enctype="multipart/form-data" name="myPageUpdate" id="myPageInfo" class="main">
       <div class="main-my-page">My Page</div>
         <div class="main-box">
           <div class="email">아이디(Email)</div>
-          <input type="text" name="memberNomal" id="memberEmail" class="box" placeholder="이메일 입력">
+          <input type="text" name="memberEmail" id="memberEmail" class="box" placeholder="이메일 입력" 
+          th:value="${session.memberLogin.memberEmail}" readonly>
           <div class="name">이름</div>
-          <input type="text" name="memberNomal" id="memberName" class="box" placeholder="이름 작성">
+          <input type="text" name="memberName" id="memberName" class="box" placeholder="이름 작성"
+          th:value="${session.memberLogin.memberName}">
           <div class="birth">생년월일</div>
-          <input type="text" name="memberNomal" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD">
+          <input type="text" name="memberBirthday" id="memberBirth" class="box" maxlength="8" placeholder="YYYYMMDD" 
+          th:value="${session.memberLogin.memberBirthday}" readonly>
           <div class="tel">전화번호</div>
-          <input type="text" name="memberNomal" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요.">
-          <button class="update" id="updateBtn"> 수정하기 </button>
+          <input type="text" name="memberTel" id="memberTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요."
+          th:value="${session.memberLogin.memberTel}">
+          <button class="update" id="update"> 수정하기 </button>
         </div>
         <button id="topBtn" class="top"> ▲ </button>
     </form>

@@ -59,4 +59,22 @@
 		WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
+		<!-- 강사 강의 목록 조회 -->
+    <select id="classList" resultType="Board">
+        SELECT BOARD_NO, TITLE, DETAIL, TRAINER_NICKNAME, BOARD_TYPE_NAME
+        FROM "BOARD"
+        JOIN TRAINER ON (BOARD.TRAINER_NO = TRAINER.TRAINER_NO)
+        JOIN BOARD_TYPE ON (BOARD.CLASS_NO = BOARD_TYPE.BOARD_TYPE_NO)
+        WHERE TRAINER.TRAINER_NO = #{trainerNo}
+        ORDER BY BOARD_NO  DESC
+    </select>
+    
+    <!-- 강사 상세조회 -->
+    <select id="detailTrainer" resultType="Trainer">
+    	SELECT PROFILE_IMG, TRAINER_NICKNAME, QUALIFICATION_NO, QUALIFICATION, AWARD
+		FROM TRAINER
+		JOIN QUALIFICATION USING(TRAINER_NO)
+		WHERE TRAINER_NO = #{trainerNo}
+    </select>
+	
 </mapper>
