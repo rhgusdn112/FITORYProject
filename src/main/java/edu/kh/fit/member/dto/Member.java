@@ -27,11 +27,9 @@ public class Member {
 	
   // 댓글 관련 필드 선언
   private int countComment; // 작성한 댓글 수
-  private int commentNo;
   private String reviewContent;   // 
   
   // 신고 관련 필드 선언
-  private int countReport;
   private int reportNo;
   private String reportDetail;
   

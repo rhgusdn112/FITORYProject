@@ -1,6 +1,8 @@
 package edu.kh.fit.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,11 +17,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
 import edu.kh.fit.payment.dto.Order;
+import edu.kh.fit.payment.dto.Payment;
+import edu.kh.fit.trainer.dto.Trainer;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("member")
@@ -199,25 +208,42 @@ public class MemberController {
 			return "redirect:/member/memberMyPage";
 		}
 		
-		/* 내 강의 관리 바로가기 */
-		@GetMapping("memberClassList")
-		public String memberClassList(
-				@SessionAttribute("memberLogin") Member memberLogin,
-				@RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
-				Model model) {
-			
-			// 내 강의 조회 서비스
-			int memberNo = memberLogin.getMemberNo();
-			List<Order> orderList = service.classList(memberNo);
-			
-			model.addAttribute("orderList", orderList);
-			
-			return "/classList/memberClassList";
-		}
+		/** 회원 결제 강의 목록 조회
+		 * @param memberLogin
+		 * @param cp
+		 * @param model
+		 * @return
+		 */
+    @GetMapping("memberClassList")
+    public String memberClassList(
+            @SessionAttribute("memberLogin") Member memberLogin,
+            @RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
+            Model model) {
+        
+        // 내 강의 조회 서비스
+        int memberNo = memberLogin.getMemberNo();
+        List<Order> orderList = service.classList(memberNo);
+        
+        model.addAttribute("orderList", orderList);
+        
+        // 버튼 클릭 시 삭제 및 영상 보기
+        
+        return "/classList/memberClassList";
+    }
 		
-//		/* 내 활동 내역 바로가기 */
-//		@GetMapping("")
-//		public String memberMyActivities() {
-//			return "/myPage/memberMyActivities";
-//		}
+		/* 내 활동 내역 */
+		@GetMapping("memberMyActivities")
+		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin,
+																	 	 @RequestParam("reviewNo") Comment reviewNo, @RequestParam ("queryType") Query queryType) {
+			
+			int Comment = memberLogin.getMemberNo();
+			Map<String, Object> map = new HashMap<>();
+			map.put("reviewNo", reviewNo);
+			map.put("queryType", queryType);
+			
+			Comment = service.memberActivities(map);
+			
+			
+			return "/myPage/memberMyActivities";
+		}
 }

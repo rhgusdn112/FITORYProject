@@ -1,6 +1,7 @@
 package edu.kh.fit.member.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -24,7 +25,11 @@ public interface MemberMapper {
 	
 	// 회원 정보 수정
 	int updateMember(Member inputMember);
+	
+	// 회원 결제 강의 목록 조회
+  List<Order> classList(int memberNo);
 
-	List<Order> classList(int memberNo);
+  // 내 활동 내역
+	int memberMyActivities(Map<String, Object> map);
 
 }

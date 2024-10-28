@@ -19,7 +19,8 @@
   <th:block th:replace="~{common/common}"></th:block>
 
 
-  <form action="/member/memberClassList" method="POST" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
+  <form action="/member/memberClassList" method="POST" enctype="multipart/form-data" name="myPageClassList"
+    id="myPageList" class="main">
     <div class="main-class">강의 목록</div>
     <div class="container">
       <select name="select" id="selectType">
@@ -28,15 +29,13 @@
         <option value="review">리뷰순</option>
       </select>
     </div>
-    <input type="checkbox" id="checkbox" class="all-check-box">
-    <div class="select">모두 선택</div>
     <div class="main-box">
       <table class="box">
         <tbody>
           <!-- 게시글 리스트를 반복하여 출력 -->
           <tr th:each="order : ${orderList}" th:object="${order}">
             <th>
-              <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
+              <img th:if="*{boardTypeName}" th:src="${videoNo}" class="thumbnail" alt="썸네일">
             </th>
             <td>
               <div th:text="|Title : *{title}|">제목 :</div>
@@ -46,32 +45,46 @@
             </td>
             <th><input type="checkbox" class="checkbox"></th>
           </tr>
-        </tbody>
-      </table>
-      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 보기</button>
-      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
-
-            <!-- 페이지 -->
-            <div class="pagination">
-              <a href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">7</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">10</a>
+          <button class="update">선택한 강의 보기</button>
+          <button class="delete">선택한 강의 삭제</button>
+          <!-- 강의 시청 팝업 -->
+          <div id="update-popup" class="popup" style="display: none;">
+            <h2>강의를 시청하시겠습니까?</h2>
+            <div class="popup-buttons">
+              <button id="updateYesBtn" class="popup-btn continue">예</button>
+              <button id="deleteNoBtn" class="popup-btn stop">아니오</button>
+            </div>
           </div>
-        </div>
-        <!-- 탑버튼 -->
-        <button class="top">▲</button>
+          <!-- 강의 삭제 팝업 -->
+          <div id="delete-popup" class="popup" style="display: none;">
+            <h2>강의를 삭제하시겠습니까?</h2>
+            <div class="popup-buttons">
+              <button id="deleteYesBtn" class="popup-btn yes">예</button>
+              <button id="deleteNoBtn" class="popup-btn no">아니오</button>
+            </div>
+          </div>
+
+
+          <!-- 페이지 -->
+          <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+          </div>
+    </div>
+    <!-- 탑버튼 -->
+    <button class="top">▲</button>
   </form>
 
-  <th:block th:replace="~{common/footer::footer}"></th:block>
+  <!-- <th:block th:replace="~{common/footer::footer}"></th:block> -->
   <script src="/js/classList/memberMyPage.js"></script>
 </body>
-
 
 </html>
