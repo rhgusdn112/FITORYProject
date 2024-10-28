@@ -38,7 +38,7 @@ input::placeholder {
 	min-width: 50vw;
 }
 
-.main-my-page {
+.main-title {
 	color: #2d2d2d;
 	font-size: 32px;
 	text-shadow: 10px #bfbfbf;
@@ -46,62 +46,6 @@ input::placeholder {
 	padding-bottom: 2%;
 }
 
-/* 아이디 */
-.email {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-
-}
-
-.box {
-	border: 1px solid;
-	color: #2d2d2d;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	justify-content: center;
-	display: flex;
-	margin: 2% 0% 2%;
-	padding: 5px;
-	width: 100%;
-}
-
-/* 이메일 인증 */
-.email-ok {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/* 이름 */
-.name {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/*  생년월일 */
-.birth {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/* 전화번호 */
-.tel {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
 
 /* 자격사항 */
 .main-in {
@@ -109,15 +53,6 @@ input::placeholder {
 	color: #2d2d2d;
 	display: flex;
 	font-size: 20px;
-}
-
-/* 추가 버튼 */
-.plus {
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	width: 25px;
-	height: 25px;
-	float: right;
 }
 
 /* 자격 테이블 */

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
 import lombok.RequiredArgsConstructor;
@@ -151,7 +155,7 @@ public class TrainerController {
 	  model.addAttribute("isLoggedIn", true);
 		return "/myPage/trainerMyPage";
 	}
-
+	
 	/** 강사 페이지 수정
 	 * @param inputTrainer
 	 * @param trainerLogin
@@ -159,10 +163,13 @@ public class TrainerController {
 	 * @return
 	 */
 	@PostMapping("trainerMyPage")
-	public String updateInfo(@ModelAttribute Trainer inputTrainer, @SessionAttribute("trainerLogin") Trainer trainerLogin,
+	public String updateInfo(
+			@ModelAttribute Trainer inputTrainer, 
+			@SessionAttribute("trainerLogin") Trainer trainerLogin,
+			@RequestParam("imgProfile") List<MultipartFile> imgProfileList, 
 			RedirectAttributes ra) {
 
-		int trainerNo = inputTrainer.getTrainerNo();
+		int trainerNo = trainerLogin.getTrainerNo();
 		inputTrainer.setTrainerNo(trainerNo);
 
 		int result = service.updateTrainer(inputTrainer);
@@ -170,20 +177,15 @@ public class TrainerController {
 		String message = null;
 		if (result > 0) {
 			message = "수정이 되었습니다.";
-			inputTrainer.setTrainerNickname(inputTrainer.getTrainerNickname());
-			inputTrainer.setTrainerTel(inputTrainer.getTrainerTel());
-			
+			trainerLogin.setTrainerNickname(inputTrainer.getTrainerNickname());
+			trainerLogin.setTrainerTel(inputTrainer.getTrainerTel());
+			trainerLogin.setProfileImg(inputTrainer.getProfileImg());
 		} else
 			message = "수정에 실패하였습니다.";
 
 		ra.addFlashAttribute("message", message);
 
-		return "/myPage/trainerMyPage";
-	}
-	
-	@GetMapping("profile")
-	public String profile() {
-		return "myPage/profile";
+		return "redirect:/trainer/trainerMyPage";
 	}
 	
 	/** 프로필 이미지 수정
@@ -193,19 +195,51 @@ public class TrainerController {
 	 * @return
 	 */
 	@PostMapping("profile")
-	public String profile(@RequestParam("profileImg") MultipartFile profileImg,
+	public String profile(@RequestParam("imgProfile") MultipartFile imgProfileList,
 												@SessionAttribute("trainerLogin") Trainer trainerLogin,
 												RedirectAttributes ra) {
 		
 		// 1) login한 회원의 회원 번호 얻어오기
 		int trainerNo = trainerLogin.getTrainerNo();
-		String filePath = service.profile(profileImg, trainerNo);
+		String filePath = service.profile(imgProfileList, trainerNo);
 		String message = null;
 		message = "프로필 이미지가 변경되었습니다.";
 		trainerLogin.setProfileImg(filePath);
 		ra.addFlashAttribute("message", message);
 		
-		return "/myPage/profile";
+		return "/myPage/trainerMyPage";
 	}
+	
+	/**  강사 강의 목록 조회
+	 * @param trainerLogin
+	 * @param cp
+	 * @param model
+	 * @return
+	 */
+  @GetMapping("trainerClassList")
+  public String trainerClassList(
+          @SessionAttribute("trainerLogin") Trainer trainerLogin,
+          @RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
+          Model model) {
+      
+      // 내 강의 조회 서비스
+      int trainerNo = trainerLogin.getTrainerNo();
+      List<Board> orderList = service.classList(trainerNo);
+      
+      model.addAttribute("orderList", orderList);
+      
+      // 버튼 클릭 시 삭제 및 영상 보기
+      
+      return "/classList/trainerClassList";
+  }
+  
+  /* 강사 상세 정보 */
+  @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
+  public String detailTrainer(@PathVariable("treainerNo") Trainer trainerNo) {
+  	List<Trainer> detailTrainer = service.detailTrainer(trainerNo);
+      return "/trainer/trainerDetail";
+  }
+  
+
 
 }

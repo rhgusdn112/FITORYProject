@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세 조회</title>
+  <link rel="stylesheet" href="/css/trainer/trainerDetail">
+</head>
+
+<body>
+  <block th:replace="~{common/common}"></block>
+  <form action="/trainer/trainerDetail" method="GET" name="myPageCheck" id="myPageCheck" class="main"
+    th:object="${boardNo}">
+    <div class="main-title">TRAINEL PROPLE</div>
+    <div class="main-box">
+      <div class="profile-box">
+        <div class="profile-image-area">
+          <img th:with="trainer=#{trainerImg}" th:src="${session.trainerLogin.profileImg ?: trainer}" id="profileImg">
+        </div>
+      </div>
+      <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+    </div>
+    <table class="qualification-table">
+      <thead>
+        <tr>
+          <th>자격사항</th>
+          <th class="date-th">취득일</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+          <td th:text="${boardType == 'review' ? reviewContent : (boardType == 'query' ? queryDetail)}">내 활동 제목</td>
+          <td th:text="${boardType == 'review' ? reviewNo : (boardType == 'query' ? queryType)}">문의 종류</td>
+        </tr>
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">6</a>
+          <a href="#">7</a>
+          <a href="#">8</a>
+          <a href="#">9</a>
+          <a href="#">10</a>
+        </div>
+      </tbody>
+    </table>
+
+    <!-- 강의 수정 팝업 -->
+    <div id="video-popup" class="popup" style="display: none;">
+      <h2>해당 강사의 영상을 시청하시겠습니까?</h2>
+      <div class="popup-buttons">
+        <button id="yesBtn" class="popup-btn continue">예</button>
+        <button id="noBtn" class="popup-btn stop">아니오</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  <div th:replace="common/footer :: footer"></div>
+  <script src="/js/trainer/trainer.js"></script>
+</body>
+
+</html>
