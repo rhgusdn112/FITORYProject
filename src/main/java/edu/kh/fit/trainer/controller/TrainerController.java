@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
 import lombok.RequiredArgsConstructor;
@@ -206,15 +210,36 @@ public class TrainerController {
 		return "/myPage/trainerMyPage";
 	}
 	
-	/* 내 강의 관리 바로가기 */
-	@GetMapping("")
-	public String trainerClassList(@SessionAttribute("trainerLogin") Trainer trainerLogin) {
-		return "/classList/trainerClassList";
-	}
-//	
-//	@PostMapping("trainerClassList")
-//	public String classList(){
-//		return null;
-//	}
+	/**  강사 강의 목록 조회
+	 * @param trainerLogin
+	 * @param cp
+	 * @param model
+	 * @return
+	 */
+  @GetMapping("trainerClassList")
+  public String trainerClassList(
+          @SessionAttribute("trainerLogin") Trainer trainerLogin,
+          @RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
+          Model model) {
+      
+      // 내 강의 조회 서비스
+      int trainerNo = trainerLogin.getTrainerNo();
+      List<Board> orderList = service.classList(trainerNo);
+      
+      model.addAttribute("orderList", orderList);
+      
+      // 버튼 클릭 시 삭제 및 영상 보기
+      
+      return "/classList/trainerClassList";
+  }
+  
+  /* 강사 상세 정보 */
+  @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
+  public String detailTrainer(@PathVariable("treainerNo") Trainer trainerNo) {
+  	List<Trainer> detailTrainer = service.detailTrainer(trainerNo);
+      return "/trainer/trainerDetail";
+  }
+  
+
 
 }

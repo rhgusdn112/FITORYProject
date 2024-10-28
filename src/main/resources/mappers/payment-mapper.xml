@@ -22,6 +22,29 @@
         )
     </insert>
 
+    <!-- 결제 정보 조회 -->
+    <select id="selectPaymentById" parameterType="_int" resultType="Payment">
+        SELECT 
+            p.ORDER_NO,
+            p.PAYMENT_MEMBER,
+            p.PAYMENT_BOARD,
+            p.PAYMENT_DATE,
+            p.PAYMENT_ID,
+            p.PAYMENT_METHOD,
+            p.PAYMENT_STATUS,
+            p.PAYMENT_AMOUNT,
+            p.PAYMENT_CURRENCY,
+            m.MEMBER_NAME AS customerName,
+            m.EMAIL AS customerEmail,
+            m.PHONE AS customerPhone,
+            b.BOARD_TITLE AS classTitle
+        FROM PAYMENT p
+        JOIN MEMBER m ON p.PAYMENT_MEMBER = m.MEMBER_ID
+        JOIN BOARD b ON p.PAYMENT_BOARD = b.BOARD_ID
+        WHERE p.ORDER_NO = #{orderNo}
+    </select>
+
+    
     <!-- 주문 번호 생성 -->
     <select id="getOrderNo" resultType ="string">
     	SELECT

@@ -1,0 +1,174 @@
+@font-face {
+	font-family: 'MaruBuriSemiBold';
+	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+
+*{
+	font-family: "MaruBuriSemiBold", Helvetica;
+}
+
+input::placeholder {
+	text-align: left;
+	font-size: 15px;
+}
+
+.main {
+	min-height: 100vh;
+	min-width: 50vw;
+	padding-left: 10%;
+	margin: auto;
+	margin-top: 5%;
+	margin-left: 10%;
+	justify-content: center;
+	/* border: 1px solid; */
+	padding-right: 3%;
+	margin-bottom: 5%;
+}
+
+/* main 박스 */
+.main-box {
+	border: 5px solid;
+	color: #bfbfbf;
+	margin: auto;
+	padding-top: 2%;
+	min-height: 100vh;
+	padding-right: 10%;
+	padding: 3%;
+	min-width: 50vw;
+}
+
+.main-title {
+	color: #2d2d2d;
+	font-size: 32px;
+	text-shadow: 10px #bfbfbf;
+	padding-top: 60px;
+	padding-bottom: 2%;
+}
+
+
+/* 자격사항 */
+.main-in {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	color: #2d2d2d;
+	display: flex;
+	font-size: 20px;
+}
+
+/* 자격 테이블 */
+.qualification-table {
+	width: 100%;
+	padding: 2%;
+}
+.qualification-table td:first-child{
+	width: 80%;
+	padding: 0% 1% 1% 0%;
+}
+.qualification-table td:last-child{
+	width: 20%;
+	padding: 0% 1% 1% 0%;
+}
+.qualification-table tr>th {
+	color: #bfbfbf;
+	display: column;
+	padding-top: 2%;
+	font-size: 16px;
+	text-align: left;
+}
+
+.date-th{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+
+.qualification-table input{
+	height: 30px;
+	width: 100%;
+}
+
+/* 프로필 사진 */
+.profile {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	color: #2d2d2d;
+	display: flex;
+	margin: 0% 10% 0% 0%;
+}
+
+.img {
+	padding: 2% 0% 0% 2%;
+	margin: auto;
+	justify-content: center;
+	display: column; 
+  width: 32.5%;
+  height: 15%;
+	border: 5px solid;
+  color: #bfbfbf;
+}
+.profile-box{
+	border: 5px solid;
+	color: #bfbfbf;
+	margin: auto;
+	min-height: 100hv;
+	padding: 2% 2% 2% 2%;
+	margin-bottom: 5%;
+}
+
+
+/* 삭제버튼 */
+form[name='myPageFrm']{position: relative;}
+
+#deleteImage{
+  position: absolute;
+  top: 0px;
+  right: 240px;
+  cursor: pointer;
+}
+
+/* 프로필 사진 수정 버튼 */
+.upload {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  color: rgb(255, 255, 255);
+  background-color: #bfbfbf;
+  padding: 0.8% 1%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* 수정하기 버튼 */
+.update {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  color: rgb(255, 255, 255);
+  background-color: #bfbfbf;
+  padding: 0.8% 1%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.update:hover {
+	color: #757575;
+}
+
+/* 탑버튼 */
+.top {
+	font-family: "MaruBuriSemiBold", Helvetica;
+	color: rgb(255, 255, 255);
+	background-color: #bfbfbf;
+	padding: 1%;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	position: sticky;
+	float: right;
+}
+
+.top:hover {
+	color: #757575;
+}
