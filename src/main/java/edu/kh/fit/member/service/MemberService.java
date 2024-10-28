@@ -52,5 +52,4 @@ public interface MemberService {
    */
 	int memberActivities(Map<String, Object> map);
 
-
 }

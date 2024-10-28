@@ -34,11 +34,9 @@
               <td>
                 <!-- <img src="../../static/images/teacher1.jpg"> -->
                 <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
-                <td th:text="*{boardContent}">내 활동 제목</td>
+                <td><a th:text="*{boardContent}">내 활동 제목</a></td>
                 <td th:text="*{boardTypeNo}">게시판 종류</td>
                 <td th:text="*{boardWriteDate}">2024-10-24</td>
-                <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">삭제</button>
-                <button class="see" th:if="${session.trainerLongin}" id="updateBtn">수정</button>
               </td>
             </tbody>
           </table>

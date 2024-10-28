@@ -1,7 +1,7 @@
 package edu.kh.fit.member.service;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Map
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,8 +21,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
 	private final BCryptPasswordEncoder encorder;
-	
-	
 	
 	// (회원) 로그인 서비스
 	@Override
@@ -83,10 +81,10 @@ public class MemberServiceImpl implements MemberService{
   }
 
   // 내 활동 내역
-	@Override
-	public int memberActivities(Map<String, Object> map) {
-		return mapper.memberMyActivities(map);
-	}
+	//@Override
+
+		//return mapper.memberMyActivities(map);
+	
 
 
 }

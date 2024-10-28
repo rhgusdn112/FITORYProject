@@ -10,8 +10,9 @@
 
 <body>
   <block th:replace="~{common/common}"></block>
-  <form action="/trainer/trainerDetail" method="GET" name="myPageCheck" id="myPageCheck" class="main"
-    th:object="${boardNo}">
+  <form action="/trainer/{trainerNo:[0-9]+}" method="GET" name="trainerDetailCheck" id="trainerCheck" class="main"
+    th:object="${trainerNo}">
+
     <div class="main-title">TRAINEL PROPLE</div>
     <div class="main-box">
       <div class="profile-box">
@@ -30,8 +31,8 @@
       </thead>
       <tbody id="tbody">
         <tr>
-          <td th:text="${boardType == 'review' ? reviewContent : (boardType == 'query' ? queryDetail)}">내 활동 제목</td>
-          <td th:text="${boardType == 'review' ? reviewNo : (boardType == 'query' ? queryType)}">문의 종류</td>
+          <td th:text="${qualification}">자격 정보</td>
+          <td th:text="${career}">문의 종류</td>
         </tr>
         <!-- 페이지네이션 -->
         <div class="pagination">
@@ -48,15 +49,6 @@
         </div>
       </tbody>
     </table>
-
-    <!-- 강의 수정 팝업 -->
-    <div id="video-popup" class="popup" style="display: none;">
-      <h2>해당 강사의 영상을 시청하시겠습니까?</h2>
-      <div class="popup-buttons">
-        <button id="yesBtn" class="popup-btn continue">예</button>
-        <button id="noBtn" class="popup-btn stop">아니오</button>
-      </div>
-    </div>
   </form>
   </div>
   <div th:replace="common/footer :: footer"></div>

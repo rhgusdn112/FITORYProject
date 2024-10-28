@@ -1,6 +1,8 @@
 package edu.kh.fit.trainer.service;
 
 import java.util.List;
+
+import edu.kh.fit.board.dto.Board;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.board.dto.Board;

@@ -237,10 +237,12 @@ public class MemberController {
 //																	 	 @RequestParam("") Comment reviewNo, @RequestParam ("queryType") Query queryType
 																	 	 ) {
 			
-			int Comment = memberLogin.getMemberNo();
-			Map<String, Object> map = new HashMap<>();
+//			int Comment = memberLogin.getMemberNo();
+//			List<String, Object> map = new HashMap<>();
 //			map.put("review", reviewNo);
 //			map.put("queryType", queryType);
+			
+//			Comment = service.memberActivities(map);
 			
 			Comment = service.memberActivities(map);
 			

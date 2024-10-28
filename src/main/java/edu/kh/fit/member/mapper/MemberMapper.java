@@ -32,4 +32,9 @@ public interface MemberMapper {
   // 내 활동 내역
 	int memberMyActivities(Map<String, Object> map);
 
+//회원 결제 강의 목록 조회
+ List<Order> classList(int memberNo);
+
+ // 내 활동 내역
+//	int memberMyActivities(Map<String, Object> map);
 }

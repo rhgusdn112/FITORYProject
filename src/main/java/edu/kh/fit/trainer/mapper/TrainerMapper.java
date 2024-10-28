@@ -33,6 +33,4 @@ public interface TrainerMapper {
 
 	List<Trainer> detailTrainer(Trainer trainerNo);
 
-
-
 }
