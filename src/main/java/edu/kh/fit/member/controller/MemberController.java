@@ -233,13 +233,14 @@ public class MemberController {
 		
 		/* 내 활동 내역 */
 		@GetMapping("memberMyActivities")
-		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin,
-																	 	 @RequestParam("reviewNo") Comment reviewNo, @RequestParam ("queryType") Query queryType) {
+		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin
+//																	 	 @RequestParam("") Comment reviewNo, @RequestParam ("queryType") Query queryType
+																	 	 ) {
 			
 			int Comment = memberLogin.getMemberNo();
 			Map<String, Object> map = new HashMap<>();
-			map.put("reviewNo", reviewNo);
-			map.put("queryType", queryType);
+//			map.put("review", reviewNo);
+//			map.put("queryType", queryType);
 			
 			Comment = service.memberActivities(map);
 			
