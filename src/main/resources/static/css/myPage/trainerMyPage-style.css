@@ -39,7 +39,7 @@ input::placeholder {
 }
 
 .main-my-page {
-	color: #2d2d2d;
+	color: #292929;
 	font-size: 32px;
 	text-shadow: 10px #bfbfbf;
 	padding-top: 60px;
@@ -48,8 +48,7 @@ input::placeholder {
 
 /* 아이디 */
 .email {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 0% 2% 0%;
 	font-size: 20px;
@@ -58,8 +57,7 @@ input::placeholder {
 
 .box {
 	border: 1px solid;
-	color: #2d2d2d;
-	font-family: "MaruBuriSemiBold", Helvetica;
+	color: #292929;
 	justify-content: center;
 	display: flex;
 	margin: 2% 0% 2%;
@@ -69,8 +67,7 @@ input::placeholder {
 
 /* 이메일 인증 */
 .email-ok {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 0% 2% 0%;
 	font-size: 20px;
@@ -78,8 +75,7 @@ input::placeholder {
 
 /* 이름 */
 .name {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 0% 2% 0%;
 	font-size: 20px;
@@ -87,8 +83,7 @@ input::placeholder {
 
 /*  생년월일 */
 .birth {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 0% 2% 0%;
 	font-size: 20px;
@@ -96,8 +91,7 @@ input::placeholder {
 
 /* 전화번호 */
 .tel {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 0% 2% 0%;
 	font-size: 20px;
@@ -105,8 +99,7 @@ input::placeholder {
 
 /* 자격사항 */
 .main-in {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	font-size: 20px;
 }
@@ -155,8 +148,7 @@ input::placeholder {
 
 /* 프로필 사진 */
 .profile {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #2d2d2d;
+	color: #292929;
 	display: flex;
 	margin: 0% 10% 0% 0%;
 }
@@ -218,7 +210,7 @@ form[name='myPageFrm']{position: relative;}
 }
 
 .update:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
 }
 
 /* 탑버튼 */
@@ -235,5 +227,5 @@ form[name='myPageFrm']{position: relative;}
 }
 
 .top:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
 }

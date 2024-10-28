@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>내 활동 내역</title>
   <link rel="stylesheet" href="/css/myPage/memberMyActivities.css">
-  <link rel="stylesheet" href="../../static/css/myPage/memberMyActivities.css">
 </head>
 
 <body>
@@ -24,66 +24,47 @@
       <input type="checkbox" id="checkbox" class="all-check-box">
       <div class="select">모두 선택</div>
       <div class="main-box">
-        <table>
-          <thead>
-            <th>비고</th>
-            <th>|</th>
-            <th>작성일</th>
-          </thead>
-          <tbody>
-            <td>
-              <!-- <img src="../../static/images/teacher1.jpg"> -->
-              <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
-            <td th:text="${reviewContent || queryDetail}">내 활동 제목</td>
-            <td th:text="${reviewNo || queryType}">활동 종류</td>
-            <td th:text="${rewiewWriteDate || queryDate}">2024-10-24</td>
-            <button class="delete" th:if="${session.memberLogin}" id="deleteBtn">삭제</button>
-            <button class="see" th:if="${session.memberLogin}" id="updateBtn">수정</button>
-            </td>
-          </tbody>
-        </table>
-
-        <!-- 페이지 -->
-        <div class="pagination">
-          <a href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#">7</a>
-          <a href="#">8</a>
-          <a href="#">9</a>
-          <a href="#">10</a>
-          </div>
+      <table>
+        <thead>
+          <th>비고</th>
+          <th>|</th>
+          <th>작성일</th>
+        </thead>
+        <tbody>
+              <td>
+                <!-- <img src="../../static/images/teacher1.jpg"> -->
+                <img th:if="*{thumbnail}" th:src="*{thumbnail}" class="list-thumbnail">
+                <td th:text="*{boardContent}">내 활동 제목</td>
+                <td th:text="*{boardTypeNo}">게시판 종류</td>
+                <td th:text="*{boardWriteDate}">2024-10-24</td>
+                <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">삭제</button>
+                <button class="see" th:if="${session.trainerLongin}" id="updateBtn">수정</button>
+              </td>
+            </tbody>
+          </table>
+  
+              <!-- 페이지 -->
+              <div class="pagination">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+            </div>
           </div>
           <!-- 탑버튼 -->
           <button class="top">▲</button>
-          
-          <!-- 댓글 수정 팝업 -->
-          <div id="update-popup" class="popup" style="display: none;">
-            <h2>댓글을 수정하시겠습니까?</h2>
-            <div class="popup-buttons">
-              <button id="updateYesBtn" class="popup-btn continue">예</button>
-              <button id="deleteNoBtn" class="popup-btn stop">아니오</button>
-            </div>
           </div>
-          <!-- 댓글 삭제 팝업 -->
-          <div id="delete-popup" class="popup" style="display: none;">
-            <h2>댓글을 수정하시겠습니까?</h2>
-            <div class="popup-buttons">
-              <button id="deleteYesBtn" class="popup-btn yes">예</button>
-              <button id="deleteNoBtn" class="popup-btn no">아니오</button>
-            </div>
-          </div>
-          </div>
-          </form>
-          </div>
-          </div>
-  </div>
-  <th:block th:replace="~{common/footer::footer}"></th:block>
-  <script src="/js/myPage/memberMyActivities.js"></script>
-  </script>
-</body>
-
-</html>
+        </form>
+      </div>
+    </div>
+    </div>
+    <div th:replace="common/footer :: footer"></div>
+    <script src="/js/myPage/memberMyActivities.js"></script>
+  </body>
+  </html>

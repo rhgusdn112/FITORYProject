@@ -1,6 +1,7 @@
-
-*{
-	font-family: 'MaruBuriSemiBold';
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
 
 input::placeholder {
@@ -9,6 +10,7 @@ input::placeholder {
 }
 
 .main {
+	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 50vw;
 	padding-left: 20%;
@@ -28,26 +30,32 @@ input::placeholder {
 	padding-right: 20%;
 	padding: 3%;
 }
-
 .main-class {
-	color: 292929;
+	color: #292929;
 	font-size: 32px;
+	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
 }
 
-.select{
-	color: 292929;
+.box {
+  border: 1px solid;
+  color:#292929;
+  font-family: "MaruBuriSemiBold", Helvetica;
+  justify-content: center;
+  display: flex;
+  margin: 2% 0% 2%;
+  padding: 5px;
+  width: 100%;
+}
+
+#selectType{
+	color: #292929;
 	font-size: 14px;
 	font-family: "MaruBuriSemiBold", Helvetica;
 	text-shadow: 10px #bfbfbf;
-  float: right;
-}
-
-.container > #selectType{
-	color: 292929;
-	font-size: 14px;
-	text-shadow: 10px #bfbfbf;
-  float: right;
+	float: right;
+	padding-bottom: 5%;
+	margin-bottom: 30%;
 }
 
 #checkbox{
@@ -55,9 +63,28 @@ input::placeholder {
   display: flex;
 }
 
+img {
+	display: inline-flex;
+	border : 1px solid;
+}
+tr>td{
+	border: 1px solid;
+	box-sizing: content-box;
+	display: flex;
+	margin: 30%;
+	padding: 20%;
+}
+.select{
+	color: #292929;
+	font-size: 14px;
+	font-family: "MaruBuriSemiBold", Helvetica;
+	text-shadow: 10px #bfbfbf;
+  /* float: right; */
+}
 
 /* 수정하기 버튼 */
 .update {
+	font-family: "MaruBuriSemiBold", Helvetica;
 	color: #bfbfbf;
 	padding: 0.8% 1%;
 	margin: auto;
@@ -69,6 +96,7 @@ input::placeholder {
   background-color: #bfbfbf00;
 }
 .delete{
+  font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 0.8% 1%;
@@ -85,12 +113,13 @@ input::placeholder {
   color: rgb(255, 255, 255);
 }
 .delete:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
   background-color: rgb(255, 255, 255)
 }
 
 /* 탑버튼 */
 .top {
+	font-family: "MaruBuriSemiBold", Helvetica;
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 1%;
@@ -102,7 +131,7 @@ input::placeholder {
 }
 
 .top:hover {
-	color: #292929;
+	color: rgba(78, 78, 78, 0.200);
 }
 
 /* 페이지네이션 스타일 */
@@ -120,23 +149,4 @@ input::placeholder {
   text-decoration: none;
   color: #bfbfbf;
   padding: 10%; 
-}
-
-.box{ width: 100%;}
-.box > tbody > tr {
-	padding: 10%;
-	margin: 10%;
-}
-.box > tbody > tr > th:first-child{
-	width: 20%;
-	color: #292929;
-}
-.box > tbody > tr > th:last-child{
-	width: 5%;
-	color: #292929;
-}
-
-.box > tbody > tr > td{
-	width: 75%;
-	color: #292929;
 }

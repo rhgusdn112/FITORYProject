@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mubatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="edu.kh.fit.payment.mapper.OrderMapper">
+
+	<!-- 주문 정보 삽입 -->
+	<insert id="insertOrder" parameterType="order">
+		INSERT INTO "ORDER"(
+			ORDER_NO,
+			ORDER_CLASS_NAME,
+			ORDER_CLASS_AMOUNT,
+			ORDER_CURRENCY,
+			ORDER_MEMBER_NAME
+			) VALUES (
+			#{orderNo},
+			#{classTitle},
+			#{paymentAmount},
+			#{currency},
+			#{customerName}
+			)
+	</insert>
+
+	<!-- 결제 결과 정보 불러오기 -->
+	<select id="selectOrder" parameterType="order">
+		SELECT 
+			ORDER_NO AS orderNo,
+			ORDER_CLASS_NAME AS classTitle,
+			ORDER_CLASS_AMOUNT AS paymentAmount,
+			ORDER_MEMBER_NAME AS customerName
+		FROM
+			"ORDER"
+		WHERE
+			ORDER_NO = #{orderNo}
+	</select>
+</mapper>

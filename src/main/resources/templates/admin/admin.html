@@ -9,7 +9,6 @@
   </style>
 </head>
 <body>
-
   <div th:if="${session.adminLogin != null}"class="main-my-page">
 
 
@@ -25,14 +24,6 @@
       
       </th:block>
 
-<<<<<<< HEAD
-  
-  <th:block th:unless="${session.adminLogin}">
-    <div class="main-my-page">로그인 후 이용바랍니다.</div>
-      <div class="main-box"><form class="login-container" action="/login" method="post" id="loginForm" >
-        <h2>관리자 로그인</h2>
-=======
->>>>>>> bcfc50fc96dbdbdd2edcdf572bb3cb7cfe3304e8
         
 
   </div>
@@ -58,9 +49,7 @@
    
     
   
-  
-  <script src="/js/admin/adminLoginjs"></script>
-  
+  <script th:src="@{/js/admin/adminLoginjs}"></script>
   
   <script th:if="${message}">
     alert("아이디 혹은 패스워드가 일치하지 않습니다.");

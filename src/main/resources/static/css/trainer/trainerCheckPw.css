@@ -20,54 +20,53 @@ input::placeholder {
 	min-height: 100vh;
 	min-width: 80vw;
 	height: 100px;
-	margin: 10%;
 	justify-content: center;
 	/* border: 1px solid; */
-	padding-right: 3%;
-	margin: 10% 10% 10% 10%;
+	padding: 10% 10% 10% 10%;
 }
 
 /* main 박스 */
 .main-box {
 	border: 5px solid;
 	color: #bfbfbf;
-	padding: 10% 15% 15% 10%;
+	margin: auto;
+	margin-top: 3%;
+	min-height: 40vh;
+	height: 25%;
+	padding: 15%;
 }
 
 .password {
-	color: #757575;
+	color: black;
 	font-size: 32px;
 	text-shadow: 10px #bfbfbf;
 }
 
 .box {
   border: 1px solid;
-  color: #757575;
-  font-family: "MaruBuriSemiBold", Helvetica;
-  justify-content: center;
+  color:black;
   display: flex;
   margin: 2% 0% 2% 0%;
   padding: 5px;
   width: 100%;
-	margin-top: 2%;
 }
 
 /* 버튼 */
 .loginBtn {
 	color: #bfbfbf;
 	padding: 0.8% 1%;
+	margin: auto;
 	width: 50%;
   border-radius: 20px 0px 0px 20px;
   float: left;
-	margin-top: 5%;
-  background-color: #ffffff;
+  background-color: #bfbfbf00;
 }
 .passBtn{
 	color: rgb(255, 255, 255);
 	background-color: #bfbfbf;
 	padding: 0.8% 1%;
+	margin: auto;
 	width: 50%;
-	margin-top: 5%;
   float: right;
   border-radius: 0px 20px 20px 0px;
 }
@@ -77,6 +76,6 @@ input::placeholder {
   color: rgb(255, 255, 255);
 }
 .passBtn:hover {
-	color: #757575;
+	color: rgba(78, 78, 78, 0.200);
   background-color: rgb(255, 255, 255)
 }

@@ -18,8 +18,7 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
 
-  <form action="/trainer/trainerClassList" method="POST" enctype="multipart/form-data" name="myPageClassList"
-    id="myPageList" class="main">
+  <form action="/trainer/trainerClassList" method="POST" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
     <div class="main-class">강의 목록</div>
     <div class="container">
       <select name="select" id="selectType">
@@ -28,13 +27,45 @@
         <option value="review">리뷰순</option>
       </select>
     </div>
+    <input type="checkbox" id="checkbox" class="all-check-box">
+    <div class="select">모두 선택</div>
     <div class="main-box">
       <table class="box">
         <tbody>
           <!-- 게시글 리스트를 반복하여 출력 -->
-          <tr th:each="boardNo : ${boardNo}">
+          <tr th:each="post : ${posts}">
             <th>
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
+              <div class="img-box">
+                <div class="boardImg">
+                  <label for="img1">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img2">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img3">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+                <div class="boardImg">
+                  <label for="img4">
+                    <img class="preview">
+                  </label>
+                  <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+                  <span class="delete-image">&times;</span>
+                </div>
+              </div>
+              <img th:if="${post.thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
             </th>
             <td>
               <div th:text="|Title : ${boardTitle}|">제목 :</div>
@@ -46,25 +77,8 @@
           </tr>
         </tbody>
       </table>
-      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 수정</button>
-      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
-
-      <!-- 강의 수정 팝업 -->
-      <div id="update-popup" class="popup" style="display: none;">
-        <h2>강의를 수정하시겠습니까?</h2>
-        <div class="popup-buttons">
-          <button id="updateYesBtn" class="popup-btn continue">예</button>
-          <button id="deleteNoBtn" class="popup-btn stop">아니오</button>
-        </div>
-      </div>
-      <!-- 강의 삭제 팝업 -->
-      <div id="delete-popup" class="popup" style="display: none;">
-        <h2>강의를 삭제하시겠습니까?</h2>
-        <div class="popup-buttons">
-          <button id="deleteYesBtn" class="popup-btn yes">예</button>
-          <button id="deleteNoBtn" class="popup-btn no">아니오</button>
-        </div>
-      </div>
+      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">전체 선택</button>
+      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택 해제</button>
 
       <!-- 페이지 -->
       <div class="pagination">
@@ -82,11 +96,18 @@
     </div>
     <!-- 탑버튼 -->
     <button class="top">▲</button>
-
-
   </form>
   <th:block th:replace="~{common/footer::footer}"></th:block>
-  <script src="/js/classList/trainerClassList.js"></script>
+  <script src="/js/classList/trainerMyPage.js"></script>
+  <script th:inline="javascript">
+    const imageList = /*[[${board.trainerImg}]]*/[];
+    const previewList = document.querySelectorAll('img.preview');
+    for (let img of imageList) {
+      previewList[img.imgOrder].src = img.imgPath + img.imgRename;
+
+      // 미리보기가 출력된 이미지 순서를 orderList에 추가
+      orderList.push(img.imgOrder);
+    }
   </script>
 </body>
 

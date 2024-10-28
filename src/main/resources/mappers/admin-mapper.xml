@@ -29,12 +29,15 @@
 				    M.MEMBER_BIRTHDAY,
 				    M.HEIGHT,
 				    M.WEIGHT,
-				    TO_CHAR(M.ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE,
-				    COUNT(R.COMMENT_NO) AS COMMENT_COUNT
+				    TO_CHAR(M.ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE,
+				    COUNT(R.COMMENT_NO) AS COUNT_COMMENT,
+				    COUNT(N.REPORT_NO) AS COUNT_REPORT 
 				FROM 
 				    MEMBER M
 				LEFT JOIN 
 				    REVIEW R ON M.MEMBER_NO = R.MEMBER_NO
+				LEFT JOIN
+						REPORT N ON M.MEMBER_NO = N.ASSAILANT_PK
 				GROUP BY 
 				    M.MEMBER_NO, 
 				    M.MEMBER_EMAIL, 
@@ -49,6 +52,97 @@
 	</select>
 	
 	
+	<select id="trainerList"
+					parameterType="Trainer">
+	 SELECT
+			T.TRAINER_NO,
+			T.TRAINER_EMAIL,
+			T.TRAINER_NICKNAME,
+			T.PROFILE_IMG,
+			T.SALES,
+			TO_CHAR(T.ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE,
+			T.TRAINNER_DEL_FL,
+			T.GENDER,
+			COUNT(B.BOARD_NO) AS COUNT_BOARD_NO,
+			COUNT(R.REPORT_NO) AS COUNT_REPORT_NO
+		FROM TRAINER T
+		LEFT JOIN
+				BOARD B ON B.TRAINER_NO = T.TRAINER_NO
+		LEFT JOIN
+				REPORT R ON R.ASSAILANT_PK = T.TRAINER_NO
+		GROUP BY 
+				    T.TRAINER_NO, 
+				    T.TRAINER_EMAIL, 
+				    T.TRAINER_NICKNAME, 
+				    T.PROFILE_IMG,
+				    T.SALES,
+				    T.ENROLL_DATE,
+				    T.TRAINNER_DEL_FL,
+				    T.GENDER
+		ORDER BY 
+				    T.TRAINER_NO
+				
+		
+	</select>
+	
+	
+	<!-- 주문내역 조회 -->
+	<select id="selectOrderList"
+					resultType="Order">
+		SELECT
+			ORDER_NO,
+			ORDER_TRAINER_NAME,
+			ORDER_CLASS_NAME,
+			ORDER_CLASS_AMOUNT
+		FROM "ORDER"
+		WHERE
+		 ORDER_MEMBER_NAME = (
+		 		SELECT MEMBER_NAME
+		 		FROM MEMBER
+		 		WHERE MEMBER_NO = #{memberNo});
+	</select>
+	
+	<!-- 댓글 목록조회 -->
+	<select id="selectCommentList"
+					resultType="Comment">
+			SELECT
+				COMMENT_NO,
+				REVIEW_CONTENT,
+				TO_CHAR(REVIEW_WRITE_DATE,'YYYY"년" MM"월" DD"일"),
+				NUMBER,
+				BOARD_NO
+			FROM "REVIEW"
+			WHERE MEMBER_NO = #{memberNo}
+			AND REVIEW_DEL_FL = 'N'
+	</select>
+	
+	<!-- 문의내역 조회 -->
+	<select id="selectQueryList"
+					resultType="Query">
+					SELECT 
+						QUERY_NO,
+						QUERY_DETAIL,
+						QUERY_DATE,
+						QUERY_TYPE,
+						STATUS						
+					FROM "QUERY"
+					WHERE QUERY_PK = #{memberNo}
+	</select>
+	
+	<!-- 신고내역 조회 -->
+	<select id="selectReportList"
+					resultType="Report">
+					SELECT
+						REPORT_NO,
+						REPORT_DETAIL,
+						TO_CHAR(REPORT_DATE,'YYYY"년" MM"월" DD"일"') AS REPORT_DATE,
+						REPORTER_TYPE,
+						ASSAILANT_TYPE,
+						ASSAILANT_PK,
+						STATUS
+					FROM "REPORT"
+					WHERE REPORTER_PK = #{memberNo}										
+	</select>
 	
 	
 </mapper>
