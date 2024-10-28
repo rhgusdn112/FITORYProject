@@ -84,6 +84,7 @@ public class MemberServiceImpl implements MemberService{
       return mapper.classList(memberNo);
   }
 
+
 	@Override
 	public Map<String, Object> memberMyActivities(int memberNo, int cp) {
 		
@@ -108,7 +109,6 @@ public class MemberServiceImpl implements MemberService{
 		
 		return map;
 	}
-	
 
 
 }

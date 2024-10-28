@@ -26,6 +26,7 @@
             <th>작성일</th>
           </thead>
           <tbody>
+
             <tr th:each="review:${reviewList}" th:object="${review}">
               <td>
                 <th:block th:if="*{type == '리뷰'}">
@@ -37,6 +38,7 @@
               </td>
               <td th:text="*{type}">게시판 종류</td>
               <td th:text="*{reviewWriteDate}">2024-10-24</td>
+
             </tr>
           </tbody>
         </table>
@@ -80,6 +82,7 @@
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
   </script>
   <div th:replace="common/footer :: footer"></div>
+  <script src="/js/myPage/memberMyActivities.js"></script>
 </body>
 
 </html>

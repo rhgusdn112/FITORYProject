@@ -73,6 +73,7 @@
         JOIN BOARD_TYPE ON (BOARD.CLASS_NO = BOARD_TYPE.BOARD_TYPE_NO)
         WHERE ORDER_MEMBER_NO = #{orderMemberNo}
         ORDER BY ORDER_NO DESC
+
     </select>
     
     <!-- 내 활동 내역 수 -->
