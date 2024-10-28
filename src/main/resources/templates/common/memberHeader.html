@@ -30,7 +30,7 @@
       </nav>
       <!-- 검색 바 영역 -->
       <div class="header-search-bar">
-        <input type="text" placeholder="Search" class="header-search-input"
+        <input type="text" id="search-bar" placeholder="Search" class="header-search-input"
           oninput="this.nextElementSibling.style.display = this.value ? 'block' : 'none';">
         <button class="header-clear-button"
           onclick="document.querySelector('.header-search-input').value = ''; this.style.display = 'none';"
