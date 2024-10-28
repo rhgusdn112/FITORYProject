@@ -47,9 +47,9 @@ public interface MemberService {
   List<Order> classList(int memberNo);
 
   /** 내 활동 내역
-   * @param map
+   * @param boardTypeNo
    * @return
    */
-	int memberActivities(Map<String, Object> map);
+	int memberActivities(int memberNo);
 
 }

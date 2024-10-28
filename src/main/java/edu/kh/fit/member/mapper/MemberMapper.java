@@ -25,16 +25,12 @@ public interface MemberMapper {
 	
 	// 회원 정보 수정
 	int updateMember(Member inputMember);
-	
-	// 회원 결제 강의 목록 조회
-  List<Order> classList(int memberNo);
 
-  // 내 활동 내역
-	int memberMyActivities(Map<String, Object> map);
-
-//회원 결제 강의 목록 조회
+	//회원 결제 강의 목록 조회
  List<Order> classList(int memberNo);
 
  // 내 활동 내역
-//	int memberMyActivities(Map<String, Object> map);
+ int memberActivities(int memberNo);
+
+
 }

@@ -1,5 +1,6 @@
 package edu.kh.fit.member.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -232,21 +234,22 @@ public class MemberController {
     }
 		
 		/* 내 활동 내역 */
-		@GetMapping("memberMyActivities")
-		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin
-//																	 	 @RequestParam("") Comment reviewNo, @RequestParam ("queryType") Query queryType
-																	 	 ) {
-			
-//			int Comment = memberLogin.getMemberNo();
-//			List<String, Object> map = new HashMap<>();
-//			map.put("review", reviewNo);
-//			map.put("queryType", queryType);
-			
-//			Comment = service.memberActivities(map);
-			
-			Comment = service.memberActivities(map);
-			
-			
-			return "/myPage/memberMyActivities";
+		@GetMapping("memberMyActivities/{memberNo[0-9+]}")
+		public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin, Model model) {
+			 List<Comment> reviews = new ArrayList();
+
+       // 예제 데이터 추가 (실제 애플리케이션에서는 데이터베이스에서 가져오는 부분)
+//       Comment review = new Comment();
+//       review.setThumbnail("thumbnail", thumbnail);
+//       review.setReviewContent("This is the first review.");
+//       review.setBoardTypeName("자유게시판", boardTypeName);
+//       review.setBoardWriteDate("boardWriteDate", WriteDate);
+//       
+//       reviews.add(review1);
+//       reviews.add(review2);
+
+       // 모델에 데이터 추가
+       model.addAttribute("reviews", reviews);
+			return "/myPage/memberMyActivities/{memberNo[0-9+]}";
 		}
 }
