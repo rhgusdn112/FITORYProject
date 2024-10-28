@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="du.kh.fit.trainner.mapper.TrainnerMapper">
+	
+	<!-- (강사) 로그인 서비스 -->
+	<select id="loginTrainner"
+			resultType="Trainner">
+		SELECT
+			TRAINNER_NO,
+			TRAINNER_EMAIL, 
+			TRAINNER_NICKNAME, 
+			TRAINNER_PW,
+			TRAINNER_TEL, 
+			TRAINNER_ADDRESS, 
+			PROFILE_IMG, 
+			AUTHORITY,
+			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE
+		FROM TRAINNER
+		WHERE TRAINNER_EMAIL = #{trainnerEmail}
+		AND   TRAINNER_DEL_FL = 'N'
+	</select>
+
+
+	<!-- (강사) 회원가입 -->
+	<insert id="signUp">
+		INSERT INTO "TRAINNER"
+		VALUES(
+		SEQ_TRAINNER_NO.NEXTVAL, 
+		#{trainnerEmail}, 
+		#{trainnerPw},
+	 	#{trainnerNickname}, 
+	 	#{trainnerTel}, 
+	 	#{trainnerAddress},
+	 	NULL,
+	 	#{qualification} <!-- 자격증 번호 or 사진 -->
+	 	DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+</mapper>

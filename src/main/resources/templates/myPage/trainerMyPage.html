@@ -24,7 +24,7 @@
       <div class="main-in">자격사항</div>
       <table class="qualification-table">
         <thead>
-          <tr>
+          <tr th:text="*{qualificationNo}">
             <th>자격사항</th>
             <th class="date-th">
               취득일
@@ -35,7 +35,7 @@
         <tbody id="tbody">
           <tr>
             <td>
-              <input class="review" name="qName" placeholder="자격사항을 작성해주세요.">
+              <input class="review" name="qName" placeholder="자격사항을 작성해주세요." th:text="${qualification}">
             </td>
             <td>
               <input class="date" type="date" name="qDate">

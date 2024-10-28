@@ -22,6 +22,7 @@ public class Board {
 	
 	// BOARD 테이블 컬럼과 매핑되는 필드
 	private int 		boardNo; 						// 강의 번호
+	private String 	thumbnail; 					// 영상 썸네일
 	private String	title; 							// 강의 제목
 	private String	detail;							// 강의 내용
 	private String 	uploadDate;					// 작성일
@@ -53,6 +54,5 @@ public class Board {
 	private String videoOriginalName; // 원본명
 	private String videoRename; // 변경명
 	private int videoOrder; // 동영상 순서
-	
 	
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/search.css">
+    <title>검색 결과</title>
+</head>
+<body>
+    <!-- 헤더, 사이드바, 푸터를 각각 fragment로 포함 -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+    <th:block th:replace="fragments/sidebar :: sidebar"></th:block>
+    
+    <div class="search-results">
+        <h2 th:text="'검색 결과: ' + ${keyword}"></h2>
+        
+        <div class="category">
+            <h3>홈짐 영상</h3>
+            <div class="video-list">
+                <div th:each="video : ${homeGymVideos}">
+                    <a th:href="@{/board/{id}(id=${video.boardNo})}" th:text="${video.title}"></a>
+                    <p th:text="'작성자: ' + ${video.trainerNickname}"></p>
+                    <p th:text="'평점: ' + ${video.grade}"></p>
+                    <p th:text="'가격: ' + ${video.payment} + '원'"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h3>홈트레이닝 영상</h3>
+            <div class="video-list">
+                <div th:each="video : ${homeTrainingVideos}">
+                    <a th:href="@{/board/{id}(id=${video.boardNo})}" th:text="${video.title}"></a>
+                    <p th:text="'작성자: ' + ${video.trainerNickname}"></p>
+                    <p th:text="'평점: ' + ${video.grade}"></p>
+                    <p th:text="'가격: ' + ${video.payment} + '원'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+    
+    <script src="/js/search.js"></script>
+</body>
+</html>

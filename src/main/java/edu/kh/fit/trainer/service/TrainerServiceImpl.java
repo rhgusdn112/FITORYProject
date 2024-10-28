@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.mapper.TrainerMapper;
 import lombok.RequiredArgsConstructor;
@@ -106,5 +107,17 @@ public class TrainerServiceImpl implements TrainerService{
 		return mapper.detailTrainer(trainerNo);
 	}
 
+
+	/* 강사 강의 목록 조회 */
+	@Override
+	public List<Board> classList(int trainerNo) {
+		return mapper.classList(trainerNo);
+	}
+
+	/* 강사 상세정보 조회 */
+	@Override
+	public List<Trainer> detailTrainer(Trainer trainerNo) {
+		return mapper.detailTrainer(trainerNo);
+	}
 
 }

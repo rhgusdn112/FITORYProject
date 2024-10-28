@@ -1,6 +1,7 @@
 package edu.kh.fit.member.service;
 
 import java.util.List;
+import java.util.Map
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,8 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.emailCheck(email);
 	}
 
+	
+	
 	// 회원 정보 수정 비밀번호 확인
 	@Override
 	public boolean memberCheckPw(int memberNo, String memberPw) {

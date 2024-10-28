@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
 import lombok.RequiredArgsConstructor;

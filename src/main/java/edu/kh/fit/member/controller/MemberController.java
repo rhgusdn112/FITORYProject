@@ -2,6 +2,7 @@ package edu.kh.fit.member.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.admin.dto.Query;
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
 import edu.kh.fit.payment.dto.Order;
@@ -241,8 +244,9 @@ public class MemberController {
 			
 //			Comment = service.memberActivities(map);
 			
+			Comment = service.memberActivities(map);
+			
 			
 			return "/myPage/memberMyActivities";
 		}
-
 }

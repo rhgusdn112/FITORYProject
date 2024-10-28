@@ -7,16 +7,16 @@
 	<insert id="insertOrder" parameterType="order">
 		INSERT INTO "ORDER"(
 			ORDER_NO,
-			ORDER_CLASS_NO,
+			ORDER_CLASS_NAME,
 			ORDER_CLASS_AMOUNT,
 			ORDER_CURRENCY,
-			ORDER_MEMBER_NO
+			ORDER_MEMBER_NAME
 			) VALUES (
 			#{orderNo},
-			#{orderClassNo},
-			#{orderClassAmount},
-			#{orderCurrency},
-			#{orderMemberNo}
+			#{classTitle},
+			#{paymentAmount},
+			#{currency},
+			#{customerName}
 			)
 	</insert>
 
@@ -24,13 +24,11 @@
 	<select id="selectOrder" parameterType="order">
 		SELECT 
 			ORDER_NO AS orderNo,
-			ORDER_CLASS_AMOUNT AS orderClassAmount,
-			MEMBER_NAME AS customerName,
-			TITLE
+			ORDER_CLASS_NAME AS classTitle,
+			ORDER_CLASS_AMOUNT AS paymentAmount,
+			ORDER_MEMBER_NAME AS customerName
 		FROM
 			"ORDER"
-		JOIN "BOARD" ON BOARD_NO = ORDER_CLASS_NO
-		JOIN "MEMBER" ON MEMBER_NO = ORDER_MEMBER_NO
 		WHERE
 			ORDER_NO = #{orderNo}
 	</select>

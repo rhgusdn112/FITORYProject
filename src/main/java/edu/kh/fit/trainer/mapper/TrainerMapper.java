@@ -3,8 +3,10 @@ package edu.kh.fit.trainer.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
 
 @Mapper

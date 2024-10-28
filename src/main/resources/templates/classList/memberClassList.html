@@ -34,15 +34,15 @@
       <table class="box">
         <tbody>
           <!-- 게시글 리스트를 반복하여 출력 -->
-          <tr th:each="post : ${posts}">
+          <tr th:each="order : ${orderList}" th:object="${order}">
             <th>
-              <img th:if="${boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
+              <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
             </th>
             <td>
-              <div th:text="|Title : ${title}|">제목 :</div>
-              <div th:text="|설명 : ${detail}|">설명 :</div>
-              <div th:text="|강사 : ${trainerNo}|">강사 :</div>
-              <div th:text="|카테고리 : ${classNo}|">카테고리:</div>
+              <div th:text="|Title : *{title}|">제목 :</div>
+              <div th:text="|설명 : *{detail}|">설명 :</div>
+              <div th:text="|강사 : *{trainerNickname}|">강사 :</div>
+              <div th:text="|카테고리 : *{boardTypeName}|">카테고리:</div>
             </td>
             <th><input type="checkbox" class="checkbox"></th>
           </tr>
