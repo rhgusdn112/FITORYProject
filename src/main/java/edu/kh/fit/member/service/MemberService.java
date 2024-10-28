@@ -1,6 +1,9 @@
 package edu.kh.fit.member.service;
 
+import java.util.List;
+
 import edu.kh.fit.member.dto.Member;
+import edu.kh.fit.payment.dto.Order;
 
 public interface MemberService {
 	
@@ -35,5 +38,11 @@ public interface MemberService {
 	 * @return
 	 */
 	int updateMember(Member inputMember);
+
+	/** 회원 결제 강의 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	List<Order> classList(int memberNo);
 
 }

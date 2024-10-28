@@ -43,30 +43,7 @@
                   <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                   <span class="delete-image">&times;</span>
                 </div>
-                <div class="boardImg">
-                  <label for="img2">
-                    <img class="preview">
-                  </label>
-                  <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
-                  <span class="delete-image">&times;</span>
-                </div>
-                <div class="boardImg">
-                  <label for="img3">
-                    <img class="preview">
-                  </label>
-                  <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
-                  <span class="delete-image">&times;</span>
-                </div>
-                <div class="boardImg">
-                  <label for="img4">
-                    <img class="preview">
-                  </label>
-                  <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
-                  <span class="delete-image">&times;</span>
-                </div>
-              </div>
-              <img th:if="${post .thumbnail}" th:src="${post.thumbnail}" class="list-thumbnail" alt="썸네일">
-            </th>
+              </th>
             <td>
               <div th:text="|Title : ${boardTitle}|">제목 :</div>
               <div th:text="|설명 : ${boardContent}|">설명 :</div>

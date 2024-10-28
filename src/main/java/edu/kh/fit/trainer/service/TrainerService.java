@@ -1,7 +1,10 @@
 package edu.kh.fit.trainer.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.trainer.dto.Trainer;
 
 public interface TrainerService {
@@ -40,6 +43,20 @@ public interface TrainerService {
 	 * @return
 	 */
 	String profile(MultipartFile imgProfileList, int trainerNo);
+
+	/** 강사 강의 목록 조회
+	 * @param trainerNo
+	 * @return
+	 */
+		List<Board> classList(int trainerNo);
+
+	/** 강사 상세조회
+	 * @param trainerNo
+	 * @param boardNo
+	 * @return
+	 */
+	List<Trainer> detailTrainer(Trainer trainerNo);
+
 
 
 

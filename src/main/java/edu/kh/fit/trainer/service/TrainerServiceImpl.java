@@ -1,6 +1,7 @@
 package edu.kh.fit.trainer.service;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
 import edu.kh.fit.trainer.dto.Trainer;
@@ -91,5 +93,18 @@ public class TrainerServiceImpl implements TrainerService{
 		}
 		return profileWebPath + rename;
 	}
+	
+	/* 강사 강의 목록 조회 */
+	@Override
+	public List<Board> classList(int trainerNo) {
+		return mapper.classList(trainerNo);
+	}
+
+	/* 강사 상세정보 조회 */
+	@Override
+	public List<Trainer> detailTrainer(Trainer trainerNo) {
+		return mapper.detailTrainer(trainerNo);
+	}
+
 
 }
