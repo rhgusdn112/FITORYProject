@@ -36,9 +36,12 @@ public interface TrainerService {
 
 	/** 강사 정보 수정
 	 * @param inputTrainer
+	 * @param qDateList 
+	 * @param qNameList 
+	 * @param imgProfileList 
 	 * @return
 	 */
-	int updateTrainer(Trainer inputTrainer);
+	Map<String, Object>  updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList);
 
 	/** 프로필 변경
 	 * @param profileImg

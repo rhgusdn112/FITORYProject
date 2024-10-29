@@ -1,11 +1,14 @@
 package edu.kh.fit.trainer.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
 
 @Mapper
@@ -42,6 +45,19 @@ public interface TrainerMapper {
 	
 	// 페이지 네이션
 	int qualificationList(int trainerNo);
+	
+	// 자격 정보 삭제
+	void deleteQulification(int trainerNo);
+	
+	// 자격 정보 insert
+	int insertQulification(List<Qualification> qList);
+
+	// 트레이너 이미지 삭제
+	void deleteTrainerImage(int trainerNo);
+
+	// 트레이너 이미지 삽입
+	int insertTrainerImage(@Param("renameList") List<String> renameList, @Param("trainerNo") int trainerNo);
+
 
 
 }

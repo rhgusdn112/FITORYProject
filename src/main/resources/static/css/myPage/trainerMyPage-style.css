@@ -202,10 +202,9 @@ input::placeholder {
 form[name='myPageFrm']{position: relative;}
 
 #deleteImage{
-  position: absolute;
-  top: 0px;
-  right: 240px;
   cursor: pointer;
+	padding: 0 5px;
+	font-weight: bold;
 }
 
 /* 프로필 사진 수정 버튼 */
@@ -255,3 +254,10 @@ form[name='myPageFrm']{position: relative;}
 	color: rgba(78, 78, 78, 0.200);
 }
 
+.preview{
+	display: none;
+}
+
+.preview[src]{
+	display: inline;
+}
