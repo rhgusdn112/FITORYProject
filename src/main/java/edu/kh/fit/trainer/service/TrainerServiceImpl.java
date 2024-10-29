@@ -3,7 +3,9 @@ package edu.kh.fit.trainer.service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
 import edu.kh.fit.payment.dto.Order;
@@ -65,6 +69,8 @@ public class TrainerServiceImpl implements TrainerService{
 	@Override
 	public boolean trainerCheckPw(int trainerNo, String trainerPw) {
 		String encodePw = mapper.trainerCheckPw(trainerNo);
+		// 강사 자격사항 mapper 추가
+		
 		return encorder.matches(trainerPw, encodePw);
 	}
 
@@ -134,8 +140,23 @@ public class TrainerServiceImpl implements TrainerService{
 
 	/* 강사 상세정보 조회 */
 	@Override
-	public List<Trainer> detailTrainer(Trainer trainerNo) {
-		return mapper.detailTrainer(trainerNo);
+	public Map<String, Object> detailTrainer(int trainerNo, int cp) {
+		// 전체 리뷰/문의 개수 조회
+		int listCount = mapper.qualificationList(trainerNo);
+		
+		// 페이지네이션 계산
+		Pagination pagination = new Pagination(cp, listCount, 10, 10);
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		
+		List<Trainer> reviewList = mapper.detailTrainer(trainerNo, bounds);
+		
+		
+		Map<String, Object> map = Map.of("reviewList", reviewList, "pagination", pagination);
+		return map;
 	}
 
 }

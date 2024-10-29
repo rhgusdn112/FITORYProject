@@ -173,9 +173,7 @@ public class MemberController {
 		return "/myPage/memberMyPage";
 	}
 
-	/**
-	 * 회원 정보 수정
-	 * 
+	/** 회원 정보 수정
 	 * @param loginMember
 	 * @param updateMember : memberTel, memberName
 	 * @param ra
@@ -203,9 +201,7 @@ public class MemberController {
 		return "redirect:/member/memberMyPage";
 	}
 
-	/**
-	 * 회원 결제 강의 목록 조회
-	 * 
+	/** 회원 결제 강의 목록 조회
 	 * @param memberLogin
 	 * @param cp
 	 * @param model
@@ -234,12 +230,12 @@ public class MemberController {
 	public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 		Map<String, Object> map = service.memberMyActivities(memberLogin.getMemberNo(), cp);
-
 		
 		model.addAttribute("reviewList", (List<Comment>)map.get("reviewList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
 		return "/myPage/memberMyActivities";
+	}
 }
 
 }

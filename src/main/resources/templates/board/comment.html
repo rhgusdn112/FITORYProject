@@ -1,53 +1,84 @@
 <th:block th:fragment="comment-section">
   <div class="review-section">
-    <!-- 리뷰 리스트 출력 섹션 -->
-    <div class="review-list" th:each="review : ${reviews}">
-      <div class="review">
-        <div class="review-header">
-          <!-- 리뷰 작성자 이름 출력 -->
-          <span class="review-writer" th:text="${review.memberNickname}">작성자 이름</span>
-          <!-- 리뷰 작성일 출력 -->
-          <span class="review-date" th:text="${review.reviewWriteDate}">작성일</span>
-          <!-- 리뷰 별점 출력 -->
-          <span class="review-rating" th:text="${review.number} + '점'">별점: 5.0</span>
-        </div>
-        <!-- 리뷰 내용 출력 -->
-        <p class="review-content" th:text="${review.reviewContent}">리뷰 내용</p>
-        
-        <!-- 리뷰 수정/삭제 버튼 (로그인된 사용자와 작성자가 같을 경우에만 표시) -->
-        <div class="review-actions" th:if="${user != null && user.memberNo == review.memberNo}">
-          <button class="edit-review-btn" th:attr="data-id=${review.commentNo}">수정</button>
-          <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
-        </div>
+
+  </div>
+  <!-- 비회원일 경우 리뷰 작성 안내 메시지 출력 -->
+  <div th:if="${userType == 'guest'}">
+    <p>로그인 후 리뷰를 작성할 수 있습니다.</p>
+  </div>
+
+  <!-- 이미 리뷰를 작성한 경우 안내 메시지 출력 -->
+  <div th:if="${hasReviewed}">
+    <div class="review" th:each="review : ${reviews}" th:if="${user.memberNo == review.memberNo}">
+      <h2>내가 쓴 리뷰</h2>
+      <div class="review-header">
+        <!-- 리뷰 작성자 이름 출력 -->
+        <span class="review-writer" th:text="${review.memberNickname}">작성자 이름</span>
+        <!-- 리뷰 작성일 출력 -->
+        <span class="review-date" th:text="${review.reviewWriteDate}">작성일</span>
+        <!-- 리뷰 별점 출력 -->
+        <span class="review-rating" th:text="${review.number} + '점'">별점: 5.0</span>
+      </div>
+      <!-- 리뷰 내용 출력 -->
+      <p class="review-content" th:text="${review.reviewContent}">리뷰 내용</p>
+      <!-- 리뷰 수정/삭제 버튼 -->
+      <div class="review-actions">
+        <button class="edit-review-btn" th:attr="data-id=${review.commentNo}">수정</button>
+        <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
       </div>
     </div>
+  </div>
 
-    <!-- 리뷰 작성 폼 (결제한 회원만 작성 가능) -->
-    <div class="review-form" th:if="${userType == 'member' && !hasReviewed}">
-      <textarea id="new-review" placeholder="리뷰를 입력하세요..."></textarea>
-      <!-- 리뷰 별점 선택 옵션 -->
-      <select id="review-rating">
-        <option value="0.5">0.5점</option>
-        <option value="1.0">1점</option>
-        <option value="1.5">1.5점</option>
-        <option value="2.0">2점</option>
-        <option value="2.5">2.5점</option>
-        <option value="3.0">3점</option>
-        <option value="3.5">3.5점</option>
-        <option value="4.0">4점</option>
-        <option value="4.5">4.5점</option>
-        <option value="5.0">5점</option>
-      </select>
-      <!-- 리뷰 작성 버튼 -->
-      <button id="submit-review">리뷰 작성</button>
-    </div>
-    <!-- 비회원일 경우 리뷰 작성 안내 메시지 출력 -->
-    <div th:if="${userType == 'guest'}">
-      <p>로그인 후 리뷰를 작성할 수 있습니다.</p>
-    </div>
-    <!-- 이미 리뷰를 작성한 경우 안내 메시지 출력 -->
-    <div th:if="${hasReviewed}">
-      <p>이미 리뷰를 작성하셨습니다. 수정만 가능합니다.</p>
+  <!-- 리뷰 작성 폼 (결제한 회원만 작성 가능) -->
+  <div class="review-form" th:if="${userType == 'paidMember' && !hasReviewed}">
+    <textarea id="new-review" placeholder="리뷰를 입력하세요..."></textarea>
+    <!-- 리뷰 별점 선택 옵션 -->
+    <select id="review-rating">
+      <option value="0.5">0.5점</option>
+      <option value="1.0">1점</option>
+      <option value="1.5">1.5점</option>
+      <option value="2.0">2점</option>
+      <option value="2.5">2.5점</option>
+      <option value="3.0">3점</option>
+      <option value="3.5">3.5점</option>
+      <option value="4.0">4점</option>
+      <option value="4.5">4.5점</option>
+      <option value="5.0">5점</option>
+    </select>
+  </div>
+
+  <!-- 리뷰 정렬 옵션 (별점 순, 최신 순) -->
+  <div class="review-sort-options">
+    <button id="sort-by-rating">별점 순</button>
+    <button id="sort-by-date">최신 순</button>
+  </div>
+
+  <!-- 리뷰 리스트 출력 섹션 -->
+  <div class="review-list" th:each="review : ${reviews}">
+    <div class="review">
+      <div class="review-header">
+        <!-- 리뷰 작성자 이름 출력 -->
+        <span class="review-writer" th:text="${review.memberNickname}">작성자 이름</span>
+        <!-- 리뷰 작성일 출력 -->
+        <span class="review-date" th:text="${review.reviewWriteDate}">작성일</span>
+        <!-- 리뷰 별점 출력 -->
+        <span class="review-rating" th:text="${review.number} + '점'">별점: 5.0</span>
+      </div>
+      <!-- 리뷰 내용 출력 -->
+      <p class="review-content" th:text="${review.reviewContent}">리뷰 내용</p>
+
+      <!-- 리뷰 수정/삭제 버튼 -->
+      <div class="review-actions" th:if="${userType == 'paidMember' && user.memberNo == review.memberNo}">
+        <!-- 결제한 회원이 작성한 리뷰만 수정/삭제 가능 -->
+        <button class="edit-review-btn" th:attr="data-id=${review.commentNo}">수정</button>
+        <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
+      </div>
+      <div class="review-actions" th:if="${userType == 'admin'}">
+        <!-- 관리자는 모든 리뷰 수정/삭제 가능 -->
+        <button class="edit-review-btn" th:attr="data-id=${review.commentNo}">수정</button>
+        <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
+      </div>
     </div>
   </div>
+
 </th:block>

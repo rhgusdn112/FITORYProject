@@ -37,14 +37,14 @@ input::placeholder {
 }
 
 .password {
-	color: black;
+	color: #292929;
 	font-size: 32px;
 	text-shadow: 10px #bfbfbf;
 }
 
 .box {
   border: 1px solid;
-  color:black;
+  color:#292929;
   display: flex;
   margin: 2% 0% 2% 0%;
   padding: 5px;

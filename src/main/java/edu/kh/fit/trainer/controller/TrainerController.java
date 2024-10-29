@@ -1,7 +1,7 @@
 package edu.kh.fit.trainer.controller;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.board.dto.Board;
-import edu.kh.fit.member.dto.Member;
-import edu.kh.fit.payment.dto.Order;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.trainer.dto.Trainer;
 
 import edu.kh.fit.trainer.service.TrainerService;
@@ -218,7 +217,7 @@ public class TrainerController {
 	}
 
 	
-	/**  강사 강의 목록 조회
+	/** 강사 강의 목록 조회
 	 * @param trainerLogin
 	 * @param cp
 	 * @param model
@@ -236,15 +235,17 @@ public class TrainerController {
       
       model.addAttribute("orderList", orderList);
       
-      // 버튼 클릭 시 삭제 및 영상 보기
-      
       return "/classList/trainerClassList";
-  }
+  }	
   
-  /* 강사 상세 정보 */
-  @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
-  public String detailTrainer(@PathVariable("treainerNo") Trainer trainerNo) {
-  	List<Trainer> detailTrainer = service.detailTrainer(trainerNo);
+  /* 강사 상세 정보 조회 */
+  @GetMapping("trainerDetail/{trainerNo}")
+  public String detailTrainer(@PathVariable("trainerNo") int trainerNo,
+  														@RequestParam(value="cp", required = false, defaultValue = "1") int cp, Model model) {
+  	Map<String, Object> map = service.detailTrainer(trainerNo, cp);
+		model.addAttribute("qualificationList", (List<Trainer>)map.get("qualificationList"));
+		model.addAttribute("pagination", (Pagination)map.get("pagination"));
+		
       return "/trainer/trainerDetail";
   }
   

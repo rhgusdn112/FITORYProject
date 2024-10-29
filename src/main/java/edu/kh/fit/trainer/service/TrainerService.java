@@ -1,6 +1,7 @@
 package edu.kh.fit.trainer.service;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.fit.board.dto.Board;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,12 +54,12 @@ public interface TrainerService {
  */
 	List<Board> classList(int trainerNo);
 
-/** 강사 상세조회
+/** 강사 상세 정보 조회
  * @param trainerNo
- * @param boardNo
+ * @param cp
  * @return
  */
-List<Trainer> detailTrainer(Trainer trainerNo);
+Map<String, Object> detailTrainer(int trainerNo, int cp);
 
 
 
