@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   selectReportList();
 })
 
+// 회원 관리 페이지
+
 // 회원번호 주소에서 받아오기
 const memberNo = location.href.split("=")[1];
 // console.log(memberNo);
@@ -15,7 +17,7 @@ const orderList = document.querySelector("#orderList");
 
 const selectOrderList = () => {
 
-  fetch("/admin/oderList",{
+  fetch("/admin/orderList",{
     method : "post",
     headers : {"Content-Type":"application/json"},
     body : memberNo
@@ -26,7 +28,7 @@ const selectOrderList = () => {
   })
   .then(list => {
 
-    // console.log(list);
+    console.log(list);
     oderList.innerHTML = "";
 
     list.forEach(order => {
@@ -38,7 +40,7 @@ const selectOrderList = () => {
       td1.innerText = order.orderNo; // 주문번호
 
       const td2 = document.createElement("td");
-      td2.innerText = order.orderTitle; // 제목
+      td2.innerText = order.title; // 제목
 
       const td3 = document.createElement("td");
       td3.innerText = order.orderPayment; // 가격
@@ -48,7 +50,7 @@ const selectOrderList = () => {
 
       tr.append(td1, td2, td3, td4);
 
-      oderList.append(tr);
+      orderList.append(tr);
     })
   })
   .catch(err => console.error(err));
@@ -65,6 +67,10 @@ const selectCommentList = () => {
     headers : {"Content-Type":"application/json"},
     body : memberNo
   })
+  .then(response => {
+    if(response.ok) return response.json();
+    throw new Error("조회 오류");
+  })
   .then(list => {
 
     // console.log(list);
@@ -79,10 +85,16 @@ const selectCommentList = () => {
       td1.innerText = comment.commentNo; // 번호
 
       const td2 = document.createElement("td");
-      td2.innerText = comment.reviewContent; // 내용
+      const commentDirect = document.createElement("a")
+
+      commentDirect.innerText = comment.reviewContent; // 내용
+
+      commentDirect.href = "/board/"+ comment.classNo + "/" + comment.boardNo;
+
+      td2.append(commentDirect);
       
-      const td2 = document.createElement("td");
-      td2.innerText = comment.reviewWriteDate; // 작성일자
+      const td3 = document.createElement("td");
+      td3.innerText = comment.reviewWriteDate; // 작성일자
 
       tr.append(td1, td2, td3);
 
@@ -101,6 +113,10 @@ const selectQueryList = () => {
     method : "post",
     headers : {"Content-Type":"application/json"},
     body : memberNo
+  })
+  .then(response => {
+    if(response.ok) return response.json();
+    throw new Error("조회 오류");
   })
   .then(list => {
 
@@ -139,6 +155,10 @@ const selectReportList = () => {
     headers : {"Content-Type":"application/json"},
     body : memberNo
   })
+  .then(response => {
+    if(response.ok) return response.json();
+    throw new Error("조회 오류");
+  })
   .then(list => {
 
     // console.log(list);
@@ -165,3 +185,4 @@ const selectReportList = () => {
   })
   .catch(err => console.error(err));
 }
+

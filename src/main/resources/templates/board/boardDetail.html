@@ -25,9 +25,9 @@
         
         <div class="post-header">
           <h1 class="post-title" th:text="*{title}">게시글 제목</h1>
-          <span class="post-board-name" th:text="*{classNo == 1 ? 'Home Training' : 'Home Gym'}">게시판 이름</span>
-          <span class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</span>
-          <span class="post-rating" th:text="*{rating} + '점'">별점 정보 없음</span>
+          <h3 class="post-board-name" th:text="*{classNo == 1 ? 'Home Training' : 'Home Gym'}">게시판 이름</h3>
+          <h3 class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</h3>
+          <h3 class="post-rating" th:text="*{grade}">별점 정보 없음</h3>
         </div>
 
         <!-- 팝업 모달 -->

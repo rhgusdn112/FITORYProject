@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fit.admin.dto.Admin;
+import edu.kh.fit.admin.dto.Query;
 import edu.kh.fit.admin.mapper.AdminMapper;
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
@@ -71,5 +73,29 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Report> selectReportList(int memberNo) {
 		return mapper.selectReportList(memberNo);
+	}
+	
+	// 강사 문의 내역 조회
+	@Override
+	public List<Query> queryList(int trainerNo) {
+		return mapper.queryList(trainerNo);
+	}
+	
+	// 강사 신고 내역 조회
+	@Override
+	public List<Report> reportList(int trainerNo) {
+		return mapper.reportList(trainerNo);
+	}
+
+	// 강사 게시물 조회
+	@Override
+	public List<Board> selectBoardList(int trainerNo) {
+		return mapper.selectBoardList(trainerNo);
+	}
+	
+	// 강사 자격정보 조회
+	@Override
+	public List<Trainer> selectQualificationList(int trainerNo) {
+		return mapper.selectQualificationList(trainerNo);
 	}
 }
