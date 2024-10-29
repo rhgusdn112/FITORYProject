@@ -58,6 +58,12 @@
 		SET PROFILE_IMG = #{url}
 		WHERE TRAINER_NO = #{trainerNo}
 	</update>
+	
+	<!-- 강사 자격사항 추가 -->
+	<insert id="insertTrainerQualification">
+		INSERT INTO QUALIFICATION
+		VALUES(SEQ_QUALIFICATION_NO.NEXTVAL, #{qualification},  DEFAULT, DEFAULT, DEFAULE, #{qualificationDate})
+	</insert>
 
 	<!-- 강사 강의 목록 조회 -->
     <select id="classList" resultType="Board">

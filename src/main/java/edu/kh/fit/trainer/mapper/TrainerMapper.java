@@ -24,6 +24,8 @@ public interface TrainerMapper {
 	// 강사 정보 수정
 	int updateTrainer(Trainer inputTrainer);
 
+	// 	강사 자격사항 추가
+	
 	// 강사 사진 수정
 	int profile(String url, int trainerNo);
 
