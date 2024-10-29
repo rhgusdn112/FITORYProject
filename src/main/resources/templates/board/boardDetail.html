@@ -30,33 +30,66 @@
           <h3 class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</h3>
           <h3 class="post-rating" th:text="*{grade}">별점 정보 없음</h3>
 
-          <!-- 수정 및 삭제 버튼 (강사 로그인 상태이면서 작성자일 때만 표시) -->
-          <div th:if="${userType == 'trainer' and user != null and board.trainerNickname == user.trainerNickname}"
-            class="edit-buttons">
-            <div>
-              <button class="edit-btn">수정</button>
-              <button class="edit-btn">삭제</button>
-            </div>
+          <!-- 게시글 신고 버튼 (회원 전용) -->
+          <div th:if="${userType == 'paidMember' or userType == 'unpaidMember'}">
+            <button class="report-btn" data-type="board" th:data-board-no="${board.boardNo}">
+            <i class="fa-solid fa-land-mine-on"></i> 강의 신고
+            </button>
           </div>
 
         </div>
 
-      </div>
-
-      <!-- 팝업 모달 -->
-      <div id="video-popup" class="popup" style="display: none;">
-        <h1>영상을 이어보시겠습니까?</h1>
-        <div class="popup-buttons">
-          <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
-          <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
+        <!-- 수정 및 삭제 버튼 (강사 로그인 상태이면서 작성자일 때만 표시) -->
+        <div th:if="${userType == 'trainer' and user != null and board.trainerNickname == user.trainerNickname}"
+          class="edit-buttons">
+          <div>
+            <button class="edit-btn">수정</button>
+            <button class="edit-btn">삭제</button>
+          </div>
         </div>
       </div>
-
-      <!-- 유튜브 영상 삽입 (주석처리) -->
-      <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
-
     </div>
+
+     <!-- 신고 팝업 모달 -->
+    <div id="report-popup" class="report-popup-modal" style="display: none;">
+      <div class="report-popup-content">
+        <h3>신고하기</h3>
+
+        <!-- 신고자 유형 (회원/강사) -->
+        <label>신고자 종류:</label>
+        <input type="text" id="reporter-type" readonly>
+
+        <!-- 피신고자 유형 (게시글/리뷰) -->
+        <label>피신고자 종류:</label>
+        <input type="text" id="reported-type" readonly>
+
+        <!-- 신고 제목 입력 -->
+        <label for="report-title">신고 제목:</label>
+        <input type="text" id="report-title" placeholder="신고 제목을 입력하세요">
+
+        <!-- 신고 내용 입력 -->
+        <label for="report-message">신고 내용:</label>
+        <textarea id="report-message" placeholder="신고 내용을 입력하세요"></textarea>
+
+        <!-- 신고 제출 및 닫기 버튼 -->
+        <div class="report-popup-buttons">
+          <button id="submit-report">신고 제출</button>
+          <button id="close-popup">닫기</button>
+        </div>
+      </div>
     </div>
+
+    <!-- 영상 이어보기 팝업 모달 -->
+    <div id="video-popup" class="video-popup" style="display: none;">
+      <h1>영상을 이어보시겠습니까?</h1>
+      <div class="popup-buttons">
+        <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
+        <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
+      </div>
+    </div>
+
+    <!-- 유튜브 영상 삽입 (주석처리) -->
+    <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
 
 
   </main>
