@@ -2,117 +2,113 @@
 <html lang="ko">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fitory - Home Training</title>
-	<link rel="stylesheet" href="/css/board/board.css"> <!-- CSS 파일 연결 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitory - Home Gym</title>
+    <link rel="stylesheet" href="/css/board/board.css"> <!-- CSS 파일 연결 -->
+</head>
 
 <body>
+    <!-- header fragment include -->
+    <block th:replace="~{common/common}"></block>
 
-	<!-- header fragment include -->
-	<block th:replace="~{common/common}"></block>
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <h1>Home Training</h1> <!-- 메인 제목 -->
 
-	<!-- 메인 콘텐츠 -->
-	<main>
-		<h1>Home Training</h1> <!-- 메인 제목 -->
+        <!-- 인기 클래스 섹션 -->
+        <section class="class-section">
+            <h2>인기 클래스</h2> <!-- 섹션 제목 -->
+            <hr class="section-divider"> <!-- 구분선 -->
+            <div class="slider-container"> <!-- 슬라이더 컨테이너 시작 -->
+                <button class="slider-btn left-btn" data-section="popular">&lt;</button> <!-- 왼쪽 슬라이더 버튼 -->
 
-		<!-- 인기 클래스 섹션 -->
-		<section class="class-section">
-			<h2>인기 클래스</h2> <!-- 섹션 제목 -->
-			<hr class="section-divider"> <!-- 구분선 -->
-			<div class="slider-container"> <!-- 슬라이더 컨테이너 시작 -->
-				<button class="slider-btn left-btn" data-section="popular">&lt;</button> <!-- 왼쪽 슬라이더 버튼 -->
-				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher1.jpg" alt="클래스 이미지">
-						<p>등운동은 역시 나임</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher2.jpg" alt="클래스 이미지">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher3.jpg" alt="클래스 이미지">
-						<p>이게 다이어트다</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher4.jpg" alt="클래스 이미지">
-						<p>운동 짬킹한테서 배우는 홈트</p>
-					</div>
-				</div>
-				<button class="slider-btn right-btn" data-section="popular">&gt;</button> <!-- 오른쪽 슬라이더 버튼 -->
-			</div> <!-- 슬라이더 컨테이너 끝 -->
-		</section>
+                <div class="class-list-wrapper">
+                    <div class="class-list">
+                        <a class="class-item" 
+                           th:each="board, status : ${popularClass}" 
+                           th:object="${board}"
+                           th:href="@{/board/{classNo}/{boardNo}(classNo=*{classNo}, boardNo=*{boardNo})}">
+                            <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
+                            <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
+                            <p th:text="*{trainerNickname} + ' | ' + *{title}">제목</p>
+                        </a>
+                    </div>
+                </div>
 
-		<!-- 새로운 클래스 섹션 -->
-		<section class="class-section">
-			<h2>새로운 클래스</h2> <!-- 섹션 제목 -->
-			<hr class="section-divider"> <!-- 구분선 -->
-			<div class="slider-container"> <!-- 슬라이더 컨테이너 시작 -->
-				<button class="slider-btn left-btn" data-section="new">&lt;</button> <!-- 왼쪽 슬라이더 버튼 -->
-				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher5.jpg" alt="클래스 이미지">
-						<p>등운동은 역시 나임</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher1.jpg" alt="클래스 이미지">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher2.jpg" alt="클래스 이미지">
-						<p>이게 다이어트다</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher3.jpg" alt="클래스 이미지">
-						<p>운동 짬킹한테서 배우는 홈트</p>
-					</div>
-				</div>
-				<button class="slider-btn right-btn" data-section="new">&gt;</button> <!-- 오른쪽 슬라이더 버튼 -->
-			</div> <!-- 슬라이더 컨테이너 끝 -->
-		</section>
+                <button class="slider-btn right-btn" data-section="popular">&gt;</button> <!-- 오른쪽 슬라이더 버튼 -->
+            </div> <!-- 슬라이더 컨테이너 끝 -->
+        </section>
 
-		<!-- 실시간 클래스 섹션 -->
-		<section class="class-section">
-			<h2>실시간 클래스</h2> <!-- 섹션 제목 -->
-			<hr class="section-divider"> <!-- 구분선 -->
-			<div class="class-list">
-				<div class="class-item">
-					<img src="/images/teacher4.jpg" alt="클래스 이미지">
-					<p>근육을 부셔보겠습니다</p>
-				</div>
-				<div class="class-item">
-					<img src="/images/teacher5.jpg" alt="클래스 이미지">
-					<p>커플이 하기 좋은 운동</p>
-				</div>
-				<div class="class-item">
-					<img src="/images/teacher1.jpg" alt="클래스 이미지">
-					<p>홈트의 모든 것</p>
-				</div>
-				<div class="class-item">
-					<img src="/images/teacher2.jpg" alt="클래스 이미지">
-					<p>오늘도 나는 매트 운동을 한다</p>
-				</div>
-			</div>
-		</section>
+        <!-- 새로운 클래스 섹션 -->
+        <section class="class-section">
+            <h2>새로운 클래스</h2> <!-- 섹션 제목 -->
+            <hr class="section-divider"> <!-- 구분선 -->
+            <div class="slider-container"> <!-- 슬라이더 컨테이너 시작 -->
+                <button class="slider-btn left-btn" data-section="new">&lt;</button> <!-- 왼쪽 슬라이더 버튼 -->
 
-		<!-- 페이지네이션 -->
-		<div class="pagination">
-			<a href="#">1</a>
-			<a href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">6</a>
-			<a href="#">7</a>
-			<a href="#">8</a>
-			<a href="#">9</a>
-			<a href="#">10</a>
-		</div>
-	</main>
+                <div class="class-list-wrapper">
+                    <div class="class-list">
+                        <a class="class-item" 
+                           th:each="board, status : ${recentClass}" 
+                           th:object="${board}"
+                           th:href="@{/board/{classNo}/{boardNo}(classNo=*{classNo}, boardNo=*{boardNo})}">
+                            <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
+                            <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
+                            <p th:text="*{trainerNickname} + ' | ' + *{title}">제목</p>
+                        </a>
+                    </div>
+                </div>
 
-	<!-- footer fragment include -->
-	<div th:replace="common/footer :: footer"></div> <!-- 공통 푸터 -->
+                <button class="slider-btn right-btn" data-section="new">&gt;</button> <!-- 오른쪽 슬라이더 버튼 -->
+            </div> <!-- 슬라이더 컨테이너 끝 -->
+        </section>
+
+        <!-- 실시간 클래스 섹션 -->
+        <section class="class-section">
+            <div class="section-header">
+                <h2>실시간 클래스</h2>
+                <div class="sort-dropdown">
+                    <select id="sortSelect">
+                        <option value="latest">최신순</option>
+                        <option value="rating">평점순</option>
+                        <option value="views">조회순</option>
+                    </select>
+                </div>
+            </div>
+            <hr class="section-divider">
+            <div class="class-grid" id="classContainer">
+                <a class="class-item" 
+                   th:each="board, status : ${classList}" 
+                   th:object="${board}"
+                   th:href="@{/board/{classNo}/{boardNo}(classNo=*{classNo}, boardNo=*{boardNo})}">
+                    <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
+                    <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
+                    <p th:text="*{trainerNickname} + ' | ' + *{title}">제목</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination" th:object="${pagination}">
+
+            <a data-page="1">처음</a>
+            <a th:data-page="*{prevPage}">이전</a>
+            
+            <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                <a th:if="${i == pagination.currentPage}" class="current" th:data-page="${i}" th:text="${i}">1</a>
+                <a th:unless="${i == pagination.currentPage}" th:data-page="${i}" th:text="${i}">1</a>
+            </th:block>
+            
+            <a th:data-page="*{nextPage}">다음</a>
+            <a th:data-page="*{maxPage}">마지막</a>
+        </div>
+    </main>
+
+    <!-- footer fragment include -->
+    <div th:replace="~{common/footer}"></div> <!-- 공통 푸터 -->
+
+    <script src="/js/board/boardList.js"></script>
 </body>
 
 </html>

@@ -90,14 +90,21 @@ h2 {
   width: 80%; /* 리스트 너비 설정 */
   margin: 0 auto; /* 리스트를 중앙에 배치 */
   padding: 0 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: auto;
 }
 
 /* 클래스 항목 */
 .class-item {
-  text-align: center;
-  width: 220px;
+  display: block;  /* a 태그를 블록 요소로 변경 */
+  text-decoration: none;  /* 밑줄 제거 */
+  color: inherit;  /* 기본 텍스트 색상 유지 */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.class-item:hover {
+  transform: translateY(-5px);  /* 호버 시 약간 위로 이동하는 효과 */
 }
 
 
@@ -136,4 +143,91 @@ h2 {
 /* 페이지네이션 버튼 호버 효과 */
 .pagination a:hover {
   background-color: #ddd; /* 마우스를 올렸을 때 배경색을 밝은 회색으로 변경 */
+}
+
+
+/* 슬라이더 컨테이너 내부 스타일 */
+
+.class-list-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.class-list {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.class-item {
+    flex: 0 0 25%; /* 한 번에 4개씩 보이도록 설정 */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.slider-btn {
+    cursor: pointer;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.slider-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4열 그리드 */
+    grid-template-rows: repeat(2, 1fr);    /* 2행 그리드 */
+    gap: 20px;                             /* 그리드 아이템 간격 */
+    margin: 20px 0;
+}
+
+.class-grid .class-item {
+    width: 100%;
+    margin: 0;
+}
+
+.class-grid .class-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16/9;     /* 이미지 비율 유지 */
+}
+
+.pagination a {
+  user-select: none;
+  cursor: pointer;
+}
+
+.pagination a.current {
+  background-color: #ddd;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sort-dropdown select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sort-dropdown select:hover {
+    border-color: #999;
+}
+
+.sort-dropdown select:focus {
+    outline: none;
+    border-color: #666;
 }

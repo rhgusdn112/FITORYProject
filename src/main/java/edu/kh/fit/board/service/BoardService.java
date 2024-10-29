@@ -29,6 +29,23 @@ public interface BoardService {
    * @return 결제 여부 (true/false)
    */
   boolean checkPaymentStatus(int memberNo, int boardNo);
+
+
+  /**
+   * 게시글 목록 조회
+   * @param classNo
+   * @return map
+   */
+  Map<String, Object> selectBoardMain(int classNo);
+
+  /**
+   * 실시간 클래스 비동기 조회(페이지, 정렬)
+   * @param classNo
+   * @param cp
+   * @param sort
+   * @return map
+   */
+  Map<String, Object> selectClassList(int classNo, int cp, String sort);
 }
 
 

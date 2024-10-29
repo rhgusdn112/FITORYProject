@@ -5,21 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.board.service.BoardService;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.trainer.dto.Trainer;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -105,5 +107,69 @@ public class BoardController {
         model.addAttribute("hasReviewed", hasReviewed);
 
         return "board/boardDetail";
+    }
+
+
+
+
+
+
+
+    // ------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------
+
+    /**
+     * 게시글 목록 조회
+     * @param classNo 
+     * <ul>
+     * <li>2 : Home Gym</li>
+     * <li>3 : Home Training</li>   
+     * </ul>
+     * @param model
+     * @return
+     */
+    @GetMapping("{classNo:[2-3]+}")
+    public String boardList(@PathVariable("classNo") int classNo, Model model) {
+
+        Map<String, Object> map = service.selectBoardMain(classNo);
+
+        List<Board> popularClass = (List<Board>) map.get("popularClass");
+        List<Board> recentClass = (List<Board>) map.get("recentClass");
+        List<Board> classList = (List<Board>) map.get("classList");
+        Pagination pagination = (Pagination) map.get("pagination");
+        
+        // log.debug("popularClass : {} ", popularClass);
+        // log.debug("recentClass : {} ", recentClass);
+        // log.debug("classList : {} ", classList);
+
+        model.addAttribute("popularClass", popularClass);
+        model.addAttribute("recentClass", recentClass);
+        model.addAttribute("classList", classList);
+        model.addAttribute("pagination", pagination);   
+
+        String path = null; 
+        switch (classNo) {
+            case 1: path = "notice"; break;
+            case 2: path = "homeGym"; break;
+            case 3: path = "homeTraining"; break;
+        }
+        
+        return "board/" + path;
+    }
+
+
+    /**
+     * 실시간 클래스 비동기 조회(페이지, 정렬)
+     * @param classNo
+     * @param cp
+     * @param sort
+     * @return map
+     */
+    @GetMapping("{classNo:[2-3]+}/list")
+    public ResponseEntity<?> selectClassList(
+        @PathVariable("classNo") int classNo,
+         @RequestParam("cp") int cp, 
+         @RequestParam("sort") String sort) {
+        return ResponseEntity.ok(service.selectClassList(classNo, cp, sort));
     }
 }
