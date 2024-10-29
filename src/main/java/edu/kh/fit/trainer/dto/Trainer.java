@@ -20,7 +20,6 @@ public class Trainer {
 	private String trainerPw; // 강사 비밀번호(암호화)
 	private String trainerNickname; // 강사명
 	private String trainerTel; // 강사 전화번호
-	private String profileImg; // 프로필 이미지 경로
 	private int    sales; // 매출
 	private String enrollDate; // 가입일
 	private String trainnerDelFl; // 탈퇴여부('Y', 'N')

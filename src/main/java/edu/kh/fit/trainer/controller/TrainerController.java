@@ -21,6 +21,8 @@ import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -31,46 +33,67 @@ public class TrainerController {
 	
 	private final TrainerService service;
 	
-	/**
-	 * (강사)로그인 서비스
-	 * @param trainnerEmail
-	 * @param trainnerPw
-	 * @param saveEmail
+	/** (강사)로그인 서비스
+	 * @param trainerEmail
+	 * @param trainerPw
 	 * @param model
 	 * @param ra
-	 * @param resp
-	 * @return
+	 * @param request
+	 * @param session
+	 * @return 이전 페이지 또는 메인 페이지로 이동
 	 */
 	@PostMapping("login")
 	public String trainerLogin(
-			@RequestParam("email") String trainerEmail,
-			@RequestParam("password")		 String trainerPw,
-			Model model,
-			RedirectAttributes ra
-			) {
-		
-		Trainer trainerLogin = service.trainerLogin(trainerEmail, trainerPw);
-		
-		if(trainerLogin == null) { 
-			ra.addFlashAttribute("message", "해당하는 정보가 없습니다.");
-		}else {
+	        @RequestParam("email") String trainerEmail,
+	        @RequestParam("password") String trainerPw,
+	        Model model,
+	        RedirectAttributes ra,
+	        HttpServletRequest request,
+	        HttpSession session
+	) {
+	    // 첫 로그인 시도 시 이전 페이지 URL을 세션에 저장 (login 페이지는 무시)
+	    if (session.getAttribute("prevPage") == null) {
+	        String referer = request.getHeader("Referer");
+	        if (referer != null && !referer.contains("/login")) { 
+	            session.setAttribute("prevPage", referer);
+	        }
+	    }
 
-			model.addAttribute("trainerLogin", trainerLogin);
-			
-		}
-		return "redirect:/main"; // 메인페이지 리다이렉트
+	    Trainer trainerLogin = service.trainerLogin(trainerEmail, trainerPw);
+
+	    if (trainerLogin == null) {
+	        ra.addFlashAttribute("message", "해당하는 정보가 없습니다.");
+	        return "redirect:/login";  // 로그인 실패 시 로그인 페이지로 리다이렉트
+	    } else {
+	        model.addAttribute("trainerLogin", trainerLogin);
+
+	        // 로그인 성공 시 이전 페이지로 리다이렉트
+	        String redirectUrl = (String) session.getAttribute("prevPage");
+	        session.removeAttribute("prevPage");  // 이전 페이지 정보 제거
+	        return redirectUrl != null ? "redirect:" + redirectUrl : "redirect:/main";  // 이전 페이지 또는 메인 페이지로 이동
+	    }
 	}
+
 
 	/** 로그아웃
-	 * @return
+	 * @param status
+	 * @param session
+	 * @param request
+	 * @return referer가 없으면 기본적으로 메인 페이지로 이동
 	 */
 	@GetMapping("logout")
-	public String logout(SessionStatus status) {
-		
-		status.setComplete();
-		
-		return "redirect:/";
+	public String logout(SessionStatus status, HttpSession session, HttpServletRequest request) {
+	    // 세션에 저장된 로그인 정보 제거
+	    status.setComplete();
+
+	    // 이전 페이지 URL(prevPage)도 세션에서 제거
+	    session.removeAttribute("prevPage");
+	    
+	    // 로그아웃 요청이 발생한 페이지로 리다이렉트
+	    String referer = request.getHeader("Referer");
+	    return referer != null ? "redirect:" + referer : "redirect:/main";  // referer가 없으면 기본적으로 메인 페이지로 이동
 	}
+
 	
 	
 	
