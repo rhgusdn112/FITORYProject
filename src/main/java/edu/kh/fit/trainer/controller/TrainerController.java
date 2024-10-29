@@ -25,6 +25,7 @@ import edu.kh.fit.trainer.service.TrainerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Controller
 @RequiredArgsConstructor
@@ -221,21 +222,30 @@ public class TrainerController {
 	@PostMapping("profile")
 	public String profile(@RequestParam("imgProfile") List<MultipartFile> imgProfileList,
 	                      @SessionAttribute("trainerLogin") Trainer trainerLogin,
+	                      HttpSession session,
 	                      RedirectAttributes ra) {
 
-	    int trainerNo = trainerLogin.getTrainerNo();
-	    List<String> filePaths = service.profile(imgProfileList, trainerNo);
+	    List<String> filePaths = service.profile(imgProfileList, trainerLogin.getTrainerNo());
+	    
+	    System.out.println("저장된 파일 경로들: " + filePaths);
+	    
 
 	    String message = (filePaths != null) ? "프로필 이미지가 변경되었습니다." : "프로필 이미지 변경에 실패했습니다.";
-	    
+
 	    if (filePaths != null) {
+	        // trainerLogin 객체 업데이트
 	        trainerLogin.setTrainerImgMain(filePaths.size() > 0 ? filePaths.get(0) : null);
 	        trainerLogin.setTrainerImgMainSub(filePaths.size() > 1 ? filePaths.get(1) : null);
 	        trainerLogin.setTrainerImgSub(filePaths.size() > 2 ? filePaths.get(2) : null);
 	        trainerLogin.setTrainerImgSubSub(filePaths.size() > 3 ? filePaths.get(3) : null);
+
+	        // 업데이트된 trainerLogin 객체를 세션에 다시 저장
+	        session.setAttribute("trainerLogin", trainerLogin);
 	    }
 
 	    ra.addFlashAttribute("message", message);
+	    
+	    
 	    return "redirect:/myPage/trainerMyPage";
 	}
 

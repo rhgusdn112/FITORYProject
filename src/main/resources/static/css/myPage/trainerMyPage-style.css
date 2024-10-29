@@ -153,23 +153,48 @@ input::placeholder {
 	margin: 0% 10% 0% 0%;
 }
 
-.img {
-	padding: 2% 0% 0% 2%;
+.qualification-table img{
+	height: 10%;
+	width: 80%;
+}
+
+.profile-box{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 30vh;
 	margin: auto;
 	justify-content: center;
-	display: column; 
-  width: 32.5%;
-  height: 15%;
-	border: 5px solid;
-  color: #bfbfbf;
+	align-items: center; 
+	display: flex;
 }
-.profile-box{
-	border: 5px solid;
+.trainerImgMain{
 	color: #bfbfbf;
+	min-height: 30vh;
+	min-width: 80vw;
 	margin: auto;
-	min-height: 100hv;
-	padding: 2% 2% 2% 2%;
-	margin-bottom: 5%;
+	justify-content: center;
+	align-items: center; 
+	display: flex;
+
+}
+
+.subProfile-box{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 25vh;
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
+	padding: 3% 0% 3% 0%;
+}
+.trainerImgSub{
+	border: 2px solid;
+	color: #bfbfbf;
+	min-height: 20vh;
+	padding: 3% 14.5%;
+	justify-content: space-between;
+	align-items: center;
+	justify-content: center;
 }
 
 
@@ -229,3 +254,4 @@ form[name='myPageFrm']{position: relative;}
 .top:hover {
 	color: rgba(78, 78, 78, 0.200);
 }
+

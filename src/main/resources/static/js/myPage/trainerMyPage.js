@@ -1,26 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 프로필 이미지 요소들 가져오기
+  // 프로필 이미지 요소
   const profileImgMain = document.querySelector("#profileImgMain");
   const profileImgMainSub = document.querySelector("#profileImgMainSub");
   const profileImgSub = document.querySelector("#profileImgSub");
   const profileImgSubSub = document.querySelector("#profileImgSubSub");
 
-  // 이미지 입력 필드와 기타 버튼 요소들 가져오기
+  // 이미지 입력 필드, 기타 버튼 요소
   const imageInput = document.querySelector("#imageInput");
   const deleteImage = document.querySelector("#deleteImage");
   const plus = document.querySelector("#plus");
-  const updateButton = document.querySelector("#update");
+  const updateBtn = document.querySelector("#update");
 
-  // 자격 사항
+  // 자격 사항 요소
   const tbody = document.querySelector("#tbody");
-  const plusButton = document.querySelector("#plus");
+  const plusBtn = document.querySelector("#plus");
 
 
   let lastValidFile = null;
   let statusCheck = -1; // -1: 변경 없음, 1: 이미지 변경, 0: 이미지 삭제
 
+  updateBtn?.addEventListener("submit", e => {
+    let flag = true;
+    if(statusCheck === -1) flag = true;
+    if(profileImgMain === null && statusCheck === 1) flag = false;
+    if(profileImgMainSub !== null && statusCheck === 0) flag = false;
+    if(profileImgSub !== null && statusCheck === 1) flag = false;
+    if(profileImgSubSub !== null && statusCheck === 1) flag = false;
+    if(flag === true) {
+      e.preventDefault();
+      alert("이미지 변경 후 제출해주세요.");
+    }
+  });
+
     // plus 버튼 클릭 시 새로운 자격사항 행 추가
-    plusButton?.addEventListener("click", () => {
+    plusBtn?.addEventListener("click", () => {
       const tr = document.createElement("tr");
 
       // 자격사항 입력 셀 생성
@@ -91,10 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* x 버튼 클릭 시 이미지 삭제 */
   deleteImage?.addEventListener("click", () => {
-      profileImgMain.src = "/images/default-profile.png";
-      profileImgMainSub.src = "/images/default-profile.png";
-      profileImgSub.src = "/images/default-profile.png";
-      profileImgSubSub.src = "/images/default-profile.png";
+      profileImgMain.src = "/images/**";
+      profileImgMainSub.src = "/images/**";
+      profileImgSub.src = "/images/**";
+      profileImgSubSub.src = "/images/**";
       imageInput.value = '';
       lastValidFile = null;
       statusCheck = 0; // 이미지 삭제 상태로 업데이트
@@ -143,7 +156,7 @@ window.onload = () => {
 
   /* x 버튼 클릭 시 이미지 삭제 */
   deleteImage?.addEventListener("click", () => {
-      const defaultImage = "/images/default-profile.png";
+      const defaultImage = "/images/**";
       profileImgMain.src = defaultImage;
       profileImgMainSub.src = defaultImage;
       profileImgSub.src = defaultImage;
@@ -161,7 +174,7 @@ window.onload = () => {
         return; // 변경 없음
     }
 
-    if (statusCheck === 1 && profileImgMain.src.includes("default-profile.png")) {
+    if (statusCheck === 1 && profileImgMain.src.includes("/images/**")) {
         alert("이미지 변경 후 제출해주세요.");
         e.preventDefault();
         return;
@@ -180,114 +193,3 @@ window.onload = () => {
     }
 });
 };
-
-
-// --------------------------------------------------------------------------------------------------
-/* 프로필 이미지 미리보기, 삭제하기 */
-/* const profile = document.querySelector("#profile"); // 프로필
-const profileImg = document.querySelector("#profileImg"); // 미리보기
-const imageInput = document.querySelector("#imageInput"); // 프로필 이미지 선택 버튼
-const deleteImage = document.querySelector("#deleteImage"); // x버튼
-
-let statusCheck = -1;
-
-// 마지막으로 선택괸 파일을 저장할 변수
-let lastValidFile = null;
-
-if(imageInput != null) { // 프로필 변경 화면인 경우 input 값 변경 시 미리보기 함수
-  const updatePreview = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    lastValidFile = file; 
-    reader.addEventListener("load", e => { 
-      profileImg.src = e.target.result;
-      statusCheck = 1;
-    })
-  }
-  imageInput.addEventListener("change", e => {
-    const file = e.target.files[0];
-
-    if(file === undefined) {
-      if(lastValidFile === null) return;
-      const dataTransfer = new DataTransfer();
-      dataTransfer.items.add(lastValidFile);
-      imageInput.files = dataTransfer.files;
-      updatePreview(lastValidFile);
-      return;
-    }
-    updatePreview(file);
-  })
-  deleteImage.addEventListener("click", () => {
-    profileImg.src = userDefaultImage;
-    imageInput.value = '';
-    lastValidFile = null;
-    statusCheck = 0;
-  });
-}
-
-/* 프로필 화면에서 변경하기 버튼이 클릭된 후 
-const updateBtn = document.querySelector("#update");
-updateBtn?.addEventListener("submit", e => {
-  let flag = true;
-  if(statusCheck === -1) flag = true;
-  if(trainerLoginProfileImg === null && statusCheck === 1) flag = false;
-  if(trainerLoginProfileImg !== null && statusCheck === 0) flag = false;
-  if(trainerLoginProfileImg !== null && statusCheck === 1) flag = false;
-  if(flag === true) {
-    e.preventDefault();
-    alert("이미지 변경 후 제출해주세요.");
-  }
-});
-
-// -------------------------------------------------------------------------------------------------------------
-/* x 버튼 클릭 시 
-const orderList = [];
-const deleteOrderList = new Set();
-const inputImageList = document.getElementsByClassName("inputImage");
-const deleteImageList = document.getElementsByClassName("delete-image");
-const lastValidFiles = [null, null, null, null];
-const updatePreview = (file, order) => {
-  const maxSize = 1024 * 1024 * 10; 
-  if (file.size > maxSize) { 
-    alert("10MB 이하의 이미지만 선택해주세요.");
-    if (lastValidFiles[order] === null) { 
-      inputImageList[order].value = ""; 
-      return;
-    }
-    const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(lastValidFiles[order]);
-    inputImageList[order].files = dataTransfer.files;
-    return;
-  }
-  lastValidFiles[order] = file;
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.addEventListener("load", e => {
-    previewList[order].src = e.target.result;
-    deleteOrderList.delete(order);
-  })
-}
-for (let i = 0; i < inputImageList.length; i++) {
-  inputImageList[i].addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (file === undefined) {
-      if (lastValidFiles[i] === null) return;
-      const dataTransfer = new DataTransfer();
-      dataTransfer.items.add(lastValidFiles[i]);
-      inputImageList[i].files = dataTransfer.files;
-      updatePreview(lastValidFiles[i], i); 
-      return;
-    }
-    updatePreview(file, i);
-  })
-
-  /* X 버튼 클릭 시 미리보기, 선택된 파일 삭제 
-  deleteImageList[i].addEventListener("click", () => {
-    previewList[i].src      = ""; 
-    inputImageList[i].value = ""; 
-    lastValidFiles[i]       = null; 
-    if(orderList.includes(i)) {
-      deleteOrderList.add(i);
-    }
-  })
-} */

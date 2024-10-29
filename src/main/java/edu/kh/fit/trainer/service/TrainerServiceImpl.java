@@ -69,7 +69,6 @@ public class TrainerServiceImpl implements TrainerService{
 	@Override
 	public boolean trainerCheckPw(int trainerNo, String trainerPw) {
 		String encodePw = mapper.trainerCheckPw(trainerNo);
-		// 강사 자격사항 mapper 추가
 		
 		return encorder.matches(trainerPw, encodePw);
 	}
@@ -77,10 +76,12 @@ public class TrainerServiceImpl implements TrainerService{
 	// 강사 정보 수정
 	@Override
 	public int updateTrainer(Trainer inputTrainer) {
+		// 강사 자격사항 mapper 추가
+		
 		return mapper.updateTrainer(inputTrainer);
 	}
 
-	// 프로필 사진 수정
+	/* 이미지 수정 */
 	@Override
 	public List<String> profile(List<MultipartFile> imgProfileList, int trainerNo) {
 	    List<String> filePaths = new ArrayList<>();
@@ -93,19 +94,17 @@ public class TrainerServiceImpl implements TrainerService{
 	    try {
 	        for (MultipartFile imgFile : imgProfileList) {
 	            if (!imgFile.isEmpty()) {
-	                // 고유 파일명 생성
 	                String rename = FileUtil.rename(imgFile.getOriginalFilename());
-	                String filePath = profileFolderPath + rename; // 서버 저장 경로
-	                String url = profileWebPath + rename; // 웹 접근 경로
+	                String filePath = profileFolderPath + rename;
+	                String url = profileWebPath + rename;
 
-	                // 파일 저장
 	                imgFile.transferTo(new File(filePath));
 	                System.out.println("저장된 파일 경로: " + filePath);
 	                filePaths.add(url); // 웹 경로 추가
 	            }
 	        }
 
-	        // 필요한 파일 경로 수를 맞추기 위해 null 추가
+	        // 필요한 파일 경로 수를 맞추기 위해 null 추가하여 항상 4개의 값 유지
 	        while (filePaths.size() < 2) {
 	            filePaths.add(null);
 	        }
