@@ -44,7 +44,8 @@ public interface TrainerService {
 	 * @param trainerNo
 	 * @return
 	 */
-	String profile(MultipartFile imgProfileList, int trainerNo);
+	List<String> profile(List<MultipartFile> imgProfileList, int trainerNo);
+
 
 /** 강사 강의 목록 조회
  * @param trainerNo
@@ -58,6 +59,10 @@ public interface TrainerService {
  * @return
  */
 List<Trainer> detailTrainer(Trainer trainerNo);
+
+
+
+
 
 
 

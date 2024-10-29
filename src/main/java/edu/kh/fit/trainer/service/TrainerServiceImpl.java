@@ -1,12 +1,14 @@
 package edu.kh.fit.trainer.service;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.board.dto.Board;
@@ -18,6 +20,7 @@ import edu.kh.fit.trainer.mapper.TrainerMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class TrainerServiceImpl implements TrainerService{
 	
 	@Autowired
@@ -73,28 +76,56 @@ public class TrainerServiceImpl implements TrainerService{
 
 	// 프로필 사진 수정
 	@Override
-	public String profile(MultipartFile imgProfileList, int trainerNo) {
-		if(imgProfileList.isEmpty()) {
-			int result = mapper.profile(null, trainerNo);
-			return null;
-		}
-		String rename = FileUtil.rename(imgProfileList.getOriginalFilename());
-		String url = profileWebPath + rename;
-		
-		int result = mapper.profile(url, trainerNo);
-		if(result == 0) return null; 
-		try {
-			File folder = new File(profileFolderPath);
-			if(!folder.exists()) folder.mkdirs();
-			imgProfileList.transferTo(new File(profileFolderPath + rename));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new FileUploadFailException("프로필 이미지 수정에 실패하였습니다.");
-		}
-		return profileWebPath + rename;
+	public List<String> profile(List<MultipartFile> imgProfileList, int trainerNo) {
+	    List<String> filePaths = new ArrayList<>();
+
+	    File folder = new File(profileFolderPath);
+	    if (!folder.exists()) {
+	        folder.mkdirs(); // 저장 경로가 없으면 생성
+	    }
+
+	    try {
+	        for (MultipartFile imgFile : imgProfileList) {
+	            if (!imgFile.isEmpty()) {
+	                // 고유 파일명 생성
+	                String rename = FileUtil.rename(imgFile.getOriginalFilename());
+	                String filePath = profileFolderPath + rename; // 서버 저장 경로
+	                String url = profileWebPath + rename; // 웹 접근 경로
+
+	                // 파일 저장
+	                imgFile.transferTo(new File(filePath));
+	                System.out.println("저장된 파일 경로: " + filePath);
+	                filePaths.add(url); // 웹 경로 추가
+	            }
+	        }
+
+	        // 필요한 파일 경로 수를 맞추기 위해 null 추가
+	        while (filePaths.size() < 2) {
+	            filePaths.add(null);
+	        }
+
+	        System.out.println("DB에 업데이트할 파일 경로들: " + filePaths);
+
+	        // DB 업데이트
+	        if (!filePaths.isEmpty()) {
+	            mapper.updateProfileImages(filePaths, trainerNo);
+	        } else {
+	            System.out.println("업데이트할 파일이 없습니다.");
+	            mapper.updateProfileImages(null, trainerNo);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw new FileUploadFailException("프로필 이미지 수정에 실패하였습니다. 에러: " + e.getMessage());
+	    }
+
+	    return filePaths;
 	}
 
+
+
+
+	
 	/* 강사 강의 목록 조회 */
 	@Override
 	public List<Board> classList(int trainerNo) {
