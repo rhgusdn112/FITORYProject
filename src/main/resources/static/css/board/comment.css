@@ -1,0 +1,61 @@
+.review-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 30px auto;
+  width: 95%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.review-table {
+  width: 95%; /* 테이블 전체 너비 설정 */
+  margin: 0 auto; /* 가로 중앙 정렬 */
+  border-collapse: collapse; /* 테이블 경계선 간격 없애기 */
+}
+
+.review-table th, .review-table td {
+  border: 1px solid #ddd; /* 경계선 설정 */
+  padding: 8px; /* 셀 안의 여백 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.review-table thead th {
+  background-color: #f2f2f2; /* 헤더 배경색 설정 */
+  font-weight: bold;
+}
+
+.review-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* 짝수 행 배경색 설정 */
+}
+
+.review-form {
+  width: 60%; /* 작성 폼 너비 설정 */
+  margin: 20px auto; /* 폼을 중앙으로 정렬 */
+}
+
+.review-sort-options {
+  text-align: right; /* 정렬 버튼을 오른쪽으로 정렬 */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
