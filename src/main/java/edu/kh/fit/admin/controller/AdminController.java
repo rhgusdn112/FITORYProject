@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
+import edu.kh.fit.admin.dto.Query;
 import edu.kh.fit.admin.service.AdminService;
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
@@ -24,8 +26,7 @@ import edu.kh.fit.trainer.dto.Trainer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import oracle.jdbc.proxy.annotation.Post;
 
 
 @Slf4j
@@ -119,6 +120,17 @@ public class AdminController {
 		}
 	}
 	
+	@GetMapping("memberActive")
+	public String memberActiveList() {
+		return "/admin/memberActive";
+	}
+	
+	@GetMapping("trainerActive")
+	public String trainerActiveList() {
+		return "/admin/trainerActive";
+	}
+	
+	
 	/**
 	 * 비동기로 회원 목록 조회 
 	 * @return
@@ -129,13 +141,9 @@ public class AdminController {
 		return  service.memberList();
 	}
 	
-	@GetMapping("active")
-	public String memberActiveList() {
-		return "/admin/memberActive";
-	}
 		
 	/**
-	 * 비동기로 회원 목록 조회
+	 * 비동기로 강사 목록 조회
 	 * @return
 	 */
 	@ResponseBody
@@ -177,6 +185,10 @@ public class AdminController {
 		return service.selectQueryList(memberNo);
 	}
 	
+	/** 비동기로 회원번호와 일치하는 신고 내역 조회
+	 * @param memberNo
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("reportList")
 	public List<Report> selectReportList(
@@ -184,6 +196,54 @@ public class AdminController {
 
 		return service.selectReportList(memberNo);
 	}
+
+	
+	/** 비동기로 회원번호와 일치하는 문의 내역 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("trainerQueryList")
+	public List<Query> QueryList(
+			@RequestBody int trainerNo) {
+		return service.queryList(trainerNo);
+	}
+	
+	/** 비동기로 회원번호와 일치하는 신고 내역 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("trainerReportList")
+	public List<Report> reportList(
+			@RequestBody int trainerNo){
+
+		return service.reportList(trainerNo);
+	}
+	
+	/** 게시물 목록조회
+	 * @param trainerNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("boardList")
+	public List<Board> selectBoardList(
+			@RequestBody int trainerNo){
+		return service.selectBoardList(trainerNo);
+	}
+	
+	
+	@ResponseBody
+	@PostMapping("qualificationList")
+	public List<Trainer> selectQualificationList(
+			@RequestBody int trainerNo){
+		return service.selectQualificationList(trainerNo);
+	}
+	
+	
+	
+	
+	
 }
 	
 	

@@ -9,18 +9,20 @@
 </head>
 
 <body>
-      <th:block th:replace="~{common/common}"></th:block>
+  <th:block th:replace="~{common/common}"></th:block>
 
-  <form action="/trainer/trainerMyPage" method="POST" enctype="multipart/form-data"  name="myPageUpdate" id="myPageInfo" class="main">
+  <form action="/trainer/trainerMyPage" method="POST" enctype="multipart/form-data" name="myPageUpdate" id="myPageInfo" class="main">
     <div class="main-my-page">My Page</div>
     <div class="main-box">
-        <div class="email">아이디(Email)</div>
-        <input type="text" name="trainerEmail" id="trainerEmail" class="box" placeholder="이메일 입력"
+      <div class="email">아이디(Email)</div>
+      <input type="text" name="trainerEmail" id="trainerEmail" class="box" placeholder="이메일 입력"
         th:value="${session.trainerLogin.trainerEmail}" readonly>
-        <div class="name">이름</div>
-        <input type="text" name="trainerNickname" id="trainerName" class="box" placeholder="이름 작성" th:value="${session.trainerLogin.trainerNickname}">
-        <div class="tel">전화번호</div>
-        <input type="text" name="trainerTel" id="trainerTel" class="box" maxlength="11" placeholder="'-' 를 제외한 숫자만 입력해주세요." th:value="${session.trainerLogin.trainerTel}">
+      <div class="name">이름</div>
+      <input type="text" name="trainerNickname" id="trainerName" class="box" placeholder="이름 작성"
+        th:value="${session.trainerLogin.trainerNickname}">
+      <div class="tel">전화번호</div>
+      <input type="text" name="trainerTel" id="trainerTel" class="box" maxlength="11"
+        placeholder="'-' 를 제외한 숫자만 입력해주세요." th:value="${session.trainerLogin.trainerTel}">
       <div class="main-in">자격사항</div>
       <table class="qualification-table">
         <thead>
@@ -33,69 +35,48 @@
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr>
+          <tr th:each="qualification : ${qualifications}" th:if="${qualification != null}">
             <td>
-              <input class="review" name="qName" placeholder="자격사항을 작성해주세요." th:text="${qualification}">
+              <input class="review" name="qName" th:value="${qualification}" placeholder="자격사항을 작성해주세요.">
             </td>
             <td>
-              <input class="date" type="date" name="qDate">
+              <input class="date" type="date" name="qDate" th:value="${qualificationDate}">
             </td>
           </tr>
         </tbody>
       </table>
-
+      <!-- 다른 폼 요소들 -->
       <div class="profile">프로필 사진(2장 필수)</div>
-      <!-- <div class="img-box">
-        <div class="boardImg thumbnail">
-          <label for="img0">
-            <img class="preview">
-          </label>
-          <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
-          <span class="delete-image">&times;</span>
-        </div>
-      </div>
-      <div class="img-box">
-        <div class="boardImg">
-          <label for="img1">
-            <img class="preview">
-          </label>
-          <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
-          <span class="delete-image">&times;</span>
-        </div>
-        <div class="boardImg">
-          <label for="img2">
-            <img class="preview">
-          </label>
-          <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
-          <span class="delete-image">&times;</span>
-        </div>
-        <div class="boardImg">
-          <label for="img3">
-            <img class="preview">
-          </label>
-          <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
-          <span class="delete-image">&times;</span>
-        </div>
-      </div> -->
       <div class="profile-box">
           <div class="profile-image-area">
-            <img th:with="trainer=#{trainerImg}" th:src="${session.trainerLogin.profileImg ?: trainer}" id="profileImg">
+            <img id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain}?: @{/images/*}" alt="Profile Image">
+            <img id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub ?: '/images/default-profile.png'}" alt="Profile Image">
+            <img id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub ?: '/images/default-profile.png'}" alt="Profile Image">
+            <img id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub ?: '/images/default-profile.png'}" alt="Profile Image">            
           </div>
-          <div id="upload" class="profile-btn-area">
-          <span id="deleteImage">x</span>
-          <input class="upload" type="file" name="imgProfile" id="imageInput" accept="image/*"  placeholder="프로필 사진 선택">
+          <div class="profile-btn-area">
+              <input type="file" name="imgProfile" id="imageInput" accept="image/*" placeholder="프로필 사진 선택" multiple>
+          </div>
         </div>
       </div>
 
-      <button class="update" id="update"> 수정하기 </button>
-
+      <span id="deleteImage">x</span>
+    </div>
+    </div>
+    <button type="submit" class="update" id="update"> 수정하기 </button>
     </div>
   </form>
-  <button class="top"> ▲ </button>
-  </div>
+
+
+  <script>
+    const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: 'defaultImage.jpg'}]]*/ 'defaultImage.jpg';
+    const trainerImgMainSub = /*[[${session.trainerLogin.trainerImgMainSub ?: 'defaultImage.jpg'}]]*/ 'defaultImage.jpg';
+</script>
+
 
   <!-- 푸터 -->
   <th:block th:replace="~{common/footer::footer}"></th:block>
   <script src="/js/myPage/trainerMyPage.js"></script>
 </body>
+
 </html>

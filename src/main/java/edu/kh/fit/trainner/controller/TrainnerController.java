@@ -38,7 +38,7 @@ public class TrainnerController {
 	 * @return
 	 */
 	@PostMapping("login")
-	public String trainnerLogin(
+	public String trainerLogin(
 			@RequestParam("trainnerEmail") String trainnerEmail,
 			@RequestParam("trainnerPw")		 String trainnerPw,
 			@RequestParam(name = "saveEmail", required = false) String saveEmail,

@@ -18,33 +18,44 @@
 		HITS,
 		B.TRAINER_NO,
 		TRAINER_NICKNAME,
-		PROFILE_IMG,
 		PAYMENT,
 
-		TO_CHAR(UPLOAD_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+		TO_CHAR(UPLOAD_DATE, 'YYYY"년" MM"월" DD"일"')
 		AS
 		UPLOAD_DATE,
 
-		TO_CHAR(BILLING_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')
+		TO_CHAR(BILLING_DATE, 'YYYY"년" MM"월" DD"일"')
 		AS
-		BILLING_DATE
+		BILLING_DATE,
+		GRADE <!-- 평점(REVIEW 테이블 "NUNBER" 삽입, 수정, 삭제 시 trigger 로 update 되도록 설정) -->
 
-		FROM "BOARD" B
+		FROM "BOARD"
+		B
 		JOIN "TRAINER" T ON (B.TRAINER_NO =
 		T.TRAINER_NO)
-		WHERE BOARD_NO = #{boardNo}
+		WHERE BOARD_NO =
+		#{boardNo}
 		AND CLASS_NO = #{classNo}
 	</select>
 
 	<select id="selectCommentList" parameterType="int"
 		resultType="Comment">
-		SELECT R.*, M.MEMBER_NAME AS memberNickname
+		SELECT 
+			R.COMMENT_NO,
+			R.REVIEW_CONTENT,
+			TO_CHAR(R.REVIEW_WRITE_DATE, 'YYYY"년" MM"월" DD"일"') 
+			AS REVIEW_WRITE_DATE,
+			R.REVIEW_DEL_FL,
+			R."NUMBER",
+			R.MEMBER_NO,
+			R.BOARD_NO,
+			M.MEMBER_NAME AS "memberNickname"
 		FROM REVIEW R
-		JOIN MEMBER M ON R.MEMBER_NO = M.MEMBER_NO
+		JOIN MEMBER M ON (R.MEMBER_NO = M.MEMBER_NO)
 		WHERE R.BOARD_NO =
 		#{boardNo}
 		AND R.REVIEW_DEL_FL = 'N'
-		ORDER BY R.REVIEW_WRITE_DATE DESC
+		ORDER BY REVIEW_WRITE_DATE DESC
 	</select>
 
 	<select id="hasReviewed" parameterType="map" resultType="int">
@@ -52,23 +63,23 @@
 		COUNT(*)
 		FROM REVIEW
 		WHERE
-			MEMBER_NO = #{memberNo}
-			AND BOARD_NO = #{boardNo}
-			AND REVIEW_DEL_FL = 'N'
-	</select>
-	
-	
-	<select id="hasPaidForBoard" parameterType="map" resultType="String">
-    SELECT  
-    	NVL((SELECT PAYMENT_FL
-       	FROM PAYMENT P 
-       	WHERE B.BOARD_NO = P.PAYMENT_BOARD
-       	AND P.PAYMENT_MEMBER = #{memberNo}
-       ), 'N') PAYMENT_FL
-	FROM BOARD B
-	WHERE B.BOARD_NO = #{boardNo}
+		MEMBER_NO = #{memberNo}
+		AND BOARD_NO = #{boardNo}
+		AND REVIEW_DEL_FL = 'N'
 	</select>
 
+
+	<select id="hasPaidForBoard" parameterType="map"
+		resultType="String">
+		SELECT
+		NVL((SELECT PAYMENT_FL
+		FROM PAYMENT P
+		WHERE B.BOARD_NO = P.PAYMENT_BOARD
+		AND P.PAYMENT_MEMBER = #{memberNo}
+		), 'N') PAYMENT_FL
+		FROM BOARD B
+		WHERE B.BOARD_NO = #{boardNo}
+	</select>
 
 
 
@@ -161,3 +172,4 @@
 	</select>
 
 </mapper>
+

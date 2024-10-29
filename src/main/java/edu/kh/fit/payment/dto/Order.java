@@ -18,12 +18,13 @@ public class Order {
 	private String orderNo; // 주문 번호
 	private int orderClassAmount; // 가격
 	private String orderCurrency; // 단위
-	private int oederMemberNo; // 주문자 번호
+	private int orderMemberNo; // 주문자 번호
 	private int orderClassNo; // 강의 번호
 	
 	private String title;
 	private String detail;
 	private String trainerNickname;
 	private String boardTypeName;
+	private String paymentDate; // 결제일
 	
 }

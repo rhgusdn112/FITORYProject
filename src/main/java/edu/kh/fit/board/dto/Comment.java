@@ -24,4 +24,8 @@ public class Comment {
 
 	/* 댓글에 포함될 작성자명 */
 	private String 	memberNickname; // 작성자 닉네임
+	
+	// 게시판 번호 추가
+	private int 		classNo; // 게시판번호
+	
 }

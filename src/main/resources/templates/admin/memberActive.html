@@ -8,115 +8,115 @@
 </head>
 
 <body>
+
+
   
-  <section class = "orderTable">
-    <h4>주문내역</h4>
-    <table border="1">
-      <thead> <!-- 주문 내역  -->
-        <tr>
+    <section class = "orderTable">
+      <h4>주문내역</h4>
+      <table border="1">
+        <thead> <!-- 주문 내역  -->
+          <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>결제일</th>
+            <!-- <th>|</th>
+            <th>환불</th>
+            <th>|</th>
+            <th>신고</th> -->
+          </tr>
+        </thead>
+  
+        <tbody id="orderList"> <!-- list 목록화 -->
+          <tr th:unless= "${orderList}">
+            <th colspan="7">주문내역이 존재하지 않습니다.</th>
+          </tr>
+          
+          <tr th:if= "${orderList}">
+            <td>1</td>
+            <td>boardTitle</td>
+            <td>가격</td>
+            <td>결제일</td>
+            <!-- <th>환불</th>
+            <th>신고</th> -->
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <section class = "commentTable">
+      <h4>댓글</h4>
+      <table border="1">
+        <thead> <!-- 댓글 작성 내역  -->
+          <th>번호</th>
+          <th>댓글 내용</th>
+          <th>작성일자</th>
+        </thead>
+  
+        <tbody id="commentList"> <!-- list 목록화 -->
+          <tr th:unless= "${commentList}">
+            <th colspan="7">작성한 댓글이 없습니다.</th>
+          </tr>
+          
+          <tr th:if= "${commentList}">
+            <td>1</td>
+            <td>boardTitle</td>
+          </tr>
+      </table>
+    </section>
+  
+    <section class = "queryTable">
+      <h4>문의 내역</h4>
+      <table border="1">
+        <thead> <!-- 문의 내역  -->
           <th>번호</th>
           <th>|</th>
-          <th>상품명</th>
+          <th>문의 종류</th>
           <th>|</th>
-          <th>가격</th>
-          <th>|</th>
-          <th>결제일</th>
-          <!-- <th>|</th>
-          <th>환불</th>
-          <th>|</th>
-          <th>신고</th> -->
-        </tr>
-      </thead>
-
-      <tbody id="orderList"> <!-- list 목록화 -->
-        <tr th:unless= "${orderList}">
-          <th colspan="7">주문내역이 존재하지 않습니다.</th>
-        </tr>
-        
-        <tr th:if= "${orderList}">
-          <td>1</td>
-          <td>boardTitle</td>
-          <td>가격</td>
-          <td>결제일</td>
-          <!-- <th>환불</th>
-          <th>신고</th> -->
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class = "commentTable">
-    <h4>댓글</h4>
-    <table border="1">
-      <thead> <!-- 댓글 작성 내역  -->
-        <th>번호</th>
-        <th>|</th>
-        <th>댓글 내용</th>
-        <th>|</th>
-        <th>작성일자</th>
-      </thead>
-
-      <tbody id="commentList"> <!-- list 목록화 -->
-        <tr th:unless= "${commentList}">
-          <th colspan="7">작성한 댓글이 없습니다.</th>
-        </tr>
-        
-        <tr th:if= "${commentList}">
-          <td>1</td>
-          <td>boardTitle</td>
-        </tr>
-    </table>
-  </section>
-
-  <section class = "queryTable">
-    <h4>문의 내역</h4>
-    <table border="1">
-      <thead> <!-- 문의 내역  -->
-        <th>번호</th>
-        <th>|</th>
-        <th>문의 종류</th>
-        <th>|</th>
-        <th>진행 상태</th>
-      </thead>
-
-      <tbody id="queryList"> <!-- list 목록화 -->
-        <tr th:unless= "${queryList}">
-          <th colspan="7">문의 내역이 존재하지 않습니다.</th>
-        </tr>
-        
-        <tr th:if= "${queryList}">
-          <td>1</td>
-          <td>boardTitle</td>
-        </tr>
-        
-      </tbody>
-    </table>
-  </section>
+          <th>진행 상태</th>
+        </thead>
   
-  <section class = "reportTable">
-    <h4>신고 내역</h4>
-    <table border="1">
-      <thead> <!-- 신고 내역  -->
-        <th>번호</th>
-        <th>|</th>
-        <th>신고 제목</th>
-        <th>|</th>
-        <th>진행상태</th>
-      </thead>
-
-      <tbody id="reportList"> <!-- list 목록화 -->
-        <tr th:unless= "${reportList}">
-          <th colspan="7">신고 내역이 존재하지 않습니다.</th>
-        </tr>
-        
-        <tr th:if= "${reportList}">
-          <td>1</td>
-          <td>boardTitle</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+        <tbody id="queryList"> <!-- list 목록화 -->
+          <tr th:unless= "${queryList}">
+            <th colspan="7">문의 내역이 존재하지 않습니다.</th>
+          </tr>
+          
+          <tr th:if= "${queryList}">
+            <td>1</td>
+            <td>boardTitle</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </section>
+    
+    <section class = "reportTable">
+      <h4>신고 내역</h4>
+      <table border="1">
+        <thead> <!-- 신고 내역  -->
+          <th>번호</th>
+          <th>|</th>
+          <th>신고 제목</th>
+          <th>|</th>
+          <th>진행상태</th>
+        </thead>
   
-    <script th:src="@{/js/admin/active.js}"></script>
+        <tbody id="reportList"> <!-- list 목록화 -->
+          <tr th:unless= "${reportList}">
+            <th colspan="7">신고 내역이 존재하지 않습니다.</th>
+          </tr>
+          
+          <tr th:if= "${reportList}">
+            <td>1</td>
+            <td>boardTitle</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+  
+    <script th:src="@{/js/admin/memberActive.js}"></script>
+
   </body>
   </html>

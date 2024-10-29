@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
@@ -40,7 +41,7 @@ public class BoardController {
             RedirectAttributes ra,
             @SessionAttribute(value = "memberLogin", required = false) Member memberLogin,
             @SessionAttribute(value = "trainerLogin", required = false) Trainer trainerLogin,
-            @SessionAttribute(value = "adminLogin", required = false) Boolean adminLogin
+            @SessionAttribute(value = "adminLogin", required = false) Admin adminLogin
     ) throws ParseException {
 
         // SQL 수행에 필요한 파라미터들 Map으로 묶기
@@ -49,7 +50,7 @@ public class BoardController {
         map.put("boardNo", boardNo);
 
         /* 관리자가 로그인이 되어있는 경우 */
-        if (adminLogin != null && adminLogin) {
+        if (adminLogin != null) {
             model.addAttribute("userType", "admin");
         }
         /* 강사가 로그인이 되어있는 경우 */

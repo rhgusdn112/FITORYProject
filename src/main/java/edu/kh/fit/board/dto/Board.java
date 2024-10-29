@@ -14,9 +14,6 @@ import lombok.ToString;
 @ToString
 @Builder
 public class Board {
-
-	// 행 번호
-	private int rnum;
 	
 	// BOARD 테이블 컬럼과 매핑되는 필드
 	private int 		boardNo; 						// 강의 번호
@@ -30,7 +27,7 @@ public class Board {
 	private int 	 	trainerNo;					// 작성자(강사) 번호
 	private int	   	classNo;						// 게시판 번호
 	private float 	grade;							// 평점
-	private int			payment;								// 가격
+	private int			payment;						// 가격
 	
 	// TRAINER 테이블 JOIN 컬럼
 	private String trainerNickname;
