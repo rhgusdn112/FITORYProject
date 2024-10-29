@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
@@ -38,6 +40,38 @@ public interface BoardMapper {
    * @return 결제 여부 플래그 ('Y' 또는 'N')
    */
   String hasPaidForBoard(Map<String, Object> params);
+
+
+  // ------------------------------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------------
+
+  /**
+   * 인기 클래스 조회 Mapper 메서드
+   * @param classNo 클래스 번호
+   * @return 인기 클래스 목록
+   */
+  List<Board> selectPopularClass(int classNo);
+
+  /**
+   * 최근 클래스 조회 Mapper 메서드
+   * @param classNo 클래스 번호
+   * @return 최근 클래스 목록
+   */ 
+  List<Board> selectRecentClass(int classNo);
+
+  /**
+   * 나머지 클래스 조회 Mapper 메서드
+   * @param classNo 클래스 번호
+   * @return 나머지 클래스 목록
+   */
+  List<Board> selectClassList(@Param("classNo") int classNo, @Param("sort") String sort, RowBounds rowBounds);
+
+  /**
+   * 클래스 목록 총 개수 조회 Mapper 메서드
+   * @param classNo
+   * @return
+   */
+  int getClassListCount(int classNo);
   
   
 }
