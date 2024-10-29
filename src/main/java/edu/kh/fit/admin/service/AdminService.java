@@ -46,7 +46,7 @@ public interface AdminService {
 	 * @param memberNo
 	 * @return
 	 */
-	String selectQueryList(int memberNo);
+	List<Query> selectQueryList(int memberNo);
 
 	/** 신고 내역 조회
 	 * @param memberNo
@@ -75,6 +75,8 @@ public interface AdminService {
 
 	// 강사 자격 정보 조회
 	List<Trainer> selectQualificationList(int trainerNo);
+
+	int changeStatus(int memberNo);
 
 	
 	

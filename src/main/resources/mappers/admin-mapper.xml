@@ -28,6 +28,7 @@
 				    M.MEMBER_TEL,
 				    M.MEMBER_BIRTHDAY,
 				    TO_CHAR(M.ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE,
+				    M.MEMBER_DEL_FL,
 				    COUNT(R.COMMENT_NO) AS COUNT_COMMENT,
 				    COUNT(N.REPORT_NO) AS COUNT_REPORT 
 				FROM 
@@ -42,7 +43,8 @@
 				    M.MEMBER_NAME, 
 				    M.MEMBER_TEL, 
 				    M.MEMBER_BIRTHDAY, 
-				    M.ENROLL_DATE
+				    M.ENROLL_DATE,
+				    M.MEMBER_DEL_FL
 				ORDER BY 
 				    M.MEMBER_NO
 	</select>
@@ -54,7 +56,6 @@
 			T.TRAINER_NO,
 			T.TRAINER_EMAIL,
 			T.TRAINER_NICKNAME,
-			T.PROFILE_IMG,
 			T.SALES,
 			TO_CHAR(T.ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE,
 			T.TRAINNER_DEL_FL,
@@ -70,7 +71,6 @@
 				    T.TRAINER_NO, 
 				    T.TRAINER_EMAIL, 
 				    T.TRAINER_NICKNAME, 
-				    T.PROFILE_IMG,
 				    T.SALES,
 				    T.ENROLL_DATE,
 				    T.TRAINNER_DEL_FL,
@@ -198,4 +198,12 @@
 					WHERE TRAINER_NO = #{trainerNo}
 	</select>
 	
+	<update id="changeStatus"
+					parameterType="_int">
+  	UPDATE "MEMBER"
+  	SET
+  		MEMBER_DEL_FL = 
+  			DECODE(MEMBER_DEL_FL, 'Y', 'N', 'Y')
+  	WHERE MEMBER_NO = #{memberNo}
+	</update>
 </mapper>

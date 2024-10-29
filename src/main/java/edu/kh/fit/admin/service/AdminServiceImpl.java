@@ -65,7 +65,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 문의 내역 조회
 	@Override
-	public String selectQueryList(int memberNo) {
+	public List<Query> selectQueryList(int memberNo) {
 		return mapper.selectQueryList(memberNo);
 	}
 	
@@ -97,5 +97,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Trainer> selectQualificationList(int trainerNo) {
 		return mapper.selectQualificationList(trainerNo);
+	}
+	
+	
+	@Override
+	public int changeStatus(int memberNo) {
+		return mapper.changeStatus(memberNo);
 	}
 }

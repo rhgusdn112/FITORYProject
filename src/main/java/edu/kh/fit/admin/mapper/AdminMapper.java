@@ -32,7 +32,7 @@ public interface AdminMapper {
 	List<Comment> selectCommentList(int memberNo);
 
 	// 문의 내역 조회
-	String selectQueryList(int memberNo);
+	List<Query> selectQueryList(int memberNo);
 
 	// 신고 내역 조회
 	List<Report> selectReportList(int memberNo);
@@ -51,6 +51,10 @@ public interface AdminMapper {
 
 	// 강사 자격정보 조회
 	List<Trainer> selectQualificationList(int trainerNo);
+
+	
+	// 회원 정지
+	int changeStatus(int memberNo);
 
 
 }
