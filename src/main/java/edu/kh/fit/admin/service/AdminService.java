@@ -3,6 +3,8 @@ package edu.kh.fit.admin.service;
 import java.util.List;
 
 import edu.kh.fit.admin.dto.Admin;
+import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
@@ -51,6 +53,28 @@ public interface AdminService {
 	 * @return
 	 */
 	List<Report> selectReportList(int memberNo);
+
+	
+	/** 강사 문의 내역 조회
+	 * @param trainerNo
+	 * @return
+	 */
+	List<Query> queryList(int trainerNo);
+
+	/** 강사 신고내역 조회
+	 * @param trainerNo 
+	 * @return
+	 */
+	List<Report> reportList(int trainerNo);
+
+	/** 강사 게시물 
+	 * @param trainerNo
+	 * @return
+	 */
+	List<Board> selectBoardList(int trainerNo);
+
+	// 강사 자격 정보 조회
+	List<Trainer> selectQualificationList(int trainerNo);
 
 	
 	

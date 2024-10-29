@@ -191,6 +191,10 @@
 	<footer th:replace="~{common/footer :: footer}"></footer>
 
 	<script src="/js/mainPage.js"></script>
+
+	<script th:if="${message}">
+		alert("아이디 혹은 패스워드가 일치하지 않습니다.");
+</script>
 </body>
 
 </html>

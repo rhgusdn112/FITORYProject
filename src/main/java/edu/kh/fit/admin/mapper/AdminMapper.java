@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.kh.fit.admin.dto.Admin;
+import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
@@ -34,6 +36,21 @@ public interface AdminMapper {
 
 	// 신고 내역 조회
 	List<Report> selectReportList(int memberNo);
+
+	//---------------------------------------------------
+	
+	
+	// 강사 문의 내역 조회
+	List<Query> queryList(int trainerNo);
+
+	// 강사 신고 내역 조회
+	List<Report> reportList(int trainerNo);
+
+	// 강사 게시물 조회
+	List<Board> selectBoardList(int trainerNo);
+
+	// 강사 자격정보 조회
+	List<Trainer> selectQualificationList(int trainerNo);
 
 
 }

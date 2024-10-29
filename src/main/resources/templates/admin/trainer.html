@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>강사 관리 및 조회</title>
 </head>
 <body>
   <section>
     <h3>강사 관리 및 조회</h3>
     <div>
-      <button type="menu">정렬방식▽</button>
+      <button type="button" id="btn">정렬방식▽</button>
     </div>
   
-    <table boarder="1" >
+    <table boarder="1" style="border-collapse: collapse;">
       <thead>
         <tr>
           <th>강사번호</th>
@@ -23,9 +23,9 @@
           <th>|</th>
           <th>가입일</th>
           <th>|</th>
-          <th>게시글 수</th>
+          <th>누적신고 수</th>
           <th>|</th>
-          <th>누적 신고</th>
+          <th>활동 내역</th>
         </tr>
       </thead>
   
@@ -36,10 +36,10 @@
             <td>이름</td>
             <td>가입일</td>
             <td>
-              <a>게시글 수</a>
+              <a>누적신고</a>
             </td>
             <td>
-              <a>누적신고</a>
+              <a>활동 내역</a>
             </td>
           </tr>
         </th:block> 

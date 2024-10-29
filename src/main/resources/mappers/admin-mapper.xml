@@ -27,8 +27,6 @@
 				    M.MEMBER_NAME,
 				    M.MEMBER_TEL,
 				    M.MEMBER_BIRTHDAY,
-				    M.HEIGHT,
-				    M.WEIGHT,
 				    TO_CHAR(M.ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE,
 				    COUNT(R.COMMENT_NO) AS COUNT_COMMENT,
 				    COUNT(N.REPORT_NO) AS COUNT_REPORT 
@@ -44,8 +42,6 @@
 				    M.MEMBER_NAME, 
 				    M.MEMBER_TEL, 
 				    M.MEMBER_BIRTHDAY, 
-				    M.HEIGHT, 
-				    M.WEIGHT, 
 				    M.ENROLL_DATE
 				ORDER BY 
 				    M.MEMBER_NO
@@ -89,17 +85,16 @@
 	<!-- 주문내역 조회 -->
 	<select id="selectOrderList"
 					resultType="Order">
-		SELECT
+				SELECT
 			ORDER_NO,
-			ORDER_TRAINER_NAME,
-			ORDER_CLASS_NAME,
-			ORDER_CLASS_AMOUNT
-		FROM "ORDER"
-		WHERE
-		 ORDER_MEMBER_NAME = (
-		 		SELECT MEMBER_NAME
-		 		FROM MEMBER
-		 		WHERE MEMBER_NO = #{memberNo});
+			ORDER_CLASS_AMOUNT,
+			ORDER_CLASS_NO,
+			TITLE,
+			PAYMENT_DATE
+		FROM "ORDER" O
+		JOIN "BOARD" B ON(O.ORDER_CLASS_NO = B.BOARD_NO)
+		LEFT JOIN "PAYMENT" P USING(ORDER_NO)
+		WHERE ORDER_MEMBER_NO = #{memberNo}
 	</select>
 	
 	<!-- 댓글 목록조회 -->
@@ -108,12 +103,15 @@
 			SELECT
 				COMMENT_NO,
 				REVIEW_CONTENT,
-				TO_CHAR(REVIEW_WRITE_DATE,'YYYY"년" MM"월" DD"일"),
-				NUMBER,
-				BOARD_NO
-			FROM "REVIEW"
+				TO_CHAR(REVIEW_WRITE_DATE,'YYYY"년" MM"월" DD"일"') AS REVIEW_WRITE_DATE,
+				"NUMBER",
+				R.BOARD_NO,
+				B.CLASS_NO
+			FROM "REVIEW" R
+			JOIN "BOARD" B ON (R.BOARD_NO = B.BOARD_NO)
 			WHERE MEMBER_NO = #{memberNo}
 			AND REVIEW_DEL_FL = 'N'
+
 	</select>
 	
 	<!-- 문의내역 조회 -->
@@ -122,7 +120,7 @@
 					SELECT 
 						QUERY_NO,
 						QUERY_DETAIL,
-						QUERY_DATE,
+						TO_CHAR(QUERY_DATE,'YYYY"년" MM"월" DD"일"') AS QUERY_DATE,
 						QUERY_TYPE,
 						STATUS						
 					FROM "QUERY"
@@ -144,5 +142,60 @@
 					WHERE REPORTER_PK = #{memberNo}										
 	</select>
 	
+	
+	<!-- 강사 활동내역 조회  -->
+	
+	
+	<!-- 문의내역 조회 -->
+	<select id="queryList"
+					resultType="Query">
+					SELECT 
+						QUERY_NO,
+						QUERY_DETAIL,
+						QUERY_DATE,
+						QUERY_TYPE,
+						STATUS						
+					FROM "QUERY"
+					WHERE QUERY_PK = #{trainerNo}
+	</select>
+	
+	<!-- 신고내역 조회 -->
+	<select id="reportList"
+					resultType="Report">
+					SELECT
+						REPORT_NO,
+						REPORT_DETAIL,
+						TO_CHAR(REPORT_DATE,'YYYY"년" MM"월" DD"일"') AS REPORT_DATE,
+						REPORTER_TYPE,
+						ASSAILANT_TYPE,
+						ASSAILANT_PK,
+						STATUS
+					FROM "REPORT"
+					WHERE REPORTER_PK = #{trainerNo}										
+	</select>
+	
+	
+	<select id="selectBoardList"
+					resultType="Board">
+					SELECT
+						BOARD_NO,
+						TITLE,
+						TO_CHAR(UPLOAD_DATE,'YY"."MM"."DD"."') AS UPLOAD_DATE
+					FROM "BOARD"
+					WHERE TRAINER_NO = #{trainerNo}
+	</select>
+	
+	
+	<select id="selectQualificationList"
+					resultType="Trainer">
+					SELECT
+						QUALIFICATION_NO,
+						QUALIFICATION,
+						AWARD,
+						CAREER,
+						TO_CAHR(QUALIFICATION_DATE, 'YYYY"년"MM"월"DD"일"')
+					FROM "QUALIFICATION"
+					WHERE TRAINER_NO = #{trainerNo}
+	</select>
 	
 </mapper>
