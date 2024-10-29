@@ -28,8 +28,8 @@ const selectOrderList = () => {
   })
   .then(list => {
 
-    console.log(list);
-    oderList.innerHTML = "";
+    // console.log(list);
+    orderList.innerHTML = "";
 
     list.forEach(order => {
 
@@ -43,7 +43,7 @@ const selectOrderList = () => {
       td2.innerText = order.title; // 제목
 
       const td3 = document.createElement("td");
-      td3.innerText = order.orderPayment; // 가격
+      td3.innerText = order.orderClassAmount; // 가격
 
       const td4 = document.createElement("td");
       td4.innerText = order.paymentDate;   // 결제일
@@ -89,7 +89,8 @@ const selectCommentList = () => {
 
       commentDirect.innerText = comment.reviewContent; // 내용
 
-      commentDirect.href = "/board/"+ comment.classNo + "/" + comment.boardNo;
+      commentDirect.href = "/board/"+ comment.classNo 
+                            + "/" + comment.boardNo + "?commentNo=" + comment.commentNo;
 
       td2.append(commentDirect);
       
@@ -120,7 +121,7 @@ const selectQueryList = () => {
   })
   .then(list => {
 
-    // console.log(list);
+    console.log(list);
     queryList.innerHTML = "";
 
     list.forEach(query => {
@@ -132,11 +133,21 @@ const selectQueryList = () => {
       td1.innerText = query.queryNo; // 번호
 
       const td2 = document.createElement("td");
-      td2.innerText = query.queryType; // 문의 종류
+      const queryType = document.createElement("a");
+
+      queryType.innerText = query.queryType; // 문의 종류
+      queryType.href = "#";
+      td2.append(queryType);
 
       const td3 = document.createElement("td");
+      let status = "";
+        if(query.status === 1){
+          status = "진행 중";
+        } else{
+          status = "처리완료";
+        }
+      td3.innerText = status; // 진행 상태
 
-      td3.innerText = query.status; // 진행 상태
       tr.append(td1, td2, td3);
 
       queryList.append(tr);
@@ -173,7 +184,13 @@ const selectReportList = () => {
       td1.innerText = report.reportNo; // 번호
 
       const td2 = document.createElement("td");
-      td2.innerText = report.reportTitle; // 내용
+
+      const reportDirect = document.createElement("a");
+      reportDirect.innerText = report.reportType; // 신고 종류
+      reportDirect.href = "/admin/report?reportNo=" + report.reportNo;
+
+      td2.append(reportDirect);
+
       
       const td3 = document.createElement("td");
       td2.innerText = report.status; // 진행상태

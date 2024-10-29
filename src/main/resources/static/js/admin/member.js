@@ -30,14 +30,17 @@ const selectMemberList = () => {
       td4.innerText = member.enrollDate;
 
       const td5 = document.createElement("td");
+      td5.innerText = member.memberDelFl;
+
+      const td6 = document.createElement("td");
       const reportCount = document.createElement("a"); // 누적 신고 수 
 
       reportCount.innerText = member.memberFlag;
-      td5.append(reportCount);
+      td6.append(reportCount);
 
       reportCount.href = "/admin/report";
 
-      const td6 = document.createElement("td");
+      const td7 = document.createElement("td");
       const activeBtn = document.createElement("button"); // 활동 내역
 
       activeBtn.innerText = "활동내역 조회";
@@ -47,11 +50,44 @@ const selectMemberList = () => {
         location.href = "/admin/memberActive?memberNo="+member.memberNo;
         
       })
+      td7.append(activeBtn);
+
+      const td8 = document.createElement("td");
+      const infoBtn = document.createElement("button");
+      infoBtn.innerText = "회원 정보 조회";
 
 
-      td6.append(activeBtn);
+      infoBtn.addEventListener("click",() => {
+        location.href = "/member/memberMyPage";
+      })
       
-      tr.append(td1, td2, td3, td4, td5, td6);
+      td8.append(infoBtn);
+
+      const td9 = document.createElement("td");
+      const changeBtn = document.createElement("button");
+      changeBtn.innerText = "탈퇴상태 변경";
+
+      changeBtn.addEventListener("click", () => {
+        fetch("/admin/changeStatus",{
+          method : "put",
+          headers : {"Content-Type" : "application/json"},
+          body : member.memberNo
+        })
+        .then(response => {
+          if(response.ok) return response.json();
+          throw new Error("수정 실패");
+        })
+        .then(result => {
+          if(result > 0) return selectMemberList();
+        })
+        .catch(err => console.error("err"));
+      })
+
+
+      td9.append(changeBtn);
+      
+      
+      tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
 
       memberList.append(tr);
     })
