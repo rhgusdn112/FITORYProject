@@ -30,20 +30,25 @@ const selectTrainerList = () => {
       td4.innerText = trainer.enrollDate;
 
       const td5 = document.createElement("td");
-      const boardCount = document.createElement("a");
-
-      boardCount.href = "/admin/board?trainerNo=" + trainer.trainerNo;
-      
-      boardCount.innerText = trainer.countBoardNo;
-      td5.append(boardCount);
-
-      const td6 = document.createElement("td");
       const reportCount = document.createElement("a");
-
+      
       reportCount.href = "/admin/report?trainerNo=" + trainer.trainerNo;
+      
+      reportCount.innerText = trainer.countReport;
+      td5.append(reportCount);
+      
+      const td6 = document.createElement("td");
+      const activeBtn = document.createElement("button");
+      
+      activeBtn.innerText = "활동내역 조회";
+      
+      activeBtn.addEventListener("click", () => {
 
-      reportCount.innerText = trainer.trainerFlag;
-      td6.append(reportCount);
+        location.href = "/admin/trainerActive?trainerNo="+ trainer.trainerNo;
+        
+      })
+
+      td6.append(activeBtn);
 
       tr.append(td1, td2, td3, td4, td5, td6);
 

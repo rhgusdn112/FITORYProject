@@ -40,11 +40,11 @@ const selectMemberList = () => {
       const td6 = document.createElement("td");
       const activeBtn = document.createElement("button"); // 활동 내역
 
-      activeBtn.innerText = "활동 내역";
+      activeBtn.innerText = "활동내역 조회";
       
       activeBtn.addEventListener("click", () => {
 
-        location.href = "/admin/active?memberNo="+member.memberNo;
+        location.href = "/admin/memberActive?memberNo="+member.memberNo;
         
       })
 

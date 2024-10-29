@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+    
+     <section id="form">
+        <section class = "qualificationTable">
+          <h4>자격 정보 확인</h4>
+          <button type="button" id="signUpOk">가입승인</button>
+          
+          <table border="1">
+            <thead> <!-- 자격정보입력 내역 / 승인  -->
+              <th>번호</th>
+              <th>|</th>
+              <th>자격 정보</th>
+              <th>|</th>
+              <th>취득일자</th>
+            </thead>
+      
+            <tbody id="qualificationList"> <!-- list 목록화 -->
+              <tr th:unless= "${qualificationList}">
+                <th colspan="7">등록한 자격정보가 없습니다.</th>
+              </tr>
+              
+              <tr th:if= "${qualificationList}">
+                <td>1</td>
+                <td>생활 체육</td>
+                <td>0000.00.00</td>
+              </tr>
+          </table>
+        </section>
+      
+        
+        <section class = "boardTable">
+          <h4>게시글 목록</h4>
+          <table border="1">
+            <thead> <!-- 게시글 작성 내역  -->
+              <tr>
+                <th>번호</th>
+                <th>|</th>
+                <th>게시글</th>
+                <th>|</th>
+                <th>작성일</th>
+                <th>|</th>
+                <th>수정일</th>
+                <!-- <th>|</th>
+                <th>환불</th>
+                <th>|</th>
+                <th>신고</th> -->
+              </tr>
+            </thead>
+      
+            <tbody id="boardList"> <!-- list 목록화 -->
+              <tr th:unless= "${boardList}">
+                <th colspan="7">작성한 게시물이 존재하지 않습니다.</th>
+              </tr>
+              
+              <tr th:if= "${boardList}">
+                <td>1</td>
+                <td>
+                  <a href="#">boardTitle</a>
+                </td>
+                <td>작성일</td>
+                <td>수정일</td>
+                <!-- <th>환불</th>
+                <th>신고</th> -->
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      
+       
+      
+        <section class = "queryTable">
+          <h4>문의 내역</h4>
+          <table border="1">
+            <thead> <!-- 문의 내역  -->
+              <th>번호</th>
+              <th>|</th>
+              <th>문의 종류</th>
+              <th>|</th>
+              <th>진행 상태</th>
+            </thead>
+      
+            <tbody id="queryList"> <!-- list 목록화 -->
+              <tr th:unless= "${queryList}">
+                <th colspan="7">문의 내역이 존재하지 않습니다.</th>
+              </tr>
+              
+              <tr th:if= "${queryList}">
+                <td>1</td>
+                <td>boardTitle</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </section>
+        
+        <section class = "reportTable">
+          <h4>신고 내역</h4>
+          <table border="1">
+            <thead> <!-- 신고 내역  -->
+              <th>번호</th>
+              <th>|</th>
+              <th>신고 제목</th>
+              <th>|</th>
+              <th>진행상태</th>
+            </thead>
+      
+            <tbody id="reportList"> <!-- list 목록화 -->
+              <tr th:unless= "${reportList}">
+                <th colspan="7">신고 내역이 존재하지 않습니다.</th>
+              </tr>
+              
+              <tr th:if= "${reportList}">
+                <td>1</td>
+                <td>boardTitle</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+     </section>
+
+</body>
+</html>
