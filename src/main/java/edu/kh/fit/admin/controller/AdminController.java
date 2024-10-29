@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -180,7 +181,7 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@PostMapping("queryList")
-	public String selectQueryList(
+	public List<Query> selectQueryList(
 			@RequestBody int memberNo) {
 		return service.selectQueryList(memberNo);
 	}
@@ -238,6 +239,13 @@ public class AdminController {
 	public List<Trainer> selectQualificationList(
 			@RequestBody int trainerNo){
 		return service.selectQualificationList(trainerNo);
+	}
+	
+	@ResponseBody
+	@PutMapping("changeStatus")
+	public int changeStatus(
+			@RequestBody int memberNo) {
+		return service.changeStatus(memberNo);
 	}
 	
 	

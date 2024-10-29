@@ -88,3 +88,66 @@ document.addEventListener('DOMContentLoaded', initializeVideoPlayer);
 window.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
+
+// 신고 버튼 클릭 시 팝업 열기
+document.querySelectorAll('.report-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const reportType = this.getAttribute('data-type');
+        const userType = document.getElementById('video-player').dataset.userType || 'guest';
+        const boardNo = this.getAttribute('data-board-no');
+        const commentNo = this.getAttribute('data-comment-no');
+
+        console.log('Board No:', boardNo);   // boardNo 값 확인
+        console.log('Comment No:', commentNo); // commentNo 값 확인
+
+        // 팝업 열기
+        document.getElementById('report-popup').style.display = 'flex';
+
+        // 신고자 유형 설정 (회원 또는 강사)
+        document.getElementById('reporter-type').value = userType === 'trainer' ? '강사' : '회원';
+
+        // 피신고자 유형 설정 (게시글 또는 리뷰)
+        document.getElementById('reported-type').value = reportType === 'board' ? '게시글' : '리뷰';
+
+        // 피신고자 번호는 모달에는 추가하지 않고 JavaScript 변수로만 관리
+        let reportedNo = reportType === 'board' ? boardNo : commentNo;
+
+        console.log('Reported No:', reportedNo); // reportedNo 값 확인
+        
+        // 팝업 제출 시 서버로 전송할 데이터에 해당 번호 추가
+        document.getElementById('submit-report').onclick = function () {
+            submitReport(userType, reportType, reportedNo);
+        }
+    });
+});
+
+// 팝업 닫기
+document.getElementById('close-popup').addEventListener('click', function () {
+    document.getElementById('report-popup').style.display = 'none';
+});
+
+// 신고 제출
+function submitReport(userType, reportedType, reportedNo) {
+    const reportTitle = document.getElementById('report-title').value;
+    const reportMessage = document.getElementById('report-message').value;
+
+    // 서버로 데이터 전송
+    fetch('/admin/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            reporterType: userType,
+            reportedType: reportedType,
+            reportedNo: reportedNo,
+            reportTitle: reportTitle,
+            reportMessage: reportMessage
+        })
+    }).then(response => {
+        if (response.ok) {
+            alert('신고가 접수되었습니다.');
+            document.getElementById('report-popup').style.display = 'none';
+        } else {
+            alert('신고 접수에 실패했습니다.');
+        }
+    });
+}

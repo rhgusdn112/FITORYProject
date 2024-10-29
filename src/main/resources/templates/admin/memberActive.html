@@ -28,11 +28,11 @@
         </thead>
   
         <tbody id="orderList"> <!-- list 목록화 -->
-          <tr th:unless= "${orderList}">
+          <tr th:if= "${orderList} == null">
             <th colspan="7">주문내역이 존재하지 않습니다.</th>
           </tr>
           
-          <tr th:if= "${orderList}">
+          <tr th:if= "${orderList} != null">
             <td>1</td>
             <td>boardTitle</td>
             <td>가격</td>
@@ -70,9 +70,7 @@
       <table border="1">
         <thead> <!-- 문의 내역  -->
           <th>번호</th>
-          <th>|</th>
           <th>문의 종류</th>
-          <th>|</th>
           <th>진행 상태</th>
         </thead>
   
