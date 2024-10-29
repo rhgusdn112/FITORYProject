@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -25,7 +27,6 @@ import edu.kh.fit.trainer.service.TrainerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Controller
 @RequiredArgsConstructor
@@ -268,8 +269,15 @@ public class TrainerController {
       
       model.addAttribute("orderList", orderList);
       
-      return "/classList/trainerClassList";
+      return "/classList/classList";
   }	
+  
+  @ResponseBody
+  @GetMapping("classList")
+  public List<Board> selectClassList(
+  		@RequestBody int trainerNo){
+  	return service.classList(trainerNo);
+  }
   
   /* 강사 상세 정보 조회 */
   @GetMapping("trainerDetail/{trainerNo}")
@@ -281,6 +289,7 @@ public class TrainerController {
 		
       return "/trainer/trainerDetail";
   }
+  
   
 
 
