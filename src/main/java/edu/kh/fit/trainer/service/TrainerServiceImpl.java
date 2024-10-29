@@ -2,8 +2,10 @@ package edu.kh.fit.trainer.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.common.exception.FileUploadFailException;
 import edu.kh.fit.common.util.FileUtil;
 import edu.kh.fit.payment.dto.Order;
+import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.mapper.TrainerMapper;
 import lombok.RequiredArgsConstructor;
@@ -75,12 +78,88 @@ public class TrainerServiceImpl implements TrainerService{
 
 	// 강사 정보 수정
 	@Override
-	public int updateTrainer(Trainer inputTrainer) {
-		// 강사 자격사항 mapper 추가
+	public Map<String, Object>  updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList) {
 		
-		return mapper.updateTrainer(inputTrainer);
-	}
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		
+		// 강사 이름, 전화번호 수정
+		int result =  mapper.updateTrainer(inputTrainer); 
+		if(result <= 0) throw new RuntimeException("트레이너 정보 수정 오류");
+		
+		resultMap.put("result", result);
 
+		// 강사 자격사항 수정
+		if(qNameList.size() > 0 && qDateList.size() > 0) {
+			List<Qualification> qList = new ArrayList<>();
+			
+			for(int i=0 ; i < qNameList.size() ; i++) {
+				
+				Qualification q 
+					= Qualification.builder()
+						.qualification(qNameList.get(i))
+						.qualificationDate(qDateList.get(i))
+						.trainerNo(inputTrainer.getTrainerNo()).build();
+				qList.add(q);
+			}
+			
+			mapper.deleteQulification(inputTrainer.getTrainerNo());
+			
+			result = mapper.insertQulification(qList);
+			if(result <= 0) throw new RuntimeException("트레이너 정보 수정 오류");
+			
+			resultMap.put("result", result);
+			resultMap.put("qList", qList);
+		}
+		
+		
+		
+		// 새로 업로드된 이미지가 없다면 수정없이 기존 이미지 유지
+		if(imgProfileList.get(0).isEmpty()) return resultMap;
+		
+		
+		
+		// 이미지 수정
+		List<String> renameList = new ArrayList<>();
+		
+		
+		
+		for(MultipartFile file : imgProfileList) {
+			String rename = FileUtil.rename(file.getOriginalFilename());
+			renameList.add(profileWebPath + rename);
+			
+			// 이미지 서버에 저장
+			try {
+				file.transferTo(new File(profileFolderPath + rename));
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("트레이너 정보 수정 오류");
+			}
+
+		}
+		
+		// renamList는 4칸으로 만들기(나머지 칸은 null)
+		if(renameList.size() < 4) {
+			for(int i = renameList.size() - 1 ; i < 4 ; i++) {
+				renameList.add(null);
+			}
+		}
+		
+		mapper.deleteTrainerImage(inputTrainer.getTrainerNo());
+		result = mapper.insertTrainerImage(renameList, inputTrainer.getTrainerNo());
+		
+		
+		
+		resultMap.put("result", result);
+		resultMap.put("renameList", renameList);
+		
+		return resultMap;
+	}
+	
+	
+
+	
+	
 	/* 이미지 수정 */
 	@Override
 	public List<String> profile(List<MultipartFile> imgProfileList, int trainerNo) {

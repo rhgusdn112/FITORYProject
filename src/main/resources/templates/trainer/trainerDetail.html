@@ -25,19 +25,24 @@
     </div>
       <button class="watch" id="watch"> 강사 영상 보러가기 </button>
 
-    <table class="qualification-table">
-      <thead>
-        <tr>
-          <td class="qualification-th">자격사항</td>
-          <td class="date-th">취득일</td>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-          <!-- <tr th:each="qualification:${qualificationList}" th:object="${qualification}" class="qualificationBody"> -->
-        <tr>
-          <td th:text="${qualification}">자격 정보</td>
-          <td th:text="${qualificationNo}">취득일</td>
-        </tr>
+      <div class="main-in">자격사항</div>
+      <table class="qualification-table">
+        <thead>
+          <tr>
+            <th>자격사항</th>
+            <th class="date-th">
+              취득일
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr th:each="qual, stat : ${session.trainerLogin?.qualificationList}" th:data-no="${qual.qualificationNo}">
+            <td>
+              <input class="review" name="qName" th:value="${qual.qualification}">
+            </td>
+            <td>
+              <input class="date" type="date" name="qDate" th:value="${qual.qualificationDate}">
+            </td>
       </tbody>
       <tfoot>
           <!-- 페이지 -->

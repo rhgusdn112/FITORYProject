@@ -2,6 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.trainer.mapper.TrainerMapper">
 	
+	<resultMap id="trainer_rm" type="Trainer">
+		<id property="trainerNo" column="TRAINER_NO"/>
+	
+		<collection property="qualificationList"
+		select="selectQualifcationlist"
+		column="TRAINER_NO"
+		javaType="java.util.ArrayList"
+		ofType="Qualification"
+		/>
+	</resultMap>
+	
+	<select id="selectQualifcationlist" parameterType="_int" resultType="Qualification">
+		SELECT  
+			QUALIFICATION_NO,
+			QUALIFICATION,
+			QUALIFICATION_DATE
+		FROM QUALIFICATION
+		WHERE TRAINER_NO = #{trainerNo}
+	</select>
+	
+	
 		<!-- (강사) 회원가입 -->
 	<insert id="signUp">
 		INSERT INTO "TRAINER"
@@ -18,7 +39,7 @@
 	
 	<!-- (강사) 로그인 서비스 -->
 	<select id="trainerLogin"
-			resultType="Trainer">
+			resultMap="trainer_rm">
 		SELECT
 			TRAINER_NO,
 			TRAINER_EMAIL, 
@@ -28,9 +49,12 @@
 			SALES,
 			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE,
 			GENDER,
-			QUALIFICATION_NO
+			TRAINER_IMG_MAIN,
+			TRAINER_IMG_MAIN_SUB,
+			TRAINER_IMG_SUB,
+			TRAINER_IMG_SUB_SUB
 		FROM "TRAINER"
-		JOIN "QUALIFICATION" USING(TRAINER_NO)
+		LEFT JOIN TRAINER_IMG USING(TRAINER_NO)
 		WHERE TRAINER_EMAIL = #{trainerEmail}
 		AND   TRAINNER_DEL_FL = 'N'
 	</select>
@@ -46,12 +70,8 @@
 	<!-- 강사 정보 수정 -->
 	<update id="updateTrainer">
 		UPDATE "TRAINER"
-<!-- 		JOIN TRAINER_ING ON(TRAINER_NO = TRAINER_NO) -->
-		SET TRAINER_NICKNAME = #{trainerNickname}, TRAINER_TEL = #{trainerTel}
-<!-- 			TRAINER_IMG_MAIN = #{images[0]},
-	        TRAINER_IMG_MAIN_SUB = #{images[1]},
-	        TRAINER_IMG_SUB = #{images[2]},
-	        TRAINER_IMG_SUB_SUB = #{images[3]} -->
+		SET TRAINER_NICKNAME = #{trainerNickname}, 
+		TRAINER_TEL = #{trainerTel}
 	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
@@ -104,4 +124,44 @@
 		WHERE TRAINER_NO = #{trainerNo}
 		ORDER BY QUALIFICATION_DATE DESC
     </select>
+    
+    
+    <!-- 강사 자격사항 삭제 -->
+    <delete id="deleteQulification">
+    	DELETE FROM "QUALIFICATION"
+    	WHERE TRAINER_NO = #{trainerNo}
+    </delete>
+    
+    
+    <!-- 강사 자격사항 삽입 -->
+    <insert id="insertQulification">
+    	INSERT INTO "QUALIFICATION"
+    	<foreach collection="list" item="item" open="(" close=")" separator=" UNION ">
+    		SELECT NEXT_QUALIFICATION_NO(), #{item.qualification}, #{item.qualificationDate}, ${item.trainerNo}
+    		FROM DUAL
+    	</foreach>
+    </insert>
+    
+    
+    
+    <!-- 강사 프로필 이미지 삭제 -->
+    <delete id="deleteTrainerImage">
+    	DELETE FROM "TRAINER_IMG"
+    	WHERE TRAINER_NO = #{trainerNo}
+    </delete>
+    
+    
+    
+    <!-- 강사 프로필 이미지 삽입 -->
+    <insert id="insertTrainerImage" > 
+    	INSERT INTO "TRAINER_IMG"
+    	VALUES (#{renameList[0]}, #{renameList[1]}, #{renameList[2]}, #{renameList[3]}, #{trainerNo})
+    </insert>
+    
+    
+    
+    
+    
+    
+    
 </mapper>

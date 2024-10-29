@@ -26,7 +26,7 @@
       <div class="main-in">자격사항</div>
       <table class="qualification-table">
         <thead>
-          <tr th:text="*{qualificationNo}">
+          <tr>
             <th>자격사항</th>
             <th class="date-th">
               취득일
@@ -35,12 +35,15 @@
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr th:each="qualification : ${qualifications}" th:if="${qualification != null}">
+          <tr th:each="qual, stat : ${session.trainerLogin?.qualificationList}" th:data-no="${qual.qualificationNo}">
             <td>
-              <input class="review" name="qName" th:value="${qualification}" placeholder="자격사항을 작성해주세요.">
+              <input class="review" name="qName" th:value="${qual.qualification}" placeholder="자격사항을 작성해주세요.">
             </td>
             <td>
-              <input class="date" type="date" name="qDate" th:value="${qualificationDate}">
+              <input class="date" type="date" name="qDate" th:value="${qual.qualificationDate}">
+            </td>
+            <td th:if="${stat.index > 0}">
+              <button type="button" class="qualificationRemovebtn">-</button>
             </td>
           </tr>
         </tbody>
@@ -48,15 +51,14 @@
 
 
       <!-- 다른 폼 요소들 -->
-      <div class="profile">프로필 사진(2장 필수)</div>
-      <span id="deleteImage">x</span>
+      <div class="profile">프로필 사진(2장 필수) <span id="deleteImage">x</span></div>
       <div class="profile-box">
-        <img id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/**'}" alt="Profile Image">
+        <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image">
       </div>
       <div class="subProfile-box">
-        <img id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">
-        <img id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">
-        <img id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">      
+        <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">
+        <img class="preview" id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">
+        <img class="preview" id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">      
       </div>
         <div class="profile-btn-area">
           <input type="file" name="imgProfile" id="imageInput" accept="image/**" placeholder="프로필 사진 선택" multiple>
