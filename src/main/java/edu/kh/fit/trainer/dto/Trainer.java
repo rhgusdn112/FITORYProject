@@ -41,10 +41,18 @@ public class Trainer {
 	private String award; // 수상 내역
 	private String career; // 이력
 	private String qualificationDate; // 자격 취득 날짜
+
 	
 	// 강사가 작성한 게시글 생성을 위한 필드 생성
 	private int countBoardNo;
 	private int boardNo;
 	private int countReportNo;
+	
+	// 트레이너 프로필 이미지 관련 테이블
+	private String trainerImgMain; // 필수 사진1
+	private String trainerImgMainSub; // 필수 사진2
+	private String trainerImgSub; // 선택 사진1
+	private String trainerImgSubSub; // 선택 사진2
+	
 	
 }

@@ -252,3 +252,5 @@ public class MemberController {
 		return "/myPage/memberMyActivities";
 	}
 }
+
+}

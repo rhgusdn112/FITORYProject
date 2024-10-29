@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.trainer.mapper.TrainerMapper">
 	
+		<!-- (강사) 회원가입 -->
+	<insert id="signUp">
+		INSERT INTO "TRAINER"
+		VALUES(
+		SEQ_TRAINER_NO.NEXTVAL, 
+		#{trainerEmail}, 
+		#{trainerPw},
+	 	#{trainerNickname}, 
+	 	#{trainerTel}, 
+	 	NULL,
+	 	#{qualification} <!-- 자격증 번호 or 사진 -->
+	 	DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
 	<!-- (강사) 로그인 서비스 -->
 	<select id="trainerLogin"
 			resultType="Trainer">
@@ -21,21 +35,6 @@
 		AND   TRAINNER_DEL_FL = 'N'
 	</select>
 
-
-	<!-- (강사) 회원가입 -->
-	<insert id="signUp">
-		INSERT INTO "TRAINER"
-		VALUES(
-		SEQ_TRAINER_NO.NEXTVAL, 
-		#{trainerEmail}, 
-		#{trainerPw},
-	 	#{trainerNickname}, 
-	 	#{trainerTel}, 
-	 	NULL,
-	 	#{qualification} <!-- 자격증 번호 or 사진 -->
-	 	DEFAULT, DEFAULT, DEFAULT)
-	</insert>
-	
 	<!-- 회원 정보 수정 비밀번호 확인 -->
 	<select id="trainerCheckPw" resultType="string">
 		SELECT TRAINER_PW
@@ -52,11 +51,21 @@
 	</update>
 	
 	<!-- 프로필 이미지 수정 -->
-	<update id="profile">
+<!-- 	<update id="profile">
 		UPDATE "TRAINER"
 		SET PROFILE_IMG = #{url}
 		WHERE TRAINER_NO = #{trainerNo}
-	</update>
+	</update> -->
+	
+	<update id="updateProfileImages">
+    UPDATE TRAINER
+    SET
+        TRAINER_IMG_MAIN = #{images[0]},
+        TRAINER_IMG_MAIN_SUB = #{images[1]},
+        TRAINER_IMG_SUB = #{images[2]},
+        TRAINER_IMG_SUB_SUB = #{images[3]}
+    WHERE TRAINER_NO = #{trainerNo}
+</update>
 	
 	<!-- 강사 자격사항 추가 -->
 	<insert id="insertTrainerQualification">
@@ -76,14 +85,14 @@
     
     <!-- 강사 상세조회 -->
     <select id="detailTrainer" resultType="Trainer">
-	    SELECT PROFILE_IMG, QUALIFICATION_NO, QUALIFICATION, AWARD, CAREER, QUALIFICATION_DATE
-	    FROM QUALIFICATION
-	    JOIN TRAINER USING(TRAINER_NO)
-	    WHERE TRAINER_NO = #{trainerNo} <!-- 수정된 부분 -->
-	    ORDER BY QUALIFICATION_DATE DESC
+
+    	SELECT TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_SUB_SUB,
+    	TRAINER_NICKNAME, QUALIFICATION_NO, QUALIFICATION, AWARD
+		FROM TRAINER_IMG
+		JOIN QUALIFICATION USING(TRAINER_NO)
 	</select>
     
-    <!-- 강사 자격사항 상세조회 -->
+    <!-- 강사 자격사항 상세조회 페이지  -->
     <select id="qualificationList" resultType="_int">
     	SELECT COUNT(*)
 		FROM QUALIFICATION
