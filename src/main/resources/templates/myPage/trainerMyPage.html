@@ -45,32 +45,31 @@
           </tr>
         </tbody>
       </table>
+
+
       <!-- 다른 폼 요소들 -->
       <div class="profile">프로필 사진(2장 필수)</div>
+      <span id="deleteImage">x</span>
       <div class="profile-box">
-          <div class="profile-image-area">
-            <img id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain}?: @{/images/*}" alt="Profile Image">
-            <img id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub ?: '/images/default-profile.png'}" alt="Profile Image">
-            <img id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub ?: '/images/default-profile.png'}" alt="Profile Image">
-            <img id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub ?: '/images/default-profile.png'}" alt="Profile Image">            
-          </div>
-          <div class="profile-btn-area">
-              <input type="file" name="imgProfile" id="imageInput" accept="image/*" placeholder="프로필 사진 선택" multiple>
-          </div>
+        <img id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/**'}" alt="Profile Image">
+      </div>
+      <div class="subProfile-box">
+        <img id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">
+        <img id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">
+        <img id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/default-profile.**'}" alt="Profile Image" style="width: 30%;" height="10%;">      
+      </div>
+        <div class="profile-btn-area">
+          <input type="file" name="imgProfile" id="imageInput" accept="image/**" placeholder="프로필 사진 선택" multiple>
         </div>
       </div>
-
-      <span id="deleteImage">x</span>
-    </div>
-    </div>
     <button type="submit" class="update" id="update"> 수정하기 </button>
     </div>
   </form>
 
 
   <script>
-    const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: 'defaultImage.jpg'}]]*/ 'defaultImage.jpg';
-    const trainerImgMainSub = /*[[${session.trainerLogin.trainerImgMainSub ?: 'defaultImage.jpg'}]]*/ 'defaultImage.jpg';
+    const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: '/images/**'}]]*/ '/images/**';
+    const trainerImgMainSub = /*[[${session.trainerLogin.trainerImgMainSub ?: '/images/**'}]]*/ '/images/**';
 </script>
 
 

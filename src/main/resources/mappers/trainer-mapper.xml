@@ -12,8 +12,8 @@
 	 	#{trainerNickname}, 
 	 	#{trainerTel}, 
 	 	NULL,
-	 	#{qualification} <!-- 자격증 번호 or 사진 -->
-	 	DEFAULT, DEFAULT, DEFAULT)
+	 	#{qualification}, <!-- 자격증 번호 or 사진 -->
+	 	DEFAULT)
 	</insert>
 	
 	<!-- (강사) 로그인 서비스 -->
@@ -46,8 +46,13 @@
 	<!-- 강사 정보 수정 -->
 	<update id="updateTrainer">
 		UPDATE "TRAINER"
+<!-- 		JOIN TRAINER_ING ON(TRAINER_NO = TRAINER_NO) -->
 		SET TRAINER_NICKNAME = #{trainerNickname}, TRAINER_TEL = #{trainerTel}
-		WHERE TRAINER_NO = #{trainerNo}
+<!-- 			TRAINER_IMG_MAIN = #{images[0]},
+	        TRAINER_IMG_MAIN_SUB = #{images[1]},
+	        TRAINER_IMG_SUB = #{images[2]},
+	        TRAINER_IMG_SUB_SUB = #{images[3]} -->
+	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
 	<!-- 프로필 이미지 수정 -->
@@ -58,19 +63,19 @@
 	</update> -->
 	
 	<update id="updateProfileImages">
-    UPDATE TRAINER
-    SET
-        TRAINER_IMG_MAIN = #{images[0]},
-        TRAINER_IMG_MAIN_SUB = #{images[1]},
-        TRAINER_IMG_SUB = #{images[2]},
-        TRAINER_IMG_SUB_SUB = #{images[3]}
-    WHERE TRAINER_NO = #{trainerNo}
-</update>
-	
+	    UPDATE TRAINER_IMG
+	    SET
+	        TRAINER_IMG_MAIN = #{images[0]},
+	        TRAINER_IMG_MAIN_SUB = #{images[1]},
+	        TRAINER_IMG_SUB = #{images[2]},
+	        TRAINER_IMG_SUB_SUB = #{images[3]}
+	    WHERE TRAINER_NO = #{trainerNo}
+	</update>
+		
 	<!-- 강사 자격사항 추가 -->
 	<insert id="insertTrainerQualification">
 		INSERT INTO QUALIFICATION
-		VALUES(SEQ_QUALIFICATION_NO.NEXTVAL, #{qualification},  DEFAULT, DEFAULT, DEFAULE, #{qualificationDate})
+		VALUES(SEQ_QUALIFICATION_NO.NEXTVAL, #{qualification}, #{qualificationDate}, DEFAULT)
 	</insert>
 
 	<!-- 강사 강의 목록 조회 -->
@@ -85,11 +90,11 @@
     
     <!-- 강사 상세조회 -->
     <select id="detailTrainer" resultType="Trainer">
-
     	SELECT TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_SUB_SUB,
-    	TRAINER_NICKNAME, QUALIFICATION_NO, QUALIFICATION, AWARD
+    	TRAINER_NICKNAME, QUALIFICATION_NO
 		FROM TRAINER_IMG
 		JOIN QUALIFICATION USING(TRAINER_NO)
+		WHERE TRAINER_NO = #{trainerNo}
 	</select>
     
     <!-- 강사 자격사항 상세조회 페이지  -->

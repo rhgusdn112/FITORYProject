@@ -38,8 +38,6 @@ public class Trainer {
 	// 강사 자격정보 생성을 위한 필드생성
 	private int qualificationNo; // 자격 정보 번호
 	private String qualification; // 자격 정보
-	private String award; // 수상 내역
-	private String career; // 이력
 	private String qualificationDate; // 자격 취득 날짜
 
 	
