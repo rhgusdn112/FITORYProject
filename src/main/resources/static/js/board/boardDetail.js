@@ -21,15 +21,21 @@ function initializeVideoPlayer() {
         player.addEventListener('seeked', handleSeekPrevent);  // 타임라인 이동 방지
     }
 
-    // 현재 재생 위치를 기록 (seeked 이벤트 대비)
+    // 현재 재생 위치 기록 (seeked 이벤트 대비)
     player.addEventListener('timeupdate', () => {
         lastKnownPosition = player.currentTime;
     });
 }
 
-// 타임라인 탐색 방지 함수
+// 타임라인 탐색 방지 및 즉시 팝업 표시 함수
 function handleSeekPrevent() {
-    player.currentTime = lastKnownPosition;  // 탐색 시 마지막 위치로 되돌리기
+    if (!popupShown) {
+        alert("타임라인 이동은 결제 후 이용해주세요.");  // 경고 메시지 표시
+        player.pause();  // 비디오 일시정지
+        removeVideo();  // 비디오 제거
+        popupShown = true;  // 팝업이 이미 표시되었음을 기록
+        document.getElementById('video-popup').style.display = 'block';  // 팝업 표시
+    }
 }
 
 // 게스트 및 비결제 회원이 재생 시 실행되는 함수

@@ -80,7 +80,96 @@
 		FROM BOARD B
 		WHERE B.BOARD_NO = #{boardNo}
 	</select>
+
+
+
+	<!-- ====================================================================================================== -->
+	<!-- ====================================================================================================== -->
+
+	<!-- 인기 클래스 8개 조회 -->
+	<select id="selectPopularClass" resultType="Board">
+		SELECT 
+			BOARD_NO,
+			IMG_THUMBNAIL "thumbnail",
+			TITLE,
+			TRAINER_NO,
+			TRAINER_NICKNAME,
+			UPLOAD_DATE,
+			BILLING_DATE,
+			PAYMENT,
+			GRADE,
+			CLASS_NO
+		FROM BOARD 
+		LEFT JOIN BOARD_IMG USING (BOARD_NO)
+		JOIN TRAINER USING (TRAINER_NO)
+		WHERE CLASS_NO = #{classNo}
+		AND BOARD_DEL_FL= 'N'
+		ORDER BY GRADE DESC
+		FETCH FIRST 8 ROWS ONLY
+	</select>
+
+
+	<!-- 최근 클래스 8개 조회 -->
+	<select id="selectRecentClass" resultType="Board">
+		SELECT 
+			BOARD_NO,
+			IMG_THUMBNAIL "THUMBNAIL",
+			TITLE,
+			TRAINER_NO,
+			TRAINER_NICKNAME,
+			TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD') UPLOAD_DATE,
+			TO_CHAR(BILLING_DATE, 'YYYY-MM-DD') BILLING_DATE,
+			PAYMENT,
+			GRADE,
+			CLASS_NO
+		FROM BOARD 
+		LEFT JOIN BOARD_IMG USING (BOARD_NO)
+		JOIN TRAINER USING (TRAINER_NO)
+		WHERE CLASS_NO = #{classNo}
+		AND BOARD_DEL_FL= 'N'
+		ORDER BY BOARD_NO DESC
+		FETCH FIRST 8 ROWS ONLY
+	</select>
+
+	<!-- 클래스 조회 -->
+	<select id="selectClassList" resultType="Board">
+		SELECT 
+			BOARD_NO,
+			IMG_THUMBNAIL "THUMBNAIL",
+			TITLE,
+			TRAINER_NO,
+			TRAINER_NICKNAME,
+			TO_CHAR(UPLOAD_DATE, 'YYYY-MM-DD') UPLOAD_DATE,
+			TO_CHAR(BILLING_DATE, 'YYYY-MM-DD') BILLING_DATE,
+			PAYMENT,
+			GRADE,
+			CLASS_NO,
+			HITS
+		FROM BOARD 
+		LEFT JOIN BOARD_IMG USING (BOARD_NO)
+		JOIN TRAINER USING (TRAINER_NO)
+		WHERE CLASS_NO = #{classNo}
+		AND BOARD_DEL_FL= 'N'
+
+		<choose>
+			<when test="sort == 'latest'">
+				ORDER BY BOARD_NO DESC
+			</when>
+			<when test="sort == 'rating'">
+				ORDER BY GRADE DESC
+			</when>
+			<when test="sort == 'views'">
+				ORDER BY HITS DESC
+			</when>
+		</choose>
+	</select>
+
+	<!-- 클래스 목록 총 개수 조회 -->
+	<select id="getClassListCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE CLASS_NO = #{classNo}
+		AND BOARD_DEL_FL= 'N'
+	</select>
+
 </mapper>
-
-
 
