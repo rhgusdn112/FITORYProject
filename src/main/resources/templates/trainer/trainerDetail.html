@@ -5,42 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상세 조회</title>
-  <link rel="stylesheet" href="/css/trainer/trainerDetail">
+  <link rel="stylesheet" href="/css/trainer/trainerDetail.css">
 </head>
 
 <body>
   <block th:replace="~{common/common}"></block>
+  <div class="main-title">TRAINEL PROPLE</div>
   <form action="/trainer/trainerDetail/${trainerNo}" method="GET" name="trainerDetailCheck" id="trainerCheck" class="main"
     th:object="${trainerNo}">
 
-    <div class="main-title">TRAINEL PROPLE</div>
     <div class="main-box">
-      <div class="profile-box">
-        <div class="profile-image-area">
-          <img th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
-        </div>
-      </div>
-      <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+  <div class="profile-box">
+      <img class="profile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
     </div>
+    <div class="subProfile-box">
+      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
+      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
+      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
+    </div>
+      <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+
     <table class="qualification-table">
       <thead>
         <tr>
-          <td>자격사항</td>
+          <td class="qualification-th">자격사항</td>
           <td class="date-th">취득일</td>
         </tr>
       </thead>
       <tbody id="tbody">
-        <tr th:each="qualification:${qualificationList}" th:object="${qualification}">
-          <!-- <td>
-            <th:block th:if="*{type == '리뷰'}">
-              <a th:href="|/board/*{commentNo}|" th:text="*{reviewContent}">자격 정보</a>
-            </th:block>
-          </td> -->
+          <!-- <tr th:each="qualification:${qualificationList}" th:object="${qualification}" class="qualificationBody"> -->
         <tr>
           <td th:text="${qualification}">자격 정보</td>
           <td th:text="${qualificationNo}">취득일</td>
         </tr>
-
+      </tbody>
+      <tfoot>
           <!-- 페이지 -->
           <div class="pagination" th:object="${pagination}">
 
@@ -67,13 +66,11 @@
             <!-- 끝 페이지로 이동 -->
             <a href="#">&gt;&gt;</a>
           </div>
-      </tbody>
+        </tfoot>
     </table>
+    </div>
   </form>
 
-  <!-- 탑버튼 -->
-  <button class="top">▲</button>
-  </div>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
   </script>
