@@ -21,29 +21,43 @@
     <div class="wrapper">
       <div class="post-container">
         <!-- 비디오 플레이어 삽입 -->
-        <div id="video-player" th:data-user-type="${userType}" th:data-class-no="*{classNo}" th:data-board-no="*{boardNo}"></div>
-        
+        <div id="video-player" th:data-user-type="${userType}" th:data-class-no="*{classNo}"
+          th:data-board-no="*{boardNo}"></div>
+
         <div class="post-header">
           <h1 class="post-title" th:text="*{title}">게시글 제목</h1>
           <h3 class="post-board-name" th:text="*{classNo == 1 ? 'Home Training' : 'Home Gym'}">게시판 이름</h3>
           <h3 class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</h3>
           <h3 class="post-rating" th:text="*{grade}">별점 정보 없음</h3>
-        </div>
 
-        <!-- 팝업 모달 -->
-        <div id="video-popup" class="popup" style="display: none;">
-          <h1>영상을 이어보시겠습니까?</h1>
-          <div class="popup-buttons">
-            <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
-            <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
+          <!-- 수정 및 삭제 버튼 (강사 로그인 상태이면서 작성자일 때만 표시) -->
+          <div th:if="${userType == 'trainer' and user != null and board.trainerNickname == user.trainerNickname}"
+            class="edit-buttons">
+            <div>
+              <button class="edit-btn">수정</button>
+              <button class="edit-btn">삭제</button>
+            </div>
           </div>
-        </div>
 
-        <!-- 유튜브 영상 삽입 (주석처리) -->
-        <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
+        </div>
 
       </div>
+
+      <!-- 팝업 모달 -->
+      <div id="video-popup" class="popup" style="display: none;">
+        <h1>영상을 이어보시겠습니까?</h1>
+        <div class="popup-buttons">
+          <button id="continue-video" class="popup-btn continue">영상 이어보기(결제)</button>
+          <button id="stop-video" class="popup-btn stop">리뷰 읽기</button>
+        </div>
+      </div>
+
+      <!-- 유튜브 영상 삽입 (주석처리) -->
+      <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
+
     </div>
+    </div>
+
 
   </main>
 

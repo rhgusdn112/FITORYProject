@@ -10,7 +10,7 @@
 
 <body>
 	<!-- common 조각 삽입(header 포함) -->
-	<block th:replace="~{common/common}"></block>
+	<header th:replace="~{common/common}"></header>
 
 	<!-- 로그인 여부에 따른 콘텐츠 표시 -->
 	<main th:if="${session.memberLogin == null}" class="main-content">
