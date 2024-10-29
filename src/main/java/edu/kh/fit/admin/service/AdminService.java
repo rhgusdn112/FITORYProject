@@ -76,6 +76,8 @@ public interface AdminService {
 	// 강사 자격 정보 조회
 	List<Trainer> selectQualificationList(int trainerNo);
 
+	
+	// 회원 정지
 	int changeStatus(int memberNo);
 
 	

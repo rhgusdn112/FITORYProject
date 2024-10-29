@@ -128,7 +128,7 @@ public class BoardController {
      * @param model
      * @return
      */
-    @GetMapping("{classNo:[2-3]+}")
+    @GetMapping("{classNo:[1-3]+}")
     public String boardList(@PathVariable("classNo") int classNo, Model model) {
 
         Map<String, Object> map = service.selectBoardMain(classNo);
@@ -148,10 +148,11 @@ public class BoardController {
         model.addAttribute("pagination", pagination);   
 
         String path = null; 
+        
         switch (classNo) {
             case 1: path = "notice"; break;
-            case 2: path = "homeGym"; break;
-            case 3: path = "homeTraining"; break;
+            case 2: path = "homeTraining"; break;
+            case 3: path = "homeGym"; break;
         }
         
         return "board/" + path;
