@@ -28,6 +28,8 @@ import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.member.service.MemberService;
 import edu.kh.fit.payment.dto.Order;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("member")
@@ -40,43 +42,56 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	/**
-	 * (회원) 로그인 서비스
-	 * 
+
+	/** (회원) 로그인 서비스
 	 * @param memberEmail
 	 * @param memberPw
-	 * @param saveEmail
 	 * @param model
 	 * @param ra
-	 * @param resp
-	 * @return redirect:/ (메인페이지로 리다이렉트)
+	 * @param session
+	 * @return 이전 페이지 또는 메인 페이지로 이동
 	 */
 	@PostMapping("login")
-	public String memberLogin(@RequestParam("email") String memberEmail, @RequestParam("password") String memberPw,
-			Model model, RedirectAttributes ra) {
+	public String memberLogin(@RequestParam("email") String memberEmail, 
+	                          @RequestParam("password") String memberPw,
+	                          Model model, RedirectAttributes ra, 
+	                          HttpSession session) {
 
-		Member memberLogin = service.memberLogin(memberEmail, memberPw);
+	    Member memberLogin = service.memberLogin(memberEmail, memberPw);
 
-		if (memberLogin == null) {
-			ra.addFlashAttribute("message", "아이디 혹은 패스워드가 일치하지 않습니다.");
-		} else {
-			model.addAttribute("memberLogin", memberLogin);
-		}
-		return "redirect:/main";
+	    if (memberLogin == null) {
+	        ra.addFlashAttribute("message", "아이디 혹은 패스워드가 일치하지 않습니다.");
+	        return "redirect:/login";  // 로그인 실패 시 /login으로 리다이렉트
+	    } else {
+	        model.addAttribute("memberLogin", memberLogin);
+
+	        // 로그인 성공 시 이전 페이지로 리다이렉트
+	        String redirectUrl = (String) session.getAttribute("prevPage");
+	        session.removeAttribute("prevPage");  // 이전 페이지 정보 제거
+	        return redirectUrl != null ? "redirect:" + redirectUrl : "redirect:/main";  // 이전 페이지 또는 메인 페이지로 이동
+	    }
 	}
 
-	/**
-	 * 로그아웃
-	 * 
-	 * @return
+
+	/** 로그아웃
+	 * @param status
+	 * @param session
+	 * @param request
+	 * @return referer가 없으면 기본적으로 메인 페이지로 이동
 	 */
 	@GetMapping("logout")
-	public String logout(SessionStatus status) {
+	public String logout(SessionStatus status, HttpSession session, HttpServletRequest request) {
+	    // 세션에 저장된 로그인 정보 제거
+	    status.setComplete();
+	    
+	    // 이전 페이지 URL(prevPage)도 세션에서 제거
+	    session.removeAttribute("prevPage");
 
-		status.setComplete();
-
-		return "redirect:/main";
+	    // 로그아웃 요청이 발생한 페이지로 리다이렉트
+	    String referer = request.getHeader("Referer");
+	    return referer != null ? "redirect:" + referer : "redirect:/main";  // referer가 없으면 기본적으로 메인 페이지로 이동
 	}
+
 
 	/**
 	 * 회원가입
