@@ -244,21 +244,24 @@ public class TrainerController {
   
   @ResponseBody
   @GetMapping("classList")
-  public List<Board> selectClassList(
-  		@RequestBody int trainerNo){
-  	return service.classList(trainerNo);
+  public Map<String, Object> classList(
+  		@SessionAttribute("trainerLogin") Trainer trainerLogin,
+  		@RequestParam("cp") int cp){
+  	int trainerNo = trainerLogin.getTrainerNo();
+  	return service.trainerClassList(trainerNo, cp);
   }
   
   /* 강사 상세 정보 조회 */
   @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
+
   public String detailTrainer(@PathVariable("trainerNo") int trainerNo,
   														@RequestParam(value="cp", required = false, defaultValue = "1") int cp, Model model) {
   	Map<String, Object> map = service.detailTrainer(trainerNo, cp);
   	model.addAttribute("trainer", (Trainer)map.get("trainer"));
   	model.addAttribute("qualiList", ((Trainer)map.get("trainer")).getQualificationList());
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
-		
       return "trainer/trainerDetail";
+
   }
   
   

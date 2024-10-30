@@ -49,6 +49,13 @@ public interface TrainerMapper {
 	// 강사 이미지 삽입
 	int insertTrainerImage(@Param("renameList") List<String> renameList, @Param("trainerNo") int trainerNo);
 
+	
+	// 강의 목록 수 조회
+	int classListCount(int trainerNo);
+
+	// 강의 조회
+	List<Board> classList(int trainerNo, RowBounds bounds);
+
 
 	// 자격 사항 개수 조회
 	int qualiCount(int trainerNo);

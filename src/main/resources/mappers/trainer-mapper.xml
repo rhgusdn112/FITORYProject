@@ -152,8 +152,7 @@
 		SELECT COUNT(*)
 		FROM QUALIFICATION
 		WHERE TRAINER_NO = #{trainerNo}
-	</select>
-	
+
 	
 	<!-- 강사 자격사항 조회 -->
 	 <select id="qualiList">
@@ -162,7 +161,15 @@
 		WHERE TRAINER_NO = #{trainerNo}
 		ORDER BY QUALIFICATION_DATE DESC
     </select>
-    
-    
+
+	
+	<select id="classListCount"
+					resultType="_int">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		WHERE TRAINER_NO = #{trainerNo}
+		AND BOARD_DEL_FL = 'N'
+	</select>
+
     
 </mapper>

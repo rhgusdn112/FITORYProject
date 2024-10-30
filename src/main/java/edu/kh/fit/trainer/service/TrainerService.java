@@ -48,6 +48,8 @@ public interface TrainerService {
  * @return
  */
 	List<Board> classList(int trainerNo);
+	
+	Map<String, Object> trainerClassList(int trainerNo, int cp);
 
 /** 강사 상세 정보 조회
  * @param trainerNo

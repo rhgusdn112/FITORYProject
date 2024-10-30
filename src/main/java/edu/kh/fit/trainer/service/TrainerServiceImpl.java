@@ -169,5 +169,25 @@ public class TrainerServiceImpl implements TrainerService{
 		Map<String, Object> map = Map.of("trainer", trainer, "pagination", pagination);
 		return map;
 	}
+	
+	@Override
+	public Map<String, Object> trainerClassList(int trainerNo, int cp) {
+		
+		int listCount = mapper.classListCount(trainerNo);
+		Pagination pagination = new Pagination(cp, listCount, 4, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> classList = mapper.classList(trainerNo, bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+    map.put("classList", classList);
+    map.put("pagination", pagination);
+
+    return map;
+	}
 
 }
