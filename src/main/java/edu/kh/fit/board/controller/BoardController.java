@@ -151,8 +151,8 @@ public class BoardController {
         
         switch (classNo) {
             case 1: path = "notice"; break;
-            case 2: path = "homeTraining"; break;
-            case 3: path = "homeGym"; break;
+            case 2: path = "homeGym"; break;
+            case 3: path = "homeTraining"; break;
         }
         
         return "board/" + path;
