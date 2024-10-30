@@ -2,29 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.board.mapper.CommentMapper">
 
-	<!-- 댓글 등록 -->
-	<insert id="insertComment" parameterType="Comment"
-		useGeneratedKeys="true" keyProperty="commentNo">
-		INSERT INTO COMMENT (COMMENT_NO, REVIEW_CONTENT, REVIEW_WRITE_DATE,
-		REVIEW_DEL_FL, NUMBER, MEMBER_NO, BOARD_NO)
-		VALUES (#{commentNo}, #{reviewContent}, SYSDATE, 'N', #{number},
-		#{memberNo}, #{boardNo})
-	</insert>
-	
-	<!-- 댓글 수정 -->
-	<update id="updateComment" parameterType="Comment">
-		UPDATE COMMENT
-		SET REVIEW_CONTENT = #{reviewContent},
-		REVIEW_WRITE_DATE = SYSDATE
-		WHERE COMMENT_NO = #{commentNo}
-		AND MEMBER_NO = #{memberNo}
-	</update>
+    <insert id="insertComment"
+        parameterType="Comment">
+        INSERT INTO REVIEW (COMMENT_NO, REVIEW_CONTENT, REVIEW_WRITE_DATE,
+        REVIEW_DEL_FL, MEMBER_NO, BOARD_NO)
+        VALUES (REVIEW_SEQ.NEXTVAL, #{reviewContent}, DEFAULT, 'N', #{memberNo},
+        #{boardNo})
+    </insert>
 
-	<!-- 댓글 삭제 -->
-	<delete id="deleteComment" parameterType="map">
-		DELETE FROM COMMENT
-		WHERE COMMENT_NO = #{commentNo}
-		AND MEMBER_NO = #{memberNo}
-	</delete>
+    <update id="updateComment"
+        parameterType="Comment">
+        UPDATE REVIEW
+        SET REVIEW_CONTENT = #{reviewContent},
+        REVIEW_WRITE_DATE = CURRENT_DATE,
+        "NUMBER" = #{number}
+        WHERE COMMENT_NO = #{commentNo}
+        AND MEMBER_NO = #{memberNo}
+    </update>
+
+    <update id="deleteComment" parameterType="map">
+        UPDATE REVIEW
+        SET REVIEW_DEL_FL = 'Y'
+        WHERE COMMENT_NO = #{commentNo}
+        AND MEMBER_NO = #{memberNo}
+    </update>
+
+    <select id="selectWriterByCommentNo" parameterType="int" resultType="int">
+        SELECT MEMBER_NO
+        FROM REVIEW
+        WHERE COMMENT_NO = #{commentNo}
+    </select>
 
 </mapper>

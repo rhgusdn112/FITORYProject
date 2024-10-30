@@ -34,7 +34,7 @@
           <!-- 게시글 신고 버튼 (회원 전용) -->
           <div th:if="${userType == 'paidMember' or userType == 'unpaidMember'}">
             <button class="report-btn" data-type="board" th:data-board-no="${board.boardNo}">
-            <i class="fa-solid fa-land-mine-on"></i> 강의 신고
+              <i class="fa-solid fa-land-mine-on"></i> 강의 신고
             </button>
           </div>
 
@@ -51,11 +51,10 @@
       </div>
     </div>
 
-     <!-- 신고 팝업 모달 -->
+    <!-- 신고 팝업 모달 -->
     <div id="report-popup" class="report-popup-modal" style="display: none;">
       <div class="report-popup-content">
         <h3>신고하기</h3>
-
         <!-- 신고자 유형 (회원/강사) -->
         <label>신고자 종류:</label>
         <input type="text" id="reporter-type" readonly>
@@ -92,7 +91,8 @@
     <!-- 유튜브 영상 삽입 (주석처리) -->
     <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
 
-
+    <!-- boardNo 값을 숨겨진 input으로 추가 -->
+    <input type="hidden" id="boardNo" th:value="*{boardNo}">
   </main>
 
   <!-- 댓글 섹션 삽입 -->
@@ -102,9 +102,8 @@
   <footer th:replace="~{common/footer :: footer}"></footer>
 
   <script th:inline="javascript">
-    // 서버에서 전달받은 board 객체를 JSON 형태로 변환하여 JavaScript 변수에 담음
-    var board = /*[[${board}]]*/ {};
-    var userType = /*[['${userType}']]*/ '';
+    window.board = /*[[${board}]]*/ {};
+    window.userType = /*[['${userType}']]*/ '';
   </script>
 
   <!-- JavaScript 파일 연결 -->

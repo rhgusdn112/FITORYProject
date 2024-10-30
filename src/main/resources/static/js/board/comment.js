@@ -1,32 +1,31 @@
-// comment.js
-
 document.addEventListener('DOMContentLoaded', function () {
   const stars = document.querySelectorAll('#review-rating .fa-star');
+  const reviewTextarea = document.querySelector("#new-review");
+  const submitButton = document.querySelector("#submit-review");
   let selectedRating = 0;
 
   // 별 클릭, 마우스 오버/아웃 핸들러 설정
   stars.forEach((star) => {
     star.addEventListener('click', () => handleStarClick(star));
-    star.addEventListener('mouseover', () => updateStarRating(parseFloat(star.getAttribute('data-value'))));
+    star.addEventListener('mouseover', () => updateStarRating(parseFloat(star.dataset.value)));
     star.addEventListener('mouseout', () => updateStarRating(selectedRating));
   });
 
   // 리뷰 수정, 삭제 버튼 클릭 이벤트 핸들러 설정
   attachEventHandlers();
 
-  // 초기 댓글 로드
-  loadComments();
-
   function handleStarClick(star) {
-    const clickedRating = parseFloat(star.getAttribute('data-value'));
+    const clickedRating = parseFloat(star.dataset.value);
     selectedRating = (clickedRating === selectedRating) ? 0 : clickedRating;
     updateStarRating(selectedRating);
+    console.log("Star clicked, selected rating:", selectedRating); // 별 클릭 시 선택된 별점 로그
   }
 
   // 별점 업데이트 함수
   function updateStarRating(rating) {
+    console.log("Updating star rating to:", rating); // 별점 업데이트 로그
     stars.forEach((star) => {
-      const value = parseFloat(star.getAttribute('data-value'));
+      const value = parseFloat(star.dataset.value);
       star.classList.toggle('fa-solid', value <= rating);
       star.classList.toggle('fa-regular', value > rating);
       star.classList.add('inline-star');
@@ -44,20 +43,18 @@ document.addEventListener('DOMContentLoaded', function () {
       button?.addEventListener("click", () => handleReviewDelete(button));
     });
 
-    document.querySelector("#submit-review")?.addEventListener("click", handleReviewSubmit);
+    submitButton?.addEventListener("click", handleReviewSubmit);
   }
 
   // 리뷰 수정 처리 함수
   function handleReviewEdit(button) {
-    const reviewContent = button.getAttribute("data-content");
-    const reviewRating = button.getAttribute("data-rating");
-    const reviewId = button.getAttribute("data-id");
+    const reviewContent = button.dataset.content;
+    const reviewRating = button.dataset.rating;
+    const commentNo = button.dataset.id;
+
+    console.log("Editing review:", { reviewContent, reviewRating, commentNo }); // 리뷰 수정 시 로그
 
     // 리뷰 작성 섹션에 데이터 채우기
-    const reviewTextarea = document.querySelector("#new-review");
-    const ratingStars = document.querySelectorAll("#review-rating i");
-
-    // 리뷰 내용 채우기
     if (reviewTextarea) {
       reviewTextarea.value = reviewContent || "";
     }
@@ -73,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 리뷰 수정 버튼 활성화 및 등록 버튼 숨기기
-    const submitButton = document.querySelector("#submit-review");
     if (submitButton) {
       submitButton.style.display = "none";
     }
@@ -84,104 +80,93 @@ document.addEventListener('DOMContentLoaded', function () {
       editButton.id = "edit-review";
       editButton.classList.add("submit-review-btn");
       editButton.textContent = "리뷰 수정";
-      submitButton.parentNode.appendChild(editButton);
+      if (submitButton && submitButton.parentNode) {
+        submitButton.parentNode.appendChild(editButton);
+      }
     }
     editButton.style.display = "block";
-
-    // 기존에 등록된 클릭 이벤트 핸들러 제거 후 새로운 핸들러 등록
     editButton.replaceWith(editButton.cloneNode(true));
-    editButton = document.querySelector("#edit-review");
-    editButton.addEventListener("click", function () {
-      const updatedContent = reviewTextarea.value;
-      const updatedRating = selectedRating;
 
-      if (updatedContent && updatedRating) {
+    document.querySelector("#edit-review").addEventListener("click", () => {
+      const updatedContent = reviewTextarea.value;
+      if (validateReviewInput(updatedContent, selectedRating)) {
         const requestBody = {
-          reviewNo: reviewId,
+          commentNo: commentNo,
           reviewContent: updatedContent,
-          rating: updatedRating
+          number: selectedRating,
         };
-        fetchRequest("/reviews/edit", "POST", requestBody, "리뷰가 수정되었습니다.", "리뷰 수정에 실패했습니다.");
-      } else {
-        alert("리뷰 내용과 별점을 모두 입력해주세요.");
+        console.log("Sending request to update review:", requestBody); // 리뷰 업데이트 요청 로그
+        fetchRequest("/comment", "PUT", requestBody, "리뷰가 수정되었습니다.", "리뷰 수정에 실패했습니다.");
       }
     });
   }
 
+  // 리뷰 유효성 검증 함수
+  function validateReviewInput(content, rating) {
+    console.log("Validating review input:", { content, rating }); // 리뷰 유효성 검증 로그
+    if (!content || rating <= 0) {
+      alert("리뷰 내용과 별점을 모두 입력해주세요.");
+      return false;
+    }
+    return true;
+  }
+
   // 리뷰 등록 처리 함수
   function handleReviewSubmit() {
-    const reviewContent = document.querySelector("#new-review").value;
-    const rating = selectedRating;
-
-    if (reviewContent && rating) {
+    const reviewContent = reviewTextarea.value;
+    console.log("Submitting review:", { reviewContent, selectedRating }); // 리뷰 등록 시 로그
+    if (validateReviewInput(reviewContent, selectedRating)) {
       const requestBody = {
         reviewContent: reviewContent,
-        rating: rating
+        number: selectedRating,
+        reviewDelFl: 'N'
       };
-      fetchRequest("/reviews/add", "POST", requestBody, "리뷰가 등록되었습니다.", "리뷰 등록에 실패했습니다.");
-    } else {
-      alert("리뷰 내용과 별점을 모두 입력해주세요.");
+      console.log("Sending request to submit review:", requestBody); // 리뷰 등록 요청 로그
+      fetchRequest("/comment", "POST", requestBody, "리뷰가 등록되었습니다.", "리뷰 등록에 실패했습니다.");
     }
   }
 
   // 리뷰 삭제 처리 함수
   function handleReviewDelete(button) {
-    const commentNo = button.getAttribute("data-id");
+    const commentNo = button.dataset.id;
+    console.log("Deleting review, commentNo:", commentNo); // 리뷰 삭제 시 로그
     if (!confirm("정말로 이 리뷰를 삭제하시겠습니까?")) return;
 
     const requestBody = {
-      reviewNo: commentNo,
+      commentNo: commentNo,
       reviewDelFl: 'Y'
     };
-    fetchRequest("/reviews/delete", "POST", requestBody, "리뷰가 삭제되었습니다.", "리뷰 삭제에 실패했습니다.");
+    console.log("Sending request to delete review:", requestBody); // 리뷰 삭제 요청 로그
+    fetchRequest("/comment", "DELETE", requestBody, "리뷰가 삭제되었습니다.", "리뷰 삭제에 실패했습니다.");
   }
 
   // 서버 요청을 처리하는 공통 함수
   function fetchRequest(url, method, body, successMessage, failureMessage) {
+    console.log("Sending fetch request:", { url, method, body }); // 서버 요청 로그
     fetch(url, {
       method: method,
       headers: { "Content-Type": "application/json" },
       body: body ? JSON.stringify(body) : null
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log("Server response status:", response.status); // 서버 응답 상태 로그
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
     .then(data => {
-      if (data > 0) {
+      console.log("Server response data:", data); // 서버 응답 데이터 로그
+      if (data && (data.result !== undefined ? data.result > 0 : true)) {
         alert(successMessage);
-        loadComments();
+        window.location.reload(); // 페이지 리프레시로 최신 상태 반영
       } else {
         alert(failureMessage);
       }
     })
-    .catch(error => console.error("Error:", error));
-  }
-
-  // 초기 댓글 로드 및 이벤트 핸들러 설정
-  function loadComments() {
-    fetch("/comment?boardNo=" + boardNo)
-      .then(response => response.json())
-      .then(data => {
-        // 댓글을 렌더링하고 이벤트 핸들러를 다시 설정합니다.
-        const commentsContainer = document.querySelector(".comments-container");
-        commentsContainer.innerHTML = ""; // 기존 댓글 초기화
-        data.forEach(comment => {
-          // 댓글 요소 생성 및 추가 (여기서 간단히 가정)
-          const commentElement = document.createElement("div");
-          commentElement.classList.add("comment");
-          commentElement.innerHTML = `<p>${comment.content}</p>`;
-          commentsContainer.appendChild(commentElement);
-        });
-        attachEventHandlers();
-      })
-      .catch(error => console.error("Error:", error));
+    .catch(error => {
+      console.error("Error:", error); // 오류 발생 시 로그
+      alert(failureMessage);
+    });
   }
 });
-
-function navigateInquiry(direction) {
-  console.log(direction + ' 버튼 클릭됨');
-  // TODO: API 호출 또는 데이터 처리 로직 추가
-}
-
-function completeInquiry() {
-  console.log('답변 완료 버튼 클릭됨');
-  // TODO: 완료 처리 시 서버에 업데이트 요청 및 UI 업데이트
-}

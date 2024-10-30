@@ -18,10 +18,10 @@ public class Comment {
 	private String 	reviewContent; // 리뷰 내용
 	private String 	reviewWriteDate; // 리뷰 작성일
 	private String 	reviewtDelFl; // 리뷰 삭제 여부 플래그
-	private float 	number; // 별점
+	private int 		number; // 별점
 	private int 		memberNo; // 작성자 회원 번호
 	private int 		boardNo; // 게시글 번호
-	private String type;
+	private String 	type;
 	
 	/* 댓글에 포함될 작성자명 */
 	private String 	memberNickname; // 작성자 닉네임
