@@ -1,61 +1,149 @@
-.review-container {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin: 30px auto;
-  width: 95%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
+/* 공통 스타일 */
 .review-table {
-  width: 95%; /* 테이블 전체 너비 설정 */
-  margin: 0 auto; /* 가로 중앙 정렬 */
-  border-collapse: collapse; /* 테이블 경계선 간격 없애기 */
+  width: 100%; /* 테이블 전체 너비를 100%로 설정하여 화면을 가득 채우도록 합니다. */
+  margin: 20px auto; /* 테이블을 수직으로 여백을 두고, 가로 중앙에 배치합니다. */
+  border-collapse: collapse; /* 테이블의 셀 경계선을 하나로 합쳐 깔끔하게 표시합니다. */
+  text-align: center; /* 테이블 내용물을 중앙 정렬합니다. */
 }
 
 .review-table th, .review-table td {
-  border: 1px solid #ddd; /* 경계선 설정 */
-  padding: 8px; /* 셀 안의 여백 설정 */
-  text-align: center; /* 텍스트 중앙 정렬 */
+  padding: 10px; /* 테이블 셀 내부의 여백을 설정하여 콘텐츠가 너무 붙지 않도록 합니다. */
+  border-bottom: 1px solid #ddd; /* 셀 하단에 경계선을 추가해 구분감을 줍니다. */
 }
 
 .review-table thead th {
-  background-color: #f2f2f2; /* 헤더 배경색 설정 */
-  font-weight: bold;
+  font-weight: bold; /* 헤더의 텍스트를 굵게 설정하여 강조합니다. */
+  font-size: 25px;
 }
 
-.review-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* 짝수 행 배경색 설정 */
+.review-table tbody tr:nth-child(odd) {
+  background-color: #e0e0e0; /* 홀수 행에 더 진한 배경색을 설정하여 시각적인 가독성을 더욱 향상시킵니다. */
 }
 
-.review-form {
-  width: 60%; /* 작성 폼 너비 설정 */
-  margin: 20px auto; /* 폼을 중앙으로 정렬 */
+.review-container {
+  border: 1px solid #ddd; /* 리뷰 컨테이너의 외곽 테두리를 설정하여 구분감을 줍니다. */
+  padding: 20px; /* 내부 여백을 추가해 콘텐츠가 테두리에 너무 붙지 않도록 합니다. */
+  margin: 30px auto; /* 컨테이너를 수직으로 여백을 두고, 가로 중앙에 배치합니다. */
+  width: 95%; /* 컨테이너의 너비를 95%로 설정하여 양쪽에 약간의 여백을 둡니다. */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과를 추가해 컨테이너가 떠 있는 듯한 느낌을 줍니다. */
+  background-color: #fff; /* 흰색 배경을 설정하여 내용을 명확하게 보이게 합니다. */
 }
 
 .review-sort-options {
-  text-align: right; /* 정렬 버튼을 오른쪽으로 정렬 */
+  text-align: right; /* 정렬 옵션을 오른쪽에 배치합니다. */
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  display: flex; /* 페이지네이션 링크를 가로로 나열합니다. */
+  justify-content: center; /* 페이지네이션을 가로 중앙에 배치합니다. */
+  margin-top: 20px; /* 위쪽에 여백을 추가해 콘텐츠와 분리합니다. */
 }
 
 .pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
+  color: black; /* 페이지 링크 텍스트 색상을 검정색으로 설정합니다. */
+  float: left; /* 링크를 왼쪽으로 정렬합니다. */
+  padding: 8px 16px; /* 링크 내부의 여백을 설정하여 클릭 영역을 넓힙니다. */
+  text-decoration: none; /* 링크의 밑줄을 제거합니다. */
+  transition: background-color .3s; /* 배경색 전환에 애니메이션을 추가해 부드러운 효과를 줍니다. */
 }
 
 .pagination a.active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #4CAF50; /* 활성화된 페이지 링크의 배경색을 초록색으로 설정합니다. */
+  color: white; /* 활성화된 페이지 링크의 텍스트 색상을 흰색으로 설정합니다. */
 }
 
 .pagination a:hover:not(.active) {
-  background-color: #ddd;
+  background-color: #ddd; /* 비활성화된 페이지 링크에 마우스를 올릴 때 배경색을 회색으로 변경합니다. */
+}
+
+/* 테두리 제거 및 테이블 스타일 수정 */
+.review-table th, .review-table td {
+  padding: 10px; /* 테이블 셀 내부의 여백을 설정하여 콘텐츠가 너무 붙지 않도록 합니다. */
+}
+
+.review-table th {
+  border-bottom: 1px solid #ddd; /* 헤더 셀에 구분선을 추가하여 가독성을 높입니다. */
+}
+
+.star-rating * {
+  font-size: 35px; /* 아이콘 크기 조절 */
+  cursor: pointer; /* 마우스를 올리면 포인터로 변경 */
+  color: black; /* 기본 별 색상 */
+}
+
+#new-review {
+  resize: none; /* 크기 조정 불가 */
+  font-size: 1.2em; /* 폰트 크기 조정 */
+  height: 2.5em; /* 한 줄 높이 설정 */
+  width: 100%; /* 전체 너비 사용 */
+  padding: 10px; /* 텍스트 영역 안의 여백 설정 */
+  box-sizing: border-box; /* 패딩과 경계선을 너비와 높이에 포함시킴 */
+}
+
+h2 {text-align: center;}
+
+
+.inquiry-form-container, .inquiry-management-container {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.inquiry-form-title-section, .inquiry-title-section {
+  background-color: #cccccc;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.inquiry-form-details, .inquiry-details {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+}
+
+.inquiry-form-content, .inquiry-content, .response-content {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 0;
+}
+
+.inquiry-form-content {
+  border-color: #8a2be2;
+}
+
+.inquiry-content {
+  border-color: #8a2be2;
+}
+
+.response-content {
+  border-color: #cccccc;
+}
+
+.inquiry-form-meta, .inquiry-meta {
+  font-weight: bold;
+}
+
+.inquiry-form-action-button, .action-button {
+  text-align: center;
+  margin-top: 16px;
+}
+
+#inquiry-submit-btn, #complete-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#prev-btn, #next-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
 }
