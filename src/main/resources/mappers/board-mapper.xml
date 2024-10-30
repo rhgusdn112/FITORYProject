@@ -167,6 +167,33 @@
 		WHERE CLASS_NO = #{classNo}
 		AND BOARD_DEL_FL= 'N'
 	</select>
+	
+	
+	<insert id="insertBoard" 
+		useGeneratedKeys="true">
+
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO "BOARD"
+		VALUES(
+		#{boardNo},
+		#{title},
+		#{title},
+		#{path},
+		DEFAULT,
+		DEFAULT,
+		DEFAULT,
+		0,
+		DEFAULT,
+		DEFAULT,
+		#{trainerNo},
+		#{classNo},
+		#{thumbnail}
+		)
+	</insert>
 
 </mapper>
 

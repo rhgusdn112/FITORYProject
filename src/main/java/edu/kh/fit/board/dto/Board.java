@@ -28,6 +28,7 @@ public class Board {
 	private int	   	classNo;						// 게시판 번호
 	private float 	grade;							// 평점
 	private int			payment;						// 가격
+	private String  path;								// 동영상 경로
 	
 	// TRAINER 테이블 JOIN 컬럼
 	private String trainerNickname;

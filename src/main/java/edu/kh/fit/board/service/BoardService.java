@@ -3,6 +3,8 @@ package edu.kh.fit.board.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 
@@ -46,6 +48,14 @@ public interface BoardService {
    * @return map
    */
   Map<String, Object> selectClassList(int classNo, int cp, String sort);
+
+  /** 게시물 등록
+   * @param classNo
+   * @param inputBoard
+   * @param images
+   * @return
+   */
+	int insertBoard(Board inputBoard, MultipartFile images);
 }
 
 

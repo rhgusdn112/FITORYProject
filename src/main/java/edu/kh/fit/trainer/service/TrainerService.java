@@ -44,12 +44,12 @@ public interface TrainerService {
 	Map<String, Object> updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList);
 
 
-/** 강사 상세 정보 조회
- * @param trainerNo
- * @param cp
- * @return
- */
-Map<String, Object> detailTrainer(int trainerNo, int cp);
+	/** 강사 상세 정보 조회
+	 * @param trainerNo
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> detailTrainer(int trainerNo, int cp);
 
 /** 강사 상세 정보 조회 후 해당 강사 영상목록 조회
  * @param trainerNo

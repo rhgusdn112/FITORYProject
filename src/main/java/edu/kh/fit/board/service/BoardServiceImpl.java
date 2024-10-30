@@ -1,25 +1,37 @@
 package edu.kh.fit.board.service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.board.mapper.BoardMapper;
+import edu.kh.fit.common.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@PropertySource("classpath:/config.properties")
 public class BoardServiceImpl implements BoardService {
 
     private final BoardMapper mapper;
+    
+  	@Value("${my.board.web-path}")
+  	private String webPath;
+  	
+  	@Value("${my.board.folder-path}")
+  	private String folderPath;
 
     /**
      * 게시글 상세 조회 서비스 메서드
@@ -133,4 +145,32 @@ public class BoardServiceImpl implements BoardService {
       return map;
     	
     }
+    
+
+    /** 게시물 등록
+     * @param classNo
+     * @return result
+     */
+    @Override
+    public int insertBoard( Board inputBoard, MultipartFile images) {
+    	
+    	String rename = FileUtil.rename(images.getOriginalFilename());
+    	
+    	inputBoard.setThumbnail(webPath+rename);
+    	
+    	int result = mapper.insertBoard(inputBoard);
+    	
+    	if(result > 0) {
+    		try {
+    			images.transferTo(new File(folderPath+rename));
+    		}catch (Exception e) {
+    			e.printStackTrace();
+    			throw new RuntimeException("실패");
+    		}
+    	}
+    	
+    	return result;
+    }
+
+    	
 }

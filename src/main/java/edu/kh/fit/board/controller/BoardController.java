@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
@@ -172,5 +174,37 @@ public class BoardController {
          @RequestParam("cp") int cp, 
          @RequestParam("sort") String sort) {
         return ResponseEntity.ok(service.selectClassList(classNo, cp, sort));
+    }
+    
+    @GetMapping("editBoard")
+    public String editBoard() {
+    	return "/board/boardWrite";
+    }
+    
+    @PostMapping("{classNo:[2-3]+}/insert")
+    public String insertBoard(
+    		@SessionAttribute("trainerLogin") Trainer trainerLogin,
+    		@RequestParam("images") MultipartFile images,
+    		@RequestParam("path") String path,
+    		Board inputBoard) {
+    	
+    	inputBoard.setTrainerNo(trainerLogin.getTrainerNo());
+    	inputBoard.setVideoPath(path);
+    	
+    	String ra = null;
+    	String message = null;
+    	int result = service.insertBoard(inputBoard, images);
+    	
+    	
+    	
+    	if(result > 0) {
+    		message = "새로운 게시물을 등록하였습니다.";
+    		ra = "/trainer/trainerClassList";
+    	}else {
+    		message = "게시물 등록을 실패하였습니다.";
+    		ra = "/editBoard";
+    	}
+    	
+    	return "redirect:" + ra;
     }
 }
