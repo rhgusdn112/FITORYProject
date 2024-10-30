@@ -51,12 +51,12 @@ public interface TrainerService {
 	
 	Map<String, Object> trainerClassList(int trainerNo, int cp);
 
-/** 강사 상세 정보 조회
- * @param trainerNo
- * @param cp
- * @return
- */
-Map<String, Object> detailTrainer(int trainerNo, int cp);
+	/** 강사 상세 정보 조회
+	 * @param trainerNo
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> detailTrainer(int trainerNo, int cp);
 
 
 

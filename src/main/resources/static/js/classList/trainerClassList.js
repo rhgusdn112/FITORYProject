@@ -23,8 +23,12 @@ const selectClassList = (cp) => {
 
       const img = document.createElement("img");
       img.src = board.thumbnail;
-      a.append(img);
 
+      img.style.width = '150px'; // 원하는 너비
+      img.style.height = '150px'; // 원하는 높이
+      img.style.objectFit = 'cover'; // 이미지 비율을 유지하면서 잘라내기
+
+      a.append(img);
       th1.append(a);
 
       const th2 = document.createElement("th");
@@ -79,6 +83,9 @@ const selectClassList = (cp) => {
       createPageBtn(maxPage, '마지막');
 
       paginationAddEvent();
+
+      
+      const boardWriteBtn = document.querySelector("#boardWriteBtn");
   })
   .catch(err => console.error(err));
 }

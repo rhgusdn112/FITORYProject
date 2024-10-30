@@ -14,57 +14,68 @@
   <!-- 메인 콘텐츠 -->
   <main>
     <div class="main-class">강의 목록</div>
-    <div class="container">
-      <select name="select" id="selectType">
-        <option value="recent">최신순</option>
-        <option value="populer">인기순</option>
-        <option value="review">리뷰순</option>
-      </select>
-    </div>
 
 
     <section class="class-section">
       <div class="slider-container">
         <div class="content-container">
+          
+          <div>
+            <h2>강의 목록</h2>
+            <div class="sort-dropdown">
+                <select id="sortSelect">
+                    <option value="latest">최신순</option>
+                    <option value="rating">평점순</option>
+                    <option value="views">조회순</option>
+                </select>
+            </div>
+          </div>
 
+          <hr class="section-divider">
+          
 
-        <table>
-          <thead  id="classList">
-            <tr>
-              <th>thumbnail</th>  
-              <th>
-                <div>제목</div>
-                <div>내용</div>
-                <div>강사이름</div>
-              </th>  
-              <th>
-                checkbox
-              </th>  
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>
-                <button id="selectAllBtn">전체 선택</button>
-                <button id="selectDeleteBtn">선택 전체 삭제</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
+          <div class="table-container">
+            <table>
+              <thead  id="classList">
+                <tr>
+                  <th>thumbnail</th>  
+                  <th>
+                    <div>제목</div>
+                    <div>내용</div>
+                    <div>강사이름</div>
+                  </th>  
+                  <th>
+                    checkbox
+                  </th>  
+                </tr>
+              </thead>
+  
+              <tbody>
+                <tr>
+                  <td>
+                    <button id="selectAllBtn">전체 선택</button>
+                    <button id="selectDeleteBtn">선택 전체 삭제</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+         </div>
+        </div>
 
       <div class="pagination-area" >
         <ul class="pagination">
         
-           
+          
         </ul>
       </div>
+  
     </section>
-
+    
     <div>
-      <button id="boardWirteBtn">새글 작성</button>
+      <button id="boardWirteBtn">
+        <a href="/board/editBoard">새 글 작성</a>
+      </button>
     </div>
 
   </main>

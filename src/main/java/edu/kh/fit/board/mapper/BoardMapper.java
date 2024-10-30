@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
+import org.eclipse.angus.mail.handlers.multipart_mixed;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
@@ -72,6 +74,13 @@ public interface BoardMapper {
    * @return
    */
   int getClassListCount(int classNo);
+
+  /** 게시물 등록
+   * @param classNo
+   * @param inputBoard
+   * @return
+   */
+	int insertBoard(Board inputBoard);
   
   
 }
