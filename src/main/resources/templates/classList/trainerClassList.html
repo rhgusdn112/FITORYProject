@@ -91,10 +91,11 @@
   </form>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+    const trainerNo = /*[[${trainerLogin.trainerNo}]]*/ "트레이너 번호";
   </script>
 
   <th:block th:replace="~{common/footer::footer}"></th:block>
-  <script src="/js/classList/trainerMyPage.js"></script>
+  <script src="/js/classList/trainerClassList.js"></script>
 </body>
 
 </html>

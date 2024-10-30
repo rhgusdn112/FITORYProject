@@ -145,5 +145,15 @@
 		JOIN QUALIFICATION USING(TRAINER_NO)
 		WHERE TRAINER_NO = #{trainerNo}
 	</select>    
+	
+	
+	<select id="classListCount"
+					resultType="_int">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		WHERE TRAINER_NO = #{trainerNo}
+		AND BOARD_DEL_FL = 'N'
+	</select>
+					
     
 </mapper>
