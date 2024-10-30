@@ -90,7 +90,7 @@
 	<select id="selectPopularClass" resultType="Board">
 		SELECT 
 			BOARD_NO,
-			IMG_THUMBNAIL "thumbnail",
+			THUMBNAIL,
 			TITLE,
 			TRAINER_NO,
 			TRAINER_NICKNAME,
@@ -100,7 +100,6 @@
 			GRADE,
 			CLASS_NO
 		FROM BOARD 
-		LEFT JOIN BOARD_IMG USING (BOARD_NO)
 		JOIN TRAINER USING (TRAINER_NO)
 		WHERE CLASS_NO = #{classNo}
 		AND BOARD_DEL_FL= 'N'
@@ -113,7 +112,7 @@
 	<select id="selectRecentClass" resultType="Board">
 		SELECT 
 			BOARD_NO,
-			IMG_THUMBNAIL "THUMBNAIL",
+			THUMBNAIL,
 			TITLE,
 			TRAINER_NO,
 			TRAINER_NICKNAME,
@@ -123,7 +122,6 @@
 			GRADE,
 			CLASS_NO
 		FROM BOARD 
-		LEFT JOIN BOARD_IMG USING (BOARD_NO)
 		JOIN TRAINER USING (TRAINER_NO)
 		WHERE CLASS_NO = #{classNo}
 		AND BOARD_DEL_FL= 'N'
@@ -135,7 +133,7 @@
 	<select id="selectClassList" resultType="Board">
 		SELECT 
 			BOARD_NO,
-			IMG_THUMBNAIL "THUMBNAIL",
+			THUMBNAIL,
 			TITLE,
 			TRAINER_NO,
 			TRAINER_NICKNAME,
@@ -146,7 +144,6 @@
 			CLASS_NO,
 			HITS
 		FROM BOARD 
-		LEFT JOIN BOARD_IMG USING (BOARD_NO)
 		JOIN TRAINER USING (TRAINER_NO)
 		WHERE CLASS_NO = #{classNo}
 		AND BOARD_DEL_FL= 'N'

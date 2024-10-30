@@ -87,7 +87,7 @@ const selectClassListFn = (page, sort) => {
 
         // 썸네일
         const img = document.createElement('img');
-        img.src = board.thumbnai;
+        img.src = board.thumbnail;
 
 
         // 강사명 | 제목
@@ -119,7 +119,7 @@ const selectClassListFn = (page, sort) => {
       createPageBtn(1, '처음');
       createPageBtn(prevPage, '이전');
 
-      for(let i = startPage; i < endPage; i++) {
+      for(let i = startPage; i <= endPage; i++) {
         createPageBtn(i, i);
       }
 
