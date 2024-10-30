@@ -2,5 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "edu.kh.fit.main.mapper.MainMapper">
 
+  <!-- 신규 트레이너 조회 -->
+  <select id="selectNewTrainerList" resultType="Trainer">
+    SELECT 
+      TRAINER_NO,
+      TRAINER_NICKNAME,
+      TRAINER_IMG_MAIN
+    FROM "TRAINER"
+    LEFT JOIN TRAINER_IMG USING(TRAINER_NO)
+    ORDER BY TRAINER_NO DESC
+    FETCH FIRST 6 ROWS ONLY
+  </select> 
+
+  <!-- 최신 홈트레이닝/홈짐 조회 -->
+  <select id="selectBoardList" resultType="Board">
+    SELECT 
+			BOARD_NO,
+			THUMBNAIL,
+			TITLE,
+			TRAINER_NO,
+			TRAINER_NICKNAME,
+			UPLOAD_DATE,
+			BILLING_DATE,
+			PAYMENT,
+			GRADE,
+			CLASS_NO
+		FROM BOARD 
+		JOIN TRAINER USING (TRAINER_NO)
+		WHERE CLASS_NO = #{classNo}
+		AND BOARD_DEL_FL= 'N'
+		ORDER BY BOARD_NO DESC
+		FETCH FIRST 8 ROWS ONLY
+  </select> 
+
 
 </mapper>

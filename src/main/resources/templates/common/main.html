@@ -12,180 +12,77 @@
 	<!-- common 조각 삽입(header 포함) -->
 	<header th:replace="~{common/common}"></header>
 
-	<!-- 로그인 여부에 따른 콘텐츠 표시 -->
-	<main th:if="${session.memberLogin == null}" class="main-content">
+	<main class="main-content">
+
 		<!-- NEW TRAINER PROFILE 섹션 -->
-		<section class="class-section">
+		<section class="class-section fullscreen-section" id="trainer-section">
 			<div class="section-header">
 				<h2>NEW TRAINER PROFILE</h2>
-				<a th:href="@{/trainer/trainer}" class="more-link">더보기</a>
+				<a href="/trainer/trainer" class="more-link">더보기</a>
 			</div>
 			<hr class="section-divider">
 			<div class="slider-container">
 				<button class="slider-btn left-btn">&lt;</button>
 				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile" class="trainer-image" data-id="1">
-						<p>강연희 | 홈트레이닝</p>
+
+					<div class="class-item" th:each="trainer : ${trainerList}" th:object="${trainer}">
+						<img th:src="*{trainerImgMain}" alt="Teacher Profile" class="trainer-image" th:data-id="*{trainerNo}">
+						<p th:text="*{trainerNickname}">신규 트레이너 이름</p>
 					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile" class="trainer-image" data-id="1">
-						<p>고유리 | 홈트레이닝</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile" class="trainer-image" data-id="1">
-						<p>김민지 | 홈트레이닝</p>
-					</div>
+
 				</div>
 				<button class="slider-btn right-btn">&gt;</button>
 			</div>
 		</section>
 
 		<!-- NEW Home Training 섹션 -->
-		<section class="class-section">
+		<section class="class-section fullscreen-section" id="training-section">
 			<div class="section-header">
 				<h2>NEW Home Training</h2>
-				<a href="/board/1" class="more-link">더보기</a>
-			</div>
-			<hr class="section-divider">
-			<div class="slider-container">
-				<button class="slider-btn left-btn">&lt;</button>
-				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>등운동은 역시 나임</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>이게 다이어트다</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher5.jpg" alt="Training Image">
-						<p>이게 다이어트다</p>
-					</div>
-				</div>
-				<button class="slider-btn right-btn">&gt;</button>
-			</div>
-		</section>
-
-		<!-- NEW Home Gym 섹션 -->
-		<section class="class-section">
-			<div class="section-header">
-				<h2>NEW Home Gym</h2>
 				<a href="/board/2" class="more-link">더보기</a>
 			</div>
 			<hr class="section-divider">
 			<div class="slider-container">
 				<button class="slider-btn left-btn">&lt;</button>
 				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>운동 짬킹한테서 배우는 홈트</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>이게 다이어트다</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher3.jpg" alt="Gym Image">
-						<p>운동 짬킹한테서 배우는 홈트</p>
-					</div>
-					<button class="slider-btn right-btn">&gt;</button>
-				</div>
-		</section>
-	</main>
 
-	<!-- 로그인 상태일 때 콘텐츠 -->
-	<main th:if="${session.memberLogin != null}" class="main-content">
-		<!-- NEW TRAINER PROFILE 섹션 -->
-		<section class="class-section">
-			<div class="section-header">
-				<h2>NEW TRAINER PROFILE</h2>
-				<a href="/board/homeTraining" class="more-link">더보기</a>
-			</div>
-			<hr class="section-divider">
-			<div class="slider-container">
-				<button class="slider-btn left-btn">&lt;</button>
-				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile">
-						<p>강연희 | 홈트레이닝</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile">
-						<p>고유리 | 홈트레이닝</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Teacher Profile">
-						<p>김민지 | 홈트레이닝</p>
-					</div>
+					<a class="class-item" 
+						th:each="board : ${homeTrainingList}" 
+						th:object="${board}"
+						th:href="@{/board/3/{boardNo}(boardNo=*{boardNo})}">
+						<img th:src="*{thumbnail}" alt="Training Image">
+						<p th:text="*{trainerNickname} + ' | ' + *{title}">등운동은 역시 나임</p>
+					</a>
+
 				</div>
 				<button class="slider-btn right-btn">&gt;</button>
-			</div>
-		</section>
-
-		<!-- NEW Home Training 섹션 -->
-		<section class="class-section">
-			<div class="section-header">
-				<h2> NEW Home Training</h2>
-				<a href="@{/trainer}" class="more-link">더보기</a>
-			</div>
-			<hr class="section-divider">
-			<div class="slider-container">
-				<button class="slider-btn left-btn">&lt;</button>
-				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>등운동은 역시 나임</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Training Image">
-						<p>이게 다이어트다</p>
-					</div>
-				</div>
-				<button class="slider-btn right-btn">&gt;</button>
-			</div>
 		</section>
 
 		<!-- NEW Home Gym 섹션 -->
-		<section class="class-section">
+		<section class="class-section fullscreen-section" id="gym-section">
 			<div class="section-header">
 				<h2>NEW Home Gym</h2>
-				<a href="/board/homeGym" class="more-link">더보기</a>
+				<a href="/board/3" class="more-link">더보기</a>
 			</div>
 			<hr class="section-divider">
 			<div class="slider-container">
 				<button class="slider-btn left-btn">&lt;</button>
 				<div class="class-list">
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>운동 짬킹한테서 배우는 홈트</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>울끈불끈 팔만들기</p>
-					</div>
-					<div class="class-item">
-						<img src="/images/teacher7.jpg" alt="Gym Image">
-						<p>이게 다이어트다</p>
-					</div>
+
+					<a 
+						class="class-item" 
+						th:each="board : ${homeGymList}" 
+						th:object="${board}"
+						th:href="@{/board/2/{boardNo}(boardNo=*{boardNo})}">
+						<img th:src="*{thumbnail}" alt="Training Image">
+						<p th:text="*{trainerNickname} + ' | ' + *{title}">등운동은 역시 나임</p>
+					</a>
+
 				</div>
 				<button class="slider-btn right-btn">&gt;</button>
-			</div>
 		</section>
 	</main>
+
 
 	<!-- 푸터 조각 삽입 -->
 	<footer th:replace="~{common/footer :: footer}"></footer>
@@ -194,7 +91,7 @@
 
 	<script th:if="${message}">
 		alert("아이디 혹은 패스워드가 일치하지 않습니다.");
-</script>
+	</script>
 </body>
 
 </html>
