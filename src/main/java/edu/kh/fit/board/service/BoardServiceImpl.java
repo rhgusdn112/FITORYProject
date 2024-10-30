@@ -113,23 +113,24 @@ public class BoardServiceImpl implements BoardService {
      * @return map
      */
     @Override
-    public Map<String, Object> selectClassList(int classNo, int cp, String sort) {
+    public Map<String, Object> selectClassList(int trainerNo, int cp, String sort) {
 
-        // 나머지 클래스(등록일 순)
-        int listCount = mapper.getClassListCount(classNo);
-        Pagination pagination = new Pagination(cp, listCount, 8, 10);
+      // 나머지 클래스(등록일 순)
+      int listCount = mapper.getClassListCount(trainerNo);
+      Pagination pagination = new Pagination(cp, listCount, 8, 10);
 
-        log.debug("pagination : {}", pagination);
+      log.debug("pagination : {}", pagination);
 
-        int limit = 8;
-        int offset = (cp- 1) * limit;
-        RowBounds rowBounds = new RowBounds(offset, limit);
-        List<Board> classList = mapper.selectClassList(classNo, sort, rowBounds);
+      int limit = 8;
+      int offset = (cp- 1) * limit;
+      RowBounds rowBounds = new RowBounds(offset, limit);
+      List<Board> classList = mapper.selectClassList(trainerNo, sort, rowBounds);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("classList", classList);
-        map.put("pagination", pagination);
+      Map<String, Object> map = new HashMap<>();
+      map.put("classList", classList);
+      map.put("pagination", pagination);
 
-        return map;
+      return map;
+    	
     }
 }

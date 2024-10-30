@@ -28,8 +28,11 @@ public interface MemberMapper {
 	// 회원 정보 수정
 	int updateMember(Member inputMember);
 	
+	// 회원 결제 강의 개수
+	int getMyClassListCount(int memberNo);
+	
 	// 회원 결제 강의 목록 조회
-  List<Order> classList(int memberNo);
+  List<Order> classList(int memberNo, RowBounds bounds);
 
   /** 
    * @param memberNo
@@ -44,4 +47,6 @@ public interface MemberMapper {
 	List<Query> selectMyQueryList(int memberNo);
 
 	int getMyReviewCount(int memberNo);
+
+	
 }

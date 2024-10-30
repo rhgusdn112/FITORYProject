@@ -67,6 +67,27 @@ public class TrainerServiceImpl implements TrainerService{
 						
 		return result;
 	}
+	
+	/* 강사 마이페이지 강의 목록 조회 */
+	@Override
+	public Map<String, Object> trainerClassList(int trainerNo, int cp) {
+		
+		int listCount = mapper.classListCount(trainerNo);
+		Pagination pagination = new Pagination(cp, listCount, 4, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> classList = mapper.classList(trainerNo, bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+    map.put("classList", classList);
+    map.put("pagination", pagination);
+
+    return map;
+	}
 
 	// 강사 정보 수정 비밀번호 확인
 	@Override
@@ -135,12 +156,6 @@ public class TrainerServiceImpl implements TrainerService{
 		resultMap.put("renameList", renameList);
 		return resultMap;
 	}
-	
-	/* 강사 강의 목록 조회 */
-	@Override
-	public List<Board> classList(int trainerNo) {
-		return mapper.classList(trainerNo);
-	}
 
 	/* 강사 상세정보 조회 */
 	@Override
@@ -170,10 +185,10 @@ public class TrainerServiceImpl implements TrainerService{
 		return map;
 	}
 	
+	/* 강사 상세조회 후 강의 목록 조회 */
 	@Override
-	public Map<String, Object> trainerClassList(int trainerNo, int cp) {
-		
-		int listCount = mapper.classListCount(trainerNo);
+	public Map<String, Object> selectClassList(int trainerNo, int cp, String sort) {
+		int listCount = mapper.pageList(trainerNo);
 		Pagination pagination = new Pagination(cp, listCount, 4, 5);
 		
 		int limit = pagination.getLimit();
@@ -181,10 +196,10 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		RowBounds bounds = new RowBounds(offset, limit);
 		
-		List<Board> classList = mapper.classList(trainerNo, bounds);
+		List<Board> trainerClassList = mapper.trainerVideoDetail(trainerNo, sort, bounds);
 		
 		Map<String, Object> map = new HashMap<>();
-    map.put("classList", classList);
+    map.put("trainerClassList", trainerClassList);
     map.put("pagination", pagination);
 
     return map;

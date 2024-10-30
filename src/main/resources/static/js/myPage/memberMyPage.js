@@ -20,3 +20,12 @@ update?.addEventListener("submit", e => {
     }
   }
 });
+/* checkbox, 버튼 요소 얻어오기 */
+const checkbox = document.querySelector("#checkbox");
+const seeBtn = document.querySelector("#seeBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
+
+
+deleteBtn.addEventListener("click", () => {
+
+})

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +22,6 @@ import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
-
 import edu.kh.fit.trainer.service.TrainerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -232,16 +230,13 @@ public class TrainerController {
           @SessionAttribute("trainerLogin") Trainer trainerLogin,
           @RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
           Model model) {
-      
-      // 내 강의 조회 서비스
-      int trainerNo = trainerLogin.getTrainerNo();
-      List<Board> orderList = service.classList(trainerNo);
-      
-      model.addAttribute("orderList", orderList);
-      
       return "/classList/classList";
   }	
-  
+  /** 강사 강의 목록 조회
+   * @param trainerLogin
+   * @param cp
+   * @return
+   */
   @ResponseBody
   @GetMapping("classList")
   public Map<String, Object> classList(
@@ -251,7 +246,12 @@ public class TrainerController {
   	return service.trainerClassList(trainerNo, cp);
   }
   
-  /* 강사 상세 정보 조회 */
+  /** 강사 상세 정보 조회
+   * @param trainerNo
+   * @param cp
+   * @param model
+   * @return
+   */
   @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
 
   public String detailTrainer(@PathVariable("trainerNo") int trainerNo,
@@ -264,7 +264,28 @@ public class TrainerController {
 
   }
   
-  
+  /** 강사 상세 정보 조회 후 해당 강사 영상 모아보기
+   * @param model
+   * @return
+   */
+	@GetMapping("trainerVideoDetail/{trainerNo:[0-9+]}")
+	public String selectClassList(
+      @PathVariable("trainerNo") int trainerNo,
+      @RequestParam("cp") int cp, 
+      @RequestParam("sort") String sort, Model model) {
+		
+		
+//     return ResponseEntity.ok(service.selectClassList(trainerNo, cp, sort));
+		
+		Map<String, Object> map = service.selectClassList(trainerNo, cp, sort);
+		
+		
+		model.addAttribute("trainerClassList", (List<Board>)map.get("trainerClassList"));
+		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
+		return "trainer/trainerVideoDetail";
+		
+		
+	}
 
 }

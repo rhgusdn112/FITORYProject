@@ -19,18 +19,10 @@
   <th:block th:replace="~{common/common}"></th:block>
 
 
-  <form action="/member/memberClassList" method="POST" enctype="multipart/form-data" name="myPageClassList"
-    id="myPageList" class="main">
+  <form action="/member/memberClassList" method="POST" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
     <div class="main-class">강의 목록</div>
     <div class="container">
-      <select name="select" id="selectType">
-        <option value="recent">최신순</option>
-        <option value="populer">인기순</option>
-        <option value="review">리뷰순</option>
-      </select>
     </div>
-    <input type="checkbox" id="checkbox" class="all-check-box">
-    <div class="select">모두 선택</div>
     <div class="main-box">
       <table class="box">
         <tbody>
@@ -45,12 +37,10 @@
               <div th:text="|강사 : *{trainerNickname}|">강사 :</div>
               <div th:text="|카테고리 : *{boardTypeName}|">카테고리:</div>
             </td>
-            <th><input type="checkbox" class="checkbox"></th>
+            <th><input type="checkbox" class="checkbox" id="checkbox"></th>
           </tr>
         </tbody>
       </table>
-      <button class="update" th:if="${session.trainerLongin}" id="updateBtn">선택한 강의 보기</button>
-      <button class="delete" th:if="${session.trainerLogin}" id="deleteBtn">선택한 강의 삭제</button>
 
       <!-- 페이지 -->
       <div class="pagination" th:object="${pagination}">
@@ -79,9 +69,9 @@
         <!-- 끝 페이지로 이동 -->
         <a href="#">&gt;&gt;</a>
       </div>
+      <button class="see" id="seeBtn">선택한 강의 보기</button>
+      <button class="delete" id="deleteBtn">선택한 강의 삭제</button>
     </div>
-    <!-- 탑버튼 -->
-    <button class="top">▲</button>
   </form>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
