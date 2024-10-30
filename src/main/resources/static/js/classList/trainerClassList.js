@@ -18,7 +18,14 @@ const selectClassList = (cp) => {
       const tr = document.createElement("tr");
 
       const th1 = document.createElement("th");
-      th1.innerHTML = board.thumbnail;
+      const a   = document.createElement("a");
+      a.href = `/board/${board.classNo}/${board.boardNo}`;
+
+      const img = document.createElement("img");
+      img.src = board.thumbnail;
+      a.append(img);
+
+      th1.append(a);
 
       const th2 = document.createElement("th");
       const div1 = document.createElement("div");
