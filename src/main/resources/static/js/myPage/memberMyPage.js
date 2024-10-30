@@ -24,7 +24,7 @@ update?.addEventListener("submit", e => {
 const checkbox = document.querySelector("#checkbox");
 const seeBtn = document.querySelector("#seeBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
-
+checkbox.addEventListener("")
 
 deleteBtn.addEventListener("click", () => {
 
