@@ -75,10 +75,10 @@
     <div id="order-details">
       <p><strong>주문 번호:</strong> <span th:text=${order.orderNo}></span></p>
       <p><strong>영상 제목:</strong> <span th:text="${order.classTitle}"></span></p>
-      <p><strong>결제 금액:</strong> <span th:text="${order.orderClassAmount}"></span> <span th:text="${currency}"></span></p>
+      <p><strong>결제 금액:</strong> <span th:text="${order.paymentAmount}"></span> <span th:text="${currency}"></span></p>
       <p><strong>주문자 이름:</strong> <span th:text="${order.customerName}"></span></p>
     </div>
-    <button th:onclick="|location.pathname"> 영상 이어보기 </button>
+    <button th:onclick="|location.pathname|"> 영상 이어보기 </button>
     <button th:onclick="|location.href='@{/main}'|">홈으로 돌아가기</button>
   </div>
 </body>

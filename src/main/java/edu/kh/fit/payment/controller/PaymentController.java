@@ -58,7 +58,6 @@ public class PaymentController {
 		map.put("boardNo", boardNo);
 		
 		Board board = boardService.selectDetail(map);
-		model.addAttribute("boardNo", boardNo);
 		model.addAttribute("className", board.getTitle());
 		model.addAttribute("classAmount", board.getPayment());
 		

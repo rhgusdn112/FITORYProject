@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
-import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.payment.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -41,12 +39,9 @@ public class OrderController {
 	
 	@PostMapping("/success")
 	public ResponseEntity<Map<String, Object>> orderSuccess(
-		@RequestBody Order order,
-		@SessionAttribute("memberLogin") Member memberLogin){
+		@RequestBody Order order){
 		
 		Map<String, Object> response = new HashMap<>();
-		
-		order.setOrderMemberNo(memberLogin.getMemberNo());
 		
 		try {
 			// 주문 정보 insert (서비스 호출하기)
