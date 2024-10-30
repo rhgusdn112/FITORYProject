@@ -32,4 +32,5 @@ public interface CommentService {
 	 * @return 삭제 결과
 	 */
 	int commentDelete(int commentNo, int memberNo);
+
 }
