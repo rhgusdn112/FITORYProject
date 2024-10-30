@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--  --><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,39 +13,72 @@
 
   <!-- 메인 콘텐츠 -->
   <main>
-    <h1>Home Training</h1> <!-- 메인 제목 -->
+    <div class="main-class">강의 목록</div>
+    <div class="container">
+      <select name="select" id="selectType">
+        <option value="recent">최신순</option>
+        <option value="populer">인기순</option>
+        <option value="review">리뷰순</option>
+      </select>
+    </div>
+
 
     <section class="class-section">
       <div class="slider-container">
         <div class="content-container">
-          <table id="classList">
-            <tr width="30%">
-              <th rowspan="3">섬네일 이미지</th>
-              <th>타이틀</th>
-              <th rowspan="3">
-                <input type="checkbox">
-              </th>
-            </tr>
-            <tr width="50%">
-              <th>내용</th>
-            </tr>
-            <tr width="20%">
-              <th>강사 이름</th>
-            </tr>
-          </table>
-        </div>
 
-        <div id="selectBtn">
-          <button> 전체 선택 </button>
-          <button> 전체 선택 해제 </button>
-        </div>
-      </div> 
+
+        <table>
+          <thead  id="classList">
+            <tr>
+              <th>thumbnail</th>  
+              <th>
+                <div>제목</div>
+                <div>내용</div>
+                <div>강사이름</div>
+              </th>  
+              <th>
+                checkbox
+              </th>  
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <button id="selectAllBtn">전체 선택</button>
+                <button id="selectDeleteBtn">선택 전체 삭제</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+      <div class="pagination-area" >
+        <ul class="pagination">
+        
+           
+        </ul>
+      </div>
     </section>
+
+    <div>
+      <button id="boardWirteBtn">새글 작성</button>
+    </div>
+
   </main>
+
+
+
 
   <!-- footer fragment include -->
   <div th:replace="~{common/footer}"></div> <!-- 공통 푸터 -->
 
-  <script></script>
+  <script th:inline="javascript">
+      const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+  </script>
+  <script src="/js/classList/trainerClassList.js"></script>
+  
 </body>
 </html>
