@@ -157,7 +157,7 @@
 		SELECT COUNT(*)
 		FROM QUALIFICATION
 		WHERE TRAINER_NO = #{trainerNo}
-
+	</select>
 	
 	<!-- 강사 자격사항 조회 -->
 	 <select id="qualiList">
