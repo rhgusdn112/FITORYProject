@@ -18,7 +18,7 @@ input::placeholder {
 	color: #2d2d2d;
 	font-size: 32px;
 	text-shadow: 10px #434343;
-	padding-top: 20%;
+	padding-top: 12%;
 	padding-bottom: 2%;
 	text-align: center;
 }
@@ -46,14 +46,16 @@ input::placeholder {
 
 /* 트레이너 이미지 */
 .profile-box{
-	border: 2px solid;
 	color: #bfbfbf;
 	min-height: 30vh;
+	justify-content: center;
+	align-items: center; 
+	display: flex;
 }
-.profile-image{
+.previewMain{
 	color: #bfbfbf;
 	min-height: 30vh;
-	min-width: 80vw;
+	min-width: 83vw;
 	margin: auto;
 	justify-content: center;
 	align-items: center; 
@@ -62,7 +64,6 @@ input::placeholder {
 }
 
 .subProfile-box{
-	border: 2px solid;
 	color: #bfbfbf;
 	min-height: 25vh;
 	justify-content: space-between;
@@ -70,14 +71,56 @@ input::placeholder {
 	display: flex;
 	padding: 3% 0% 3% 0%;
 }
-.subProfile-image{
+.previewSub{
 	border: 2px solid;
 	color: #bfbfbf;
 	min-height: 20vh;
-	padding: 3% 14.5%;
+	min-width: 25vw;
 	justify-content: space-between;
 	align-items: center;
 	justify-content: center;
+}
+
+/* 강사 이름 */
+.name{
+	color: #2d2d2d;
+	font-size: 22px;
+	text-shadow: 10px #434343;
+	padding-bottom: 2%;
+}
+
+/* 자격 테이블 */
+.main-in{
+	border: 2px #bfbfbf;
+	color: #2d2d2d;
+	align-items: center;
+	justify-content: center;
+	margin-top: 5%;
+	font-size: 20px;
+}
+.table {
+	border: 2px solid;
+	color: #2d2d2d;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.date-th{
+	float: right;
+}
+
+.review{
+	width: 80%;
+	padding: 0% 1% 1% 0%;
+	margin-bottom: 3%;
+	float: left;
+}
+.date{
+	width: 20%;
+	padding: 0% 1% 1% 0%;
+	margin-bottom: 3%;
+	float: right;
 }
 
 /* 프로필 사진 수정 버튼 */
@@ -86,59 +129,12 @@ input::placeholder {
 	background-color: #bfbfbf;
 	padding: 0.8% 1%;
 	margin: 4% 2% 4% 0%;
-	justify-content: center;
 	text-align: center;
 	width: 30%;
   float: right;
   border-radius: 20px 20px 20px 20px;
 }
 .watch:hover {
-	color: #757575;
-}
-
-/* 자격 테이블 */
-.qualification-table {
-	border: 1px #2d2d2d;
-	width: 100%;
-	padding: 2%;
-	height: 5%;
-	width: 100%;
-}
-.qualification-table td:first-child{
-	width: 80%;
-	padding: 0% 1% 1% 0%;
-	margin-bottom: 3%;
-	float: left;
-}
-.qualification-table td:last-child{
-	width: 20%;
-	padding: 0% 1% 1% 0%;
-	margin-bottom: 3%;
-	float: right;
-}
-
-.qualification-table tr>th {
-	color: #bfbfbf;
-	display: column;
-	padding-top: 2%;
-	font-size: 16px;
-	text-align: left;
-}
-
-
-/* 탑버튼 */
-/* .top {
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 1%;
-	width: 40px;
-	height: 40px;
-	border-radius: 100%;
-	position: sticky;
-	float: right;
-} */
-
-.top:hover {
 	color: #757575;
 }
 

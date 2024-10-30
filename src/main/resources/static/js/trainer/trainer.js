@@ -1,19 +1,25 @@
 
-// // ----------------------------------------------------------------------------------------------
-// /* 강사 정보 상세조회 */
-// const url = "/trainer/trainerDetail/{trainerNo:[0-9]+}";
-// const trainerNoPattern = /^\/trainer\/trainerDetail\/([0-9]+)$/;
+// ----------------------------------------------------------------------------------------------
+/* 강사 정보 상세조회 */
+const url = "/trainer/trainerDetail/{trainerNo:[0-9]+}";
+const trainerDetailNoPattern = /^\/trainer\/trainerDetail\/([0-9]+)$/;
 
-// // 정규식을 사용하여 URL에서 trainerNo 부분 추출
-// const match = url.match(trainerNoPattern);
+// 정규식을 사용하여 URL에서 trainerNo 부분 추출
+const match = url.match(trainerDetailNoPattern);
 
-// document.getElementById("detailBtn").addEventListener("click", () => {
-
-//   if (match) {
-//     const trainerNo = match[1]; // 첫 번째 그룹 (숫자 부분)
-//     console.log("trainerNo : ", trainerNo);
-//   } else {
-//     console.log("Error");
-//     return;
-//   }
-// })
+// 'watch' 버튼 클릭 시 처리
+const watchBtn = document.getElementById("watch");
+if (watchBtn) {
+  watchBtn.addEventListener("click", () => {
+    const trainerNoElement = document.getElementById('trainerName');
+    const trainerNo = trainerNoElement ? trainerNoElement.getAttribute('data-trainerNo') : null;
+    if (match) {
+      const trainerNoFromUrl = match[1];
+      console.log("trainerNo (from URL):", trainerNoFromUrl);
+    } else if (trainerNo) {
+      location.href = `/trainer/trainerVideoDetail/${trainerNo}`;
+    } else {
+      console.error("Error");
+    }
+  });
+}

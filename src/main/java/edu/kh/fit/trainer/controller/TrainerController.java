@@ -250,14 +250,15 @@ public class TrainerController {
   }
   
   /* 강사 상세 정보 조회 */
-  @GetMapping("trainerDetail/{trainerNo}")
+  @GetMapping("trainerDetail/{trainerNo:[0-9]+}")
   public String detailTrainer(@PathVariable("trainerNo") int trainerNo,
   														@RequestParam(value="cp", required = false, defaultValue = "1") int cp, Model model) {
   	Map<String, Object> map = service.detailTrainer(trainerNo, cp);
-		model.addAttribute("qualificationList", (List<Trainer>)map.get("qualificationList"));
+  	model.addAttribute("trainer", (Trainer)map.get("trainer"));
+  	model.addAttribute("qualiList", ((Trainer)map.get("trainer")).getQualificationList());
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 		
-      return "/trainer/trainerDetail";
+      return "trainer/trainerDetail";
   }
   
   
