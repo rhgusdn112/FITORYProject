@@ -11,76 +11,80 @@
 <body>
   <block th:replace="~{common/common}"></block>
   <div class="main-title">TRAINEL PROPLE</div>
-  <form action="/trainer/trainerDetail/${trainerNo}" method="GET" name="trainerDetailCheck" id="trainerCheck" class="main"
-    th:object="${trainerNo}">
-
+  <div class="main">
     <div class="main-box">
-  <div class="profile-box">
-      <img class="profile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
-    </div>
-    <div class="subProfile-box">
-      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
-      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
-      <img class="subProfile-image" th:with="trainer=#{prifoleImg}" th:src="${session.trainerLogin?.profileImg ?: trainerNo}" id="profileImg">
-    </div>
-      <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+      <div class="profile-box">
+        <img class="previewMain" id="trainerImgMain"
+          th:src="${trainer.trainerImgMain != null ? trainer.trainerImgMain : '/images/trainer.default.image.jpg'}"
+          alt="Profile Image">
+      </div>
+      <div class="subProfile-box">
+        <img class="previewSub" id="trainerImgMainSub"
+          th:src="${trainer.trainerImgMainSub != null ? trainer.trainerImgMainSub : '/images/trainer.default.image.jpg'}"
+          alt="Profile Image" style="width: 30%;" height="10%;">
+        <img class="previewSub" id="trainerImgSub"
+          th:src="${trainer.trainerImgSub != null ? trainer.trainerImgSub : '/images/trainer.default.image.jpg'}"
+          alt="Profile Image" style="width: 30%;" height="10%;">
+        <img class="previewSub" id="trainerImgSubSub"
+          th:src="${trainer.trainerImgSubSub != null ? trainer.trainerImgSubSub : '/images/trainer.default.image.jpg'}"
+          alt="Profile Image" style="width: 30%;" height="10%;">
+        </div>
+        <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+      <div class="name" th:text="|강사 이름 : ${trainer.trainerNickname}|">강사 이름</div>
 
       <div class="main-in">자격사항</div>
-      <table class="qualification-table">
+      <table class="table">
         <thead>
           <tr>
             <th>자격사항</th>
-            <th class="date-th">
-              취득일
-            </th>
+            <th class="date-th">취득일</th>
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr th:each="qual, stat : ${session.trainerLogin?.qualificationList}" th:data-no="${qual.qualificationNo}">
+          <tr th:each="qual, stat : ${qualiList}" th:data-no="${qual.qualificationNo}">
             <td>
-              <input class="review" name="qName" th:value="${qual.qualification}">
+              <span class="review" th:text="${qual.qualification}"></span>
             </td>
             <td>
-              <input class="date" type="date" name="qDate" th:value="${qual.qualificationDate}">
+              <span class="date" th:text="${qual.qualificationDate}"></span>
             </td>
-      </tbody>
-      <tfoot>
-          <!-- 페이지 -->
-          <div class="pagination" th:object="${pagination}">
-
-            <!-- 첫 페이지로 이동 -->
-            <a href="#">&lt;&lt;</a>
-
-            <!-- 이전 목록 마지막 번호로 이동 -->
-            <a href="#">&lt;</a>
-
-            <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-              <li th:if="${i} == *{currentPage}">
-                <a class="current" th:text="${i}">현재 페이지</a>
-              </li>
-
-              <!-- 보고있지 않은 페이지 -->
-              <li th:unless="${i} == *{currentPage}">
-                <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
-              </li>
-            </th:block>
-
-            <!-- 다음 목록 시작 번호로 이동 -->
-            <a href="#">&gt;</a>
-
-            <!-- 끝 페이지로 이동 -->
-            <a href="#">&gt;&gt;</a>
-          </div>
-        </tfoot>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    
+      <!-- 페이지 -->
+      <div class="pagination" th:object="${pagination}">
+    
+        <!-- 첫 페이지로 이동 -->
+        <a href="#">&lt;&lt;</a>
+    
+        <!-- 이전 목록 마지막 번호로 이동 -->
+        <a href="#">&lt;</a>
+    
+        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+          <li th:if="${i} == *{currentPage}">
+            <a class="current" th:text="${i}">현재 페이지</a>
+          </li>
+    
+          <!-- 보고있지 않은 페이지 -->
+          <li th:unless="${i} == *{currentPage}">
+            <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
+          </li>
+        </th:block>
+    
+        <!-- 다음 목록 시작 번호로 이동 -->
+        <a href="#">&gt;</a>
+    
+        <!-- 끝 페이지로 이동 -->
+        <a href="#">&gt;&gt;</a>
+      </div>
     </div>
-  </form>
 
-  <script th:inline="javascript">
-    const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
-  </script>
-  <div th:replace="common/footer :: footer"></div>
-  <script src="/js/trainer/trainer.js"></script>
+    <script th:inline="javascript">
+      const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+    </script>
+    <div th:replace="common/footer :: footer"></div>
+    <script src="/js/trainer/trainer.js"></script>
 </body>
 
 </html>

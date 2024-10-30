@@ -30,15 +30,10 @@ public interface TrainerMapper {
 	// 강사 강의 목록 조회
 	List<Board> classList(int trainerNo);
 	
-	// 강사 프로필 상세 조회
-	List<Trainer> detailTrainer(Trainer trainerNo);
+	// 강사 프로필 상세조회
+	Trainer detailTrainer(int trainerNo);
 	
-	// 강사 사진 수정
-	void updateProfileImages(List<String> filePaths, int trainerNo);
 
-	// 강사 상세 정보 조회
-	List<Trainer> detailTrainer(int trainerNo, RowBounds bounds);
-	
 	// 페이지 네이션
 	int qualificationList(int trainerNo);
 	
@@ -48,10 +43,10 @@ public interface TrainerMapper {
 	// 자격 정보 insert
 	int insertQulification(List<Qualification> qList);
 
-	// 트레이너 이미지 삭제
+	// 강사 이미지 삭제
 	void deleteTrainerImage(int trainerNo);
 
-	// 트레이너 이미지 삽입
+	// 강사 이미지 삽입
 	int insertTrainerImage(@Param("renameList") List<String> renameList, @Param("trainerNo") int trainerNo);
 
 	
@@ -60,6 +55,15 @@ public interface TrainerMapper {
 
 	// 강의 조회
 	List<Board> classList(int trainerNo, RowBounds bounds);
+
+
+	// 자격 사항 개수 조회
+	int qualiCount(int trainerNo);
+	
+	// 강사 자격사항 조회
+	List<Qualification> qualiList(int trainerNo, RowBounds bounds);
+	
+
 
 
 

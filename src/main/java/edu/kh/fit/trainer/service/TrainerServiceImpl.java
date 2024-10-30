@@ -79,22 +79,17 @@ public class TrainerServiceImpl implements TrainerService{
 	// 강사 정보 수정
 	@Override
 	public Map<String, Object>  updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList) {
-		
 		Map<String, Object> resultMap = new HashMap<>();
-		
 		
 		// 강사 이름, 전화번호 수정
 		int result =  mapper.updateTrainer(inputTrainer); 
 		if(result <= 0) throw new RuntimeException("트레이너 정보 수정 오류");
-		
 		resultMap.put("result", result);
 
 		// 강사 자격사항 수정
 		if(qNameList.size() > 0 && qDateList.size() > 0) {
 			List<Qualification> qList = new ArrayList<>();
-			
 			for(int i=0 ; i < qNameList.size() ; i++) {
-				
 				Qualification q 
 					= Qualification.builder()
 						.qualification(qNameList.get(i))
@@ -102,26 +97,18 @@ public class TrainerServiceImpl implements TrainerService{
 						.trainerNo(inputTrainer.getTrainerNo()).build();
 				qList.add(q);
 			}
-			
 			mapper.deleteQulification(inputTrainer.getTrainerNo());
-			
 			result = mapper.insertQulification(qList);
 			if(result <= 0) throw new RuntimeException("트레이너 정보 수정 오류");
-			
 			resultMap.put("result", result);
 			resultMap.put("qList", qList);
 		}
 		
-		
-		
 		// 새로 업로드된 이미지가 없다면 수정없이 기존 이미지 유지
 		if(imgProfileList.get(0).isEmpty()) return resultMap;
 		
-		
-		
 		// 이미지 수정
 		List<String> renameList = new ArrayList<>();
-		
 		for(MultipartFile file : imgProfileList) {
 			String rename = FileUtil.rename(file.getOriginalFilename());
 			renameList.add(profileWebPath + rename);
@@ -133,7 +120,6 @@ public class TrainerServiceImpl implements TrainerService{
 				e.printStackTrace();
 				throw new RuntimeException("트레이너 정보 수정 오류");
 			}
-
 		}
 		
 		// renamList는 4칸으로 만들기(나머지 칸은 null)
@@ -145,12 +131,8 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		mapper.deleteTrainerImage(inputTrainer.getTrainerNo());
 		result = mapper.insertTrainerImage(renameList, inputTrainer.getTrainerNo());
-		
-		
-		
 		resultMap.put("result", result);
 		resultMap.put("renameList", renameList);
-		
 		return resultMap;
 	}
 	
@@ -162,9 +144,15 @@ public class TrainerServiceImpl implements TrainerService{
 
 	/* 강사 상세정보 조회 */
 	@Override
-	public Map<String, Object> detailTrainer(int trainerNo, int cp) {
-		// 전체 리뷰/문의 개수 조회
-		int listCount = mapper.qualificationList(trainerNo);
+	public Map<String, Object> detailTrainer(int trainerNo, int cp) {		
+		
+		// 강사 정보 조회
+		Trainer trainer = mapper.detailTrainer(trainerNo);
+		
+		// -----------------------------------
+		
+		// 전체 자격 사항 수 조회
+		int listCount = mapper.qualiCount(trainerNo);
 		
 		// 페이지네이션 계산
 		Pagination pagination = new Pagination(cp, listCount, 10, 10);
@@ -173,11 +161,12 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		RowBounds bounds = new RowBounds(offset, limit);
 		
+		// 자격사항 관련 mapper
+		List<Qualification> qualiList = mapper.qualiList(trainerNo, bounds);
+
+		trainer.setQualificationList(qualiList);
 		
-		List<Trainer> reviewList = mapper.detailTrainer(trainerNo, bounds);
-		
-		
-		Map<String, Object> map = Map.of("reviewList", reviewList, "pagination", pagination);
+		Map<String, Object> map = Map.of("trainer", trainer, "pagination", pagination);
 		return map;
 	}
 	
