@@ -11,7 +11,7 @@
     <div class="main">
       <!-- 실시간 클래스 섹션 -->
       <section class="main-box">
-        <div class="main-title" th:text="|${trainer.trainerNickname} Trainer Class|">강사 클래스</div>
+        <div class="main-title" th:text="|${trainerNickname} Trainer Class|">강사 클래스</div>
           <div class="sort-dropdown">
             <select id="sortSelect">
               <option value="latest">최신순</option>
@@ -22,8 +22,8 @@
         </div>
         <hr class="section-divider">
         <div class="class-grid" id="classContainer">
-          <a class="class-item" th:each="board, status : ${classList}" th:object="${board}"
-            th:href="@{/board/{classNo}/{boardNo}(classNo=*{classNo}, boardNo=*{boardNo})}">
+          <a class="class-item" th:each="board, status : ${trainerClassList}" th:object="${board}"
+            th:href="@{/board/{trainerNo}/{boardNo}(trainerNo=*{trainerNo}, boardNo=*{boardNo})}">
             <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
             <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
             <p th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>

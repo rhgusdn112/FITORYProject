@@ -41,15 +41,8 @@ public interface TrainerService {
 	 * @param imgProfileList 
 	 * @return
 	 */
-	Map<String, Object>  updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList);
+	Map<String, Object> updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList);
 
-/** 강사 강의 목록 조회
- * @param trainerNo
- * @return
- */
-	List<Board> classList(int trainerNo);
-	
-	Map<String, Object> trainerClassList(int trainerNo, int cp);
 
 /** 강사 상세 정보 조회
  * @param trainerNo
@@ -57,6 +50,20 @@ public interface TrainerService {
  * @return
  */
 Map<String, Object> detailTrainer(int trainerNo, int cp);
+
+/** 강사 상세 정보 조회 후 해당 강사 영상목록 조회
+ * @param trainerNo
+ * @param cp
+ * @return
+ */
+Map<String, Object> selectClassList(int trainerNo, int cp, String sort);
+
+/** 강사 강의 목록 조회
+ * @param trainerNo
+ * @param cp
+ * @return
+ */
+Map<String, Object> trainerClassList(int trainerNo, int cp);
 
 
 

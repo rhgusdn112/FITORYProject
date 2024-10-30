@@ -25,10 +25,10 @@
 				<button class="slider-btn left-btn">&lt;</button>
 				<div class="class-list">
 
-					<div class="class-item" th:each="trainer : ${trainerList}" th:object="${trainer}">
+					<a th:href="@{/trainer/trainerDetail/{trainerNo} (trainerNo= ${trainer.trainerNo})}" class="class-item" th:each="trainer : ${trainerList}" th:object="${trainer}">
 						<img th:src="*{trainerImgMain}" alt="Teacher Profile" class="trainer-image" th:data-id="*{trainerNo}">
 						<p th:text="*{trainerNickname}">신규 트레이너 이름</p>
-					</div>
+					</a>
 
 				</div>
 				<button class="slider-btn right-btn">&gt;</button>
