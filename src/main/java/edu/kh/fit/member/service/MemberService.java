@@ -43,9 +43,10 @@ public interface MemberService {
 
   /** 회원 결제 강의 목록 조회
    * @param memberNo
+   * @param cp 
    * @return
    */
-  List<Order> classList(int memberNo);
+	Map<String, Object> classList(int memberNo, int cp);
 
   /** 내 활동 내역
    * @param memberNo

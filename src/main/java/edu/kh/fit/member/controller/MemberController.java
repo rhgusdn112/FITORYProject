@@ -154,9 +154,7 @@ public class MemberController {
 		return "member/memberCheckPw";
 	}
 
-	/**
-	 * 회원 정보 수정 비밀번호 확인
-	 * 
+	/** 회원 정보 수정 비밀번호 확인
 	 * @param memberLogin
 	 * @param memberPw
 	 * @param ra
@@ -228,13 +226,15 @@ public class MemberController {
 
 		// 내 강의 조회 서비스
 		int memberNo = memberLogin.getMemberNo();
-		List<Order> orderList = service.classList(memberNo);
-
-		model.addAttribute("orderList", orderList);
+		Map<String, Object> map = service.classList(memberNo, cp);
+		
+		
+		model.addAttribute("orderList", (List<Comment>)map.get("orderList"));
+		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
 		// 버튼 클릭 시 삭제 및 영상 보기
 
-		return "/classList/memberClassList";
+		return "classList/memberClassList";
 	}
 
 	
@@ -249,8 +249,10 @@ public class MemberController {
 		model.addAttribute("reviewList", (List<Comment>)map.get("reviewList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
-		return "/myPage/memberMyActivities";
+		return "myPage/memberMyActivities";
 	}
+	
+
 
 }
 

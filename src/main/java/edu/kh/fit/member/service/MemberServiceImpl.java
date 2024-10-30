@@ -80,8 +80,26 @@ public class MemberServiceImpl implements MemberService{
 	
   // 회원 결제 강의 목록 조회
   @Override
-  public List<Order> classList(int memberNo) {
-      return mapper.classList(memberNo);
+  public Map<String, Object> classList(int memberNo, int cp) {
+  	
+	  	// 전체 리뷰/문의 개수 조회
+			int listCount = mapper.getMyClassListCount(memberNo);
+			
+			// 페이지네이션 계산
+			Pagination pagination = new Pagination(cp, listCount, 4, 10);
+			
+			// RowBounds 계산(앞에서 몇 행 건너 뛰고, 그 다음 몇 행 조회할 지 지정하는 객체)
+			int limit = pagination.getLimit();
+			int offset = (cp-1) * limit;
+			
+			RowBounds bounds = new RowBounds(offset, limit);
+			
+			
+			List<Order> orderList = mapper.classList(memberNo, bounds);
+			
+			Map<String, Object> map = Map.of("orderList", orderList, "pagination", pagination);
+  	
+      return map;
   }
 
 

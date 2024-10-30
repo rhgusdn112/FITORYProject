@@ -29,7 +29,7 @@
           th:src="${trainer.trainerImgSubSub != null ? trainer.trainerImgSubSub : '/images/trainer.default.image.jpg'}"
           alt="Profile Image" style="width: 30%;" height="10%;">
         </div>
-        <button class="watch" id="watch"> 강사 영상 보러가기 </button>
+        <a class="watch" id="watch" th:href="@{/trainer/trainerVideoDetail/{trainerNo}(trainerNo=${trainer.trainerNo}, cp=1, sort='latest')}">강사 영상 보러가기</a>
       <div class="name" th:text="|강사 이름 : ${trainer.trainerNickname}|">강사 이름</div>
 
       <div class="main-in">자격사항</div>

@@ -153,6 +153,17 @@
 	</select>    
 	
 	
+
+	
+	<!-- 강사 자격사항 조회 -->
+	 <select id="qualiList">
+    	SELECT *
+		FROM QUALIFICATION
+		WHERE TRAINER_NO = #{trainerNo}
+		ORDER BY QUALIFICATION_DATE DESC
+    </select>
+
+	<!-- 강사 자격사항 페이지네이션 -->
 	<select id="classListCount"
 					resultType="_int">
 		SELECT COUNT(*)
@@ -160,6 +171,33 @@
 		WHERE TRAINER_NO = #{trainerNo}
 		AND BOARD_DEL_FL = 'N'
 	</select>
-					
+	
+	<!-- 강사 영상 상세조회 후 영상으로(최신, 조회, 평점) -->
+	<select id="trainerVideoDetail" resultType="Board">
+		SELECT TRAINER_NO, BOARD_NO, TITLE, BOARD_TYPE_NO, BOARD_TYPE_NAME, THUMBNAIL, CLASS_NO, UPLOAD_DATE
+		FROM BOARD
+		JOIN BOARD_TYPE ON(CLASS_NO = BOARD_TYPE_NO)
+		WHERE TRAINER_NO = #{trainerNo}
+		AND CLASS_NO IN(2, 3)
+		<choose>
+			<when test="sort == 'latest'">
+				ORDER BY BOARD_NO DESC
+			</when>
+			<when test="sort == 'rating'">
+				ORDER BY GRADE DESC
+			</when>
+			<when test="sort == 'views'">
+				ORDER BY HITS DESC
+			</when>
+		</choose>
+	</select>
+
     
+    <!-- 강사 영상 조회(페이지 네이션) -->
+    <select id="pageList">
+    	SELECT COUNT(*) FROM BOARD
+		WHERE BOARD_NO = #{boardNo}
+		AND TRAINER_NO = #{trainerNo}
+    </select>
+        
 </mapper>
