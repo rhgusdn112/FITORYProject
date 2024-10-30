@@ -27,10 +27,6 @@ public interface TrainerMapper {
 	// 강사 정보 수정
 	int updateTrainer(Trainer inputTrainer);
 
-
-//	// 강사 사진 수정
-//	int profile(String url, int trainerNo);
-
 	// 강사 강의 목록 조회
 	List<Board> classList(int trainerNo);
 	
