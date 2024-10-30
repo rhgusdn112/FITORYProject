@@ -122,8 +122,6 @@ public class TrainerServiceImpl implements TrainerService{
 		// 이미지 수정
 		List<String> renameList = new ArrayList<>();
 		
-		
-		
 		for(MultipartFile file : imgProfileList) {
 			String rename = FileUtil.rename(file.getOriginalFilename());
 			renameList.add(profileWebPath + rename);
@@ -155,60 +153,6 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		return resultMap;
 	}
-	
-	
-
-	
-	
-	/* 이미지 수정 */
-	@Override
-	public List<String> profile(List<MultipartFile> imgProfileList, int trainerNo) {
-	    List<String> filePaths = new ArrayList<>();
-
-	    File folder = new File(profileFolderPath);
-	    if (!folder.exists()) {
-	        folder.mkdirs(); // 저장 경로가 없으면 생성
-	    }
-
-	    try {
-	        for (MultipartFile imgFile : imgProfileList) {
-	            if (!imgFile.isEmpty()) {
-	                String rename = FileUtil.rename(imgFile.getOriginalFilename());
-	                String filePath = profileFolderPath + rename;
-	                String url = profileWebPath + rename;
-
-	                imgFile.transferTo(new File(filePath));
-	                System.out.println("저장된 파일 경로: " + filePath);
-	                filePaths.add(url); // 웹 경로 추가
-	            }
-	        }
-
-	        // 필요한 파일 경로 수를 맞추기 위해 null 추가하여 항상 4개의 값 유지
-	        while (filePaths.size() < 2) {
-	            filePaths.add(null);
-	        }
-
-	        System.out.println("DB에 업데이트할 파일 경로들: " + filePaths);
-
-	        // DB 업데이트
-	        if (!filePaths.isEmpty()) {
-	            mapper.updateProfileImages(filePaths, trainerNo);
-	        } else {
-	            System.out.println("업데이트할 파일이 없습니다.");
-	            mapper.updateProfileImages(null, trainerNo);
-	        }
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        throw new FileUploadFailException("프로필 이미지 수정에 실패하였습니다. 에러: " + e.getMessage());
-	    }
-
-	    return filePaths;
-	}
-
-
-
-
 	
 	/* 강사 강의 목록 조회 */
 	@Override

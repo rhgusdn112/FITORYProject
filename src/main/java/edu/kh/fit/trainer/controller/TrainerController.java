@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Pagination;
+import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
 
 import edu.kh.fit.trainer.service.TrainerService;
@@ -165,7 +166,7 @@ public class TrainerController {
 		ra.addFlashAttribute("message", message);
 		return "redirect:" + path;
 	}
-	/** 강사 마이페이지 바로가기
+	/** 강사 마이페이지 바로가기 + 안에 들어 있는 객체들은 헤더 푸터
 	 * @param model
 	 * @param trainerLogin
 	 * @return
@@ -188,24 +189,30 @@ public class TrainerController {
 	 * @return
 	 */
 	@PostMapping("trainerMyPage")
-	public String updateInfo(
-			@ModelAttribute Trainer inputTrainer, 
-			@SessionAttribute("trainerLogin") Trainer trainerLogin,
-			@RequestParam("imgProfile") List<MultipartFile> imgProfileList, 
-			RedirectAttributes ra) {
+			public String updateInfo(@ModelAttribute Trainer inputTrainer, @SessionAttribute("trainerLogin") Trainer trainerLogin,
+					@RequestParam("imgProfile") List<MultipartFile> imgProfileList, @RequestParam("qName") List<String> qNameList,
+					@RequestParam("qDate") List<String> qDateList, RedirectAttributes ra) {
 
-		int trainerNo = trainerLogin.getTrainerNo();
-		inputTrainer.setTrainerNo(trainerNo);
-
-		int result = service.updateTrainer(inputTrainer);
+		Map<String, Object> resultMap = service.updateTrainer(inputTrainer, imgProfileList, qNameList, qDateList);
 
 		String message = null;
-		if (result > 0) {
+		if (resultMap != null && Integer.parseInt(String.valueOf(resultMap.get("result"))) > 0) {
 			message = "수정이 되었습니다.";
+
+			List<Qualification> qList = (List<Qualification>)resultMap.get("qList");
+			List<String> renameList = (List<String>)resultMap.get("renameList");
+
 			trainerLogin.setTrainerNickname(inputTrainer.getTrainerNickname());
 			trainerLogin.setTrainerTel(inputTrainer.getTrainerTel());
-			trainerLogin.setTrainerImgMain(inputTrainer.getTrainerImgMain());
-			trainerLogin.setTrainerImgMainSub(inputTrainer.getTrainerImgMainSub());
+			trainerLogin.setQualificationList(qList);
+
+			if(renameList != null &&  renameList.isEmpty() == false) {
+
+				trainerLogin.setTrainerImgMain(renameList.get(0));
+				trainerLogin.setTrainerImgMainSub(renameList.get(1));
+				trainerLogin.setTrainerImgSub(renameList.get(2));
+				trainerLogin.setTrainerImgSubSub(renameList.get(3));
+			}
 		} else
 			message = "수정에 실패하였습니다.";
 
@@ -213,43 +220,6 @@ public class TrainerController {
 
 		return "redirect:/trainer/trainerMyPage";
 	}
-	
-	/** 프로필 이미지 수정
-	 * @param profileImg
-	 * @param trainerLogin
-	 * @param ra 
-	 * @return
-	 */
-	@PostMapping("profile")
-	public String profile(@RequestParam("imgProfile") List<MultipartFile> imgProfileList,
-	                      @SessionAttribute("trainerLogin") Trainer trainerLogin,
-	                      HttpSession session,
-	                      RedirectAttributes ra) {
-
-	    List<String> filePaths = service.profile(imgProfileList, trainerLogin.getTrainerNo());
-	    
-	    System.out.println("저장된 파일 경로들: " + filePaths);
-	    
-
-	    String message = (filePaths != null) ? "프로필 이미지가 변경되었습니다." : "프로필 이미지 변경에 실패했습니다.";
-
-	    if (filePaths != null) {
-	        // trainerLogin 객체 업데이트
-	        trainerLogin.setTrainerImgMain(filePaths.size() > 0 ? filePaths.get(0) : null);
-	        trainerLogin.setTrainerImgMainSub(filePaths.size() > 1 ? filePaths.get(1) : null);
-	        trainerLogin.setTrainerImgSub(filePaths.size() > 2 ? filePaths.get(2) : null);
-	        trainerLogin.setTrainerImgSubSub(filePaths.size() > 3 ? filePaths.get(3) : null);
-
-	        // 업데이트된 trainerLogin 객체를 세션에 다시 저장
-	        session.setAttribute("trainerLogin", trainerLogin);
-	    }
-
-	    ra.addFlashAttribute("message", message);
-	    
-	    
-	    return "redirect:/myPage/trainerMyPage";
-	}
-
 	
 	/** 강사 강의 목록 조회
 	 * @param trainerLogin

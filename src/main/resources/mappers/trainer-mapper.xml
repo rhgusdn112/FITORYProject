@@ -75,13 +75,7 @@
 	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
-	<!-- 프로필 이미지 수정 -->
-<!-- 	<update id="profile">
-		UPDATE "TRAINER"
-		SET PROFILE_IMG = #{url}
-		WHERE TRAINER_NO = #{trainerNo}
-	</update> -->
-	
+	<!-- 강사 프로필 사진 수정 -->
 	<update id="updateProfileImages">
 	    UPDATE TRAINER_IMG
 	    SET
@@ -91,6 +85,41 @@
 	        TRAINER_IMG_SUB_SUB = #{images[3]}
 	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
+	
+	<!-- 강사 자격사항 상세조회 페이지  -->
+    <select id="qualificationList" resultType="_int">
+    	SELECT COUNT(*)
+		FROM QUALIFICATION
+		WHERE TRAINER_NO = #{trainerNo}
+		ORDER BY QUALIFICATION_DATE DESC
+    </select>
+    
+    <!-- 강사 자격사항 삭제 -->
+    <delete id="deleteQulification">
+    	DELETE FROM "QUALIFICATION"
+    	WHERE TRAINER_NO = #{trainerNo}
+    </delete>
+    
+    <!-- 강사 자격사항 삽입 -->
+    <insert id="insertQulification">
+    	INSERT INTO "QUALIFICATION"
+    	<foreach collection="list" item="item" open="(" close=")" separator=" UNION ">
+    		SELECT NEXT_QUALIFICATION_NO(), #{item.qualification}, #{item.qualificationDate}, ${item.trainerNo}
+    		FROM DUAL
+    	</foreach>
+    </insert>
+    
+    <!-- 강사 프로필 이미지 삭제 -->
+    <delete id="deleteTrainerImage">
+    	DELETE FROM "TRAINER_IMG"
+    	WHERE TRAINER_NO = #{trainerNo}
+    </delete>
+    
+    <!-- 강사 프로필 이미지 삽입 -->
+    <insert id="insertTrainerImage" > 
+    	INSERT INTO "TRAINER_IMG"
+    	VALUES (#{renameList[0]}, #{renameList[1]}, #{renameList[2]}, #{renameList[3]}, #{trainerNo})
+    </insert>
 		
 	<!-- 강사 자격사항 추가 -->
 	<insert id="insertTrainerQualification">
@@ -115,53 +144,6 @@
 		FROM TRAINER_IMG
 		JOIN QUALIFICATION USING(TRAINER_NO)
 		WHERE TRAINER_NO = #{trainerNo}
-	</select>
-    
-    <!-- 강사 자격사항 상세조회 페이지  -->
-    <select id="qualificationList" resultType="_int">
-    	SELECT COUNT(*)
-		FROM QUALIFICATION
-		WHERE TRAINER_NO = #{trainerNo}
-		ORDER BY QUALIFICATION_DATE DESC
-    </select>
-    
-    
-    <!-- 강사 자격사항 삭제 -->
-    <delete id="deleteQulification">
-    	DELETE FROM "QUALIFICATION"
-    	WHERE TRAINER_NO = #{trainerNo}
-    </delete>
-    
-    
-    <!-- 강사 자격사항 삽입 -->
-    <insert id="insertQulification">
-    	INSERT INTO "QUALIFICATION"
-    	<foreach collection="list" item="item" open="(" close=")" separator=" UNION ">
-    		SELECT NEXT_QUALIFICATION_NO(), #{item.qualification}, #{item.qualificationDate}, ${item.trainerNo}
-    		FROM DUAL
-    	</foreach>
-    </insert>
-    
-    
-    
-    <!-- 강사 프로필 이미지 삭제 -->
-    <delete id="deleteTrainerImage">
-    	DELETE FROM "TRAINER_IMG"
-    	WHERE TRAINER_NO = #{trainerNo}
-    </delete>
-    
-    
-    
-    <!-- 강사 프로필 이미지 삽입 -->
-    <insert id="insertTrainerImage" > 
-    	INSERT INTO "TRAINER_IMG"
-    	VALUES (#{renameList[0]}, #{renameList[1]}, #{renameList[2]}, #{renameList[3]}, #{trainerNo})
-    </insert>
-    
-    
-    
-    
-    
-    
+	</select>    
     
 </mapper>
