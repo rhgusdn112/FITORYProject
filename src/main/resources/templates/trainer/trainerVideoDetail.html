@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>강사 영상 조회</title>
 </head>
-<body>
-  <div>
-    
-          <!-- 페이지 -->
-          <div class="pagination" th:object="${pagination}">
 
-            <!-- 첫 페이지로 이동 -->
-            <a href="#">&lt;&lt;</a>
-  
-            <!-- 이전 목록 마지막 번호로 이동 -->
-            <a href="#">&lt;</a>
-  
-  
-            <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-              <li th:if="${i} == *{currentPage}">
-                <a class="current" th:text="${i}">현재 페이지</a>
-              </li>
-  
-              <!-- 보고있지 않은 페이지 -->
-              <li th:unless="${i} == *{currentPage}">
-                <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
-              </li>
-            </th:block>
-  
-            <!-- 다음 목록 시작 번호로 이동 -->
-            <a href="#">&gt;</a>
-  
-            <!-- 끝 페이지로 이동 -->
-            <a href="#">&gt;&gt;</a>
+<body>
+    <div class="main">
+      <!-- 실시간 클래스 섹션 -->
+      <section class="main-box">
+        <div class="main-title" th:text="|${trainer.trainerNickname} Trainer Class|">강사 클래스</div>
+          <div class="sort-dropdown">
+            <select id="sortSelect">
+              <option value="latest">최신순</option>
+              <option value="rating">평점순</option>
+              <option value="views">조회순</option>
+            </select>
           </div>
         </div>
-        <!-- 탑버튼 -->
-        <button class="top">▲</button>
-      </div>
-    <script th:inline="javascript">
-      const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
-    </script>  
+        <hr class="section-divider">
+        <div class="class-grid" id="classContainer">
+          <a class="class-item" th:each="board, status : ${classList}" th:object="${board}"
+            th:href="@{/board/{classNo}/{boardNo}(classNo=*{classNo}, boardNo=*{boardNo})}">
+            <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
+            <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
+            <p th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>
+          </a>
+        </div>
+    <!-- 페이지 -->
+    <div class="pagination" th:object="${pagination}">
+
+      <!-- 첫 페이지로 이동 -->
+      <a href="#">&lt;&lt;</a>
+
+      <!-- 이전 목록 마지막 번호로 이동 -->
+      <a href="#">&lt;</a>
+
+      <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+        <li th:if="${i} == *{currentPage}">
+          <a class="current" th:text="${i}">현재 페이지</a>
+        </li>
+
+        <!-- 보고있지 않은 페이지 -->
+        <li th:unless="${i} == *{currentPage}">
+          <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
+        </li>
+      </th:block>
+
+      <!-- 다음 목록 시작 번호로 이동 -->
+      <a href="#">&gt;</a>
+
+      <!-- 끝 페이지로 이동 -->
+      <a href="#">&gt;&gt;</a>
+    </div>
+  </section>
+  </div>
+  <script th:inline="javascript">
+    const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+  </script>
+  <script src="/js/trainer/trainer.js"></script>
 </body>
+
 </html>
