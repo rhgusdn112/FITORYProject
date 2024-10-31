@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 관리 및 조회</title>
+  <link rel="stylesheet" th:href="@{/css/admin/member.css}">
 </head>
 <body>
-
+  <th:block th:replace="~{common/common}"></th:block>
   <section>
     <h3>회원 관리 및 조회</h3>
-    <div>
-      <button type="button" id="btn">정렬방식▽</button>
-    </div>
   
     <table boarder="1 solid black" style="border-collapse: collapse;">
       <thead id="thead">

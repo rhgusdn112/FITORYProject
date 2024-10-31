@@ -1,0 +1,148 @@
+/* 전체적인 레이아웃 설정 */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* 섹션 스타일 */
+section {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  border: 1px solid #ccc;
+}
+
+/* 제목 스타일 */
+h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* 사이드 메뉴 스타일 */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#sideMenu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sideMenu li {
+  margin-bottom: 10px;
+}
+
+#sideMenu a {
+  color: #fff;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#sideMenu a:hover {
+  background-color: #575757;
+}
+
+/* 메인 컨텐츠 스타일 */
+#form {
+  margin-left: 220px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* 페이지네이션 스타일 */
+.pagination-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+/* 링크 스타일 */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

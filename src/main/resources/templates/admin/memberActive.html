@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/admin/memberActive.css}">
 </head>
 
 <body>
-
+  <th:block th:replace="~{common/common}"></th:block>
 
   
     <section class = "orderTable">
@@ -93,9 +94,7 @@
       <table border="1">
         <thead> <!-- 신고 내역  -->
           <th>번호</th>
-          <th>|</th>
           <th>신고 제목</th>
-          <th>|</th>
           <th>진행상태</th>
         </thead>
   

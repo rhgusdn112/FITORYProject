@@ -4,9 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1:1 문의</title>
+  <link rel="stylesheet" th:href="@{/css/admin/query.css}">
 </head>
 <body>
-  <h1>1:1문의</h1>
+  <table boarder="1" style="border-collapse: collapse;">
+  <section>
+    <h3>1:1 문의</h3>
+    <table id="inquiryTable">
+      <thead>
+        <tr>
+          <th>문의</th>
+          <th>닉네임</th>
+          <th>작성일</th>
+          <th>답변</th>
+        </tr>
+      </thead>
+      <tbody id="inquiryList">
+        <!-- JavaScript로 내용 추가 -->
+      </tbody>
+    </table>
+  </section>
 
+  <div id="pagination">
+    <ul>
+      <!-- JavaScript로 페이지 번호 추가 -->
+    </ul>
+  </div>
+
+  <script src="inquiry_script.js"></script>
 </body>
 </html>

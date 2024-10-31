@@ -42,8 +42,8 @@ const selectClassList = (cp) => {
       
     
     // 페이지네이션 출력
-    const pg = document.querySelector('.pagination');
-    pg.innerHTML = '';
+    const pg1 = document.querySelector('.pagination1');
+    pg1.innerHTML = '';
     
     // pagication 구조 분해
     const {startPage, endPage, currentPage, prevPage, nextPage, maxPage} = pagination;
@@ -55,7 +55,7 @@ const selectClassList = (cp) => {
       a.dataset.page = page;
 
       if(!isNaN(Number(text)) &&  page == currentPage) a.classList.add('current');
-      pg.append(a);
+      pg1.append(a);
       } 
 
       createPageBtn(1, '처음');
@@ -113,8 +113,8 @@ const selectBoardList = (cp) => {
     }
 
     // 페이지네이션 출력
-    const pg = document.querySelector('.pagination');
-    pg.innerHTML = '';
+    const pg2 = document.querySelector('.pagination2');
+    pg2.innerHTML = '';
     
     // pagication 구조 분해
     const {startPage, endPage, currentPage, prevPage, nextPage, maxPage} = pagination;
@@ -126,7 +126,7 @@ const selectBoardList = (cp) => {
    a.dataset.page = page;
 
    if(!isNaN(Number(text)) &&  page == currentPage) a.classList.add('current');
-   pg.append(a);
+   pg2.append(a);
    } 
 
    createPageBtn(1, '처음');

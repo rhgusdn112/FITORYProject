@@ -1,5 +1,5 @@
 /* 메인 콘텐츠 영역 스타일 */
-main {
+.main-class {
   font-size: 2em;
   font-weight: bold;
   padding: 30px 0;
@@ -8,8 +8,7 @@ main {
   text-align: center;
 }
 
-.class-section {
-  margin-left: 350px;
+section {
   margin-top: 100px;
   padding: 20px;
   background-color: #fff;
@@ -17,7 +16,7 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.class-section h1 {
+.class-section h2 {
   margin-bottom: 20px;
   font-size: 1.5em;
 }
@@ -38,13 +37,8 @@ main {
 }
 
 .table-container {
-  width:100%
   overflow-x: auto;
   margin-top: 20px;
-}
-
-#classList{
-  width:100%
 }
 
 .class-section img {
@@ -121,7 +115,11 @@ main {
   text-align: center;
 }
 
-
+#boardWriteBtn a {
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+}
 
 /* 전체 선택 및 선택 전체 삭제 버튼을 페이지네이션 위로 이동 */
 .pagination {
@@ -134,15 +132,116 @@ main {
   margin-bottom: 20px;
 }
 
-tbody{
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-}
-
+/* 테이블 스타일 업데이트 */
 table {
-  width: 100%;
+  width: 70%;
   border-collapse: collapse;
   background-color: #fff;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* 테이블 헤더 스타일 */
+thead th {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* 테이블 본문 스타일 */
+tbody td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+}
+
+/* 테이블 섹션 스타일 */
+section.orderTable, section.commentTable, section.queryTable, section.reportTable {
+  margin: 40px;
+  margin-left: 350px;
+  width: 70%s;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 테이블 제목 스타일 */
+section h4 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 350px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+/* 정렬 버튼 스타일 */
+#btn {
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+#btn:hover {
+  background-color: #aaa;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagination a {
+  margin: 0 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination a.current {
+  background-color: #666;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 표 안 버튼 스타일 */
+tbody td button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+tbody td button:hover {
+  background-color: #ddd;
 }
