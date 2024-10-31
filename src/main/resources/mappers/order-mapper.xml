@@ -7,28 +7,31 @@
 	<insert id="insertOrder" parameterType="order">
 		INSERT INTO "ORDER"(
 			ORDER_NO,
-			ORDER_CLASS_NAME,
 			ORDER_CLASS_AMOUNT,
 			ORDER_CURRENCY,
-			ORDER_MEMBER_NAME
+			ORDER_MEMBER_NO,
+			ORDER_CLASS_NO
 			) VALUES (
 			#{orderNo},
-			#{classTitle},
-			#{paymentAmount},
-			#{currency},
-			#{customerName}
+			#{orderClassAmount},
+			#{orderCurrency},
+			#{orderMemberNo},
+			#{orderClassNo}
 			)
 	</insert>
 
 	<!-- 결제 결과 정보 불러오기 -->
 	<select id="selectOrder" parameterType="order">
 		SELECT 
-			ORDER_NO AS orderNo,
-			ORDER_CLASS_NAME AS classTitle,
-			ORDER_CLASS_AMOUNT AS paymentAmount,
-			ORDER_MEMBER_NAME AS customerName
-		FROM
-			"ORDER"
+			ORDER_NO,
+			ORDER_CLASS_NO,
+			ORDER_CLASS_AMOUNT,
+			ORDER_MEMBER_NO,
+			TITLE "classTitle",
+			MEMBER_NAME "customerName"
+		FROM "ORDER"
+		JOIN BOARD ON ORDER_CLASS_NO = BOARD_NO
+		JOIN MEMBER ON ORDER_MEMBER_NO = MEMBER_NO
 		WHERE
 			ORDER_NO = #{orderNo}
 	</select>
