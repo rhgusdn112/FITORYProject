@@ -1,6 +1,7 @@
 package edu.kh.fit.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.dto.Query;
@@ -79,6 +80,11 @@ public interface AdminService {
 	
 	// 회원 정지
 	int changeStatus(int memberNo);
+
+	// 강의 목록 가져오기
+	Map<String, Object> classList(int cp);
+	Map<String, Object> boardList(int cp);
+
 
 	
 	

@@ -30,7 +30,7 @@
             <p class="class-title" th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>
           </a>
         </div>
-        </section>
+      </section>
 
     <!-- 페이지 -->
     <div class="pagination" th:object="${pagination}">
@@ -58,13 +58,14 @@
       <!-- 끝 페이지로 이동 -->
       <a href="#">&gt;&gt;</a>
     </div>
-  </div>
+    </div>
 
   <div th:replace="common/footer :: footer"></div>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
   </script>
   <script src="/js/trainer/trainer.js"></script>
+  <div th:replace="common/footer :: footer"></div>
 </body>
 
 </html>

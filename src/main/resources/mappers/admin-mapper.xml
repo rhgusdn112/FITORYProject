@@ -206,4 +206,51 @@
   			DECODE(MEMBER_DEL_FL, 'Y', 'N', 'Y')
   	WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	
+	<select id="classListCount"
+					resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '2'
+		AND BOARD_DEL_FL = 'N'
+	</select>
+	<select id="classList"
+					resultType="Board">
+		SELECT
+			BOARD_NO,
+			TITLE,
+			PAYMENT,
+			SUM(ORDER_CLASS_AMOUNT) AS GRADE
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '2'
+		AND BOARD_DEL_FL = 'N'
+		GROUP BY BOARD_NO, TITLE, PAYMENT
+	</select>
+	
+		<select id="boardListCount"
+					resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '3'
+		AND BOARD_DEL_FL = 'N'
+	</select>
+		<select id="boardList"
+					resultType="Board">
+		SELECT
+			BOARD_NO,
+			TITLE,
+			PAYMENT,
+			SUM(ORDER_CLASS_AMOUNT) AS GRADE
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '3'
+		AND BOARD_DEL_FL = 'N'
+		GROUP BY BOARD_NO, TITLE, PAYMENT
+	</select>
 </mapper>

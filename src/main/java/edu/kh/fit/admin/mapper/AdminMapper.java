@@ -1,8 +1,10 @@
 package edu.kh.fit.admin.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.fit.admin.dto.Admin;
 import edu.kh.fit.admin.dto.Query;
@@ -55,6 +57,16 @@ public interface AdminMapper {
 	
 	// 회원 정지
 	int changeStatus(int memberNo);
+
+	// 강의 매출 가져오기
+	List<Board> classList(RowBounds bounds);
+	int classListCount();
+
+	List<Board> boardList(RowBounds bounds);
+	int boardListCount();
+
+
+
 
 
 }
