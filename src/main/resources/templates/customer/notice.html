@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="css/customer/faq.css">
+    <style>
+        .supporting-text {
+            display: none;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        .faq-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .arrow-icon {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        .arrow-icon.open {
+            transform: rotate(90deg);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggles = document.querySelectorAll(".faq-toggle");
+            toggles.forEach(toggle => {
+                toggle.addEventListener("click", function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector(".arrow-icon");
+                    if (answer.style.display === "block") {
+                        answer.style.display = "none";
+                        icon.textContent = "\u25B6"; // 오른쪽 화살표
+                    } else {
+                        answer.style.display = "block";
+                        icon.textContent = "\u25BC"; // 아래쪽 화살표
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="div-wrapper">
+            <div class="div">
+                <div class="overlap">
+                    <div class="rectangle"></div>
+                    <h1 class="text-wrapper">공지사항</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 회사명. 모든 권리 보유.</p>
+    </footer>
+</body>
+</html>
