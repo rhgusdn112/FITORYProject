@@ -94,7 +94,7 @@
 	    UPDATE TRAINER_IMG
 	    SET
 	        TRAINER_IMG_MAIN = #{images[0]},
-	        TRAINER_IMG_MAIN_SUB = #{images[1]},
+	        TRAINER_IMG_MAIN_SUB = #{images[1]}
 	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
