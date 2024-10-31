@@ -19,15 +19,15 @@
       <div class="main-box">
         <table>
           <thead>
-            <th>내용</th>
-            <th>비고</th>
-            <th>|</th>
-            <th>작성일</th>
+            <tr>
+              <th class="left">내용</th>
+              <th class="center">비고</th>
+              <th class="right">작성일</th>
+            </tr>
           </thead>
           <tbody>
-
             <tr th:each="review:${reviewList}" th:object="${review}">
-              <td>
+              <td class="left">
                 <th:block th:if="*{type == '리뷰'}">
                   <a th:href="|/board/*{commentNo}|" th:text="*{reviewContent}">리뷰 제목</a>
                 </th:block>
@@ -35,13 +35,13 @@
                   <a th:href="|/query/*{commentNo}|" th:text="*{reviewContent}">1:1문의 제목</a>
                 </th:block>
               </td>
-              <td th:text="*{type}">게시판 종류</td>
-              <td th:text="*{reviewWriteDate}">2024-10-24</td>
-
+              <td class="center" th:text="*{type}">게시판 종류</td>
+              <td class="right" th:text="*{reviewWriteDate}">2024-10-24</td>
             </tr>
           </tbody>
+          
         </table>
-
+      </div>
         <!-- 페이지 -->
         <div class="pagination" th:object="${pagination}">
 
@@ -68,7 +68,6 @@
 
           <!-- 끝 페이지로 이동 -->
           <a href="#">&gt;&gt;</a>
-        </div>
       </div>
     </div>
   </form>

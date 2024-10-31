@@ -4,113 +4,91 @@
 	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
 
-*{
-	font-family: "MaruBuriSemiBold", Helvetica;
+/* 공통 스타일 */
+* {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 input::placeholder {
-	text-align: left;
-	font-size: 15px;
+  text-align: left;
+  font-size: 15px;
 }
 
+/* 컨테이너 및 메인 박스 스타일 */
 .main {
-	min-height: 100vh;
-	min-width: 50vw;
-	padding-left: 10%;
-	margin: auto;
-	margin-top: 5%;
+  min-height: 150vh;
+  min-width: 50vw;
+  padding-left: 10%;
+  margin: auto;
+  margin-top: 15%;
 	margin-left: 10%;
-	justify-content: center;
-	/* border: 1px solid; */
-	padding-right: 3%;
-	margin-bottom: 5%;
+  justify-content: center;
+  padding-right: 3%;
+	margin-bottom: 10%;
 }
 
 /* main 박스 */
 .main-box {
-	border: 5px solid;
-	color: #bfbfbf;
-	margin: auto;
-	padding-top: 2%;
-	min-height: 100vh;
-	padding-right: 10%;
-	padding: 3%;
-	min-width: 50vw;
+  border: 5px solid #bfbfbf;
+  margin: auto;
+  padding: 3%;
+  min-height: 150vh;
+  min-width: 50vw;
 }
 
+/* 타이틀 스타일 */
 .main-my-page {
-	color: #292929;
 	font-size: 32px;
-	text-shadow: 10px #bfbfbf;
-	padding-top: 60px;
-	padding-bottom: 2%;
+	text-shadow: 1px 1px #bfbfbf;
+	margin-bottom: 20px;
 }
 
-/* 아이디 */
-.email {
+/* 텍스트 필드 레이블 */
+.email, .name, .tel, .main-in {
 	color: #292929;
-	display: flex;
-	margin: 0% 0% 2% 0%;
 	font-size: 20px;
-
+	margin: 0 0 2% 0;
+	display: flex;
 }
 
+/* 입력 상자 */
 .box {
-	border: 1px solid;
-	color: #292929;
-	justify-content: center;
-	display: flex;
-	margin: 2% 0% 2%;
-	padding: 5px;
+	border: 1px solid #292929;
+	padding: 10px;
 	width: 100%;
+	margin-bottom: 20px;
+	text-align: left;
 }
 
-/* 이메일 인증 */
-.email-ok {
-	color: #292929;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/* 이름 */
-.name {
-	color: #292929;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/*  생년월일 */
-.birth {
-	color: #292929;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/* 전화번호 */
-.tel {
-	color: #292929;
-	display: flex;
-	margin: 0% 0% 2% 0%;
-	font-size: 20px;
-}
-
-/* 자격사항 */
-.main-in {
-	color: #292929;
-	display: flex;
-	font-size: 20px;
-}
-
-/* 추가 버튼 */
+/* 자격사항 추가 버튼 */
 .plus {
-	color: rgb(255, 255, 255);
+	color: #292929;
 	background-color: #bfbfbf;
-	width: 2.5%;
-	height: 2.5%;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 	float: right;
+	margin-left: 10px;
+	font-size: 20px;
+}
+.qualificationRemovebtn {
+	color: #292929;
+	background-color: #bfbfbf;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	float: right;
+	margin-left: 5%;
 }
 
 /* 자격 테이블 */
@@ -146,118 +124,110 @@ input::placeholder {
 	width: 100%;
 }
 
-/* 프로필 사진 */
-.profile {
-	color: #292929;
-	display: flex;
-	margin: 0% 10% 0% 0%;
-}
-
-.qualification-table img{
-	height: 10%;
-	width: 80%;
-}
-
-.profile-box{
-	border: 2px solid;
-	color: #bfbfbf;
-	min-height: 30vh;
-	margin: auto;
-	justify-content: center;
-	align-items: center; 
-	display: flex;
-}
-.trainerImgMain{
-	color: #bfbfbf;
-	min-height: 30vh;
-	min-width: 80vw;
-	margin: auto;
-	justify-content: center;
-	align-items: center; 
-	display: flex;
-
-}
-
-.subProfile-box{
-	border: 2px solid;
-	color: #bfbfbf;
-	min-height: 25vh;
-	justify-content: space-between;
-	align-items: center;
-	display: flex;
-	padding: 3% 0% 3% 0%;
-}
-.trainerImgSub{
-	border: 2px solid;
-	color: #bfbfbf;
-	min-height: 20vh;
-	padding: 3% 14.5%;
-	justify-content: space-between;
-	align-items: center;
-	justify-content: center;
-}
-
-
 /* 삭제버튼 */
 form[name='myPageFrm']{position: relative;}
 
-#deleteImage{
-  cursor: pointer;
-	padding: 0 5px;
+/* 이미지 삭제 버튼 */
+#deleteImage {
+	cursor: pointer;
 	font-weight: bold;
+	margin-left: auto;
 }
 
-/* 프로필 사진 수정 버튼 */
-.upload {
-  font-family: "MaruBuriSemiBold", Helvetica;
-  color: rgb(255, 255, 255);
-  background-color: #bfbfbf;
-  padding: 0.8% 1%;
-  margin: auto;
+/* 프로필 사진 박스 */
+.profile-box, .subProfile-box {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.profile-box img, .subProfile-box img {
+	width: calc(50% - 5px); /* 두 장이 한 줄에 들어가도록 설정 */
+	aspect-ratio: 1 / 1;
+	object-fit: cover; 
+	border: 2px solid #bfbfbf;
+	border-radius: 8px;
+}
+
+/* 파일 선택 커스텀 스타일 */
+.profile-btn-area {
+  display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-btn-area input[type="file"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 20px;
+	border: 1px solid #bfbfbf;
+}
+
+/* 사진 업로드 버튼 */
+.file-input {
+  background-color: #bfbfbf;
+  color: #292929;
+  padding: 5px 15px;
   width: 100%;
   border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+	margin-bottom: 3%;
+}
+
+.file-input:hover {
+  color: #bfbfbf;
+  background-color: #292929;
+}
+
+/* 파일 이름 표시 */
+#fileName {
+  font-size: 14px;
+  color: #292929;
 }
 
 /* 수정하기 버튼 */
 .update {
-  font-family: "MaruBuriSemiBold", Helvetica;
-  color: rgb(255, 255, 255);
   background-color: #bfbfbf;
-  padding: 0.8% 1%;
-  margin: auto;
-  justify-content: center;
-  text-align: center;
+  color: #292929;
+  padding: 5px 15px;
   width: 100%;
   border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .update:hover {
-	color: rgba(78, 78, 78, 0.200);
+  color: #bfbfbf;
+  background-color: #292929;
 }
 
-/* 탑버튼 */
-.top {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 1%;
-	width: 40px;
-	height: 40px;
-	border-radius: 100%;
-	position: sticky;
-	float: right;
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+	.main-my-page {
+		font-size: 24px;
+	}
+	.profile-box img, .subProfile-box img {
+		width: 100%;
+	}
 }
 
-.top:hover {
-	color: rgba(78, 78, 78, 0.200);
-}
-
-.preview{
-	display: none;
-}
-
-.preview[src]{
-	display: inline;
+@media screen and (max-width: 480px) {
+	.main-my-page {
+		font-size: 20px;
+	}
+	.profile-box, .subProfile-box {
+		flex-direction: column;
+		gap: 10px;
+	}
+	.profile-box img, .subProfile-box img {
+		width: 100%;
+	}
 }

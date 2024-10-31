@@ -19,66 +19,78 @@
   <th:block th:replace="~{common/common}"></th:block>
 
 
-  <form action="/member/memberClassList" method="POST" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
-    <div class="main-class">강의 목록</div>
-    <div class="container">
-    </div>
-    <div class="main-box">
-      <table class="box">
-        <tbody>
-          <!-- 게시글 리스트를 반복하여 출력 -->
-          <tr th:each="order : ${orderList}" th:object="${order}">
-            <th>
-              <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
-            </th>
-            <td>
-              <div th:text="|Title : *{title}|">제목 :</div>
-              <div th:text="|설명 : *{detail}|">설명 :</div>
-              <div th:text="|강사 : *{trainerNickname}|">강사 :</div>
-              <div th:text="|카테고리 : *{boardTypeName}|">카테고리:</div>
-            </td>
-            <th><input type="checkbox" class="checkbox" id="checkbox"></th>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- 페이지 -->
-      <div class="pagination" th:object="${pagination}">
-
-        <!-- 첫 페이지로 이동 -->
-        <a href="#">&lt;&lt;</a>
-
-        <!-- 이전 목록 마지막 번호로 이동 -->
-        <a href="#">&lt;</a>
-
-
-        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-          <li th:if="${i} == *{currentPage}">
-            <a class="current" th:text="${i}">현재 페이지</a>
-          </li>
-
-          <!-- 보고있지 않은 페이지 -->
-          <li th:unless="${i} == *{currentPage}">
-            <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
-          </li>
-        </th:block>
-
-        <!-- 다음 목록 시작 번호로 이동 -->
-        <a href="#">&gt;</a>
-
-        <!-- 끝 페이지로 이동 -->
-        <a href="#">&gt;&gt;</a>
+    <form action="/member/memberClassList" method="GET" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
+      <div class="main-class">강의 목록</div>
+      <div class="container">
       </div>
-      <button class="see" id="seeBtn">선택한 강의 보기</button>
-      <button class="delete" id="deleteBtn">선택한 강의 삭제</button>
-    </div>
-  </form>
-  <script th:inline="javascript">
-    const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
-  </script>
+      <div class="main-box">
+        <table class="box">
+          <tbody>
+            <!-- 게시글 리스트를 반복하여 출력 -->
+            <tr id="class" th:each="order : ${orderList}" th:object="${order}">
+              <!-- <a th:href="@{/board/{trainerNo}/{boardNo}(trainerNo=${member.orderNo}, boardNo=${boardNo}, cp=1, sort='latest')}"> -->
+              <th>
+                <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
+              </th>
+            <!-- </a> -->
+              <td>
+                <div th:text="|Title : *{title}|">제목 :</div>
+                <div th:text="|설명 : *{detail}|">설명 :</div>
+                <div th:text="|강사 : *{trainerNickname}|">강사 :</div>
+                <div th:text="|카테고리 : *{boardTypeName}|">카테고리:</div>
+              </td>
+              <th><input type="checkbox" class="checkbox" id="checkbox"></th>
+            </tr>
+          </tbody>
+        </table>
+        <button class="delete" id="deleteBtn" onclick="openModal()">선택한 강의 삭제</button>
 
-  <th:block th:replace="~{common/footer::footer}"></th:block>
-  <script src="/js/classList/memberMyPage.js"></script>
-</body>
+        <!-- 페이지 -->
+        <div class="pagination" th:object="${pagination}">
 
-</html>
+          <!-- 첫 페이지로 이동 -->
+          <a href="#">&lt;&lt;</a>
+
+          <!-- 이전 목록 마지막 번호로 이동 -->
+          <a href="#">&lt;</a>
+
+
+          <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+            <li th:if="${i} == *{currentPage}">
+              <a class="current" th:text="${i}">현재 페이지</a>
+            </li>
+
+            <!-- 보고있지 않은 페이지 -->
+            <li th:unless="${i} == *{currentPage}">
+              <a href="#" th:text="${i}">이동할 수 있는 페이지</a>
+            </li>
+          </th:block>
+
+          <!-- 다음 목록 시작 번호로 이동 -->
+          <a href="#">&gt;</a>
+
+          <!-- 끝 페이지로 이동 -->
+          <a href="#">&gt;&gt;</a>
+        </div>
+      </div>
+      
+    </form>
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <p>정말로 선택한 강의를 삭제하시겠습니까?</p>
+    <div class="button-container">
+    <button class="confirm-btn" onclick="confirmDeletion()">확인</button>
+    <button class="cancel-btn" onclick="closeModal()">취소</button>
+  </div>
+  </div>
+</div>
+
+    <script th:inline="javascript">
+      const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
+    </script>
+
+    <th:block th:replace="~{common/footer::footer}"></th:block>
+    <script src="/js/classList/memberClassList.js"></script>
+  </body>
+
+  </html>

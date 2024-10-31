@@ -145,5 +145,21 @@ if (imageInput) {
   });
 
 }
+    // 파일 선택 창을 여는 함수
+    function openFileInput(inputId) {
+      document.getElementById(inputId).click();
+  }
+
+  // 파일 선택 후 미리보기 이미지를 업데이트하는 함수
+  function previewImage(event, imageId) {
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              document.getElementById(imageId).src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+      }
+  }
 
 /* 유효성 검사 따로 해야함 */
