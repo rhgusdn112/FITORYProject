@@ -18,8 +18,10 @@
       <div class="main-box">
         <div class="password">비밀번호를 입력해주세요.</div>
         <input type="password" name="memberPw" id="password" class="box" placeholder="비밀번호를 입력해주세요.">
-        <button class="loginBtn" id="loginBtn">로그인</button>
-        <button class="passBtn" id="passBtn">비밀번호 찾기</button>
+        <div class="button-container">
+          <button class="loginBtn">로그인</button>
+          <button class="passBtn">비밀번호 찾기</button>
+        </div>
       </div>
     </form>
     <th:block th:replace="~{common/footer::footer}"></th:block>

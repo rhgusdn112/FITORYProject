@@ -53,21 +53,24 @@
       <!-- 다른 폼 요소들 -->
       <div class="profile">프로필 사진(2장 필수) <span id="deleteImage">x</span></div>
       <div class="profile-box">
-        <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image">
+        <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput1')">
+        <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput2')">
       </div>
       <div class="subProfile-box">
-        <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">
-        <img class="preview" id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">
-        <img class="preview" id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" style="width: 30%;" height="10%;">      
+        <img class="preview" id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('subImageInput1')">
+        <img class="preview" id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('subImageInput2')">      
       </div>
         <div class="profile-btn-area">
-          <input type="file" name="imgProfile" id="imageInput" accept="image/**" placeholder="프로필 사진 선택" multiple>
         </div>
+        <button type="submit" class="update" id="update"> 수정하기 </button>
       </div>
-    <button type="submit" class="update" id="update"> 수정하기 </button>
     </div>
   </form>
-
+  <input type="file" id="mainImageInput1" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgMain')" multiple>
+  <input type="file" id="mainImageInput2" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgMainSub')" multiple>
+  <input type="file" id="subImageInput1" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgSub')">
+  <input type="file" id="subImageInput2" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgSubSub')">
+  
 
   <script>
     const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: '/images/**'}]]*/ '/images/**';

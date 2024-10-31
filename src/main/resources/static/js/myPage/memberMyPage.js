@@ -20,9 +20,3 @@ update?.addEventListener("submit", e => {
     }
   }
 });
-/* checkbox, 버튼 요소 얻어오기 */
-const deleteBtn = document.querySelector("#deleteBtn");
-const checkbox = document.querySelectorAll('input[type="checkbox"]');
-deleteBtn.addEventListener("click", () => {
-
-})
