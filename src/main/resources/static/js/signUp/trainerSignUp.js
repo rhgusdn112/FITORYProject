@@ -453,20 +453,43 @@ signUpForm.addEventListener("submit", e => {
 /* + 버튼 클릭 시 테이블 생성 */
 const plus = document.querySelector("#plus");
 plus.addEventListener("click", () => {
+  // 새로운 행(tr) 생성
   const tr = document.createElement("tr");
+
+  // 자격 사항 입력 칸 생성
   const td1 = document.createElement("td");
   const inputText = document.createElement("input");
   inputText.name = 'qName';
-  inputText.placeholder = "자격사항을 작성해주세요."
+  inputText.placeholder = "자격사항을 작성해주세요.";
+  td1.appendChild(inputText);
+
+  // 날짜 입력 칸과 삭제 버튼 생성
   const td2 = document.createElement("td");
+  td2.style.display = "flex";
+  td2.style.alignItems = "center";
+
   const inputDate = document.createElement("input");
   inputDate.name = 'qDate';
-  inputDate.type = 'date'
-  td1.append(inputText);
-  td2.append(inputDate);
+  inputDate.type = 'date';
+
+  // 삭제 버튼 생성
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "−"; // 마이너스 기호
+  removeBtn.classList.add("qualificationRemovebtn");
+
+  // 삭제 버튼 클릭 시 현재 행을 삭제하도록 설정
+  removeBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // 폼이 제출되는 것을 방지
+    tr.remove();
+  });
+
+  // td2에 날짜 입력란과 삭제 버튼 추가
+  td2.append(inputDate, removeBtn);
   tr.append(td1, td2);
+
+  // 테이블에 새 행 추가
   const tbody = document.querySelector("#tbody");
-  tbody.append(tr);
+  tbody.appendChild(tr);
 });
 
 /* -버튼 클릭 시 */
@@ -479,4 +502,4 @@ removeBtnList?.forEach(minus => {
     minus.closest("tr").remove();
   })
 
-});
+})

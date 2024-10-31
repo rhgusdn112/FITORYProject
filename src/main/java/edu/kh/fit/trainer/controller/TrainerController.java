@@ -169,7 +169,7 @@ public class TrainerController {
 		return "trainer/trainerCheckPw";
 	}
 	
-	/** 회원 정보 수정 비밀번호 확인
+	/** 강사 정보 수정 비밀번호 확인
 	 * @param trainerLogin
 	 * @param trainerPw
 	 * @param ra
@@ -219,6 +219,8 @@ public class TrainerController {
 					@RequestParam("imgProfile") List<MultipartFile> imgProfileList, @RequestParam("qName") List<String> qNameList,
 					@RequestParam("qDate") List<String> qDateList, RedirectAttributes ra) {
 
+		inputTrainer.setTrainerNo(trainerLogin.getTrainerNo());
+		
 		Map<String, Object> resultMap = service.updateTrainer(inputTrainer, imgProfileList, qNameList, qDateList);
 
 		String message = null;

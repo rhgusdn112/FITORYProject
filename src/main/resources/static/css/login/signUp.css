@@ -214,16 +214,15 @@ h2{
 /* 자격 테이블 */
 .qualification-table {
 	width: 100%;
-	padding: 1%;
+	padding: 2%;
 }
 .qualification-table td:first-child{
-	width: 70%;
+	width: 80%;
 	padding: 0% 1% 1% 0%;
 }
 .qualification-table td:last-child{
 	width: 20%;
 	padding: 0% 1% 1% 0%;
-  display: column;
 }
 .qualification-table tr>th {
 	color: #bfbfbf;
@@ -237,6 +236,7 @@ h2{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 5px;
 }
 
 .qualification-table input{

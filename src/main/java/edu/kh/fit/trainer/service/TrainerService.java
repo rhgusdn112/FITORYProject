@@ -39,8 +39,7 @@ public interface TrainerService {
 	 * @param imgProfileList
 	 * @return
 	 */
-	Map<String, Object> updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList,
-			List<String> qDateList);
+	Map<String, Object> updateTrainer(Trainer inputTrainer, List<MultipartFile> imgProfileList, List<String> qNameList, List<String> qDateList);
 
 	/** 강사 상세 정보 조회
 	 * @param trainerNo
