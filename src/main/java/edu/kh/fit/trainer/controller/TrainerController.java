@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.board.dto.Board;
+import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
@@ -252,6 +253,9 @@ public class TrainerController {
           @SessionAttribute("trainerLogin") Trainer trainerLogin,
           @RequestParam(value="cp", required = false, defaultValue = "1") int cp ,
           Model model) {
+  	model.addAttribute("currentPage", "trainerMyPage");
+
+		model.addAttribute("isLoggedIn", true);
       return "/classList/classList";
   }	
   
@@ -305,8 +309,6 @@ public class TrainerController {
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
 
 		return "trainer/trainerVideoDetail";
-		
-		
 	}
-
+	
 }

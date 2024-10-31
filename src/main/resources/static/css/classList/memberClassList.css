@@ -110,7 +110,7 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 5%; /* 위쪽 간격 */
 }
 
 .pagination a {
@@ -121,7 +121,6 @@ input::placeholder {
   border: 1px solid #bfbfbf;
   background-color: #292929;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .pagination a:hover {
@@ -135,71 +134,8 @@ input::placeholder {
   border: 1px solid #bfbfbf;
 }
 
-.modal {
-	display: none; /* 초기에는 숨겨둠 */
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-}
-
-/* 모달 내용 */
-.modal-content {
-	background-color: #bfbfbf;
-	margin: 15% auto;
-	padding: 20px;
-	color: #292929;
-	border: 1px solid #bfbfbf;
-	width: 80%;
-	max-width: 400px;
-	text-align: center;
-	border-radius: 8px;
-}
-
-/* 버튼 스타일 */
-.modal-content button {
-	flex: 1;
-  padding: 10px 0;
-  font-size: 1rem;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.button-container {
-  display: flex;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.confirm-btn {
-	color: #bfbfbf;
-  background-color: #292929;
-  border-radius: 20px 0 0 20px;
-	border: 1px solid #bfbfbf;
-}
-
-.confirm-btn:hover {
-	background-color: #bfbfbf;
-	color: #292929;
-	border: 1px solid #292929;
-}
-
-/* 취소 버튼 */
-.cancel-btn {
-	color: #292929;
-  background-color: #bfbfbf;
-  border-radius: 0 20px 20px 0;
-	border: 1px solid #292929;
-}
-
-.cancel-btn:hover {
-	background-color: #292929;
-	color: #bfbfbf;
-	border: 1px solid #bfbfbf;
+.pagination ::marker{
+  content: '';
 }
 
 /* 반응형 디자인 */

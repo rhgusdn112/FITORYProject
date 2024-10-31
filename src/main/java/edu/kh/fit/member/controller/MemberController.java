@@ -239,6 +239,9 @@ public class MemberController {
 		
 		model.addAttribute("orderList", (List<Order>)map.get("orderList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
+		model.addAttribute("currentPage", "memberMyPage");
+
+		model.addAttribute("isLoggedIn", true);
 
 		return "classList/memberClassList";
 	}
@@ -256,6 +259,9 @@ public class MemberController {
 		
 		model.addAttribute("reviewList", (List<Comment>)map.get("reviewList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
+		model.addAttribute("currentPage", "memberMyPage");
+
+		model.addAttribute("isLoggedIn", true);
 
 		return "myPage/memberMyActivities";
 	}

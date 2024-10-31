@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>강사 영상 조회</title>
+  <link rel="stylesheet" href="/css/trainer/trainerVideoDetail.css">
 </head>
 
 <body>
+  <block th:replace="~{common/common}"></block>
     <div class="main">
       <!-- 실시간 클래스 섹션 -->
       <section class="main-box">
@@ -19,7 +21,6 @@
               <option value="views">조회순</option>
             </select>
           </div>
-        </div>
         <hr class="section-divider">
         <div class="class-grid" id="classContainer">
           <a class="class-item" th:each="board, status : ${trainerClassList}" th:object="${board}"
@@ -29,6 +30,7 @@
             <p th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>
           </a>
         </div>
+      </section>
     <!-- 페이지 -->
     <div class="pagination" th:object="${pagination}">
 
@@ -55,12 +57,12 @@
       <!-- 끝 페이지로 이동 -->
       <a href="#">&gt;&gt;</a>
     </div>
-  </section>
-  </div>
+    </div>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
   </script>
   <script src="/js/trainer/trainer.js"></script>
+  <div th:replace="common/footer :: footer"></div>
 </body>
 
 </html>

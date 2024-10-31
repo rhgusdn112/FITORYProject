@@ -10,8 +10,8 @@
 
 <body>
   <block th:replace="~{common/common}"></block>
-  <div class="main-title">TRAINEL PROPLE</div>
   <div class="main">
+    <div class="main-title">TRAINEL PROPLE</div>
     <div class="main-box">
       <div class="profile-box">
         <img class="previewMain" id="trainerImgMain"
@@ -21,13 +21,13 @@
       <div class="subProfile-box">
         <img class="previewSub" id="trainerImgMainSub"
           th:src="${trainer.trainerImgMainSub != null ? trainer.trainerImgMainSub : '/images/trainer.default.image.jpg'}"
-          alt="Profile Image" style="width: 30%;" height="10%;">
+          alt="Profile Image">
         <img class="previewSub" id="trainerImgSub"
           th:src="${trainer.trainerImgSub != null ? trainer.trainerImgSub : '/images/trainer.default.image.jpg'}"
-          alt="Profile Image" style="width: 30%;" height="10%;">
+          alt="Profile Image">
         <img class="previewSub" id="trainerImgSubSub"
           th:src="${trainer.trainerImgSubSub != null ? trainer.trainerImgSubSub : '/images/trainer.default.image.jpg'}"
-          alt="Profile Image" style="width: 30%;" height="10%;">
+          alt="Profile Image">
         </div>
         <a class="watch" id="watch" th:href="@{/trainer/trainerVideoDetail/{trainerNo}(trainerNo=${trainer.trainerNo}, cp=1, sort='latest')}">강사 영상 보러가기</a>
       <div class="name" th:text="|강사 이름 : ${trainer.trainerNickname}|">강사 이름</div>

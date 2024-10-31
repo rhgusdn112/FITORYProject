@@ -217,5 +217,4 @@
 		WHERE BOARD_NO = #{boardNo}
 		AND TRAINER_NO = #{trainerNo}
     </select>
-    
 </mapper>
