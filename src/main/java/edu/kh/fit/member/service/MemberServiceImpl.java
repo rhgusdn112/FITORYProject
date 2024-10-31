@@ -72,7 +72,7 @@ public class MemberServiceImpl implements MemberService{
 		String encodePw = mapper.memberCheckPw(memberNo);
 		return encorder.matches(memberPw, encodePw);
 	}
-
+	
 	// 회원 정보 수정
 	@Override
 	public int updateMember(Member inputMember) {
