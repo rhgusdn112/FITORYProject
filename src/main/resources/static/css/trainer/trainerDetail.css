@@ -145,6 +145,139 @@ th.left, td.left {
   flex: 1;
 }
 
+=======
+}
+
+/* 메인 컨테이너 */
+.main {
+	min-height: 200vh;
+	min-width: 100vw;
+	margin-top: 3%;
+	padding: 0 5%;
+	margin-bottom: 15%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 3%;
+
+}
+
+.main-box {
+	width: 90%;
+	margin: 0 auto;
+	padding: 2% 5%;
+	margin-bottom: 15%;
+
+}
+
+/* 메인 타이틀 */
+.main-title {
+		font-size: 32px;
+		text-align: center;
+		margin-top: 4%;
+		color: #2d2d2d;
+	}
+
+
+/* 트레이너 이미지 */
+.profile-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.previewMain {
+  width: 100%;
+  max-width: 100vw; /* 고정된 크기 설정 */
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}
+
+/* 작은 서브 프로필 이미지 */
+.subProfile-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 5%; /* 이미지 간격 */
+  flex: 1;
+	align-items: center;
+  margin-top: 3%;
+}
+
+.previewSub {
+  width: 400px; /* 가로로 더 길게 설정 */
+  height: 250px; /* 높이를 줄여서 가로형 비율로 변경 */
+  object-fit: cover; /* 이미지가 비율을 유지하며 고정 크기에 맞도록 조정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}
+
+/* 강사 이름 */
+.name {
+  text-align: left;
+  font-size: 22px;
+  margin-bottom: 20px;
+	color: #2d2d2d;
+	margin-top: 3%;
+}
+
+/* 영상 보러가기 버튼 */
+.watch {
+  background-color: #bfbfbf;
+  color: #2d2d2d;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
+  float: right;
+	margin-top: 3%;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+.watch:hover {
+  background-color: #2d2d2d;
+	color: #bfbfbf;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 1000vw;
+  table-layout: fixed; /* 고정된 테이블 레이아웃 */
+	margin-top: 3%;
+	margin-bottom: 5%;
+}
+
+/* 테이블 본문 하단에 구분선 추가 */
+tbody tr {
+  border-bottom: 1px solid #bfbfbf; /* 각 행 사이 구분선 */
+}
+
+/* 행 배경색을 번갈아 설정 */
+tbody tr:nth-child(odd) {
+  background-color: #bfbfbf;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+/* 열 간격 및 패딩 */
+th, td {
+  padding: 6px 8px;
+  white-space: nowrap;
+}
+
+/* Flexbox로 각 열 정렬 */
+thead tr, tbody tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+th.left, td.left {
+  text-align: left;
+  flex: 1;
+}
+
 th.right, td.right {
   text-align: right;
   flex: 1;

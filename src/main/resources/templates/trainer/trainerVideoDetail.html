@@ -5,13 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>강사 영상 조회</title>
+  <link rel="stylesheet" href="/css/trainer/trainerVideoDetail.css">
 </head>
 
 <body>
+  <block th:replace="~{common/common}"></block>
     <div class="main">
       <!-- 실시간 클래스 섹션 -->
       <section class="main-box">
-        <div class="main-title" th:text="|${trainerNickname} Trainer Class|">강사 클래스</div>
+        <div class="main-title" th:text="|*{trainerNickname} Trainer Class|">강사 클래스</div>
           <div class="sort-dropdown">
             <select id="sortSelect">
               <option value="latest">최신순</option>
@@ -19,16 +21,17 @@
               <option value="views">조회순</option>
             </select>
           </div>
-        </div>
         <hr class="section-divider">
         <div class="class-grid" id="classContainer">
           <a class="class-item" th:each="board, status : ${trainerClassList}" th:object="${board}"
             th:href="@{/board/{trainerNo}/{boardNo}(trainerNo=*{trainerNo}, boardNo=*{boardNo})}">
             <img th:if="*{thumbnail}" th:src="*{thumbnail}" alt="클래스 이미지">
             <img th:unless="*{thumbnail}" th:src="|/images/teacher${status.index + 1}.jpg|" alt="클래스 이미지">
-            <p th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>
+            <p class="class-title" th:text="*{title} + ' | ' + *{boardTypeName}">제목</p>
           </a>
         </div>
+        </section>
+
     <!-- 페이지 -->
     <div class="pagination" th:object="${pagination}">
 
@@ -55,8 +58,9 @@
       <!-- 끝 페이지로 이동 -->
       <a href="#">&gt;&gt;</a>
     </div>
-  </section>
   </div>
+
+  <div th:replace="common/footer :: footer"></div>
   <script th:inline="javascript">
     const pagination = /*[[${pagination}]]*/ "페이지네이션객체";
   </script>
