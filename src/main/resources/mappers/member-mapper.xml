@@ -19,16 +19,24 @@
 		AND   MEMBER_DEL_FL = 'N'
 	</select>
 	
-	<!-- 로그아웃 -->
-	<insert id="signUp">
+	<insert id="signUp" 
+		useGeneratedKeys="true">
+
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="memberNo">
+			SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO "MEMBER"
 		VALUES(
-		SEQ_MEMBER_NO.NEXTVAL, 
+		#{memberNo}, 
 		#{memberEmail}, 
 		#{memberPw},
 	 	#{memberName}, 
 	 	#{memberTel}, 
-	 	#{memberBirthday}, DEFAULT)
+	 	#{memberBirthday},
+	 	 DEFAULT,
+	 	 DEFAULT,
+	 	 DEFAULT)
 	</insert>
 	
 		<!-- 이메일 중복검사  -->

@@ -24,18 +24,34 @@
 	
 	
 		<!-- (강사) 회원가입 -->
-	<insert id="signUp">
+	<insert id="signUp" 
+		useGeneratedKeys="true">
+
+		<selectKey order="BEFORE" resultType="_int"
+			keyProperty="trainerNo">
+			SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO "TRAINER"
 		VALUES(
-		SEQ_TRAINER_NO.NEXTVAL, 
+		#{trainerNo}, 
 		#{trainerEmail}, 
 		#{trainerPw},
 	 	#{trainerNickname}, 
 	 	#{trainerTel}, 
-	 	NULL,
-	 	#{qualification}, <!-- 자격증 번호 or 사진 -->
+		DEFAULT,
+	 	DEFAULT,
+	 	DEFAULT,
 	 	DEFAULT)
 	</insert>
+	
+			<!-- 이메일 중복검사  -->
+	<select id="emailCheck"
+			resultType="_int">
+		SELECT COUNT(*)
+		FROM "TRAINER"
+		WHERE TRAINER_EMAIL = #{email}
+		AND TRAINNER_DEL_FL = 'N'
+	</select>
 	
 	<!-- (강사) 로그인 서비스 -->
 	<select id="trainerLogin"
