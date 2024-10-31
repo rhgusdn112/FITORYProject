@@ -72,5 +72,10 @@ int emailCheck(String email);
 // 회원 탈퇴
 int statusChange(int trainerNo);
 
+// 비밀번호 찾기
+String findPw(String email);
+
+int updatePw(String password);
+
 
 }

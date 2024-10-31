@@ -222,6 +222,19 @@
  	SET TRAINNER_DEL_FL = 'Y'
  	WHERE TRAINER_NO = #{trainerNo}
  </update>
+ 
+ 
+ <select id="findId">
+ 	SELECT
+ 		TRAINER_PW
+ 	FROM TRAINER
+ 	WHERE TRAINER_EMAIL = #{email}
+ </select>
         
+  	<update id="updatePw">
+		UPDATE "TRAINER"
+		SET TRAINER = #{password}
+		WHERE TRAINER_EMAIL = #{email} 
+	</update>
 </mapper>
 

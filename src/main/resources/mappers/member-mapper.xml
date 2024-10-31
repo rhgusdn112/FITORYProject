@@ -146,5 +146,18 @@
  	SET MEMBER_DEL_FL = 'Y'
  	WHERE MEMBER_NO = #{memberNo}
  </update>
+ 
+ 
+  <select id="findId">
+ 	SELECT
+ 		MEMBER_PW
+ 	FROM "MEMBER"
+ 	WHERE MEMBER_EMAIL = #{email}
+ </select>
 
+	<update id="updatePw">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = #{password}
+		WHERE MEMBER_EMAIL = #{email} 
+	</update>
 </mapper>

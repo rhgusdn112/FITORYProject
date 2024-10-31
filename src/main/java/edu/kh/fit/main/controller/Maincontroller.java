@@ -67,6 +67,11 @@ public class Maincontroller {
 	public String admin() {
 		return "admin/admin";
 	}
+	
+	@GetMapping("afterFindPw")
+	public String afterFindPw() {
+		return "login/afterFindPw";
+	}
 
 
 	/**

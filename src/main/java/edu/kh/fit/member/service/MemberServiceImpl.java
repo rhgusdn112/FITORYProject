@@ -128,4 +128,15 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.statusChange(memberNo);
 	}
 
+	// 비밀번호 찾기
+	@Override
+	public String findPw(String email) {
+		return mapper.findPw(email);
+	}
+	
+	// 비밀번호 변경
+	@Override
+	public int updatePw(String password) {
+		return mapper.updatePw(password);
+	}
 }

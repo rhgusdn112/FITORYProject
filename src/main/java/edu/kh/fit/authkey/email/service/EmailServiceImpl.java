@@ -35,7 +35,6 @@ public class EmailServiceImpl implements EmailService {
 	// Java에서 타임리프를 사용할 수 있게하는 객체(Bean)
 	// html코드를 Java로 읽어올 수 있음
 	
-
 	// 이메일 발송
 	@Override
 	public int sendEmail(String htmlName, String email) {
@@ -102,6 +101,70 @@ public class EmailServiceImpl implements EmailService {
 		return 1; // 예외 발생 X == 성공 == 1 반환
 	}
 	
+	/** 비밀번호 이메일 발송
+	 */
+	@Override
+	public int se1ndEmail(String htmlName, String email, String password) {
+		try {
+				
+				String emailTitle = null; // 발송되는 이메일 제목
+				String authKey    = null;  
+				
+				// 이메일 발송 시 사용할 html 파일의 이름에 따라
+				// 이메일 제목, 내용을 다르게 설정
+				switch(htmlName) {
+					case "sendPw" :
+						emailTitle = "[FITORY] 비밀번호 찾기 서비스";
+						authKey    = password;
+						break;
+				}
+				
+				/*---- 메일 발송 ----*/
+	
+				// MimeMessage : 메일 발송 객체
+				MimeMessage mimeMessage = mailSender.createMimeMessage();
+				
+				// MimeMessageHelper :
+				//  Spring에서 제공하는 메일 발송 도우미
+				
+				// 매개변수 1 : MimeMessage
+				// 매개변수 2 : 이메일에 파일 첨부 여부(true : 첨부 O / false : 첨부 X)
+				// 매개변수 3 : 발송되는 이메일의 문자 인코딩 지정
+				MimeMessageHelper helper 
+					= new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				
+				
+				helper.setTo(email); // 받는 사람 이메일 세팅
+				helper.setSubject(emailTitle); // 이메일 제목 세팅
+				
+				helper.setText(loadHtml(authKey, htmlName),true); // 이메일 내용
+				// 매개변수 1 : 이메일 내용
+				// 매개변수 2 : HTML 코드 해석 여부 지정(true == 해석 O)
+				
+				// 지정된 HTML 파일에 authKey가 첨부된 후 
+				// HTML 코드 전체가 하나의 String으로 변화되서 반환 받은 후
+				// 변환된 String을 메일 내용으로 세팅
+				
+				
+				// CID(Content-ID)를 이용해 메일에 이미지 첨부
+				helper.addInline("logo", 
+						new ClassPathResource("static/images/logo.jpg"));
+				
+				// 메일 발송하기
+				mailSender.send(mimeMessage);
+				
+				// Redis에 이메일, 인증번호 저장(5분 후 만료)
+				redisUtil.setValue(email, authKey, 60*5);
+				
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+				return 0; // 예외 발생 == 실패 == 0 반환
+			}
+			
+			return 1; // 예외 발생 X == 성공 == 1 반환
+	}
+	
   /** 인증번호 생성 (영어 대문자 + 소문자 + 숫자 6자리)
    * @return authKey
    */
@@ -161,6 +224,12 @@ public class EmailServiceImpl implements EmailService {
 		// 2) Redis에 같은 key가 있으면 value를 얻어와
 		// 		입력받은 인증번호와 비교
 		return redisUtil.getValue(email).equals(authKey);
+	}
+
+	@Override
+	public int sendEmail(String string, String email, String password) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
   
 	

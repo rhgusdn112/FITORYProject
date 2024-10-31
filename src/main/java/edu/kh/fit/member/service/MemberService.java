@@ -60,5 +60,14 @@ public interface MemberService {
    */
 	int statusChange(int memberNo);
 
+	/** 비밀번호 찾기
+	 * @param email
+	 * @return
+	 */
+	String findPw(String email);
+
+	// 비밀번호 변경
+	int updatePw(String password);
+
 
 }

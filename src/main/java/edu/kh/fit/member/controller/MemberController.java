@@ -25,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Query;
+import edu.kh.fit.authkey.email.service.EmailService;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.member.dto.Member;
@@ -49,6 +50,9 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	public EmailService emailService;
 
 
 	/** (회원) 로그인 서비스
@@ -302,6 +306,40 @@ public class MemberController {
 		return "redirect:" + path;
 	}
 
+	@PostMapping("findPw")
+	public int findPw(@RequestBody String email) {
+		
+		String password = service.findPw(email);
+		
+		int result = 0;
+		if(password != null) {
+			result = emailService.sendEmail("sendPw", email, password);
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("afterFindPW")
+	public String afterFindPW(
+			@RequestBody String password,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.updatePw(password);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "비밀번호 변경완료";
+			path = "/main";
+		}else {
+			message = "비밀번호 변경을 실패하였습니다.";
+			path = "findPw";
+		}
+		
+		return "redirect:" + path;
+	}
 
 }
 

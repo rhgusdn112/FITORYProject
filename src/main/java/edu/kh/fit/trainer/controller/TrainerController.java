@@ -3,12 +3,14 @@ package edu.kh.fit.trainer.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fit.authkey.email.service.EmailService;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
@@ -36,6 +39,8 @@ import lombok.RequiredArgsConstructor;
 public class TrainerController {
 	
 	private final TrainerService service;
+	
+	public final EmailService emailService;
 	
 	/** (강사)로그인 서비스
 	 * @param trainerEmail
@@ -335,6 +340,27 @@ public class TrainerController {
 		
 		return "redirect:/main";
 	}
-
-
+	
+	@GetMapping("findPw")
+	public String findPassword() {
+		return "trainer/findPw";
+	}
+	
+	@PostMapping("findPw")
+	public int findPw(@RequestBody String email) {
+		
+		String password = service.findPw(email);
+		
+		int result = 0;
+		if(password != null) {
+			result = emailService.sendEmail("sendPw", email, password);
+		}
+		
+		return result;
+	}
+	
+	@GetMapping("afterFindPw")
+	public String afterFindPw() {
+		return "trainer/afterFindPw";
+	}
 }

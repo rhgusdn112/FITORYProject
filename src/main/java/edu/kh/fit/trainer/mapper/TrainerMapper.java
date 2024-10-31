@@ -125,6 +125,14 @@ public interface TrainerMapper {
 	 */
 	int statusChange(int trainerNo);
 
+/** 비밀번호 찾기
+ * @param email 
+ * @return
+ */
+	String findPw(String email);
+
+int updatePw(String password);
+
 
 
 

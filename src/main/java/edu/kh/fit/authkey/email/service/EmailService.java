@@ -19,6 +19,22 @@ public interface EmailService {
 	boolean checkAuthKey(Map<String, String> map);
 
 
+	/** 비밀번호 전송
+	 * @param string
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	int se1ndEmail(String htmlName, String email, String password);
+
+
+	int sendEmail(String string, String email, String password);
+
+
+
+
+
+
 
 	
 	
