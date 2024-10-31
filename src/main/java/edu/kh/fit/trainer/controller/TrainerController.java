@@ -241,6 +241,8 @@ public class TrainerController {
 
 				trainerLogin.setTrainerImgMain(renameList.get(0));
 				trainerLogin.setTrainerImgMainSub(renameList.get(1));
+				trainerLogin.setTrainerImgSub(renameList.get(2));
+				trainerLogin.setTrainerImgSubSub(renameList.get(3));
 			}
 		} else
 			message = "수정에 실패하였습니다.";
@@ -360,5 +362,27 @@ public class TrainerController {
 	@GetMapping("afterFindPw")
 	public String afterFindPw() {
 		return "trainer/afterFindPw";
+	}
+	
+	@PostMapping("afterFindPW")
+	public String afterFindPW(
+			@RequestBody String password,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.updatePw(password);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "비밀번호 변경완료";
+			path = "/main";
+		}else {
+			message = "비밀번호 변경을 실패하였습니다.";
+			path = "findPw";
+		}
+		
+		return "redirect:" + path;
 	}
 }

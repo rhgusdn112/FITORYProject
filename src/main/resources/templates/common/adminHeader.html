@@ -28,10 +28,15 @@
       <a href="/admin/myPage" class="side-page">My Page</a>
     </div>
     <div class="side-item">
-      <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
+
+      <th:block th:if="${session.adminLogin.authrity != '2'}">
+        <a href="/admin/member" class="side-1">회원 관리 및 조회</a>
+      </th:block>
     </div>
     <div class="side-item">
+      <th:block th:if="${session.adminLogin.authrity != '1'}">
       <a href="/admin/trainer" class="side-2">강사 관리 및 조회</a>
+    </th:block>
     </div>
     <div class="side-item">
       <a href="/admin/trainer" class="side-3">대시보드</a>
