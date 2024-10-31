@@ -4,22 +4,35 @@
 
 .category {
   margin-bottom: 20px;
+  margin-top: 10%;
 }
 
 .video-list a {
   display: block;
   font-size: 18px;
-  color: #333;
-  text-decoration: none;
+  color: black;
+  text-decoration: black;
   margin: 5px 0;
 }
 
 .video-list a:hover {
   text-decoration: underline;
+  color: brown;
 }
 
 .video-list p {
   font-size: 14px;
-  color: #666;
+  color: black;
   margin: 2px 0;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.search-results {
+  flex-grow: 1; /* 중간 컨텐츠가 가득 차도록 함 */
+  margin-top:3%;
+}
+
