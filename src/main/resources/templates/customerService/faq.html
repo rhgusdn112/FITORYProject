@@ -5,36 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자주 묻는 질문</title>
-    <link rel="stylesheet" href="/css/customer/faq.css">
+    <link rel="stylesheet" href="/css/customerService/faq.css">
 
     <block th:replace="~{common/common}"></block>
-    <style>
-        .supporting-text {
-            display: none;
-            transition: max-height 0.3s ease-out;
-            overflow: hidden;
-        }
-
-        .faq-toggle {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .arrow-icon {
-            margin-right: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .arrow-icon.open {
-            transform: rotate(90deg);
-        }
-
-        .text-wrapper {
-            margin-top: 10%;
-        }
-    </style>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const toggles = document.querySelectorAll(".faq-toggle");
