@@ -16,33 +16,33 @@
   <!-- 메인 콘텐츠 영역 -->
   <main class="main-content" th:object="${board}">
     <br><br>
-    <button class="inquiry-btn" data-type="board" th:data-board-no="${board.boardNo}">
-      <span th:text="${userType}"></span> <!-- userType이 제대로 출력되는지 확인 -->
+    <button class="inquiry-btn" data-type="board" th:data-board-no="${board?.boardNo}">
+    <span th:text="${userType}"></span> <!-- userType이 제대로 출력되는지 확인 -->
     </button>
 
     <div class="wrapper">
       <div class="post-container">
         <!-- 비디오 플레이어 삽입 -->
-        <div id="video-player" th:data-user-type="${userType}" th:data-class-no="*{classNo}"
-          th:data-board-no="*{boardNo}"></div>
+        <div id="video-player" th:data-user-type="${userType ?: 'guest'}" th:data-class-no="*{classNo ?: 0}"
+          th:data-board-no="*{boardNo ?: 0}"></div>
 
         <div class="post-header">
-          <h1 class="post-title" th:text="*{title}">게시글 제목</h1>
+          <h1 class="post-title" th:text="*{title ?: '제목 없음'}">게시글 제목</h1>
           <h3 class="post-board-name" th:text="*{classNo == 1 ? 'Home Training' : 'Home Gym'}">게시판 이름</h3>
-          <h3 class="post-trainer-name" th:text="*{trainerNickname}">강사 이름</h3>
-          <h3 class="post-rating" th:text="*{grade}">별점 정보 없음</h3>
+          <h3 class="post-trainer-name" th:text="*{trainerNickname ?: '강사 없음'}">강사 이름</h3>
+          <h3 class="post-rating" th:text="*{grade ?: '별점 정보 없음'}">별점 정보 없음</h3>
 
           <!-- 게시글 신고 버튼 (회원 전용) -->
-          <div th:if="${userType != null and (userType == 'paidMember' or userType == 'unpaidMember')}">
-            <button class="report-btn" data-type="board" th:data-board-no="${board != null ? board.boardNo : 0}">
+          <div th:if="${userType == 'paidMember' or userType == 'unpaidMember'}">
+            <button class="report-btn" data-type="board" th:data-board-no="${board?.boardNo}">
               <i class="fa-solid fa-land-mine-on"></i> 강의 신고
             </button>
           </div>
+
         </div>
 
         <!-- 수정 및 삭제 버튼 (강사 로그인 상태이면서 작성자일 때만 표시) -->
-        <div
-          th:if="${userType != null and userType == 'trainer' and user != null and board != null and board.trainerNickname == user.trainerNickname}"
+        <div th:if="${userType == 'trainer' and user != null and board?.trainerNickname == user?.trainerNickname}"
           class="edit-buttons">
           <div>
             <button class="edit-btn">수정</button>
@@ -89,7 +89,7 @@
         <label>문의자 종류:</label>
         <input type="text" id="inquiry-user-type" readonly>
 
-        <!-- 피신고자 유형 (게시글/리뷰) -->
+        <!-- 문의 대상 -->
         <label>문의 대상:</label>
         <input type="text" id="inquiry-target" readonly>
 
@@ -119,10 +119,10 @@
     </div>
 
     <!-- 유튜브 영상 삽입 (주석처리) -->
-    <!-- <div id="youtube-player" th:data-detail="${board.detail}"></div> -->
+    <!-- <div id="youtube-player" th:data-detail="${board?.detail}"></div> -->
 
     <!-- boardNo 값을 숨겨진 input으로 추가 -->
-    <input type="hidden" id="boardNo" th:value="*{boardNo}">
+    <input type="hidden" id="boardNo" th:value="*{boardNo ?: 0}">
   </main>
 
   <!-- 댓글 섹션 삽입 -->
@@ -135,7 +135,6 @@
     window.board = /*[[${board != null ? board : '{}'}]]*/ {};
     window.userType = /*[['${userType != null ? userType : ""}']]*/ '';
   </script>
-
 
   <!-- JavaScript 파일 연결 -->
   <script src="/js/board/boardDetail.js"></script>
