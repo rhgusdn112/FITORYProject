@@ -18,7 +18,6 @@
 <body>
   <th:block th:replace="~{common/common}"></th:block>
 
-
     <form action="/member/memberClassList" method="GET" enctype="multipart/form-data" name="myPageClassList" id="myPageList" class="main">
       <div class="main-class">강의 목록</div>
       <div class="container">
@@ -28,22 +27,20 @@
           <tbody>
             <!-- 게시글 리스트를 반복하여 출력 -->
             <tr id="class" th:each="order : ${orderList}" th:object="${order}">
-              <!-- <a th:href="@{/board/{trainerNo}/{boardNo}(trainerNo=${member.orderNo}, boardNo=${boardNo}, cp=1, sort='latest')}"> -->
               <th>
+                <a th:href="@{/board/{boardTypeNo}/{orderClassNo}(boardTypeNo=*{boardTypeNo},orderClassNo=*{orderClassNo})}">
                 <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
+              </a>
               </th>
-            <!-- </a> -->
               <td>
                 <div th:text="|Title : *{title}|">제목 :</div>
                 <div th:text="|설명 : *{detail}|">설명 :</div>
                 <div th:text="|강사 : *{trainerNickname}|">강사 :</div>
                 <div th:text="|카테고리 : *{boardTypeName}|">카테고리:</div>
               </td>
-              <th><input type="checkbox" class="checkbox" id="checkbox"></th>
             </tr>
           </tbody>
         </table>
-        <button class="delete" id="deleteBtn" onclick="openModal()">선택한 강의 삭제</button>
 
         <!-- 페이지 -->
         <div class="pagination" th:object="${pagination}">
@@ -77,9 +74,9 @@
     </form>
 <div id="deleteModal" class="modal">
   <div class="modal-content">
-    <p>정말로 선택한 강의를 삭제하시겠습니까?</p>
+    <p></p>
     <div class="button-container">
-    <button class="confirm-btn" onclick="confirmDeletion()">확인</button>
+    <button class="confirm-btn">확인</button>
     <button class="cancel-btn" onclick="closeModal()">취소</button>
   </div>
   </div>

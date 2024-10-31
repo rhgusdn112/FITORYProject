@@ -54,5 +54,4 @@ public interface MemberService {
    */
   Map<String, Object> memberMyActivities(int memberNo, int cp);
 
-
 }

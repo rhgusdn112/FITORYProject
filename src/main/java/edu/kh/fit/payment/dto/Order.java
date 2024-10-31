@@ -28,4 +28,6 @@ public class Order {
 	private String paymentDate; // 결제일
 	private String customerName;
 	
+	private int boardTypeNo; // 게시판 번호
+	
 }

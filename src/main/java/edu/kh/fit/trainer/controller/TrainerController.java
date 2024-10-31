@@ -232,6 +232,7 @@ public class TrainerController {
           Model model) {
       return "/classList/classList";
   }	
+  
   /** 강사 강의 목록 조회
    * @param trainerLogin
    * @param cp
@@ -274,8 +275,6 @@ public class TrainerController {
       @RequestParam("cp") int cp, 
       @RequestParam("sort") String sort, Model model) {
 		
-		
-//     return ResponseEntity.ok(service.selectClassList(trainerNo, cp, sort));
 		
 		Map<String, Object> map = service.selectClassList(trainerNo, cp, sort);
 		

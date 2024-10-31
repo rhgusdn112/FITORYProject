@@ -88,11 +88,12 @@
 	
 	<!-- 강사 자격사항 상세조회 페이지  -->
     <select id="qualificationList" resultType="_int">
-    	SELECT COUNT(*)
+    	SELECT *
 		FROM QUALIFICATION
 		WHERE TRAINER_NO = #{trainerNo}
 		ORDER BY QUALIFICATION_DATE DESC
     </select>
+
     
     <!-- 강사 자격사항 삭제 -->
     <delete id="deleteQulification">
@@ -134,8 +135,7 @@
 			         DETAIL,
 			         TRAINER_NICKNAME,
 			         BOARD_TYPE_NAME,
-			         CLASS_NO,
-			         THUMBNAIL
+			         CLASS_NO
         FROM "BOARD"
         JOIN TRAINER ON (BOARD.TRAINER_NO = TRAINER.TRAINER_NO)
         JOIN BOARD_TYPE ON (BOARD.CLASS_NO = BOARD_TYPE.BOARD_TYPE_NO)
@@ -145,15 +145,19 @@
     
     <!-- 강사 상세조회 -->
     <select id="detailTrainer" resultType="Trainer">
-    	SELECT TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_SUB_SUB,
-    	TRAINER_NICKNAME, QUALIFICATION_NO
+    	SELECT TRAINER_NO, TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_SUB, TRAINER_IMG_SUB_SUB, TRAINER_NICKNAME
 		FROM TRAINER_IMG
-		JOIN QUALIFICATION USING(TRAINER_NO)
+		JOIN TRAINER USING(TRAINER_NO)
 		WHERE TRAINER_NO = #{trainerNo}
-	</select>    
+	</select>
 	
 	
-
+	<!-- 자격 사항 개수 조회 -->
+	<select id="qualiCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QUALIFICATION
+		WHERE TRAINER_NO = #{trainerNo}
+	</select>
 	
 	<!-- 강사 자격사항 조회 -->
 	 <select id="qualiList">
@@ -164,8 +168,7 @@
     </select>
 
 	<!-- 강사 자격사항 페이지네이션 -->
-	<select id="classListCount"
-					resultType="_int">
+	<select id="classListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM "BOARD"
 		WHERE TRAINER_NO = #{trainerNo}
@@ -191,7 +194,6 @@
 			</when>
 		</choose>
 	</select>
-
     
     <!-- 강사 영상 조회(페이지 네이션) -->
     <select id="pageList">
@@ -199,5 +201,5 @@
 		WHERE BOARD_NO = #{boardNo}
 		AND TRAINER_NO = #{trainerNo}
     </select>
-        
+    
 </mapper>
