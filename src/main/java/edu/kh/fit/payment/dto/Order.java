@@ -21,10 +21,11 @@ public class Order {
 	private int orderMemberNo; // 주문자 번호
 	private int orderClassNo; // 강의 번호
 	
-	private String title;
+	private String classTitle;
 	private String detail;
 	private String trainerNickname;
 	private String boardTypeName;
 	private String paymentDate; // 결제일
+	private String customerName;
 	
 }
