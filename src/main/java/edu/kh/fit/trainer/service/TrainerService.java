@@ -49,24 +49,28 @@ public interface TrainerService {
 	 */
 	Map<String, Object> detailTrainer(int trainerNo, int cp);
 
-	/** 강사 상세 정보 조회 후 해당 강사 영상목록 조회
-	 * @param trainerNo
-	 * @param cp
-	 * @return
-	 */
-	Map<String, Object> selectClassList(int trainerNo, int cp, String sort);
+/** 강사 상세 정보 조회 후 해당 강사 영상목록 조회
+ * @param trainerNo
+ * @param cp
+ * @return
+ */
+Map<String, Object> selectClassList(int trainerNo, int cp, String sort);
 
-	/** 강사 강의 목록 조회
-	 * @param trainerNo
-	 * @param cp
-	 * @return
-	 */
-	Map<String, Object> trainerClassList(int trainerNo, int cp);
+/** 강사 강의 목록 조회
+ * @param trainerNo
+ * @param cp
+ * @return
+ */
+Map<String, Object> trainerClassList(int trainerNo, int cp);
 
-	/** 이메일 중복체크
-	 * @param email
-	 * @return
-	 */
-	int emailCheck(String email);
+/** 이메일 중복체크
+ * @param email
+ * @return
+ */
+int emailCheck(String email);
+
+// 회원 탈퇴
+int statusChange(int trainerNo);
+
 
 }

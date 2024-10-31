@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
 import edu.kh.fit.board.dto.Pagination;
+import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.trainer.dto.Qualification;
 import edu.kh.fit.trainer.dto.Trainer;
 import edu.kh.fit.trainer.service.TrainerService;
@@ -99,11 +100,15 @@ public class TrainerController {
 
 	
 	
-	
+	/** 회원가입 html 분리로 인한 매핑(삭제 금지!)
+	 * @return
+	 */
 	@GetMapping("signUp")
 	public String signUp() {
 		return "/trainer/signUp";
 	}
+	
+	
 	
 	/** 회원가입
 	 * @param inputMember
@@ -311,4 +316,25 @@ public class TrainerController {
 		return "trainer/trainerVideoDetail";
 	}
 	
+	@GetMapping("statusChange")
+	public String statusChange() {
+		return "trainer/statusChange";
+	}
+	
+	/** 회원 탈퇴
+	 * @param memberLogin
+	 * @return
+	 */
+	@PostMapping("statusChange")
+	public String statusChange(
+			@SessionAttribute("trainerLogin") Trainer trainerLogin) {
+		
+		int trainerNo = trainerLogin.getTrainerNo();
+		
+		int result = service.statusChange(trainerNo); 
+		
+		return "redirect:/main";
+	}
+
+
 }

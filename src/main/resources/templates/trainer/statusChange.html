@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <link rel="stylesheet" href="/css/member/statusChange.css">
+  <link rel="stylesheet" href="/css/common/header.css" />
+  <style>
+    @font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+  </style>
+</head>
+<body>
+  <th:block th:replace="~{common/common}"></th:block>
+  
+  <form action="/trainer/statusChange" method="POST" enctype="multipart/form-data" name="myPageUpdate" id="myPageInfo" class="main">
+      <div class="main-my-page">회원 탈퇴</div>
+        <div class="main-box" id="statusChange">
+          <div class="email">
+            <h2>회원 탈퇴 약관</h2>
+          </div>
+          <div class="provision">
+            <span>[FITORY 회원탈퇴 약관]</span>
+            <span>그동안 저희 사이트를 이용해주셔서 감사합니다.</span>
+            <span>[약관 1]</span>
+            <span>[약관 2]</span>
+            <span>[약관 3]</span>
+            
+          </div>
+
+          <div class="check-container">
+
+            <div>
+              <input type="checkbox"> 
+              <span>위 내용에 동의 합니다.</span>
+            </div>
+           
+            
+            <button class="statusChange" id="statusChange"> 탈퇴하기 </button>
+          </div>
+        </div>
+    </form>
+
+  <!-- 푸터 -->
+  <th:block th:replace="~{common/footer::footer}"></th:block>
+  <script src="/js/myPage/memberMyPage.js"></script>
+  </body>
+</html>

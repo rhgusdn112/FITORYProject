@@ -119,6 +119,12 @@ public interface TrainerMapper {
 	 */
 	int emailCheck(String email);
 
+	/** 회원 탈퇴
+	 * @param trainerNo
+	 * @return
+	 */
+	int statusChange(int trainerNo);
+
 
 
 

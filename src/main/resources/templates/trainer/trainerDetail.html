@@ -32,7 +32,7 @@
         <a class="watch" id="watch" th:href="@{/trainer/trainerVideoDetail/{trainerNo}(trainerNo=${trainer.trainerNo}, cp=1, sort='latest')}">강사 영상 보러가기</a>
       <div class="name" th:text="|강사 이름 : ${trainer.trainerNickname}|">강사 이름</div>
 
-      <div class="main-in">자격사항</div>
+
       <table class="table">
         <thead>
           <tr>
@@ -51,7 +51,6 @@
           </tr>
         </tbody>
       </table>
-    
       <!-- 페이지 -->
       <div class="pagination" th:object="${pagination}">
     

@@ -214,7 +214,14 @@
     <!-- 강사 영상 조회(페이지 네이션) -->
     <select id="pageList">
     	SELECT COUNT(*) FROM BOARD
-		WHERE BOARD_NO = #{boardNo}
-		AND TRAINER_NO = #{trainerNo}
+		WHERE  TRAINER_NO = #{trainerNo}
     </select>
+
+ <update id="statusChange">
+ 	UPDATE "TRAINER"
+ 	SET TRAINNER_DEL_FL = 'Y'
+ 	WHERE TRAINER_NO = #{trainerNo}
+ </update>
+        
 </mapper>
+

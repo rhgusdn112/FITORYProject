@@ -12,6 +12,12 @@
   box-sizing: border-box;
 }
 
+/* 기본 여백 설정 */
+body {
+    padding-top: 10%; /* 헤더의 높이만큼 여백 추가 */
+    box-sizing: border-box;
+}
+
 input::placeholder {
   text-align: left;
   font-size: 15px;
@@ -160,6 +166,8 @@ input::placeholder {
 }
 
 @media (max-width: 768px) {
+  body {
+    margin-top: 100%; /* 모바일 화면에서 여백 더 추가 */
   .main {
     padding: 0 2%;
     margin-top: 10%;

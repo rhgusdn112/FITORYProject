@@ -85,7 +85,7 @@ public class PaymentController {
 	    
 	    return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
 	}
-
+	
 	// 결제 내역 정보
 	@GetMapping("/paymentDetail")
     public String getPaymentDetail(@RequestParam("paymentId") String paymentId, Model model) {

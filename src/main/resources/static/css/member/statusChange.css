@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+/* 공통 스타일 */
+* {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+form{
+  min-height: 100vh;
+  min-width: 50vw;
+  padding-left: 10%;
+  margin: auto;
+  margin-top: 10%;
+	margin-left: 10%;
+  justify-content: center;
+  padding-right: 3%;
+}
+
+/* 제목 스타일 */
+.main-my-page {
+  font-size: 32px;
+  text-shadow: 1px 1px #bfbfbf;
+  margin-bottom: 20px;
+  color: #292929;
+}
+
+.main-box{
+  border: 5px solid #bfbfbf;
+  margin: auto;
+  padding: 3%;
+  min-height: 50vh;
+  min-width: 50vw;
+}
+
+.provision{
+  border: 4px solid #0a0a0a;
+  padding: 10px;
+  width: 90%;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column
+}
+
+.check-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 탈퇴하기 버튼 */
+.statusChange {
+  background-color: #bfbfbf;
+  color: #292929;
+  padding: 5px 15px;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.statusChange:hover {
+  color: #bfbfbf;
+  background-color: #292929;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  .main-my-page {
+    font-size: 24px;
+  }
+
+  .statusChange {
+    font-size: 18px;
+  }
+
+  .main-box {
+    padding: 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-my-page {
+    font-size: 20px;
+  }
+
+  .statusChange {
+    font-size: 16px;
+  }
+
+
+  .main-box {
+    padding: 8%;
+    width: 90%;
+  }
+}
