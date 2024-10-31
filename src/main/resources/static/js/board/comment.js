@@ -118,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (validateReviewInput(reviewContent, selectedRating)) {
       const requestBody = {
         reviewContent: reviewContent,
-        number: selectedRating,
-        reviewDelFl: 'N'
+        number: selectedRating
       };
       console.log("Sending request to submit review:", requestBody); // 리뷰 등록 요청 로그
       fetchRequest("/comment", "POST", requestBody, "리뷰가 등록되었습니다.", "리뷰 등록에 실패했습니다.");

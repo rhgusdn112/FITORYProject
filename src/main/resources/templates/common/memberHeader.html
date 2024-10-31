@@ -41,7 +41,8 @@
   </header>
 
   <!-- 고정된 사이드바 영역 -->
-  <div id="side-bar" class="header-side-bar" th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
+  <div id="side-bar" class="header-side-bar"
+    th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
     <div class="side-item">
       <a href="/member/checkPw" class="side-page">My Page</a>
     </div>
@@ -73,53 +74,28 @@
     </div>
     <!-- 사이드 메뉴 항목 -->
     <nav>
-      <div th:if="${isLoggedIn} and (${currentPage} == 'memberMyPage' or ${currentPage} == 'cart')">
+      <div>
         <div class="header-nav-item-wrapper">
           <a href="/member/checkPw" class="header-nav-item">My Page</a>
         </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/trainer" class="header-nav-item">Trainer</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/homeTraining" class="header-nav-item">Home Training</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/homeGym" class="header-nav-item">Home Gym</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/cart" class="header-nav-item">1 : 1 문의</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/cart" class="header-nav-item">공지사항</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/customerservice" class="header-nav-item">고객센터</a>
-      </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/trainer" class="header-nav-item">Trainer</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/homeTraining" class="header-nav-item">Home Training</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/homeGym" class="header-nav-item">Home Gym</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/cart" class="header-nav-item">1 : 1 문의</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/cart" class="header-nav-item">공지사항</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/customerservice" class="header-nav-item">고객센터</a>
+        </div>
     </nav>
   </div>
-
-  <!-- 사이드 메뉴 항목 -->
-  <nav>
-    <div class="header-nav-item-wrapper">
-      <a href="/member/checkPw" class="header-nav-item">My Page</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/trainer" class="header-nav-item">Trainer</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/homeTraining" class="header-nav-item">Home Training</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/homeGym" class="header-nav-item">Home Gym</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/buy" class="header-nav-item">1 : 1 문의</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/cart" class="header-nav-item">공지사항</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-      <a href="/customerservice" class="header-nav-item">고객센터</a>
-    </div>
-  </nav>
 </div>

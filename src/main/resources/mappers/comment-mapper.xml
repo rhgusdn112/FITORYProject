@@ -5,8 +5,14 @@
     <insert id="insertComment"
         parameterType="Comment">
         INSERT INTO REVIEW (COMMENT_NO, REVIEW_CONTENT, REVIEW_WRITE_DATE,
-        REVIEW_DEL_FL, MEMBER_NO, BOARD_NO)
-        VALUES (REVIEW_SEQ.NEXTVAL, #{reviewContent}, DEFAULT, 'N', #{memberNo},
+        REVIEW_DEL_FL, "NUMBER", MEMBER_NO, BOARD_NO)
+        VALUES (
+        SEQ_COMMENT_NO.NEXTVAL, 
+        #{reviewContent}, 
+        DEFAULT, 
+        'N',
+        #{number},
+        #{memberNo},
         #{boardNo})
     </insert>
 
