@@ -231,12 +231,11 @@ public class TrainerServiceImpl implements TrainerService{
 
     return map;
 	}
-	
+
 	// 회원탈퇴
 	@Override
 	public int statusChange(int trainerNo) {
 		return mapper.statusChange(trainerNo);
 	}
-	
 
 }

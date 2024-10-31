@@ -1,12 +1,11 @@
 @font-face {
   font-family: 'MaruBuriSemiBold';
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"),url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
 
 *{
 	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #292929;
 }
 
 input::placeholder {
@@ -41,6 +40,7 @@ input::placeholder {
   padding: 3%;
   min-height: 100vh;
   min-width: 50vw;
+  margin-bottom: 15%;
 }
 
 /* 테이블 기본 스타일 */
@@ -99,7 +99,8 @@ th.right, td.right {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 20px; /* 위쪽 간격 */
+  margin-top: 5%; /* 위쪽 간격 */
+
 }
 
 .pagination a {
@@ -129,6 +130,11 @@ th.right, td.right {
 
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
+
+  .activities {
+    font-size: 24px; /* 중간 크기의 화면에서 제목 크기 축소 */
+  }
+
   table {
     width: 100%; /* 작은 화면에서 테이블이 화면 너비를 가득 채우도록 */
   }

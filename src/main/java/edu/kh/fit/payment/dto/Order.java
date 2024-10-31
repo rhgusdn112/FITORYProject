@@ -29,5 +29,6 @@ public class Order {
 	private String customerName;
 	
 	private int boardTypeNo; // 게시판 번호
+	private String	title; 							// 강의 제목
 	
 }
