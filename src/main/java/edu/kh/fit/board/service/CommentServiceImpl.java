@@ -21,7 +21,7 @@ public class CommentServiceImpl implements CommentService {
      */
     @Override
     public int commentInsert(Comment comment) {
-        return commentMapper.insertComment(comment);
+      return commentMapper.insertComment(comment);
     }
 
     /**
@@ -32,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
      */
     @Override
     public int commentUpdate(Comment comment) {
-        // 비즈니스 로직 추가: 댓글 작성자 본인이 맞는지 확인
+        // 비즈니스 로직 추가 : 리뷰 작성자 본인이 맞는지 확인
         int writerNo = commentMapper.selectWriterByCommentNo(comment.getCommentNo());
         if (writerNo != comment.getMemberNo()) {
             throw new IllegalStateException("댓글 작성자가 아니므로 수정할 수 없습니다.");
