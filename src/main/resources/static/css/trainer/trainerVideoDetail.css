@@ -1,0 +1,209 @@
+@font-face {
+	font-family: 'MaruBuriSemiBold';
+	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+
+/* 기본 스타일 적용 */
+* {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 기본 여백 설정 */
+body {
+    padding-top: 10%; /* 헤더의 높이만큼 여백 추가 */
+    box-sizing: border-box;
+}
+
+input::placeholder {
+  text-align: left;
+  font-size: 15px;
+}
+
+/* 메인 컨테이너 */
+.main {
+	min-height: 100vh;
+	min-width: 100vw;
+	margin-top: 3%;
+	padding: 0 5%;
+	margin-bottom: 15%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 3%;
+
+}
+
+.main-box {
+	width: 90%;
+	margin: 0 auto;
+	padding: 2% 3%;
+	margin-bottom: 15%;
+}
+
+/* 메인 타이틀 */
+.main-title {
+		font-size: 32px;
+		text-align: center;
+		margin-top: 5;
+		color: #2d2d2d;
+	}
+
+/* 정렬 드롭다운 */
+.sort-dropdown {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px; /* 구분선과 겹치지 않도록 아래쪽에만 간격 */
+}
+
+#sortSelect {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  outline: none;
+  color: #292929 
+}
+
+/* 구분선 */
+.section-divider {
+  width: 80%;
+  max-width: 1200%; /* 구분선도 중앙 정렬되도록 설정 */
+  border: 0;
+  border-top: 1px solid #bfbfbf;
+  margin: 0 auto 20px auto; /* 구분선을 위로 밀어 올리지 않고 아래쪽 간격을 맞춤 */
+}
+
+/* 클래스 그리드 */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열 */
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* 그리드를 페이지 가운데로 */
+  justify-content: center; /* 가로 중앙 정렬 */ 
+}
+
+/* 클래스 카드 스타일 */
+.class-item {
+  background-color: #fff;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #bfbfbf;
+  text-decoration: none;
+  color: inherit;
+}
+.class-item:hover {
+  transform: translateY(-5px);
+}
+
+.class-item img {
+  width: 100%;
+  height: 150px; /* 이미지 높이 고정 */
+  object-fit: cover;
+}
+
+.class-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #292929;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px; /* 위쪽 간격 */
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #bfbfbf;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #bfbfbf;
+  color: #292929;
+}
+
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+  .class-grid {
+    grid-template-columns: repeat(3, 1fr); /* 화면 크기 축소 시 3열 */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin-top: 100%; /* 모바일 화면에서 여백 더 추가 */
+  }
+  .main {
+    padding: 0 2%;
+    margin-top: 10%;
+  }
+  .sort-dropdown {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .section-divider {
+    width: 90%;
+  }
+  .class-grid {
+    grid-template-columns: repeat(2, 1fr); /* 태블릿 크기에서 2열 */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 24px;
+    margin-top: 5%;
+  }
+  #sortSelect {
+    font-size: 12px;
+  }
+  .section-divider {
+    width: 100%;
+  }
+  .class-grid {
+    grid-template-columns: 1fr; /* 모바일 크기에서 1열 */
+  }
+  .class-item img {
+    height: 120px; /* 모바일에서 이미지 높이 축소 */
+  }
+  .pagination a {
+    padding: 5px 6px;
+    font-size: 0.8rem;
+  }
+}
