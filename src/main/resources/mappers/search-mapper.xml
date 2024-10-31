@@ -6,6 +6,7 @@
         SELECT *
         FROM "BOARD"
         JOIN "BOARD_TYPE" ON CLASS_NO = BOARD_TYPE_NO
+        JOIN TRAINER USING (TRAINER_NO)
         WHERE  BOARD_TYPE_NAME = #{string}
         AND title LIKE '%' || #{keyword} || '%'
      </select>
