@@ -1,6 +1,7 @@
 package edu.kh.fit.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import edu.kh.fit.admin.dto.Query;
 import edu.kh.fit.admin.service.AdminService;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
@@ -61,6 +63,16 @@ public class AdminController {
   	return "admin/trainer";
   }
   
+	/* 마이페이지 이동 */
+	@GetMapping("adminMyPage")
+	public String myPage(Model model, @SessionAttribute("adminLogin") Admin adminLogin) {
+		model.addAttribute("currentPage", "adminMyPage");
+
+		model.addAttribute("isLoggedIn", true);
+		return "/myPage/adminMyPage";
+	}
+  
+  
   @GetMapping("myPage")
   public String myPage(
   		@SessionAttribute("adminLogin") Admin adminLogin,
@@ -71,9 +83,9 @@ public class AdminController {
   	String message = null;
   	
   	if(adminLogin != null) {
-  			path = "/admin/myPage";
+  			path = "admin/adminMyPage";
   	}else {
-  		path = "redirect:/admin/login";
+  		path = "redirect:login";
   		message = "로그인 후 이용해주세요";
   	}
   	
@@ -81,6 +93,29 @@ public class AdminController {
   	
   	return path;
   	
+  }
+  
+  
+  
+  @GetMapping("dashBoard")
+  public String dashBoard() {
+  	return "admin/adminDashBoard";
+  }
+  
+  // 대시보드 매출 가져오기
+  @ResponseBody
+  @GetMapping("classList")
+  public Map<String, Object> classList( 
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+  		) {
+  	return service.classList(cp);
+  }
+  @ResponseBody
+  @GetMapping("boardList")
+  public Map<String, Object> boardList(
+  		@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+  		){
+  	return service.boardList(cp);
   }
 	
 	

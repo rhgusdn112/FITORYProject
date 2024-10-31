@@ -278,13 +278,28 @@ public class MemberController {
 	 */
 	@PostMapping("statusChange")
 	public String statusChange(
-			@SessionAttribute("memberLogin") Member memberLogin) {
+			@SessionAttribute("memberLogin") Member memberLogin,
+			SessionStatus status,
+			RedirectAttributes ra) {
+		
+		String message = null;
+		String path = null;
 		
 		int memberNo = memberLogin.getMemberNo();
 		
-		int result = service.statusChange(memberNo); 
+		int result = service.statusChange(memberNo);
+		if(result > 0) {
+			message = "탈퇴 되었습니다.";
+			path    = "/main";
+			status.setComplete(); // 세션만료 -> 로그아웃			
+		}else {
+			message = "비밀번호가 일치하지 않습니다.";
+			path    = "statusChange";
+		}
 		
-		return "redirect:/main";
+		ra.addFlashAttribute("message", message);
+
+		return "redirect:" + path;
 	}
 
 
