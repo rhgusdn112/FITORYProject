@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자주 묻는 질문</title>
     <link rel="stylesheet" href="css/customer/faq.css">
+
+    <block th:replace="~{common/common}"></block>
     <style>
         .supporting-text {
             display: none;
@@ -18,12 +20,18 @@
         }
         .arrow-icon {
             margin-right: 8px;
+            margin-top: 10%;
             transition: transform 0.3s ease;
         }
         .arrow-icon.open {
             transform: rotate(90deg);
         }
+        .text-wrapper{
+            margin-top: 10%;
+        }
+
     </style>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const toggles = document.querySelectorAll(".faq-toggle");
@@ -44,6 +52,7 @@
     </script>
 </head>
 <body>
+    
     <header>
         <div class="div-wrapper">
             <div class="div">
@@ -77,5 +86,6 @@
     <footer>
         <p>&copy; 2024 회사명. 모든 권리 보유.</p>
     </footer>
+    <footer th:replace="~{common/footer :: footer}"></footer>
 </body>
 </html>
