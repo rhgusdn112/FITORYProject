@@ -4,138 +4,150 @@
 	src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
 
-*{
-	font-family: "MaruBuriSemiBold", Helvetica;
+/* 기본 스타일 적용 */
+* {
+  font-family: "MaruBuriSemiBold", Helvetica;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 input::placeholder {
-	text-align: left;
-	font-size: 15px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* 메인 컨테이너 */
+.main {
+	min-height: 100vh;
+	min-width: 100vw;
+	margin-top: 3%;
+	padding: 0 5%;
+	margin-bottom: 15%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 10%;
+}
+
+.main-box {
+	width: 90%;
+	margin: 0 auto;
+	padding: 2% 3%;
+	margin-bottom: 15%;
 }
 
 /* 메인 타이틀 */
 .main-title {
-	color: #2d2d2d;
 	font-size: 32px;
-	text-shadow: 10px #434343;
-	padding-top: 12%;
-	padding-bottom: 2%;
 	text-align: center;
-}
+	margin-top: 5;
+	color: #2d2d2d;
+	}
 
-.main {
-	min-height: 200vh;
-	min-width: 50vw;
-	margin-top: 3%;
-	justify-content: center;
-	/* border: 1px solid; */
-	padding: 0% 5% 0% 5%;
-	margin-bottom: 10%;
-}
-
-/* main 박스 */
-.main-box{
-	border: 5px solid;
-	color: #bfbfbf;
-	margin: auto;
-	padding-top: 2%;
-	min-height: 200vh;
-	padding: 3%;
-	min-width: 50vw;
-}
 
 /* 트레이너 이미지 */
-.profile-box{
-	color: #bfbfbf;
-	min-height: 30vh;
-	justify-content: center;
-	align-items: center; 
-	display: flex;
-}
-.previewMain{
-	color: #bfbfbf;
-	min-height: 30vh;
-	min-width: 83vw;
-	margin: auto;
-	justify-content: center;
-	align-items: center; 
-	display: flex;
-
+.profile-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.subProfile-box{
-	color: #bfbfbf;
-	min-height: 25vh;
-	justify-content: space-between;
-	align-items: center;
-	display: flex;
-	padding: 3% 0% 3% 0%;
+.previewMain {
+  width: 100%;
+  max-width: 100vw; /* 고정된 크기 설정 */
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
 }
-.previewSub{
-	border: 2px solid;
-	color: #bfbfbf;
-	min-height: 20vh;
-	min-width: 25vw;
-	justify-content: space-between;
+
+/* 작은 서브 프로필 이미지 */
+.subProfile-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 5%; /* 이미지 간격 */
+  flex: 1;
 	align-items: center;
-	justify-content: center;
+  margin-top: 3%;
+}
+
+.previewSub {
+  width: 400px; /* 가로로 더 길게 설정 */
+  height: 250px; /* 높이를 줄여서 가로형 비율로 변경 */
+  object-fit: cover; /* 이미지가 비율을 유지하며 고정 크기에 맞도록 조정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
 }
 
 /* 강사 이름 */
-.name{
+.name {
+  text-align: left;
+  font-size: 22px;
+  margin-bottom: 20px;
 	color: #2d2d2d;
-	font-size: 22px;
-	text-shadow: 10px #434343;
-	padding-bottom: 2%;
+	margin-top: 3%;
 }
 
-/* 자격 테이블 */
-.main-in{
-	border: 2px #bfbfbf;
-	color: #2d2d2d;
-	align-items: center;
-	justify-content: center;
-	margin-top: 5%;
-	font-size: 20px;
-}
-.table {
-	border: 2px solid;
-	color: #2d2d2d;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-}
-
-.date-th{
-	float: right;
-}
-
-.review{
-	width: 80%;
-	padding: 0% 1% 1% 0%;
-	margin-bottom: 3%;
-	float: left;
-}
-.date{
-	width: 20%;
-	padding: 0% 1% 1% 0%;
-	margin-bottom: 3%;
-	float: right;
-}
-
-/* 프로필 사진 수정 버튼 */
+/* 영상 보러가기 버튼 */
 .watch {
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: 4% 2% 4% 0%;
-	text-align: center;
-	width: 30%;
+  background-color: #bfbfbf;
+  color: #2d2d2d;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
   float: right;
-  border-radius: 20px 20px 20px 20px;
+	margin-top: 3%;
+  transition: background-color 0.3s;
+  text-decoration: none;
 }
 .watch:hover {
-	color: #757575;
+  background-color: #2d2d2d;
+	color: #bfbfbf;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 1000vw;
+  table-layout: fixed; /* 고정된 테이블 레이아웃 */
+	margin-top: 3%;
+	margin-bottom: 5%;
+}
+
+/* 테이블 본문 하단에 구분선 추가 */
+tbody tr {
+  border-bottom: 1px solid #bfbfbf; /* 각 행 사이 구분선 */
+}
+
+/* 행 배경색을 번갈아 설정 */
+tbody tr:nth-child(odd) {
+  background-color: #bfbfbf;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+/* 열 간격 및 패딩 */
+th, td {
+  padding: 6px 8px;
+  white-space: nowrap;
+}
+
+/* Flexbox로 각 열 정렬 */
+thead tr, tbody tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+th.left, td.left {
+  text-align: left;
+  flex: 1;
+}
+
+th.right, td.right {
+  text-align: right;
+  flex: 1;
 }
 
 /* 페이지네이션 스타일 */
@@ -143,14 +155,31 @@ input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
-  margin-top: 2%; /* 페이지네이션과 콘텐츠 사이의 간격 */
-  font-size: 15px;
-  padding: 8% 0% 0% 0%;
+  gap: 8px;
+  margin-top: 20px; /* 위쪽 간격 */
 }
 
 .pagination a {
   text-decoration: none;
   color: #bfbfbf;
-  padding: 10%; 
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #bfbfbf;
+  color: #292929;
+}
+
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
 }
