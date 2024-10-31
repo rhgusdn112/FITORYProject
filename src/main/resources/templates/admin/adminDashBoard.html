@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>관리자 대시보드</title>
+  <link rel="stylesheet" th:href="@{/css/admin/adminDashBoard.css}">
 </head>
 <body>
 
   <th:block th:replace="~{common/common}"></th:block>
 
   <form action="/admin/dashBoard" method="GET" name="dashBoard" id="dashBoard" class="main">
-    <div class="activities">대시보드</div>
-    <div class="main-box">
-      <div class="container">
-      </div>
+    <div class="activities">
+      <h1>대시보드</h1>
+    </div>
+    <section class="main-box">
+
       <div class="main-box">
         <table class = calssNo2>
+          <h2>home-Training</h2>
           <thead>
             <tr>
               <th>번호</th>
@@ -36,19 +39,20 @@
       </div>
 
       <div class="pagination-area" >
-        <ul class="pagination">
+        <ul class="pagination1">
         
           
         </ul>
       </div>
 
-      </div>
+    </section>
 
 
-
+    <section class="main-box">
       <div class="main-box">
         <table class = calssNo3>
-          <thead>
+          <h2>home-Gym</h2>
+          <thead>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             <tr>
               <th>번호</th>
               <th>제목</th>
@@ -67,13 +71,13 @@
         </table>
 
         <div class="pagination-area" >
-          <ul class="pagination">
+          <ul class="pagination2">
           
             
           </ul>
         </div>
       </div>
-
+    </section>
 
 
   <script th:inline="javascript">

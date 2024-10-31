@@ -13,15 +13,18 @@
 
   <!-- 메인 콘텐츠 -->
   <main>
-    <div class="main-class">강의 목록</div>
-
-
     <section class="class-section">
       <div class="slider-container">
         <div class="content-container">
           
           <div>
-            <h2>강의 목록</h2>
+            <h1>강의 목록</h1>
+            <div>
+              <button id="boardWirteBtn">
+                <a href="/board/editBoard">새 글 작성</a>
+              </button>
+            </div>
+
             <div class="sort-dropdown">
                 <select id="sortSelect">
                     <option value="latest">최신순</option>
@@ -52,10 +55,10 @@
   
               <tbody>
                 <tr>
-                  <td>
+                  <th rowspan="4">
                     <button id="selectAllBtn">전체 선택</button>
                     <button id="selectDeleteBtn">선택 전체 삭제</button>
-                  </td>
+                  </th>
                 </tr>
               </tbody>
             </table>
@@ -72,11 +75,7 @@
   
     </section>
     
-    <div>
-      <button id="boardWirteBtn">
-        <a href="/board/editBoard">새 글 작성</a>
-      </button>
-    </div>
+ 
 
   </main>
 
