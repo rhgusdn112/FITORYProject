@@ -48,5 +48,8 @@ public interface MemberMapper {
 
 	int getMyReviewCount(int memberNo);
 
+	// 회원 탈퇴
+	int statusChange(int memberNo);
+
 	
 }

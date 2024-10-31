@@ -215,5 +215,11 @@
 		WHERE BOARD_NO = #{boardNo}
 		AND TRAINER_NO = #{trainerNo}
     </select>
+    
+ <update id="statusChange">
+ 	UPDATE "TRAINER"
+ 	SET TRAINNER_DEL_FL = 'Y'
+ 	WHERE TRAINER_NO = #{trainerNo}
+ </update>
         
 </mapper>

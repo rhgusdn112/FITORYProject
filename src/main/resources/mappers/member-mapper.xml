@@ -140,5 +140,11 @@
 		WHERE QUERY_PK = #{queryPk}
 	</select>
  -->  
+ 
+ <update id="statusChange">
+ 	UPDATE "MEMBER"
+ 	SET MEMBER_DEL_FL = 'Y'
+ 	WHERE MEMBER_NO = #{memberNo}
+ </update>
 
 </mapper>

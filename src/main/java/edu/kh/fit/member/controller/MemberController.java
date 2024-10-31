@@ -253,6 +253,26 @@ public class MemberController {
 		return "myPage/memberMyActivities";
 	}
 	
+	
+	@GetMapping("statusChange")
+	public String statusChange() {
+		return "member/statusChange";
+	}
+	
+	/** 회원 탈퇴
+	 * @param memberLogin
+	 * @return
+	 */
+	@PostMapping("statusChange")
+	public String statusChange(
+			@SessionAttribute("memberLogin") Member memberLogin) {
+		
+		int memberNo = memberLogin.getMemberNo();
+		
+		int result = service.statusChange(memberNo); 
+		
+		return "redirect:/main";
+	}
 
 
 }

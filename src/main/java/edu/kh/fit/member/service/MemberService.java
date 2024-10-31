@@ -54,5 +54,11 @@ public interface MemberService {
    */
   Map<String, Object> memberMyActivities(int memberNo, int cp);
 
+  /** 회원 탈퇴
+   * @param memberNo
+   * @return
+   */
+	int statusChange(int memberNo);
+
 
 }

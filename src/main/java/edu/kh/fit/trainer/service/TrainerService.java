@@ -71,6 +71,9 @@ Map<String, Object> trainerClassList(int trainerNo, int cp);
  */
 int emailCheck(String email);
 
+// 회원 탈퇴
+int statusChange(int trainerNo);
+
 
 
 
