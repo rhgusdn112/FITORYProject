@@ -40,7 +40,7 @@
               <input class="review" name="qName" th:value="${qual.qualification}" placeholder="자격사항을 작성해주세요.">
             </td>
             <td>
-              <input class="date" type="date" name="qDate" th:value="${qual.qualificationDate}">
+              <input class="date" type="date" name="qDate" th:value="${qual.qualificationDate}" >
             </td>
             <td th:if="${stat.index > 0}">
               <button type="button" class="qualificationRemovebtn">-</button>
@@ -56,10 +56,6 @@
         <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput1')">
         <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput2')">
       </div>
-      <div class="subProfile-box">
-        <img class="preview" id="trainerImgSub" th:src="${session.trainerLogin.trainerImgSub != null ? session.trainerLogin.trainerImgSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('subImageInput1')">
-        <img class="preview" id="trainerImgSubSub" th:src="${session.trainerLogin.trainerImgSubSub != null ? session.trainerLogin.trainerImgSubSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('subImageInput2')">      
-      </div>
         <div class="profile-btn-area">
         </div>
         <button type="submit" class="update" id="update"> 수정하기 </button>
@@ -68,9 +64,6 @@
   </form>
   <input type="file" id="mainImageInput1" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgMain')" multiple>
   <input type="file" id="mainImageInput2" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgMainSub')" multiple>
-  <input type="file" id="subImageInput1" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgSub')">
-  <input type="file" id="subImageInput2" accept="image/*" style="display: none;" onchange="previewImage(event, 'trainerImgSubSub')">
-  
 
   <script>
     const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: '/images/**'}]]*/ '/images/**';

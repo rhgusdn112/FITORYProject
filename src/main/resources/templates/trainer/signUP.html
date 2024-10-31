@@ -34,17 +34,17 @@
             <div class="signUp-input-area">
               <input type="text" name="trainerEmail" id="email"
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
-              <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
+              <button class="btn" id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
-            <span class="emailMessage" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
-      
+
             <label for="emailCheck">
               *<span class="required">이메일 인증</span>
             </label>
+            <span class="nextText" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
             <div class="signUp-input-area">
               <input type="text" name="authKey" id="authKey"
               placeholder="이메일 인증 확인" maxlength="6" autocomplete="off">
-              <button id="checkAuthKeyBtn" type="button">인증하기</button>
+              <button class="btn" id="checkAuthKeyBtn" type="button">인증하기</button>
             </div>
             <span class="signUp-message" id="authKeyMessage"></span>
             <!-- 인증번호가 일치하지 않습니다 -->
@@ -64,11 +64,11 @@
               <input type="password" name="trainerPw" id="pw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
-            <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
       
             <label for="PwCheck">
              *<span class="required">비밀번호 확인</span>
             </label>
+            <span class="nextText" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
             <div class="signUp-input-area">
               <input type="password" name="pwCheck" id="pwCheck"
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
@@ -85,10 +85,12 @@
             <label for="trainerTel">
               *<span class="required">전화번호</span>
             </label>
+            <span class="nextText" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
             <div class="signUp-input-area">
               <input type="text" name="trainerTel" id="tel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
             </div>      
+
             <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
             <div class="main-in">자격사항</div>
             <table class="qualification-table">
@@ -116,7 +118,7 @@
               </tbody>
             </table>
 
-            <label for="provision" id="provision">
+            <label for="provision" id="provision" class="provisionText">
               <span class="required"> <약관> </span>
               <div class="provision">약관내용</div> 
             </label>

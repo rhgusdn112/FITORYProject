@@ -37,11 +37,12 @@
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
               <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
-            <span class="emailMessage" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
-      
+            
             <label for="emailCheck">
               *<span class="required">이메일 인증</span>
             </label>
+            <span class="nextText" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+
             <div class="signUp-input-area">
               <input type="text" name="authKey" id="authKey"
               placeholder="이메일 인증 확인" maxlength="6" autocomplete="off">
@@ -65,11 +66,12 @@
               <input type="password" name="memberPw" id="pw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
-            <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
-      
+            
             <label for="PwCheck">
-             *<span class="required">비밀번호 확인</span>
+              *<span class="required">비밀번호 확인</span>
             </label>
+            <span class="nextText" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
+
             <div class="signUp-input-area">
               <input type="password" name="pwCheck" id="pwCheck"
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
@@ -86,11 +88,11 @@
             <label for="memberTel">
               *<span class="required">전화번호</span>
             </label>
+            <span class="nextText" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
             <div class="signUp-input-area">
               <input type="text" name="memberTel" id="tel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
             </div>      
-            <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
 
             <label for="provision" id="provision">
               <span class="required"> <약관> </span>
@@ -108,7 +110,6 @@
         </form>
       </section>
     </div>
-    <button class="top">▲</button>
   </main>
 
   <!-- 푸터 조각 -->
