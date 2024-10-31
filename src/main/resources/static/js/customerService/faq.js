@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 openAnswer.classList.remove("open");
                 const openIcon = openAnswer.previousElementSibling.querySelector(".arrow-icon");
                 openIcon.classList.remove("open");
-                openIcon.textContent = "\u25B6"; // 오른쪽 화살표
+                openIcon.textContent = "▶"; // 오른쪽 화살표
             }
 
             // 클릭한 답변을 토글
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 answer.style.padding = "0";
                 answer.classList.remove("open");
                 icon.classList.remove("open");
-                icon.textContent = "\u25B6"; // 오른쪽 화살표
+                icon.textContent = "▶"; // 오른쪽 화살표
             } else {
                 answer.style.maxHeight = answer.scrollHeight + "px";
                 answer.style.padding = "10px 15px";
                 answer.classList.add("open");
                 icon.classList.add("open");
-                icon.textContent = "\u25BC"; // 아래쪽 화살표
+                icon.textContent = "▼"; // 아래쪽 화살표
 
                 // 질문이 클릭되면 화면 상단에 질문이 완전히 보이도록 스크롤
                 toggle.scrollIntoView({ behavior: "smooth", block: "start" });
