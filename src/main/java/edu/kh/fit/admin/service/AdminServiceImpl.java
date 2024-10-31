@@ -1,7 +1,10 @@
 package edu.kh.fit.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +13,7 @@ import edu.kh.fit.admin.dto.Query;
 import edu.kh.fit.admin.mapper.AdminMapper;
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.board.dto.Comment;
+import edu.kh.fit.board.dto.Pagination;
 import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
@@ -99,9 +103,49 @@ public class AdminServiceImpl implements AdminService{
 		return mapper.selectQualificationList(trainerNo);
 	}
 	
-	
 	@Override
 	public int changeStatus(int memberNo) {
 		return mapper.changeStatus(memberNo);
 	}
+	
+	
+	// 강의 매출 가져오기
+	@Override
+	public Map<String, Object> classList(int cp) {
+		
+		int listCount = mapper.classListCount();
+		Pagination pagination = new Pagination(cp, listCount, 10, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> classList = mapper.classList(bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+    map.put("classList", classList);
+    map.put("pagination", pagination);
+		
+		return map;
+	}
+	@Override
+	public Map<String, Object> boardList(int cp) {
+		int listCount = mapper.boardListCount();
+		Pagination pagination = new Pagination(cp, listCount, 10, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> boardList = mapper.boardList(bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+	  map.put("boardList", boardList);
+	  map.put("pagination", pagination);
+		
+		return map;
+	}
+
 }
