@@ -1,5 +1,6 @@
 package edu.kh.fit.member.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -94,7 +95,6 @@ public class MemberServiceImpl implements MemberService{
 			
 			RowBounds bounds = new RowBounds(offset, limit);
 			
-			
 			List<Order> orderList = mapper.classList(memberNo, bounds);
 			
 			Map<String, Object> map = Map.of("orderList", orderList, "pagination", pagination);
@@ -103,6 +103,7 @@ public class MemberServiceImpl implements MemberService{
   }
 
 
+  /* 내 활동 내역 */
 	@Override
 	public Map<String, Object> memberMyActivities(int memberNo, int cp) {
 		
@@ -115,18 +116,10 @@ public class MemberServiceImpl implements MemberService{
 		// RowBounds 계산(앞에서 몇 행 건너 뛰고, 그 다음 몇 행 조회할 지 지정하는 객체)
 		int limit = pagination.getLimit();
 		int offset = (cp-1) * limit;
-		
 		RowBounds bounds = new RowBounds(offset, limit);
-		
-		
 		List<Comment> reviewList = mapper.selectMyReviewList(memberNo, bounds);
-		
-		
 		Map<String, Object> map = Map.of("reviewList", reviewList, "pagination", pagination);
-		
-		
 		return map;
 	}
-
 
 }

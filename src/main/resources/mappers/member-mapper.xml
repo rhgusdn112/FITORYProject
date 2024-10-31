@@ -74,7 +74,7 @@
 	
 	<!-- 내가 결제한 강의 목록 조회 -->
     <select id="classList" resultType="Order">
-        SELECT ORDER_NO, ORDER_CLASS_NO, BOARD_NO, TITLE, DETAIL, TRAINER_NICKNAME, BOARD_TYPE_NAME
+        SELECT ORDER_NO, ORDER_CLASS_NO, BOARD_NO, THUMBNAIL, TITLE, DETAIL, TRAINER_NICKNAME, BOARD_TYPE_NAME, BOARD_TYPE_NO
         FROM "ORDER"
         JOIN BOARD ON (ORDER_CLASS_NO = BOARD_NO)
         JOIN TRAINER ON (BOARD.TRAINER_NO = TRAINER.TRAINER_NO)
@@ -125,12 +125,5 @@
 		)
 		ORDER BY REVIEW_WRITE_DATE DESC
 	</select>
-	
-<!-- 	<select id="selectMyQueryList">
-		SELECT QUERY_NO, QUERY_DETAIL, QUERY_DATE
-		FROM QUERY
-		WHERE QUERY_PK = #{queryPk}
-	</select>
- -->  
 
 </mapper>
