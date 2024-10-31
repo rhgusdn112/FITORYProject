@@ -24,7 +24,7 @@ public interface TrainerService {
 	 * @param inputTrainner
 	 * @return
 	 */
-	int signUp(Trainer inputTrainer);
+	Map<String, Object> singUp(Trainer inputTrainer, List<String> qNameList, List<String> qDateList);
 
 
 	/** 강사 정보 수정 비밀번호 확인
@@ -64,6 +64,15 @@ Map<String, Object> selectClassList(int trainerNo, int cp, String sort);
  * @return
  */
 Map<String, Object> trainerClassList(int trainerNo, int cp);
+
+/** 이메일 중복체크
+ * @param email
+ * @return
+ */
+int emailCheck(String email);
+
+
+
 
 
 
