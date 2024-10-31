@@ -2,10 +2,8 @@ package edu.kh.fit.board.mapper;
 
 import edu.kh.fit.board.dto.Comment;
 
-import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface CommentMapper {
@@ -33,7 +31,7 @@ public interface CommentMapper {
      * @param memberNo  회원 번호
      * @return 삭제 결과
      */
-    int deleteComment(int commentNo, int memberNo);
+    int deleteComment(Comment comment);
 
     /**
      * 댓글 작성자 번호 조회

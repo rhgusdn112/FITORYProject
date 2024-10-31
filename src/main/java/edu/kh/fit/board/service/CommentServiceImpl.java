@@ -48,13 +48,13 @@ public class CommentServiceImpl implements CommentService {
      * @return 삭제 결과
      */
     @Override
-    public int commentDelete(int commentNo, int memberNo) {
+    public int commentDelete(Comment comment) {
         // 비즈니스 로직 추가: 댓글 작성자 본인이 맞는지 확인
-        int writerNo = commentMapper.selectWriterByCommentNo(commentNo);
-        if (writerNo != memberNo) {
+        int writerNo = commentMapper.selectWriterByCommentNo(comment.getCommentNo());
+        if (writerNo != comment.getMemberNo()) {
             throw new IllegalStateException("댓글 작성자가 아니므로 삭제할 수 없습니다.");
         }
-        return commentMapper.deleteComment(commentNo, memberNo);
+        return commentMapper.deleteComment(comment);
     }
 
 }

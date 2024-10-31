@@ -2,41 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.fit.board.mapper.CommentMapper">
 
-    <insert id="insertComment"
-        parameterType="Comment">
-        INSERT INTO REVIEW (COMMENT_NO, REVIEW_CONTENT, REVIEW_WRITE_DATE,
-        REVIEW_DEL_FL, "NUMBER", MEMBER_NO, BOARD_NO)
-        VALUES (
-        SEQ_COMMENT_NO.NEXTVAL, 
-        #{reviewContent}, 
-        DEFAULT, 
-        'N',
-        #{number},
-        #{memberNo},
-        #{boardNo})
-    </insert>
+	<insert id="insertComment" parameterType="Comment">
+		INSERT INTO REVIEW (COMMENT_NO, REVIEW_CONTENT, REVIEW_WRITE_DATE,
+		REVIEW_DEL_FL, "NUMBER", MEMBER_NO, BOARD_NO)
+		VALUES (
+		SEQ_COMMENT_NO.NEXTVAL,
+		#{reviewContent},
+		DEFAULT,
+		DEFAULT,
+		#{number},
+		#{memberNo},
+		#{boardNo})
+	</insert>
 
-    <update id="updateComment"
-        parameterType="Comment">
-        UPDATE REVIEW
-        SET REVIEW_CONTENT = #{reviewContent},
-        REVIEW_WRITE_DATE = CURRENT_DATE,
-        "NUMBER" = #{number}
-        WHERE COMMENT_NO = #{commentNo}
-        AND MEMBER_NO = #{memberNo}
-    </update>
+	<update id="updateComment" parameterType="Comment">
+		UPDATE REVIEW
+		SET REVIEW_CONTENT = #{reviewContent},
+		REVIEW_WRITE_DATE = CURRENT_DATE,
+		"NUMBER" = #{number}
+		WHERE COMMENT_NO = #{commentNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
 
-    <update id="deleteComment" parameterType="map">
-        UPDATE REVIEW
-        SET REVIEW_DEL_FL = 'Y'
-        WHERE COMMENT_NO = #{commentNo}
-        AND MEMBER_NO = #{memberNo}
-    </update>
+	<update id="deleteComment" parameterType="Comment">
+		UPDATE REVIEW
+		SET REVIEW_DEL_FL =
+		CASE
+		WHEN REVIEW_DEL_FL = 'N' THEN 'Y'
+		ELSE REVIEW_DEL_FL
+		END
+		WHERE COMMENT_NO = #{commentNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
 
-    <select id="selectWriterByCommentNo" parameterType="int" resultType="int">
-        SELECT MEMBER_NO
-        FROM REVIEW
-        WHERE COMMENT_NO = #{commentNo}
-    </select>
+	<select id="selectWriterByCommentNo" parameterType="int"
+		resultType="int">
+		SELECT MEMBER_NO
+		FROM REVIEW
+		WHERE COMMENT_NO = #{commentNo}
+	</select>
 
 </mapper>

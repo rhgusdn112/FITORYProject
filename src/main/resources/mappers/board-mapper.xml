@@ -69,7 +69,7 @@
 	</select>
 
 
-	<select id="hasPaidForBoard" parameterType="map"
+	<select id="hasPaid" parameterType="map"
 		resultType="String">
 		SELECT
 		NVL((SELECT PAYMENT_FL
@@ -80,6 +80,16 @@
 		FROM BOARD B
 		WHERE B.BOARD_NO = #{boardNo}
 	</select>
+	
+	
+   <!-- 결제 여부 확인 쿼리 -->
+    <select id="hasPaidForBoard" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM "ORDER"
+        WHERE ORDER_MEMBER_NO = #{memberNo}
+          AND ORDER_CLASS_NO = #{boardNo}
+    </select>
+
 
 
 

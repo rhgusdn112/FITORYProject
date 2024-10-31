@@ -27,22 +27,6 @@ public class CommentController {
      * @param loginMember : 로그인한 회원 정보
      * @return commentNo : 삽입된 댓글 번호
      */
-    @PostMapping
-    public ResponseEntity<Map<String, Object>> commentInsert(@RequestBody Comment comment, @SessionAttribute("memberLogin") Member loginMember) {
-      log.info("댓글 등록 요청: {}", comment);
-      comment.setMemberNo(loginMember.getMemberNo());
-      int result = commentService.commentInsert(comment);
-
-      Map<String, Object> response = new HashMap<>();
-      if(result > 0) {
-          response.put("message", "댓글 등록 성공");
-          response.put("commentNo", result);
-          return ResponseEntity.status(HttpStatus.CREATED).body(response);
-      } else {
-          response.put("message", "댓글 등록 실패");
-          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-      }
-  }
 
 
     /**
@@ -70,6 +54,22 @@ public class CommentController {
       }
     }
 
+    @PostMapping
+    public ResponseEntity<Map<String, Object>> commentInsert(@RequestBody Comment comment, @SessionAttribute("memberLogin") Member loginMember) {
+    	log.info("댓글 등록 요청: {}", comment);
+    	comment.setMemberNo(loginMember.getMemberNo());
+    	int result = commentService.commentInsert(comment);
+    	
+    	Map<String, Object> response = new HashMap<>();
+    	if(result > 0) {
+    		response.put("message", "댓글 등록 성공");
+    		response.put("commentNo", result);
+    		return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    	} else {
+    		response.put("message", "댓글 등록 실패");
+    		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    	}
+    }
 
     /**
      * 댓글 삭제
@@ -78,9 +78,10 @@ public class CommentController {
      * @return 삭제 결과
      */
     @DeleteMapping
-    public ResponseEntity<Map<String, Object>> commentDelete(@RequestBody int commentNo, @SessionAttribute("memberLogin") Member loginMember) {
-      log.info("댓글 삭제 요청 - 댓글 번호: {}, 회원 번호: {}", commentNo, loginMember.getMemberNo());
-      int result = commentService.commentDelete(commentNo, loginMember.getMemberNo());
+    public ResponseEntity<Map<String, Object>> commentDelete(@RequestBody Comment comment, @SessionAttribute("memberLogin") Member loginMember) {
+      log.info("댓글 삭제 요청 - 댓글 번호: {}, 회원 번호: {}",comment.getCommentNo(), loginMember.getMemberNo());
+      comment.setMemberNo(loginMember.getMemberNo());
+      int result = commentService.commentDelete(comment);
 
       Map<String, Object> response = new HashMap<>();
       if(result > 0) {
