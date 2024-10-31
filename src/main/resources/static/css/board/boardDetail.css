@@ -166,7 +166,7 @@
   background: #fff; /* 흰색 배경 */
   padding: 20px; /* 내부 여백 */
   border-radius: 8px; /* 모서리를 둥글게 처리 */
-  width: 320px; /* 팝업 너비 */
+  width: 50%; /* 팝업 너비 */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
   text-align: left; /* 텍스트 왼쪽 정렬 */
   font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
@@ -225,4 +225,76 @@
 #close-popup {
   background-color: #f44336;
   color: white;
+}
+
+
+/* 문의 팝업 전체 화면 덮기 - 반투명 배경과 중앙 정렬 */
+.inquiry-popup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 화면 전체 너비 */
+  height: 100vh; /* 화면 전체 높이 */
+  background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  display: flex; /* 중앙 정렬을 위한 Flexbox 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  z-index: 1000; /* 팝업이 다른 요소들 위에 나타나도록 설정 */
+}
+
+/* 신고 팝업 창 스타일 */
+.inquiry-popup-content {
+  position: relative;
+  background: #fff; /* 흰색 배경 */
+  padding: 20px; /* 내부 여백 */
+  border-radius: 8px; /* 모서리를 둥글게 처리 */
+  width: 50%; /* 팝업 너비 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
+}
+
+.inquiry-popup-content h3 {
+  margin-top: 0;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.inquiry-popup-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.inquiry-popup-content input[type="text"],
+.inquiry-popup-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+
+.inquiry-popup-content textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+/* 신고 팝업 버튼 스타일 */
+.inquiry-popup-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inquiry-popup-buttons button {
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

@@ -80,8 +80,21 @@
   box-sizing: border-box; /* 패딩과 경계선을 너비와 높이에 포함시킴 */
 }
 
+#new-review-registration {
+  resize: none; /* 크기 조정 불가 */
+  font-size: 1.2em; /* 폰트 크기 조정 */
+  height: 2.5em; /* 한 줄 높이 설정 */
+  width: 100%; /* 전체 너비 사용 */
+  padding: 10px; /* 텍스트 영역 안의 여백 설정 */
+  box-sizing: border-box; /* 패딩과 경계선을 너비와 높이에 포함시킴 */
+}
+
+
 h2 {text-align: center;}
 
+.hidden {
+  display: none;
+}
 
 .inquiry-form-container, .inquiry-management-container {
   width: 90%;

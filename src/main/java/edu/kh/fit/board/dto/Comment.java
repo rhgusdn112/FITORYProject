@@ -17,7 +17,7 @@ public class Comment {
 	private int 		commentNo; // 댓글 번호
 	private String 	reviewContent; // 리뷰 내용
 	private String 	reviewWriteDate; // 리뷰 작성일
-	private String 	reviewtDelFl; // 리뷰 삭제 여부 플래그
+	private String 	reviewDelFl; // 리뷰 삭제 여부 플래그
 	private int 		number; // 별점
 	private int 		memberNo; // 작성자 회원 번호
 	private int 		boardNo; // 게시글 번호

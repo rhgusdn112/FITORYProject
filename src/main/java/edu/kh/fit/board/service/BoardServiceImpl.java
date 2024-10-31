@@ -71,11 +71,10 @@ public class BoardServiceImpl implements BoardService {
      */
     @Override
     public boolean checkPaymentStatus(int memberNo, int boardNo) {
-        Map<String, Object> params = Map.of("memberNo", memberNo, "boardNo", boardNo);
-        String paymentFlag = mapper.hasPaidForBoard(params);
-        return "Y".equals(paymentFlag);
-    }
-
+      Map<String, Object> params = Map.of("memberNo", memberNo, "boardNo", boardNo);
+      int paymentCount = mapper.hasPaidForBoard(params);
+      return paymentCount > 0; // 결제가 있으면 true 반환
+  }
 
 
     // ------------------------------------------------------------------------------------------------------

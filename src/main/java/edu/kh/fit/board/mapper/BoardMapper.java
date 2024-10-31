@@ -30,18 +30,19 @@ public interface BoardMapper {
   List<Comment> selectCommentList(int boardNo);
 
   /**
+   * 사용자가 해당 게시글에 대해 결제했는지 여부를 확인하는 Mapper 메서드
+   * @param params 결제 확인에 필요한 파라미터 (회원 번호, 게시글 번호 등)
+   * @return 결제 여부 플래그 ('Y' 또는 'N')
+   */
+  int hasPaidForBoard(Map<String, Object> params); // 주어진 memberNo와 boardNo로 결제 여부 확인
+
+  /**
    * 사용자가 이미 리뷰를 작성했는지 확인하는 Mapper 메서드
    * @param params 리뷰 작성 확인에 필요한 파라미터 (회원 번호, 게시글 번호 등)
    * @return 리뷰 작성 여부 (작성한 리뷰 수)
    */
   int hasReviewed(Map<String, Object> params);
 
-  /**
-   * 사용자가 해당 게시글에 대해 결제했는지 여부를 확인하는 Mapper 메서드
-   * @param params 결제 확인에 필요한 파라미터 (회원 번호, 게시글 번호 등)
-   * @return 결제 여부 플래그 ('Y' 또는 'N')
-   */
-  String hasPaidForBoard(Map<String, Object> params);
 
 
   // ------------------------------------------------------------------------------------------------------

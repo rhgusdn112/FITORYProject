@@ -16,8 +16,9 @@
   <!-- 메인 콘텐츠 영역 -->
   <main class="main-content" th:object="${board}">
     <br><br>
-
-    <span th:text="${userType}"></span> <!-- userType이 제대로 출력되는지 확인 -->
+    <button class="inquiry-btn" data-type="board" th:data-board-no="${board.boardNo}">
+      <span th:text="${userType}"></span> <!-- userType이 제대로 출력되는지 확인 -->
+    </button>
 
     <div class="wrapper">
       <div class="post-container">
@@ -32,16 +33,16 @@
           <h3 class="post-rating" th:text="*{grade}">별점 정보 없음</h3>
 
           <!-- 게시글 신고 버튼 (회원 전용) -->
-          <div th:if="${userType == 'paidMember' or userType == 'unpaidMember'}">
-            <button class="report-btn" data-type="board" th:data-board-no="${board.boardNo}">
+          <div th:if="${userType != null and (userType == 'paidMember' or userType == 'unpaidMember')}">
+            <button class="report-btn" data-type="board" th:data-board-no="${board != null ? board.boardNo : 0}">
               <i class="fa-solid fa-land-mine-on"></i> 강의 신고
             </button>
           </div>
-
         </div>
 
         <!-- 수정 및 삭제 버튼 (강사 로그인 상태이면서 작성자일 때만 표시) -->
-        <div th:if="${userType == 'trainer' and user != null and board.trainerNickname == user.trainerNickname}"
+        <div
+          th:if="${userType != null and userType == 'trainer' and user != null and board != null and board.trainerNickname == user.trainerNickname}"
           class="edit-buttons">
           <div>
             <button class="edit-btn">수정</button>
@@ -79,6 +80,35 @@
       </div>
     </div>
 
+
+    <!-- 1:1 문의 팝업 모달 -->
+    <div id="inquiry-popup" class="inquiry-popup-modal" style="display: none;">
+      <div class="inquiry-popup-content">
+        <h3>1:1 문의하기</h3>
+        <!-- 문의자 유형 (회원) -->
+        <label>문의자 종류:</label>
+        <input type="text" id="inquiry-user-type" readonly>
+
+        <!-- 피신고자 유형 (게시글/리뷰) -->
+        <label>문의 대상:</label>
+        <input type="text" id="inquiry-target" readonly>
+
+        <!-- 문의 제목 입력 -->
+        <label for="inquiry-title">문의 제목:</label>
+        <input type="text" id="inquiry-title" placeholder="문의 제목을 입력하세요">
+
+        <!-- 문의 내용 입력 -->
+        <label for="inquiry-message">문의 내용:</label>
+        <textarea id="inquiry-message" placeholder="문의 내용을 입력하세요"></textarea>
+
+        <!-- 문의 제출 및 닫기 버튼 -->
+        <div class="inquiry-popup-buttons">
+          <button id="submit-inquiry">문의 제출</button>
+          <button id="close-inquiry-popup">닫기</button>
+        </div>
+      </div>
+    </div>
+
     <!-- 영상 이어보기 팝업 모달 -->
     <div id="video-popup" class="video-popup" style="display: none;">
       <h1>영상을 이어보시겠습니까?</h1>
@@ -102,9 +132,10 @@
   <footer th:replace="~{common/footer :: footer}"></footer>
 
   <script th:inline="javascript">
-    window.board = /*[[${board}]]*/ {};
-    window.userType = /*[['${userType}']]*/ '';
+    window.board = /*[[${board != null ? board : '{}'}]]*/ {};
+    window.userType = /*[['${userType != null ? userType : ""}']]*/ '';
   </script>
+
 
   <!-- JavaScript 파일 연결 -->
   <script src="/js/board/boardDetail.js"></script>
