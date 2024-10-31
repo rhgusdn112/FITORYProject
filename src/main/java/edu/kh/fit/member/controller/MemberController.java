@@ -1,6 +1,7 @@
 package edu.kh.fit.member.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,7 +32,13 @@ import edu.kh.fit.member.service.MemberService;
 import edu.kh.fit.payment.dto.Order;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+@Slf4j
 @Controller
 @RequestMapping("member")
 /* @RequestMapping("member") */
@@ -229,19 +237,18 @@ public class MemberController {
 		int memberNo = memberLogin.getMemberNo();
 		Map<String, Object> map = service.classList(memberNo, cp);
 		
-		
-		model.addAttribute("orderList", (List<Comment>)map.get("orderList"));
+		model.addAttribute("orderList", (List<Order>)map.get("orderList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
-
-		// 버튼 클릭 시 삭제 및 영상 보기
 
 		return "classList/memberClassList";
 	}
-
 	
-	
-	
-	/* 내 활동 내역 */
+	/** 내 활동 내역
+	 * @param memberLogin
+	 * @param model
+	 * @param cp
+	 * @return
+	 */
 	@GetMapping("memberMyActivities")
 	public String memberMyActivities(@SessionAttribute("memberLogin") Member memberLogin, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {

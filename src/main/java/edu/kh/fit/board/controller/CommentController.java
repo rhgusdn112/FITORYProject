@@ -29,8 +29,8 @@ public class CommentController {
      */
     @PostMapping
     public ResponseEntity<Map<String, Object>> commentInsert(@RequestBody Comment comment, @SessionAttribute("memberLogin") Member loginMember) {
-      comment.setMemberNo(loginMember.getMemberNo());
       log.info("댓글 등록 요청: {}", comment);
+      comment.setMemberNo(loginMember.getMemberNo());
       int result = commentService.commentInsert(comment);
 
       Map<String, Object> response = new HashMap<>();

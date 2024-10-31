@@ -34,13 +34,6 @@ input::placeholder {
   margin-bottom: 20px;
 }
 
-/* 반응형 제목 크기 조절 */
-@media screen and (max-width: 768px) {
-  .activities {
-    font-size: 24px; /* 중간 크기의 화면에서 제목 크기 축소 */
-  }
-}
-
 /* main 박스 */
 .main-box {
   border: 5px solid #bfbfbf;
@@ -100,6 +93,40 @@ th.right, td.right {
   flex: 1;
 }
 
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px; /* 위쪽 간격 */
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #bfbfbf;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #bfbfbf;
+  color: #292929;
+}
+
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
+}
+
 /* 반응형 디자인 */
 @media screen and (max-width: 768px) {
   table {
@@ -120,33 +147,9 @@ th.right, td.right {
   }
 }
 
-/* 페이지네이션 스타일 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.pagination a {
-  text-decoration: none;
-  color: #bfbfbf;
-  padding: 6px 8px;
-  font-size: 0.9rem;
-  border: 1px solid #bfbfbf;
-  background-color: #292929;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination a:hover {
-  background-color: #bfbfbf;
-  color: #292929;
-}
-
-.pagination a.active {
-  background-color: #bfbfbf;
-  color: #292929;
-  border: 1px solid #bfbfbf;
+/* 반응형 제목 크기 조절 */
+@media screen and (max-width: 768px) {
+  .activities {
+    font-size: 24px; /* 중간 크기의 화면에서 제목 크기 축소 */
+  }
 }

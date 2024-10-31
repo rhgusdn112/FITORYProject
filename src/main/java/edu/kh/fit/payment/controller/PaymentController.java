@@ -58,6 +58,7 @@ public class PaymentController {
 		map.put("boardNo", boardNo);
 		
 		Board board = boardService.selectDetail(map);
+		model.addAttribute("boardNo", boardNo);
 		model.addAttribute("className", board.getTitle());
 		model.addAttribute("classAmount", board.getPayment());
 		
@@ -84,7 +85,7 @@ public class PaymentController {
 	    
 	    return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
 	}
-
+	
 	// 결제 내역 정보
 	@GetMapping("/paymentDetail")
     public String getPaymentDetail(@RequestParam("paymentId") String paymentId, Model model) {
