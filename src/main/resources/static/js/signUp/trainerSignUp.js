@@ -449,3 +449,34 @@ signUpForm.addEventListener("submit", e => {
     }
   }
 })
+
+/* + 버튼 클릭 시 테이블 생성 */
+const plus = document.querySelector("#plus");
+plus.addEventListener("click", () => {
+  const tr = document.createElement("tr");
+  const td1 = document.createElement("td");
+  const inputText = document.createElement("input");
+  inputText.name = 'qName';
+  inputText.placeholder = "자격사항을 작성해주세요."
+  const td2 = document.createElement("td");
+  const inputDate = document.createElement("input");
+  inputDate.name = 'qDate';
+  inputDate.type = 'date'
+  td1.append(inputText);
+  td2.append(inputDate);
+  tr.append(td1, td2);
+  const tbody = document.querySelector("#tbody");
+  tbody.append(tr);
+});
+
+/* -버튼 클릭 시 */
+const removeBtnList = document.querySelectorAll(".qualificationRemovebtn");
+
+removeBtnList?.forEach(minus => {
+  console.log(minus);
+
+  minus.addEventListener("click", () => {
+    minus.closest("tr").remove();
+  })
+
+});

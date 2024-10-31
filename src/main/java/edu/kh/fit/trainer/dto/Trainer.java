@@ -48,7 +48,5 @@ public class Trainer {
 	// 트레이너 프로필 이미지 관련 테이블
 	private String trainerImgMain; // 필수 사진1
 	private String trainerImgMainSub; // 필수 사진2
-	private String trainerImgSub; // 선택 사진1
-	private String trainerImgSubSub; // 선택 사진2
 
 }

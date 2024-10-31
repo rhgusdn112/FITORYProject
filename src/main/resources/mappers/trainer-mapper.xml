@@ -66,9 +66,7 @@
 			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE,
 			GENDER,
 			TRAINER_IMG_MAIN,
-			TRAINER_IMG_MAIN_SUB,
-			TRAINER_IMG_SUB,
-			TRAINER_IMG_SUB_SUB
+			TRAINER_IMG_MAIN_SUB
 		FROM "TRAINER"
 		LEFT JOIN TRAINER_IMG USING(TRAINER_NO)
 		WHERE TRAINER_EMAIL = #{trainerEmail}
@@ -97,8 +95,6 @@
 	    SET
 	        TRAINER_IMG_MAIN = #{images[0]},
 	        TRAINER_IMG_MAIN_SUB = #{images[1]},
-	        TRAINER_IMG_SUB = #{images[2]},
-	        TRAINER_IMG_SUB_SUB = #{images[3]}
 	    WHERE TRAINER_NO = #{trainerNo}
 	</update>
 	
@@ -135,7 +131,7 @@
     <!-- 강사 프로필 이미지 삽입 -->
     <insert id="insertTrainerImage" > 
     	INSERT INTO "TRAINER_IMG"
-    	VALUES (#{renameList[0]}, #{renameList[1]}, #{renameList[2]}, #{renameList[3]}, #{trainerNo})
+    	VALUES (#{renameList[0]}, #{renameList[1]}, #{trainerNo})
     </insert>
 		
 	<!-- 강사 자격사항 추가 -->
@@ -161,7 +157,7 @@
     
     <!-- 강사 상세조회 -->
     <select id="detailTrainer" resultType="Trainer">
-    	SELECT TRAINER_NO, TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_IMG_SUB, TRAINER_IMG_SUB_SUB, TRAINER_NICKNAME
+    	SELECT TRAINER_NO, TRAINER_IMG_MAIN, TRAINER_IMG_MAIN_SUB, TRAINER_NICKNAME
 		FROM TRAINER_IMG
 		JOIN TRAINER USING(TRAINER_NO)
 		WHERE TRAINER_NO = #{trainerNo}

@@ -4,258 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FITORY 회원가입 페이지</title>
-  <style>
-
-    @font-face {
-      font-family: 'MaruBuriSemiBold';
-      src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
-      src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
-    }
-
-    /* input 내 글자 */
-    input::placeholder {
-      text-align: left;
-      font-size: 15px;
-      padding: 0;
-      margin: 0;
-    }
-
-    .signUp{
-      margin-top: 10%;
-      margin-left: 20%;
-      margin-bottom: 3%;
-    }
-    /* h2 */
-    h2{
-      color: black;
-      font-size: 32px;
-      font-family: "MaruBuriSemiBold", Helvetica;
-      text-shadow: 10px #bfbfbf;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* 회원가입 선택 버튼 */
-    .signUp-options{
-      /* Auto layout */
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 0px;
-
-
-      transform: rotate(-0.1deg);
-    }
-
-    /* 회원가입 옵션 (회원/강사 선택) 스타일 */
-    .signUp-options {
-      display: flex; /* Flexbox 사용하여 정렬 */
-      justify-content: center; /* 가운데 정렬 */
-      margin: 20px 0; /* 위아래 여백 설정 */
-    }
-
-    /* 회원가입 옵션 라디오 버튼 숨기기 */
-    .signUp-options input[type="radio"] {
-      display: none; /* 라디오 버튼 숨기기 */
-    }
-
-    /* 회원가입 옵션 라벨 스타일 */
-    .signUp-option {
-      width: 891px; /* 옵션 너비 설정 */
-      padding: 15px; /* 내부 여백 설정 */
-      margin: 0 10px; /* 좌우 여백 설정 */
-      border: 2px solid #D9D9D9; /* 테두리 설정 */
-      border-radius: 40px; /* 둥근 모서리 설정 */
-      cursor: pointer; /* 커서 모양 설정 (포인터) */
-      text-align: center; /* 텍스트 가운데 정렬 */
-      font-size: 18px; /* 폰트 크기 설정 */
-      transition: background 0.3s, border-color 0.3s; /* 배경색 및 테두리 색 변경 시 애니메이션 */
-    }
-
-    /* 선택된 회원가입 옵션 스타일 */
-    .signUp-options input[type="radio"]:checked + label {
-      background: rgba(0, 0, 0, 0.1); /* 선택 시 배경색 설정 */
-      border-color: #000000; /* 선택 시 테두리 색상 설정 */
-    }
-
-    /* 회원가입 옵션 호버 효과 */
-    .signUp-option:hover {
-      background: rgba(0, 0, 0, 0.05); /* 호버 시 배경색 설정 */
-    }
-
-
-    #signUpForm {
-      border: 5px solid;
-      color: #bfbfbf;
-      margin: auto;
-      min-height: 100hv;
-      padding-right: 20%;
-      padding: 3%;
-    }
-
-    /* 인증 버튼*/
-    .emailAuthKeyBtn,
-    .emailCheckBtn,
-    .telAuthKeyBtn,
-    .telCheckBtn{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-
-
-    /* 제목 */
-    .signUp-content > label{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* input 태그 */
-    .signUp-input-area {
-      color:black;
-      font-family: "MaruBuriSemiBold", Helvetica;
-      justify-content: center;
-      display: flex;
-      margin: 2% 0% 2%;
-      padding: 5px;
-      width: 100%;
-    }
-
-    .signUp-input-area > input {
-      border: 1px solid;
-      color:black;
-      font-family: "MaruBuriSemiBold", Helvetica;
-      justify-content: center;
-      display: flex;
-      margin: 2% 0% 2%;
-      padding: 5px;
-      width: 100%;
-    }
-
-    /* 아이디 영역 */
-    #memberEmail, #trainerEmail{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 이메일 인증 */
-    #authKey{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 이름 영역 */
-    #memberName, #trainerName{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 비밀번호 영역 */
-    #memberPw, #trainerPw{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 비밀번호 확인 */
-    #checkPw{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 전화번호 영역 */
-    #memberTel, #trainerTel{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-    /* 자격사항 */
-    #qualification, #qDate{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: black;
-      display: flex;
-      margin: 0% 0% 2% 0%;
-      font-size: 20px;
-    }
-
-
-    /* 수정하기 버튼 */
-    #signUpBtn{
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: rgb(255, 255, 255);
-      background-color: #bfbfbf;
-      padding: 0.8% 1%;
-      margin: auto;
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-      border-radius: 20px;
-    }
-    #signUpBtn:hover{
-      color: rgba(78, 78, 78, 0.200);
-    }
-
-    .checkbox-container {
-      display: flex; /* flexbox 사용 */
-      flex-direction: row;
-      align-items: center; /* 세로 중앙 정렬 */
-      justify-content: center;
-    }
-
-    /* 탑버튼 */
-    .top {
-      font-family: "MaruBuriSemiBold", Helvetica;
-      color: rgb(255, 255, 255);
-      background-color: #bfbfbf;
-      padding: 1%;
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      position: sticky;
-      float: right;
-    }
-    .top:hover{
-      color: rgba(78, 78, 78, 0.200);
-    } 
-
-    #provision{
-      display: flex;
-      flex-direction: column
-    }
-
-    .provision{
-      border: 1px solid gray;
-      width: 100%;
-      height: 100px;
-    }
-
-  </style>
-
-
+  <link rel="stylesheet" href="/css/login/signUp.css">
 </head>
 <body>
   <!-- 공통 조각 삽입 (헤더 포함) -->
@@ -285,17 +34,17 @@
             <div class="signUp-input-area">
               <input type="text" name="trainerEmail" id="email"
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
-              <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
+              <button class="btn" id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
-            <span class="emailMessage" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
-      
+
             <label for="emailCheck">
               *<span class="required">이메일 인증</span>
             </label>
+            <span class="nextText" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
             <div class="signUp-input-area">
               <input type="text" name="authKey" id="authKey"
               placeholder="이메일 인증 확인" maxlength="6" autocomplete="off">
-              <button id="checkAuthKeyBtn" type="button">인증하기</button>
+              <button class="btn" id="checkAuthKeyBtn" type="button">인증하기</button>
             </div>
             <span class="signUp-message" id="authKeyMessage"></span>
             <!-- 인증번호가 일치하지 않습니다 -->
@@ -315,11 +64,11 @@
               <input type="password" name="trainerPw" id="pw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
-            <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
       
             <label for="PwCheck">
              *<span class="required">비밀번호 확인</span>
             </label>
+            <span class="nextText" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
             <div class="signUp-input-area">
               <input type="password" name="pwCheck" id="pwCheck"
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
@@ -336,27 +85,37 @@
             <label for="trainerTel">
               *<span class="required">전화번호</span>
             </label>
+            <span class="nextText" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
             <div class="signUp-input-area">
               <input type="text" name="trainerTel" id="tel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
             </div>      
-            <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
 
-            <div class="signUp-content" id="trainerContent">
-              <label for="qualification">
-                *<span class="required">자격사항</span>
-                <button class="plus">+</button>
-            
-                <span class="required">취득일</span>
-              </label>
-              <div class="signUp-input-area">
-                <input type="text" name="qName" id="qualification"
-                placeholder="자격정보를 입력하세요" maxlength="40" autocomplete="off">
-                <input type="date" name="qDate" id="qualification">
-              </div>
-            </div>
+            <div class="main-in">자격사항</div>
+            <table class="qualification-table">
+              <thead>
+                <tr>
+                  <th>자격사항</th>
+                  <th class="date-th">
+                    취득일
+                    <button type="button" value="+" class="plus" id="plus">+</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                  <td>
+                    <input class="review" name="qName" placeholder="자격사항을 작성해주세요.">
+                  </td>
+                  <td>
+                    <input class="date" type="date" name="qDate">
+                    <button type="button" class="qualificationRemovebtn">-</button>
+                  </td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-            <label for="provision" id="provision">
+            <label for="provision" id="provision" class="provisionText">
               <span class="required"> <약관> </span>
               <div class="provision">약관내용</div> 
             </label>

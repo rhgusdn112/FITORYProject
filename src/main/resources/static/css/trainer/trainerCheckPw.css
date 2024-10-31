@@ -22,14 +22,16 @@
 }
 
 .main-box {
-  border: 5px solid #bfbfbf;
-  color: #bfbfbf;
-  padding: 6%; /* 내부 패딩을 늘려서 더 넓게 */
-  width: 100%;
-  max-width: 600px; /* 최대 너비를 600px로 확장 */
-  text-align: center;
-  min-height: 50vh;
-  display: flex;
+  position: absolute;
+  margin-top: 30%; /* 위쪽 위치 설정 */
+  left: 50%; /* 수평 가운데 정렬 */
+  transform: translateX(-50%); /* 수평 이동하여 정확히 가운데 배치 */
+  width: 891px; /* 로그인 박스 너비 설정 */
+  padding: 20px; /* 내부 여백 설정 */
+  border: 2px solid #bfbfbf; /* 테두리 설정 */
+  border-radius: 3px; /* 둥근 모서리 설정 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  margin-bottom: 30%; /* 푸터의 높이만큼 여유 공간 확보 */
   flex-direction: column;
   justify-content: center;
 }

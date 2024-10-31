@@ -15,41 +15,17 @@ plus.addEventListener("click", () => {
   tr.append(td1, td2);
   const tbody = document.querySelector("#tbody");
   tbody.append(tr);
-});
-
-/* -버튼 클릭 시 */
-const removeBtnList = document.querySelectorAll(".qualificationRemovebtn");
-
-removeBtnList?.forEach(minus => {
-  console.log(minus);
-
-  minus.addEventListener("click", () => {
-    minus.closest("tr").remove();
+  
+  /* -버튼 클릭 시 */
+  const removeBtnList = document.querySelectorAll(".qualificationRemovebtn");
+  removeBtnList?.forEach(minus => {
+    console.log(minus);
+    minus.addEventListener("click", () => {
+      minus.closest("tr").remove();
+    })
   })
-
-})
-
-/* 내 정보 수정 form 제출 시 */
-const checkObj = {
-  "trainerNickname": true, "trainerTel": true, "profileImg": true
-}
-const update = document.querySelector("#update");
-update?.addEventListener("submit", e => {
-  for (let key in checkObj) {
-    if (checkObj[key] === false) { // 닉네임, 전화번호 중 유효하지 않은 값이 있을 경우
-      let str = " 유효하지 않습니다.";
-      switch (key) {
-        case "trainerrNickname": str = "닉네임이" + str; break;
-        case "trainerTel": str = "전화번호가" + str; break;
-        case "profileImg": str = "이미지가" + str; break;
-      }
-      alert(str);
-      e.preventDefault();
-      document.getElementById(key).focus();
-      return;
-    }
-  }
 });
+
 
 // --------------------------------------------------------------------------------------------------
 /* 프로필 이미지 미리보기, 삭제하기 */
@@ -68,7 +44,7 @@ let lastValidFiles = null;
 if (imageInput) {
   imageInput.addEventListener("change", (e) => {
     const files = e.target.files;
-    const imgElements = ["profileImgMain", "profileImgMainSub", "profileImgSub", "profileImgSubSub"];
+    const imgElements = ["profileImgMain", "profileImgMainSub"];
     console.log(files);
 
     if (files.length === 0) {
@@ -162,4 +138,24 @@ if (imageInput) {
       }
   }
 
-/* 유효성 검사 따로 해야함 */
+/* 내 정보 수정 form 제출 시 유효성 검사 */
+const checkObj = {
+  "trainerNickname": true, "trainerTel": true, "profileImg": true
+}
+const update = document.querySelector("#update");
+update?.addEventListener("submit", e => {
+  for (let key in checkObj) {
+    if (checkObj[key] === false) { // 닉네임, 전화번호 중 유효하지 않은 값이 있을 경우
+      let str = " 유효하지 않습니다.";
+      switch (key) {
+        case "trainerrNickname": str = "닉네임이" + str; break;
+        case "trainerTel": str = "전화번호가" + str; break;
+        case "profileImg": str = "이미지가" + str; break;
+      }
+      alert(str);
+      e.preventDefault();
+      document.getElementById(key).focus();
+      return;
+    }
+  }
+});
