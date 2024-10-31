@@ -109,18 +109,19 @@ public class MemberController {
 	 * @return
 	 */
 	@PostMapping("signUp")
-	public String signUp(@ModelAttribute Member inputMember, RedirectAttributes ra) {
-
+	public String signUp(@ModelAttribute Member inputMember,
+												RedirectAttributes ra) {
+		
 		int result = service.signUp(inputMember);
 
 		String message = null;
 		String path = null;
 
 		if (result > 0) {
-			path = "/";
+			path = "/main";
 			message = inputMember.getMemberName() + "님의 가입을 환영합니다";
 		} else {
-			path = "signUp";
+			path = "member/signUp";
 			message = "회원 가입 실패...";
 		}
 

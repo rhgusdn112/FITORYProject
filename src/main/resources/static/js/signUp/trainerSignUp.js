@@ -1,28 +1,3 @@
-    // 라디오 버튼 클릭 시 내용 전환
-    const memberRadio = document.getElementById('member');
-    const trainerRadio = document.getElementById('trainer');
-    const memberContent = document.getElementById('memberContent');
-    const trainerContent = document.getElementById('trainerContent');
-
-    memberRadio.addEventListener('click', () => {
-        if (memberRadio.checked) {
-            memberContent.style.display = 'block';
-            trainerContent.style.display = 'none';
-            signUpForm.action = "/member/signUp";
-        }
-    });
-
-    trainerRadio.addEventListener('click', () => {
-        if (trainerRadio.checked) {
-            trainerContent.style.display = 'block';
-            signUpForm.action = "/trainer/signUp";
-        }
-    });
-
-
-
-
-
 //-----------------------------------------------------------------------
 /**** 회원 가입 유효성 검사 ****/
 
@@ -86,7 +61,7 @@ email.addEventListener("input", e=>{
   }
 
   // 6) 이메일 중복 검사(Ajax)
-  fetch("/member/emailCheck?email="+inputEmail)
+  fetch("/trainer/emailCheck?email="+inputEmail)
   .then(Response => {
     if(Response.ok){ // HTTP 응답 상태 코드 200번(응답 성공)
       return Response.text(); // 응답결과를 text로 변환(파싱)

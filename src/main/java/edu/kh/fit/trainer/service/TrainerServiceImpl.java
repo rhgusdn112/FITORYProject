@@ -48,24 +48,51 @@ public class TrainerServiceImpl implements TrainerService{
 			
 			if(trainerLogin == null)	return null;
 
-//			if( !encorder.matches(encorder.encode(trainerPw), trainerLogin.getTrainerPw())){
-//				return null;
-//			}
+			if( !encorder.matches(trainerPw, trainerLogin.getTrainerPw())){
+				return null;
+			}
 				
 			return trainerLogin;
 		}
 	
 	// (강사) 회원 가입
 	@Override
-	public int signUp(Trainer inputTrainer) {
+	public Map<String, Object> singUp(Trainer inputTrainer, List<String> qNameList, List<String> qDateList) {
+		
+		Map<String, Object> resultMap = new HashMap<>();
 		
 		String encPw = encorder.encode(inputTrainer.getTrainerPw());
 		inputTrainer.setTrainerPw(encPw);
 		
-		
 		int result = mapper.signUp(inputTrainer);
+		
+		if(result <= 0) throw new RuntimeException("강사 회원가입 오류");
+		resultMap.put("result", result);
+		
+		if(qNameList.size() > 0 && qDateList.size() > 0) {
+			List<Qualification> qList = new ArrayList<>();
+			for(int i=0 ; i < qNameList.size() ; i++) {
+				Qualification q 
+					= Qualification.builder()
+						.qualification(qNameList.get(i))
+						.qualificationDate(qDateList.get(i))
+						.trainerNo(inputTrainer.getTrainerNo()).build();
+				qList.add(q);
+			}
+			mapper.deleteQulification(inputTrainer.getTrainerNo());
+			result = mapper.insertQulification(qList);
+			if(result <= 0) throw new RuntimeException("트레이너 정보 수정 오류");
+			resultMap.put("result", result);
+			resultMap.put("qList", qList);
+		}
 						
-		return result;
+		return resultMap;
+	}
+	
+	// 이메일 중복체크
+	@Override
+	public int emailCheck(String email) {
+		return mapper.emailCheck(email);
 	}
 	
 	/* 강사 마이페이지 강의 목록 조회 */
@@ -204,5 +231,6 @@ public class TrainerServiceImpl implements TrainerService{
 
     return map;
 	}
+	
 
 }

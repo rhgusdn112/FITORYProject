@@ -113,6 +113,12 @@ public interface TrainerMapper {
 
 	List<Board> trainerVideoDetail(@Param("trainerNo") int trainerNo,@Param("sort") String sort, RowBounds bounds);
 
+	/** 이메일 중복체크
+	 * @param email
+	 * @return
+	 */
+	int emailCheck(String email);
+
 
 
 

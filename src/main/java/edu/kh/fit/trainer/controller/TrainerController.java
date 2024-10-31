@@ -99,6 +99,11 @@ public class TrainerController {
 	
 	
 	
+	@GetMapping("signUp")
+	public String signUp() {
+		return "/trainer/signUp";
+	}
+	
 	/** 회원가입
 	 * @param inputMember
 	 * @param ra
@@ -107,25 +112,42 @@ public class TrainerController {
 	@PostMapping("signUp")
 	public String signUp(
 			@ModelAttribute Trainer inputTrainer,
+			@RequestParam("qName") List<String> qNameList,
+			@RequestParam("qDate") List<String> qDateList,
 			RedirectAttributes ra	) {
 		
-		int result = service.signUp(inputTrainer);
-		
+		Map<String, Object> resultMap = service.singUp(inputTrainer, qNameList, qDateList);
+
 		String message = null;
-		String path    = null;
+		String path = null;
 		
-		if(result > 0) {
-			path = "/";
+		if (resultMap != null && Integer.parseInt(String.valueOf(resultMap.get("result"))) > 0) {
+			message = "수정이 되었습니다.";
+
+			List<Qualification> qList = (List<Qualification>)resultMap.get("qList");
+
+			path = "/main";
 			message 
 				= inputTrainer.getTrainerNickname() + "님의 가입을 환영합니다";
-		} else {
+		}else {
 			path = "signUp";
 			message = "회원 가입 실패...";
 		}
 		
+		
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
+	}
+	
+	/** 비동기 이메일 중복 체크
+	 * @param email
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("emailCheck")
+	public int emailCheck(@RequestParam("email") String email) {
+		return service.emailCheck(email);
 	}
 	
 	@GetMapping("trainer")

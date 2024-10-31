@@ -45,7 +45,7 @@ public class Maincontroller {
 
 	@GetMapping("signUp")
 	public String signUp() {
-		return "login/signUp";
+		return "/login/signUp";
 	}
 
 	@GetMapping("find-id")

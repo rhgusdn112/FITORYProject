@@ -266,25 +266,24 @@
       <section class="signUp">
         <h2>회원가입</h2>
 
-        <form action="/member/signUp" method="post" name="signUpForm" id="signUpForm">
+        <form action="/trainer/signUp" method="post" name="signUpForm" id="signUpForm">
           <div class="signUp-options">
-            <input type="radio" id="member" name="signUpType" value="member"  checked>
+            <input type="radio" id="member" name="signUpType" value="member">
             <label for="member" class="signUp-option">
               <a href="/signUp">일반 회원가입</a>
             </label>
-            <input type="radio" id="trainer" name="signUpType" value="trainer" >
+            <input type="radio" id="trainer" name="signUpType" value="trainer" checked >
             <label for="trainer" class="signUp-option">
               <a href="/trainer/signUp">강사 회원가입</a>
             </label>
           </div>
     
-          <!-- 일반 회원가입 클릭 시 -->
-          <div class="signUp-content" id="memberContent" style="display:block">
-            <label for="memberEmail">
+          <div class="signUp-content" id="trainerContent" style="display:block">
+            <label for="email">
               *<span class="required">아이디(Email)</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="memberEmail" id="email"
+              <input type="text" name="trainerEmail" id="email"
               placeholder="이메일을 입력해주세요" maxlength="30" autocomplete="off">
               <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
             </div>
@@ -301,19 +300,19 @@
             <span class="signUp-message" id="authKeyMessage"></span>
             <!-- 인증번호가 일치하지 않습니다 -->
             
-            <label for="memberName">
+            <label for="trainerNickame">
              *<span class="required">이름</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="memberName" id="name"
+              <input type="text" name="trainerNickname" id="name"
               placeholder="이름 입력" maxlength="6" autocomplete="off">
             </div>
-      
-            <label for="memberPw">
+            
+            <label for="trainerPw">
               *<span class="required">비밀번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="password" name="memberPw" id="pw"
+              <input type="password" name="trainerPw" id="pw"
               placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
             </div>
             <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
@@ -326,22 +325,36 @@
               placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
             </div>
       
-            <label for="memberBirthday">
+            <label for="trainerBirthday">
               <span class="required">생일</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="memberBirthday" id="birthday"
+              <input type="text" name="trainerBirthday" id="birthday"
               placeholder="YYYYMMDD" maxlength="8" autocomplete="off">
             </div>
       
-            <label for="memberTel">
+            <label for="trainerTel">
               *<span class="required">전화번호</span>
             </label>
             <div class="signUp-input-area">
-              <input type="text" name="memberTel" id="tel"
+              <input type="text" name="trainerTel" id="tel"
               placeholder=" '-' 빼고 숫자만 입력" maxlength="11" autocomplete="off">
             </div>      
             <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
+
+            <div class="signUp-content" id="trainerContent">
+              <label for="qualification">
+                *<span class="required">자격사항</span>
+                <button class="plus">+</button>
+            
+                <span class="required">취득일</span>
+              </label>
+              <div class="signUp-input-area">
+                <input type="text" name="qName" id="qualification"
+                placeholder="자격정보를 입력하세요" maxlength="40" autocomplete="off">
+                <input type="date" name="qDate" id="qualification">
+              </div>
+            </div>
 
             <label for="provision" id="provision">
               <span class="required"> <약관> </span>
@@ -365,6 +378,6 @@
   <!-- 푸터 조각 -->
   <th:block th:replace="~{common/footer}"></th:block>
   
-  <script src="/js/signUp/signUp.js"></script>
+  <script src="/js/signUp/trainerSignUp.js"></script>
 </body>
 </html>
