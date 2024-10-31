@@ -39,28 +39,29 @@
   <!-- 고정된 사이드바 영역 -->
   <div id="side-bar" class="header-side-bar" th:if="${isLoggedIn} and (${currentPage} == 'trainerMyPage' or ${currentPage} == 'cart')">
     <div class="side-item">
-      <a href="/trainer/checkPw" class="side-page">My Page</a>
+      <a href="/trainer/checkPw" class="header-nav-item">My Page</a>
     </div>
     <div class="side-item">
-      <a href="/admin/member" class="side-1">내 회원 관리</a>
+      <a href="/admin/member" class="header-nav-item">내 회원 관리</a>
     </div>
     <div class="side-item">
-      <a href="/trainer/trainerClassList" class="side-2">내 강의 목록</a>
+      <a href="/trainer/trainerClassList" class="header-nav-item">내 강의 목록</a>
     </div>
     <div class="side-item">
-      <a href="/admin/dashBoard" class="side-3">대시보드</a>
+      <a href="/admin/dashBoard" class="header-nav-item">대시보드</a>
     </div>
     <div class="side-item">
-      <a href="/admin/question" class="side-4">자주 묻는 질문</a>
+      <a href="/customerService/faq" class="header-nav-item">자주 묻는 질문</a>
     </div>
     <div class="side-item">
-      <a  href="/board/1" class="side-6">공지사항</a>
+      <a href="/board/1" class="header-nav-item">공지사항</a>
     </div>
     <div class="side-item">
-      <a href="/admin/content" class="side-5">1 1 문의</a>
+      <a href="/trainer/query" class="header-nav-item">1 : 1 문의</a>
+
     </div>
     <div class="side-item">
-      <a href="/admin/board" class="side-7">회원 탈퇴</a>
+      <a href="/trainer/statusChange" class="header-nav-item">회원 탈퇴</a>
     </div>
   </div>
 
@@ -72,30 +73,28 @@
     </div>
     <!-- 사이드 메뉴 항목 -->
     <nav>
-      <div class="header-nav-item-wrapper">
-        <a href="/trainer/checkPw" class="header-nav-item">My Page</a>
-      </div>
-      <!-- <div class="header-nav-item-wrapper">
-        <a href="/login" class="header-nav-item">LogIn</a>
-      </div> -->
-      <div class="header-nav-item-wrapper">
+      <div>
+        <div class="header-nav-item-wrapper">
+          <a href="/member/checkPw" class="header-nav-item">My Page</a>
+        </div>
+        <div class="header-nav-item-wrapper">
           <a href="/trainer/trainer" class="header-nav-item">Trainer</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-        <a href="/board/2" class="header-nav-item">>Home Training</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-        <a href="/board/3" class="header-nav-item">Home Gym</a>
-    </div>
-    <div class="header-nav-item-wrapper">
-        <a href="/board/1" class="header-nav-item">공지사항</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-          <a href="/buy" class="header-nav-item">1 : 1 문의</a>
-      </div>
-      <div class="header-nav-item-wrapper">
-          <a href="/customer-service" class="header-nav-item">고객센터</a>
-      </div>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/board/2" class="header-nav-item">Home Training</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/board/3" class="header-nav-item">Home Gym</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/board/1" class="header-nav-item">공지사항</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/trainer/query" class="header-nav-item">1:1 문의</a>
+        </div>
+        <div class="header-nav-item-wrapper">
+          <a href="/customerservice" class="header-nav-item">고객센터</a>
+        </div>
     </nav>
   </div>
 </div>
