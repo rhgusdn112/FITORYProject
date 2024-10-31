@@ -52,6 +52,33 @@ public class EmailController {
 		return service.sendEmail("signUp", email);
 	}
 	
+	
+	/** 비밀번호 찾기 이메일 인증
+	 * @param email
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("sendFindPwAuthKey")
+	public int sendFindPwAuthKey(
+			@RequestBody String email
+			) {
+		
+		return service.sendEmail("findPw", email);
+	}
+	/** 비밀번호 이메일 보내기
+	 * @param email
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("sendPwAuthKey")
+	public int sendPwAuthKey(
+			@RequestBody String email,
+			@RequestBody String password
+			) {
+		
+		return service.sendEmail("sendPw", email, password);
+	}
+	
 	/** 인증번호 확인
 	 * @param map : 입력받은 email, authKey가 저장된 map
 	 * 				HttpMessageConverter에 의해 JSON -> Map 자동 변환

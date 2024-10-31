@@ -1,0 +1,55 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+html{
+  width: 100%;
+  height: 100%;
+}
+/* 로그인 옵션 (회원/강사 선택) 스타일 */
+.findId-options {
+  display: flex; /* Flexbox 사용하여 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  margin: 20px 0; /* 위아래 여백 설정 */
+}
+
+/* 로그인 옵션 라벨 스타일 */
+.findId-options {
+  width: 400px; /* 옵션 너비 설정 */
+  padding: 15px; /* 내부 여백 설정 */
+  margin: 0 10px; /* 좌우 여백 설정 */
+  border-radius: 5px; /* 둥근 모서리 설정 */
+  cursor: pointer; /* 커서 모양 설정 (포인터) */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  font-size: 18px; /* 폰트 크기 설정 */
+  transition: background 0.3s, border-color 0.3s; /* 배경색 및 테두리 색 변경 시 애니메이션 */
+}
+
+/* 선택된 로그인 옵션 스타일 */
+.findId-options input[type="radio"]:checked + label {
+  background: rgba(0, 0, 0, 0.1); /* 선택 시 배경색 설정 */
+  border-color: #000000; /* 선택 시 테두리 색상 설정 */
+}
+
+/* 로그인 옵션 호버 효과 */
+.findId-options:hover {
+  background: rgba(0, 0, 0, 0.05); /* 호버 시 배경색 설정 */
+}
+
+.findId-section{
+  width: 700px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid grey;
+}
+
+.memberBtn, .trainerBtn{
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+}

@@ -237,5 +237,16 @@ public class TrainerServiceImpl implements TrainerService{
 	public int statusChange(int trainerNo) {
 		return mapper.statusChange(trainerNo);
 	}
+	
+	// 비밀번호 찾기
+	@Override
+	public String findPw(String email) {
+		return mapper.findPw(email);
+	}
+	
+	@Override
+	public int updatePw(String password) {
+		return mapper.updatePw(password);
+	}
 
 }

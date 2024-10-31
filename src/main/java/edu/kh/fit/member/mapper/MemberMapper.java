@@ -72,5 +72,11 @@ public interface MemberMapper {
 	// 회원 탈퇴
 	int statusChange(int memberNo);
 
+	// 비밀번호 찾기
+	String findPw(String email);
+
+	// 비밀번호 변경
+	int updatePw(String password);
+
 	
 }
