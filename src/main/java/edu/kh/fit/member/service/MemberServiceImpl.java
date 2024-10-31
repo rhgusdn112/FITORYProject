@@ -122,4 +122,10 @@ public class MemberServiceImpl implements MemberService{
 		return map;
 	}
 
+	// 회원 탈퇴
+	@Override
+	public int statusChange(int memberNo) {
+		return mapper.statusChange(memberNo);
+	}
+
 }

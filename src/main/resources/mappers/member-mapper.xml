@@ -133,5 +133,18 @@
 		)
 		ORDER BY REVIEW_WRITE_DATE DESC
 	</select>
+	
+<!-- 	<select id="selectMyQueryList">
+		SELECT QUERY_NO, QUERY_DETAIL, QUERY_DATE
+		FROM QUERY
+		WHERE QUERY_PK = #{queryPk}
+	</select>
+ -->  
+ 
+ <update id="statusChange">
+ 	UPDATE "MEMBER"
+ 	SET MEMBER_DEL_FL = 'Y'
+ 	WHERE MEMBER_NO = #{memberNo}
+ </update>
 
 </mapper>

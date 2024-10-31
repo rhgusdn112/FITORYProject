@@ -49,10 +49,10 @@ public class EmailServiceImpl implements EmailService {
 			// 이메일 제목, 내용을 다르게 설정
 			switch(htmlName) {
 				case "signUp" :
-					emailTitle = "[boardProject] 회원가입 인증번호입니다.";
+					emailTitle = "[FITORY] 회원가입 인증번호입니다.";
 					break;
 				case "findPw" :
-					emailTitle = "[boardProject] 비밀번호 찾기 인증번호입니다.";
+					emailTitle = "[FITORY] 비밀번호 찾기 인증번호입니다.";
 					break;
 			}
 			
