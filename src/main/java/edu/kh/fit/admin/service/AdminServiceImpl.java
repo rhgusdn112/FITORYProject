@@ -31,6 +31,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Autowired
 	private BCryptPasswordEncoder encorder;
+	
 	// 관리자 로그인
 	@Override
 		public Admin adminLogin(String adminEmail, String adminPw) {
@@ -40,7 +41,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		if(adminLogin == null)	return null;
 
-		if( !encorder.matches(encorder.encode(adminPw), adminLogin.getPw()) ){
+		if( !encorder.matches(adminPw, adminLogin.getPw()) ){
 			return null;
 		}
 			
