@@ -124,23 +124,11 @@
 			FROM REVIEW
 			JOIN BOARD USING(BOARD_NO)
 			WHERE MEMBER_NO = #{memberNo}
-			UNION
-			SELECT QUERY_NO, QUERY_DETAIL, 
-				QUERY_DATE, '1:1문의' TYPE, 
-				NULL, NULL, NULL
-			FROM QUERY
-			WHERE QUERY_PK = #{memberNo}
 		)
 		ORDER BY REVIEW_WRITE_DATE DESC
 	</select>
 	
-<!-- 	<select id="selectMyQueryList">
-		SELECT QUERY_NO, QUERY_DETAIL, QUERY_DATE
-		FROM QUERY
-		WHERE QUERY_PK = #{queryPk}
-	</select>
- -->  
- 
+
  <update id="statusChange">
  	UPDATE "MEMBER"
  	SET MEMBER_DEL_FL = 'Y'

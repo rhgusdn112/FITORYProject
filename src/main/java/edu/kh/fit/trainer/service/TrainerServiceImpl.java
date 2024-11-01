@@ -225,9 +225,12 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		List<Board> trainerClassList = mapper.trainerVideoDetail(trainerNo, sort, bounds);
 		
+		String trainerNickname = mapper.selectTarinerNickname(trainerNo);
+		
 		Map<String, Object> map = new HashMap<>();
     map.put("trainerClassList", trainerClassList);
     map.put("pagination", pagination);
+    map.put("trainerNickname", trainerNickname);
 
     return map;
 	}

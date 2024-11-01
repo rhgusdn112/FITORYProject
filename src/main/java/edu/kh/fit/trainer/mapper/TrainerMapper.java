@@ -133,6 +133,8 @@ public interface TrainerMapper {
 
 int updatePw(String password);
 
+String selectTarinerNickname(int trainerNo);
+
 
 
 
