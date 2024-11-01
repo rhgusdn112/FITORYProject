@@ -31,7 +31,7 @@ input::placeholder {
 
 /* main 박스 */
 .main-box {
-  border: 5px solid #bfbfbf;
+  border: 1px solid #bfbfbf;
   margin: auto;
   padding: 3%;
   min-height: 50vh;
@@ -174,7 +174,7 @@ form[name='myPageFrm']{position: relative;}
 	width: calc(50% - 5px); /* 두 장이 한 줄에 들어가도록 설정 */
 	aspect-ratio: 1 / 1;
 	object-fit: cover; 
-	border: 2px solid #bfbfbf;
+	border: 1px solid #bfbfbf;
 	border-radius: 8px;
 }
 

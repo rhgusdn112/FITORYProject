@@ -91,7 +91,7 @@ const selectClassList = (cp) => {
 }
 
 const selectAllBtn = document.querySelector("#selectAllBtn");
-selectAllBtn.addEventListener("click", () => {
+selectAllBtn?.addEventListener("click", () => {
   const checkbox = document.querySelector("#checkbox");
   checkbox.checked;
   

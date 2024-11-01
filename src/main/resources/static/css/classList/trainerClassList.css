@@ -3,135 +3,104 @@
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
 }
+* {
+	font-family: 'MaruBuriSemiBold';
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 input::placeholder {
 	text-align: left;
 	font-size: 15px;
 }
 
+/* 메인 레이아웃 */
 .main {
-	font-family: "MaruBuriSemiBold", Helvetica;
 	min-height: 100vh;
 	min-width: 50vw;
-	padding-left: 20%;
+	padding-left: 10%;
 	margin: auto;
+	margin-top: 10%;
+	margin-left: 10%;
 	justify-content: center;
-	/* border: 1px solid; */
 	padding-right: 3%;
+}
+
+/* 타이틀 */
+.main-class {
+	color: #292929;
+	font-size: 32px;
+	text-shadow: 1px #bfbfbf;
+	margin-bottom: 20px;
 }
 
 /* main 박스 */
 .main-box {
-	border: 5px solid;
-	color: #bfbfbf;
+	border: 1px solid #bfbfbf;
 	margin: auto;
-	margin-top: 3%;
-	min-height: 100hv;
-	padding-right: 20%;
 	padding: 3%;
-}
-.main-class {
-	color: #292929;
-	font-size: 32px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
+	min-height: 100vh;
+	min-width: 50vw;
 }
 
 .box {
-  border: 1px solid;
-  color:#292929;
-  font-family: "MaruBuriSemiBold", Helvetica;
-  justify-content: center;
-  display: flex;
-  margin: 2% 0% 2%;
-  padding: 5px;
-  width: 100%;
+	width: 100%;
 }
 
-#selectType{
-	color: #292929;
-	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
-	float: right;
-	padding-bottom: 5%;
-	margin-bottom: 30%;
-}
-
-#checkbox{
-	float: right;
-  display: flex;
-}
-
-img {
-	display: inline-flex;
-	border : 1px solid;
-}
-tr>td{
-	border: 1px solid;
-	box-sizing: content-box;
+.box>tbody>tr {
 	display: flex;
-	margin: 30%;
-	padding: 20%;
-}
-.select{
-	color: #292929;
-	font-size: 14px;
-	font-family: "MaruBuriSemiBold", Helvetica;
-	text-shadow: 10px #bfbfbf;
-  /* float: right; */
+	align-items: center;
+	border-bottom: 1px solid #bfbfbf;
+	/* 구분선 추가 */
+	padding: 10px 0;
 }
 
-/* 수정하기 버튼 */
-.update {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: auto;
-	justify-content: center;
-	text-align: center;
-	width: 50%;
-  border-radius: 20px 0px 0px 20px;
-  float: left;
-  background-color: #bfbfbf00;
-}
-.delete{
-  font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 0.8% 1%;
-	margin: auto;
-	justify-content: center;
-	text-align: center;
-	width: 50%;
-  float: right;
-  border-radius: 0px 20px 20px 0px;
+/* 영상 이미지 */
+.box>tbody>tr>th:first-child {
+	width: 20%;
+	padding-right: 10px;
 }
 
-.update:hover {
+.box>tbody>tr>th:first-child img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	/* 16:9 비율 유지 */
+	object-fit: cover;
+	/* 이미지가 박스에 꽉 차도록 설정 */
+	max-height: 150px;
+	/* 최대 높이 설정 */
+	border-radius: 5px;
+	/* 모서리 둥글게 설정 (선택 사항) */
+}
+
+.box>tbody>tr>td {
+	width: 70%;
+	padding: 0 10px;
+}
+
+.box>tbody>tr>th:last-child {
+	width: 10%;
+	text-align: center;
+}
+
+/* 삭제 버튼 */
+.delete {
   background-color: #bfbfbf;
-  color: rgb(255, 255, 255);
+  color: #292929;
+  padding: 5px 15px;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+	margin-top: 3%;
 }
+
 .delete:hover {
-	color: rgba(78, 78, 78, 0.200);
-  background-color: rgb(255, 255, 255)
-}
-
-/* 탑버튼 */
-.top {
-	font-family: "MaruBuriSemiBold", Helvetica;
-	color: rgb(255, 255, 255);
-	background-color: #bfbfbf;
-	padding: 1%;
-	width: 40px;
-	height: 40px;
-	border-radius: 100%;
-	position: sticky;
-	float: right;
-}
-
-.top:hover {
-	color: rgba(78, 78, 78, 0.200);
+	color: #bfbfbf;
+	background-color: #292929;
 }
 
 /* 페이지네이션 스타일 */
@@ -139,14 +108,62 @@ tr>td{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px; /* 페이지 버튼 간 간격을 줄임 */
-  margin-top: 2%; /* 페이지네이션과 콘텐츠 사이의 간격 */
-  font-size: 15px;
-  padding: 8% 0% 0% 0%;
+  gap: 8px;
+  margin-top: 5%; /* 위쪽 간격 */
 }
 
 .pagination a {
   text-decoration: none;
   color: #bfbfbf;
-  padding: 10%; 
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #bfbfbf;
+  color: #292929;
+}
+
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+	.main-class {
+		font-size: 24px;
+	}
+
+	.box>tbody>tr>th:first-child img {
+		max-height: 80px;
+	}
+
+	.delete {
+		font-size: 0.9rem;
+		padding: 12px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.main-class {
+		font-size: 20px;
+	}
+
+	.box>tbody>tr>th:first-child img {
+		max-height: 60px;
+	}
+
+	.delete {
+		font-size: 0.8rem;
+		padding: 10px;
+	}
 }

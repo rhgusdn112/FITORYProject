@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="/css/login/afterFindPw.css">
 </head>
 <body>
+  <th:block th:replace="~{common/common}"></th:block>
   <main>
-    <div class="signUp-container">
-      <section class="signUp">
-      <h2>비밀번호 변경</h2>
-    </div>
+    <section class="main">
+      <div class="title">
+        <h2>비밀번호 변경</h2>
+      </div>
 
-    <form action = "/member/findPw" method="post" name="findPwForm" id="findPwForm"></form>    
+    <form action = "/member/findPw" method="post" name="findPwForm" id="findPwForm" class="main-box">
         <div class="signUp-content" id="memberContent" style="display:block">  
           <label for="memberPw">
             *<span class="required">비밀번호</span>
@@ -36,7 +37,7 @@
       </form>
 </section>  
 </main>
-
+<th:block th:replace="~{common/footer::footer}"></th:block>
 <script src="/js/login/afterFindPw.js"></script>
 </body>
 </html>

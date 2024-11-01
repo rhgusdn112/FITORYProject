@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid #bfbfbf;
   padding-bottom: 10px;
 }
 
@@ -27,14 +27,14 @@
 .board-writer {
   font-size: 1.2em;
   margin-bottom: 5px;
-  color: #333;
+  color: #292929;
 }
 
 /* 게시글 추가 정보 스타일 */
 .board-info p {
   margin: 5px 0;
   font-size: 0.9em;
-  color: #777;
+  color: #bfbfbf;
 }
 
 /* 비디오 팝업 스타일 - 화면 중앙에 배치 */
@@ -43,8 +43,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #f9f9f9;
-  border: 1px solid #ddd;
+  background: white;
+  border: 1px solid #bfbfbf;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   z-index: 3000;
@@ -72,12 +72,12 @@
 
 .popup-btn.continue {
   background-color: #ccc;
-  color: #000;
+  color: #292929;
 }
 
 .popup-btn.stop {
   background-color: #f0f0f0;
-  color: #555;
+  color: #bfbfbf;
 }
 
 
@@ -107,12 +107,12 @@
 .post-title {
   font-size: 40px;
   font-weight: 700;
-  color: #333;
+  color: #292929;
   margin-right: 400px;
 }
 
 .review {
-  background-color: #f0f0f0;
+  background-color: #bdbdbd;
   padding: 14px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -120,17 +120,17 @@
 
 .review-text {
   font-size: 16px;
-  color: #000;
+  color: #bfbfbf;
 }
 
 /* 수정 및 삭제 버튼 스타일 */
 .edit-buttons {
   justify-content: center;
   display: inline-flex;
-  border: 4px solid #ccc;
+  border: 1px solid #292929;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #bfbfbf;
 }
 
 .edit-btn {
@@ -138,7 +138,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #333;
+  color: #292929;
   font-size: 20px;
 }
 
@@ -183,7 +183,7 @@
   margin-top: 10px;
   font-weight: bold;
   font-size: 0.9em;
-  color: #333;
+  color: #292929;
 }
 
 .report-popup-content input[type="text"],
@@ -191,7 +191,7 @@
   width: 100%;
   padding: 8px;
   margin-top: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 0.9em;
@@ -265,7 +265,7 @@
   margin-top: 10px;
   font-weight: bold;
   font-size: 0.9em;
-  color: #333;
+  color: #292929;
 }
 
 .inquiry-popup-content input[type="text"],
@@ -273,7 +273,7 @@
   width: 100%;
   padding: 8px;
   margin-top: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 0.9em;
