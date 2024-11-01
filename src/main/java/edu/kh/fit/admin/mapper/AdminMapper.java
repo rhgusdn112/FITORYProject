@@ -57,6 +57,7 @@ public interface AdminMapper {
 	
 	// 회원 정지
 	int changeStatus(int memberNo);
+	int changeStatusTrainer(int trainerNo);
 
 	// 강의 매출 가져오기
 	List<Board> classList(RowBounds bounds);

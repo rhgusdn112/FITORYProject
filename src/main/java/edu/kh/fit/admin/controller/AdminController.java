@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.admin.dto.Admin;
@@ -26,7 +27,8 @@ import edu.kh.fit.main.dto.Report;
 import edu.kh.fit.member.dto.Member;
 import edu.kh.fit.payment.dto.Order;
 import edu.kh.fit.trainer.dto.Trainer;
-
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import oracle.jdbc.proxy.annotation.Post;
@@ -148,17 +150,31 @@ public class AdminController {
 			return "/admin";
 		}else {
 			model.addAttribute("adminLogin", adminLogin);
-			if(adminLogin.getAuthorityNo() == 1) {
-				path = "/admin/member";
-			}else 
-				{ if( adminLogin.getAuthorityNo() == 2) {
-					path = "/admin/trainer";
-				}else {
-					path = "/admin";
+			if( adminLogin.getAuthorityNo() == 2) {
+				path = "/admin/trainer";
+			}else{
+					path = "/admin/member";
 				}
-			}
+			
 			return "redirect:" + path; 
 		}
+	}
+	
+	/** 로그아웃
+	 * @param status
+	 * @param session
+	 * @param request
+	 * @return referer가 없으면 기본적으로 메인 페이지로 이동
+	 */
+	@GetMapping("logout")
+	public String logout(SessionStatus status, HttpSession session, HttpServletRequest request) {
+	    // 세션에 저장된 로그인 정보 제거
+	    status.setComplete();
+	    
+	    // 이전 페이지 URL(prevPage)도 세션에서 제거
+	    session.removeAttribute("prevPage");
+
+	    return "redirect:/admin"; 
 	}
 	
 	@GetMapping("memberActive")
@@ -286,6 +302,13 @@ public class AdminController {
 	public int changeStatus(
 			@RequestBody int memberNo) {
 		return service.changeStatus(memberNo);
+	}
+	
+	@ResponseBody
+	@PutMapping("changeStatusTrainer")
+	public int changeStatusTrainer(
+			@RequestBody int trainerNo) {
+		return service.changeStatus(trainerNo);
 	}
 	
 	
