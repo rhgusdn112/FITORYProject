@@ -107,6 +107,10 @@ public class AdminServiceImpl implements AdminService{
 	public int changeStatus(int memberNo) {
 		return mapper.changeStatus(memberNo);
 	}
+	@Override
+	public int changeStatusTrainer(int trainerNo) {
+		return mapper.changeStatus(trainerNo);
+	}
 	
 	
 	// 강의 매출 가져오기

@@ -207,6 +207,15 @@
   	WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<update id="changeStatusTrainer"
+					parameterType="_int">
+  	UPDATE "TRAINER"
+  	SET
+  		TRAINNER_DEL_FL = 
+  			DECODE(TRAINNER_DEL_FL, 'Y', 'N', 'Y')
+  	WHERE TRAINER_NO = #{trainerNo}
+	</update>
+	
 	
 	<select id="classListCount"
 					resultType="_int">

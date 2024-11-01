@@ -150,15 +150,12 @@ public class AdminController {
 			return "/admin";
 		}else {
 			model.addAttribute("adminLogin", adminLogin);
-			if(adminLogin.getAuthorityNo() == 1) {
-				path = "/admin/member";
-			}else 
-				{ if( adminLogin.getAuthorityNo() == 2) {
-					path = "/admin/trainer";
-				}else {
-					path = "/admin";
+			if( adminLogin.getAuthorityNo() == 2) {
+				path = "/admin/trainer";
+			}else{
+					path = "/admin/member";
 				}
-			}
+			
 			return "redirect:" + path; 
 		}
 	}
@@ -177,7 +174,6 @@ public class AdminController {
 	    // 이전 페이지 URL(prevPage)도 세션에서 제거
 	    session.removeAttribute("prevPage");
 
-	    
 	    return "redirect:/admin";
 	}
 	
@@ -306,6 +302,13 @@ public class AdminController {
 	public int changeStatus(
 			@RequestBody int memberNo) {
 		return service.changeStatus(memberNo);
+	}
+	
+	@ResponseBody
+	@PutMapping("changeStatusTrainer")
+	public int changeStatusTrainer(
+			@RequestBody int trainerNo) {
+		return service.changeStatus(trainerNo);
 	}
 	
 	
