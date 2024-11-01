@@ -52,18 +52,8 @@ const selectMemberList = () => {
       })
       td7.append(activeBtn);
 
+
       const td8 = document.createElement("td");
-      const infoBtn = document.createElement("button");
-      infoBtn.innerText = "회원 정보 조회";
-
-
-      infoBtn.addEventListener("click",() => {
-        location.href = "/member/memberMyPage";
-      })
-      
-      td8.append(infoBtn);
-
-      const td9 = document.createElement("td");
       const changeBtn = document.createElement("button");
       changeBtn.innerText = "탈퇴상태 변경";
 
@@ -83,11 +73,9 @@ const selectMemberList = () => {
         .catch(err => console.error("err"));
       })
 
-
-      td9.append(changeBtn);
+      td8.append(changeBtn);
       
-      
-      tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
+      tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
 
       memberList.append(tr);
     })

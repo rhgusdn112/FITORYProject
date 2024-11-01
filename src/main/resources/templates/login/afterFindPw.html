@@ -4,31 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비밀번호 변경</title>
+  <link rel="stylesheet" href="/css/login/afterFindPw.css">
 </head>
 <body>
-  
+  <main>
+    <div class="signUp-container">
+      <section class="signUp">
+      <h2>비밀번호 변경</h2>
+    </div>
 
-  <div class="div">
-        
-        <label for="memberPw">
-          *<span class="required">비밀번호</span>
-        </label>
-        <div class="signUp-input-area">
-          <input type="password" name="memberPw" id="pw"
-          placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
+    <form action = "/member/findPw" method="post" name="findPwForm" id="findPwForm"></form>    
+        <div class="signUp-content" id="memberContent" style="display:block">  
+          <label for="memberPw">
+            *<span class="required">비밀번호</span>
+          </label>
+          <div class="signUp-input-area">
+            <input type="password" name="memberPw" id="pw"
+            placeholder="비밀번호 입력" maxlength="30" autocomplete="off">
+          </div>
+          <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
+    
+          <label for="PwCheck">
+          *<span class="required">비밀번호 확인</span>
+          </label>
+          <div class="signUp-input-area">
+            <input type="password" name="pwCheck" id="pwCheck"
+            placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
+          </div>
+          <button type="submit" class="changePw">비밀번호 찾기</button>
         </div>
-        <span class="pwMessage" id="pwMessage">영어,숫자,특수문자 1글자 이상, 6~20자 사이.</span>
-  
-        <label for="PwCheck">
-         *<span class="required">비밀번호 확인</span>
-        </label>
-        <div class="signUp-input-area">
-          <input type="password" name="pwCheck" id="pwCheck"
-          placeholder="비밀번호를 확인해주세요" maxlength="30" autocomplete="off">
-        </div>
-        
-        
-  </div>
+      </form>
+</section>  
+</main>
 
+<script src="/js/login/afterFindPw.js"></script>
 </body>
 </html>

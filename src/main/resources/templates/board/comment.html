@@ -135,23 +135,14 @@
   <!-- 리뷰 리스트 섹션 -->
   <div class="review-container">
     <h2>리뷰</h2>
-    <table class="review-table">
+    <table class="review-table review-list-table">
       <thead>
         <tr>
-          <th style="width: 65%;">내용</th>
+          <th style="width: 60%;">내용</th>
           <th style="width: 10%;">닉네임</th>
           <th style="width: 10%;">작성일</th>
           <th style="width: 10%;">별점</th>
-          <th style="width: 5%;">
-            <div class="review-sort-options">
-              <select id="review-sort">
-                <option value="latest">정렬방식 - 최신 순</option>
-                <option value="oldest">정렬방식 - 오래된 순</option>
-                <option value="high-rating">정렬방식 - 별점 높은 순</option>
-                <option value="low-rating">정렬방식 - 별점 낮은 순</option>
-              </select>
-            </div>
-          </th>
+          <th style="width: 10%;"></th>
         </tr>
       </thead>
       <tbody>
@@ -161,31 +152,13 @@
           <td th:text="${review.reviewWriteDate}">작성일</td>
           <td th:text="${review.number} + ' 점'">별점: 5.0</td>
           <td>
+            <!-- th:if="${user != null and userType == 'trainer' and user.trainerNo == review.trainerNo}" -->
             <button class="report-btn" data-type="review"
-              th:if="${user != null and userType == 'trainer' and user.trainerNo == review.trainerNo}"
               th:attr="data-comment-no=${review.commentNo}"><i class="fa-solid fa-land-mine-on"></i> 리뷰 신고</button>
-
-            <div class="review-actions" th:if="${userType == 'paidMember' && user.memberNo == review.memberNo}">
-              <!-- 결제한 회원이 작성한 리뷰만 수정/삭제 가능 -->
-              <button class="edit-review-btn" data-id="${review.commentNo}" data-content="${review.reviewContent}"
-                data-rating="${review.number}">수정</button>
-              <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <!-- 페이지네이션 섹션 -->
-  <div class="pagination">
-    <a href="#">&laquo;</a>
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">&raquo;</a>
-  </div>
-
 </th:block>

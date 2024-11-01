@@ -31,5 +31,5 @@ public class Comment {
 	
   private int boardTypeNo; // 보드 타입
   private int queryNo;
-	
+	private int tarinerNo;
 }

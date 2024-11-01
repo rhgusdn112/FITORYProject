@@ -18,10 +18,9 @@
     <!-- 로그인이 안 된 경우 -->
     <header th:replace="~{common/header :: header}"></header>
 </div>
-<!-- <div th:if= "${admin}">
-
+<div th:if= "${session.adminLogin}">
     <header th:replace="~{common/adminHeader :: header}"></header>
-</div> -->
+</div>
 
 <script th:src="@{/js/main.js}"></script>
 

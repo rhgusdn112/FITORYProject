@@ -63,6 +63,11 @@ public class AdminController {
   	return "admin/trainer";
   }
   
+  @GetMapping("query")
+  public String query() {
+  	return "/admin/query";
+  }
+  
 	/* 마이페이지 이동 */
 	@GetMapping("adminMyPage")
 	public String myPage(Model model, @SessionAttribute("adminLogin") Admin adminLogin) {
