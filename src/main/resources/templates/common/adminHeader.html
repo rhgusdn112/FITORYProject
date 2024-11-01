@@ -47,3 +47,30 @@
       <a href="/admin/board" class="side-7">공지사항</a>
     </div>
   </div>
+
+ <script>
+  // 사이드바를 보여주거나 숨기는 함수
+  function toggleSidebar() {
+    const sidebar = document.getElementById("side-bar");
+    if (window.location.pathname.startsWith("/board")) {
+      sidebar.style.display = "none";
+    } else {
+      sidebar.style.display = "block";
+    }
+  }
+  function toggleSidebar() {
+    const sidebar = document.getElementById("side-bar");
+    if (window.location.pathname.startsWith("/customerService")) {
+      sidebar.style.display = "none";
+    } else {
+      sidebar.style.display = "block";
+    }
+  }
+  
+  // 페이지 로드 시 처음 실행
+  document.addEventListener("DOMContentLoaded", toggleSidebar);
+
+  // URL이 변경될 때마다 실행 (SPA 프레임워크에서도 적용 가능)
+  window.addEventListener("popstate", toggleSidebar);
+  window.addEventListener("pushstate", toggleSidebar); // SPA 프레임워크를 사용하는 경우 필요할 수 있음
+</script>
