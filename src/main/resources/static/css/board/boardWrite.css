@@ -24,7 +24,7 @@
 }
 
 .board-title:focus-within{
-  border-bottom-color: #455ba8;
+  border-bottom-color: #292929;
 }
 
 
@@ -98,8 +98,8 @@
 .board-content{
   padding: 30px 0;
   margin: 30px 0;
-  border-top : 3px solid #ccc;
-  border-bottom : 3px solid #ccc;
+  border-top : 2px solid #ccc;
+  border-bottom : 2px solid #ccc;
   font-size: 18px;
 }
 
@@ -124,16 +124,16 @@
 
   font-weight: bold;
   border: 0;
-  background-color: #455ba8;
-  color : white;
+  background-color: #292929;
+  color : #bfbfbf;
 
   cursor: pointer;
 }
 
 .board-btn-area button:hover{
-  background-color: white;
-  color : #455ba8;
-  border: 2px solid #455ba8;
+  background-color: #bfbfbf;
+  color : #292929;
+  border: 1px solid #292929;
 }
 
 

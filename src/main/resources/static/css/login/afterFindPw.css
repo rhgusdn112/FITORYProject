@@ -1,39 +1,48 @@
-/* 기본적인 레이아웃 설정 */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  margin: 0;
-  padding: 0;
+
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+* {
+	font-family: 'MaruBuriSemiBold';
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-/* 헤더 스타일 */
-header {
-  background-color: #ccc;
-  padding: 20px;
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-  color: #fff;
+input::placeholder {
+	text-align: left;
+	font-size: 15px;
 }
 
-/* 메인 섹션 스타일 */
-section.signUp {
-  width: 50%;
-  margin: 40px auto;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* 메인 레이아웃 */
+.main {
+	min-height: 50vh;
+	min-width: 50vw;
+	margin: auto;
+	margin-top: 10%;
+	margin-left: 10%;
+	margin-right: 10%;
+	justify-content: center;
+  padding-bottom: 10%;
 }
 
-/* 제목 스타일 */
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 30px;
+/* 타이틀 */
+.title {
+	color: #292929;
+	font-size: 20px;
+	text-shadow: 1px #bfbfbf;
+	margin-bottom: 20px;
+}
+
+/* main 박스 */
+.main-box {
+	border: 2px solid #bfbfbf;
+	margin: auto;
+	padding: 3%;
+	min-height: 50vh;
+	min-width: 50vw;
 }
 
 /* 입력 필드 및 버튼 스타일 */
@@ -54,23 +63,24 @@ input[type="email"],
 input[type="password"] {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
   margin-right: 10px;
 }
 
 button {
-  background-color: #fff;
-  color: #333;
+  background-color: #bfbfbf;
+  color: #292929;
   padding: 10px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #ccc;
+  background-color: #bfbfbf;
+  color: #292929;
 }
 
 /* 비밀번호 메시지 스타일 */
@@ -84,9 +94,9 @@ button.changePw {
   display: block;
   width: 100%;
   padding: 15px;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
   cursor: pointer;
   font-size: 18px;
@@ -95,5 +105,6 @@ button.changePw {
 }
 
 button.changePw:hover {
-  background-color: #ccc;
+  background-color: #bfbfbf;
+  color: #292929;
 }

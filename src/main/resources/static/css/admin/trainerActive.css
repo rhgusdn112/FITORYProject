@@ -1,8 +1,8 @@
 /* 전체적인 레이아웃 설정 */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: white;
+  color: #292929;
   margin: 0;
   padding: 0;
 }
@@ -11,11 +11,11 @@ body {
 section {
   margin: 20px;
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
-  border: 1px solid #ccc;
+  border: 1px solid #bfbfbf;
 }
 
 /* 제목 스타일 */
@@ -35,21 +35,21 @@ table {
 }
 
 th, td {
-  border: 1px solid #ccc;
+  border: 1px solid #bfbfbf;
   padding: 10px;
 }
 
 th {
-  background-color: #f0f0f0;
+  background-color: white;
   font-weight: bold;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: white;
 }
 
 /* 버튼 스타일 */
@@ -75,7 +75,7 @@ button:hover {
   left: 0;
   width: 200px;
   height: 100%;
-  background-color: #333;
+  background-color: #292929;
   padding-top: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
@@ -90,7 +90,7 @@ button:hover {
 }
 
 #sideMenu a {
-  color: #fff;
+  color: white;
   display: block;
   padding: 10px;
   text-decoration: none;
@@ -98,7 +98,7 @@ button:hover {
 }
 
 #sideMenu a:hover {
-  background-color: #575757;
+  background-color: #292929;
 }
 
 /* 메인 컨텐츠 스타일 */
@@ -109,16 +109,12 @@ button:hover {
 }
 
 /* 페이지네이션 스타일 */
-.pagination-area {
+.pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination {
   list-style-type: none;
-  display: flex;
   padding: 0;
+  margin-top: 20px;
 }
 
 .pagination li {
@@ -126,15 +122,16 @@ button:hover {
 }
 
 .pagination a {
-  color: #333;
+  color: #292929;
   padding: 8px 12px;
   text-decoration: none;
-  border: 1px solid #ccc;
+  border: 1px solid #bfbfbf;
   border-radius: 4px;
 }
 
 .pagination a:hover {
-  background-color: #f0f0f0;
+  background-color: #292929;
+  color: #bfbfbf;
 }
 
 /* 링크 스타일 */

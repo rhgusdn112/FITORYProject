@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 15px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #bfbfbf;
   border-radius: 5px;
   margin-bottom: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,7 @@
   overflow: hidden;
   transition: max-height 0.5s ease-out, padding 0.3s ease-out;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #bfbfbf;
   margin-left: 20px;
   display: none;
 }
