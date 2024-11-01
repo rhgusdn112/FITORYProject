@@ -64,8 +64,7 @@
   </div>
 
   <!-- 리뷰 작성 섹션 (결제한 회원만 작성 가능) -->
-<!--   <div class="review-container" th:if="${userType == 'paidMember' && !hasReviewed}"> -->
-  <div class="review-container">
+  <div class="review-container" th:if="${userType == 'paidMember' && !hasReviewed}">
     <h2 id="review-section-header">리뷰 작성</h2>
     <table class="review-table">
       <thead>
