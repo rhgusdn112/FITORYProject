@@ -12,7 +12,6 @@
   scroll-margin-top: 150px; /* 헤더 높이를 고려한 마진 */
 }
 .supporting-text {
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease-out, padding 0.3s ease-out;
   padding: 0;
