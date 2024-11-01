@@ -112,7 +112,7 @@ if (imageInput) {
 
     // 이미지 최소 2개
     if(files.length < 2){
-      alert("최소 2장 이상 선택해주세요!!!");
+      alert("2장 이상의 사진을 선택해주세요.");
       
       // 유지 코드
       const dataTransfer = new DataTransfer();
@@ -130,11 +130,11 @@ if (imageInput) {
 
 
 
-    // 이미지 4개 초과 시 4개 까지만
-    if(files.length > 4){
+    // 이미지 2개 초과 시 2개 까지만
+    if(files.length > 2){
       const dataTransfer = new DataTransfer();
       
-      for (let i = 0 ; i < 4 ; i++) {
+      for (let i = 0 ; i < 2 ; i++) {
         dataTransfer.items.add(files[i]);
       }
 

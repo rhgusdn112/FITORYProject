@@ -131,7 +131,9 @@ public interface TrainerMapper {
  */
 	String findPw(String email);
 
-	int updatePw(String password);
+int updatePw(String password);
+
+String selectTarinerNickname(int trainerNo);
 
 
 	// 강의 매출 가져오기
