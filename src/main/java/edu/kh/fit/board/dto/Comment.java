@@ -29,4 +29,7 @@ public class Comment {
 	// 게시판 번호 추가
 	private int 		classNo; // 게시판번호
 	
+  private int boardTypeNo; // 보드 타입
+  private int queryNo;
+	
 }
