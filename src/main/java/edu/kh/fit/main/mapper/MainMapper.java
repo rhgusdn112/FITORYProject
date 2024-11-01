@@ -22,5 +22,13 @@ public interface MainMapper {
    */
     List<Board> selectBoardList(int classNo);
 
+    /**
+     * 비밀번호 변경
+     * @param email
+     * @param password
+     * @return
+     */
+	int update(String email, String password);
+
 
 }

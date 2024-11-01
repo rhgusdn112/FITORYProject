@@ -10,4 +10,7 @@ public interface MainService {
    */
   Map<String, Object> mainPage();
 
+  // 비밀번호 변경
+	int update(String email, String password);
+
 }

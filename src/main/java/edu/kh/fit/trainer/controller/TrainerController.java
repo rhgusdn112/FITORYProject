@@ -372,8 +372,8 @@ public class TrainerController {
 	public String afterFindPw() {
 		return "trainer/afterFindPw";
 	}
-	
-	@PostMapping("afterFindPW")
+	@ResponseBody
+	@PutMapping("afterFindPW")
 	public String afterFindPW(
 			@RequestBody String password,
 			RedirectAttributes ra

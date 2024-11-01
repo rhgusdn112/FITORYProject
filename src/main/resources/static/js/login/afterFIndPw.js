@@ -69,6 +69,7 @@ function checkpw(){
     pwMessage.innerText = pwMessageObj.check;
     pwMessage.classList.add("confirm");
     pwMessage.classList.remove("error");
+    check = true;
     return;
   }
 
@@ -76,7 +77,6 @@ function checkpw(){
   pwMessage.innerText = pwMessageObj.error;
   pwMessage.classList.add("error");
   pwMessage.classList.remove("confirm");
-  check = true;
 }
 
 
@@ -110,18 +110,43 @@ signUpForm.addEventListener("click", () => {
     return;
   }
 
-  fetch("/afterFindId",{
-    method : "post",
-    headers : {"Content-Type":"application/json"},
-    body : pw.value
-  })
-  .then(response => {
-    if(response.ok) return response.text();
-    throw new Error("실패");
-  })
-  .then(result => {
-    console.log(result);
-  })
-  .catch(err => console.error(err));
+  const queryString = location.search; 
+  const emailPath = queryString.split('?')[1].split('=')[0]; 
+
+  const email = queryString.split('?')[1].split('=')[1];
+
+  if(emailPath == "memberEmail"){
+    fetch("/member/afterFindPw",{
+      method : "put",
+      headers : {"Content-Type":"application/json"},
+      body : pw.value, email
+    })
+    .then(response => {
+      if(response.ok) return response.text();
+      throw new Error("실패");
+    })
+    .then(result => {
+      console.log(result);
+
+      alert(message)
+    })
+    .catch(err => console.error(err));
+  }else{
+    
+      fetch("/trainer/afterFindPw",{
+        method : "put",
+        headers : {"Content-Type":"application/json"},
+        body : pw.value, email
+      })
+      .then(response => {
+        if(response.ok) return response.text();
+        throw new Error("실패");
+      })
+      .then(result => {
+        console.log(result);
   
+        alert(message);
+      })
+      .catch(err => console.error(err));
+  }
 })

@@ -319,7 +319,8 @@ public class MemberController {
 		return result;
 	}
 	
-	@PostMapping("afterFindPW")
+	@ResponseBody
+	@PutMapping("afterFindPW")
 	public String afterFindPW(
 			@RequestBody String password,
 			RedirectAttributes ra
