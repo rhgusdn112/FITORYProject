@@ -143,4 +143,6 @@ String selectTarinerNickname(int trainerNo);
 	List<Board> boardList(int trainerNo, RowBounds bounds);
 	int boardListCount(int trainerNo);
 
+	int changeStatus(int trainerNo);
+
 }

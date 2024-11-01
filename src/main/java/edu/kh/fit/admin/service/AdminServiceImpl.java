@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,11 +24,14 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService{
+	
+	@Autowired
+	private AdminMapper mapper;
 
-	private final AdminMapper mapper;
-
+	@Autowired
+	private BCryptPasswordEncoder encorder;
+	
 	// 관리자 로그인
 	@Override
 		public Admin adminLogin(String adminEmail, String adminPw) {
@@ -36,9 +41,9 @@ public class AdminServiceImpl implements AdminService{
 		
 		if(adminLogin == null)	return null;
 
-//		if( !encorder.matches(encorder.encode(adminPw), adminLogin.getPw()) ){
-//			return null;
-//		}
+		if( !encorder.matches(adminPw, adminLogin.getPw()) ){
+			return null;
+		}
 			
 		return adminLogin;
 		}
@@ -106,6 +111,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int changeStatus(int memberNo) {
 		return mapper.changeStatus(memberNo);
+	}
+	@Override
+	public int changeStatusTrainer(int trainerNo) {
+		return mapper.changeStatus(trainerNo);
 	}
 	
 	

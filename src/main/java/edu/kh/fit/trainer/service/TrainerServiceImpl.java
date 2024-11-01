@@ -170,7 +170,7 @@ public class TrainerServiceImpl implements TrainerService{
 			}
 		}
 		
-		// renamList는 4칸으로 만들기(나머지 칸은 null)
+		// renamList는 2칸으로 만들기(나머지 칸은 null)
 		if(renameList.size() < 2) {
 			for(int i = renameList.size() - 1 ; i < 2 ; i++) {
 				renameList.add(null);
@@ -263,7 +263,7 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		RowBounds bounds = new RowBounds(offset, limit);
 		
-		List<Board> classList = mapper.classList1(trainerNo, bounds);
+		List<Board> classList = mapper.classList(trainerNo, bounds);
 		
 		Map<String, Object> map = new HashMap<>();
     map.put("classList", classList);
@@ -288,5 +288,10 @@ public class TrainerServiceImpl implements TrainerService{
 	  map.put("pagination", pagination);
 		
 		return map;
+	}
+	
+	@Override
+	public int changeStatus(int trainerNo) {
+		return mapper.changeStatus(trainerNo);
 	}
 }

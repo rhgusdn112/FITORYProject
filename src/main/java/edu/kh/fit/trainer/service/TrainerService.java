@@ -80,5 +80,8 @@ Map<String, Object> classList(int trainerNo, int cp);
 
 Map<String, Object> boardList(int trainerNo, int cp);
 
+// 회원 탈퇴상태 변경
+int changeStatus(int trainerNo);
+
 
 }

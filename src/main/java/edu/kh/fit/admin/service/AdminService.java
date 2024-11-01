@@ -80,6 +80,7 @@ public interface AdminService {
 	
 	// 회원 정지
 	int changeStatus(int memberNo);
+	int changeStatusTrainer(int trainerNo);
 
 	// 강의 목록 가져오기
 	Map<String, Object> classList(int cp);

@@ -147,7 +147,8 @@
 			         DETAIL,
 			         TRAINER_NICKNAME,
 			         BOARD_TYPE_NAME,
-			         CLASS_NO
+			         CLASS_NO,
+			         THUMBNAIL
         FROM "BOARD"
         JOIN TRAINER ON (BOARD.TRAINER_NO = TRAINER.TRAINER_NO)
         JOIN BOARD_TYPE ON (BOARD.CLASS_NO = BOARD_TYPE.BOARD_TYPE_NO)
@@ -289,6 +290,14 @@
 		AND BOARD_DEL_FL = 'N'
 		GROUP BY BOARD_NO, TITLE, PAYMENT
 	</select>
+	
+	<update id="changeStatus">
+UPDATE "TRAINER"
+  	SET
+  		TRAINNER_DEL_FL = 
+  			DECODE(TRAINNER_DEL_FL, 'Y', 'N', 'Y')
+  	WHERE TRAINER_NO = #{trainerNo}
+	</update>
 	
 </mapper>
 

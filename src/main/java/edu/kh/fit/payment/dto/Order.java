@@ -30,5 +30,6 @@ public class Order {
 	
 	private int boardTypeNo; // 게시판 번호
 	private String	title; 							// 강의 제목
+	private String	thumbnail; 							// 썸네일
 	
 }
