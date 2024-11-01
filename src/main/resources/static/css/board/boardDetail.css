@@ -157,7 +157,7 @@
   display: flex; /* 중앙 정렬을 위한 Flexbox 사용 */
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
-  z-index: 1000; /* 팝업이 다른 요소들 위에 나타나도록 설정 */
+  z-index: 3000; /* 팝업이 다른 요소들 위에 나타나도록 설정 */
 }
 
 /* 신고 팝업 창 스타일 */
@@ -239,7 +239,7 @@
   display: flex; /* 중앙 정렬을 위한 Flexbox 사용 */
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
-  z-index: 1000; /* 팝업이 다른 요소들 위에 나타나도록 설정 */
+  z-index: 3000; /* 팝업이 다른 요소들 위에 나타나도록 설정 */
 }
 
 /* 신고 팝업 창 스타일 */

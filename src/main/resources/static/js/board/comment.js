@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-
+  // 전역 변수로 selectedRating을 선언
+  let selectedRating = 0; // 초기값을 0으로 설정
+  
   // 등록 섹션 별점 요소
   const registrationStars = document.querySelectorAll('#registration-rating .fa-star'); // 등록용 별점 섹션 선택
   const editStars = document.querySelectorAll('#edit-rating .fa-star'); // 수정용 별점 섹션 선택
@@ -70,12 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cancelButton) {
       cancelButton.addEventListener("click", hideReviewContainer); // 리뷰 수정 취소 버튼 클릭 시 수정 섹션 숨기기
-    }
-
-    if (sortSelect) {
-      sortSelect.addEventListener('change', () => {
-        sortReviews(sortSelect.value); // 리뷰 정렬 옵션 변경 시 정렬 함수 호출
-      });
     }
   }
 
