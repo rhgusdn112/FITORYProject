@@ -243,8 +243,6 @@ public class TrainerController {
 
 				trainerLogin.setTrainerImgMain(renameList.get(0));
 				trainerLogin.setTrainerImgMainSub(renameList.get(1));
-				trainerLogin.setTrainerImgSub(renameList.get(2));
-				trainerLogin.setTrainerImgSubSub(renameList.get(3));
 			}
 		} else
 			message = "수정에 실패하였습니다.";
@@ -319,6 +317,7 @@ public class TrainerController {
 		
 		model.addAttribute("trainerClassList", (List<Board>)map.get("trainerClassList"));
 		model.addAttribute("pagination", (Pagination)map.get("pagination"));
+		model.addAttribute("trainerNickname", (String)map.get("trainerNickname"));
 
 		return "trainer/trainerVideoDetail";
 	}
@@ -387,4 +386,34 @@ public class TrainerController {
 		
 		return "redirect:" + path;
 	}
+	
+	@GetMapping("dashBoard")
+	public String dashBoard() {
+		return "trainer/trainerDashBoard";
+	}
+	
+  // 대시보드 매출 가져오기
+//  @ResponseBody
+//  @GetMapping("classList")
+//  public Map<String, Object> classList( 
+//  		@SessionAttribute("trainerNo") Trainer trainerLogin,
+//			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+//  		) {
+//  	int trainerNo = trainerLogin.getTrainerNo();
+//  	return service.classList(trainerNo, cp);
+//  } => 강의 목록에서 조회하기
+  @ResponseBody
+  @GetMapping("boardList")
+  public Map<String, Object> boardList(
+  		@SessionAttribute("trainerNo") Trainer trainerLogin,
+  		@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+  		){
+  	int trainerNo = trainerLogin.getTrainerNo();
+  	return service.boardList(trainerNo, cp);
+  }
+  
+  @GetMapping("query")
+  public String query() {
+  	return "myPage/query";
+  }
 }

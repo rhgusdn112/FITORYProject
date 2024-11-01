@@ -189,9 +189,10 @@
 	
 	<!-- 강사 영상 상세조회 후 영상으로(최신, 조회, 평점) -->
 	<select id="trainerVideoDetail" resultType="Board">
-		SELECT TRAINER_NO, BOARD_NO, TITLE, BOARD_TYPE_NO, BOARD_TYPE_NAME, THUMBNAIL, CLASS_NO, UPLOAD_DATE
+		SELECT TRAINER_NO, BOARD_NO, TITLE, BOARD_TYPE_NO, BOARD_TYPE_NAME, THUMBNAIL, CLASS_NO, UPLOAD_DATE, TRAINER_NICKNAME
 		FROM BOARD
 		JOIN BOARD_TYPE ON(CLASS_NO = BOARD_TYPE_NO)
+		JOIN TRAINER USING(TRAINER_NO)
 		WHERE TRAINER_NO = #{trainerNo}
 		AND CLASS_NO IN(2, 3)
 		<choose>
@@ -206,6 +207,14 @@
 			</when>
 		</choose>
 	</select>
+	
+	
+	<select id="selectTarinerNickname" resultType="string">
+		SELECT TRAINER_NICKNAME 
+		FROM TRAINER
+		WHERE TRAINER_NO = #{trainerNo}
+	</select>
+	
     
     <!-- 강사 영상 조회(페이지 네이션) -->
     <select id="pageList">
@@ -232,5 +241,54 @@
 		SET TRAINER = #{password}
 		WHERE TRAINER_EMAIL = #{email} 
 	</update>
+	
+	
+	
+	<select id="classListCount1"
+					resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '2'
+		AND BOARD_DEL_FL = 'N'
+	</select>
+	<select id="classList1"
+					resultType="Board">
+		SELECT
+			BOARD_NO,
+			TITLE,
+			PAYMENT,
+			SUM(ORDER_CLASS_AMOUNT) AS GRADE
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '2'
+		AND BOARD_DEL_FL = 'N'
+		GROUP BY BOARD_NO, TITLE, PAYMENT
+	</select>
+	
+		<select id="boardListCount"
+					resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '3'
+		AND BOARD_DEL_FL = 'N'
+	</select>
+		<select id="boardList"
+					resultType="Board">
+		SELECT
+			BOARD_NO,
+			TITLE,
+			PAYMENT,
+			SUM(ORDER_CLASS_AMOUNT) AS GRADE
+		FROM "BOARD" B
+		LEFT JOIN "ORDER" O ON(B.BOARD_NO = O.ORDER_CLASS_NO) 
+		WHERE CLASS_NO = '3'
+		AND BOARD_DEL_FL = 'N'
+		GROUP BY BOARD_NO, TITLE, PAYMENT
+	</select>
+	
 </mapper>
 

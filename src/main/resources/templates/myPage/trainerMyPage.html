@@ -53,8 +53,8 @@
       <!-- 다른 폼 요소들 -->
       <div class="profile">프로필 사진(2장 필수) <span id="deleteImage">x</span></div>
       <div class="profile-box">
-        <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput1')">
-        <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image" onclick="openFileInput('mainImageInput2')">
+        <img class="preview" id="trainerImgMain" th:src="${session.trainerLogin.trainerImgMain != null ? session.trainerLogin.trainerImgMain : '/images/trainer.default.image.jpg'}" alt="Profile Image">
+        <img class="preview" id="trainerImgMainSub" th:src="${session.trainerLogin.trainerImgMainSub != null ? session.trainerLogin.trainerImgMainSub : '/images/trainer.default.image.jpg'}" alt="Profile Image">
       </div>
         <div class="profile-btn-area">
           <input type="file" name="imgProfile" id="imageInput" accept="image/*" style="display: none;" placeholder="프로필 사진 선택" multiple>
@@ -66,8 +66,8 @@
   </form>
 
   <script>
-    const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: '/images/*'}]]*/ '/images/**';
-    const trainerImgMainSub = /*[[${session.trainerLogin.trainerImgMainSub ?: '/images/*'}]]*/ '/images/**';
+    const trainerImgMain = /*[[${session.trainerLogin.trainerImgMain ?: '/images/*'}]]*/ '/images/*';
+    const trainerImgMainSub = /*[[${session.trainerLogin.trainerImgMainSub ?: '/images/*'}]]*/ '/images/*';
 </script>
 
 

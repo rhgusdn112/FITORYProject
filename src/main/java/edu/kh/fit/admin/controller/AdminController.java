@@ -67,7 +67,7 @@ public class AdminController {
   
   @GetMapping("query")
   public String query() {
-  	return "/admin/query";
+  	return "/myPage/query";
   }
   
 	/* 마이페이지 이동 */
@@ -174,7 +174,7 @@ public class AdminController {
 	    // 이전 페이지 URL(prevPage)도 세션에서 제거
 	    session.removeAttribute("prevPage");
 
-	    return "redirect:/admin"; 
+	    return "redirect:/admin";
 	}
 	
 	@GetMapping("memberActive")
@@ -310,8 +310,6 @@ public class AdminController {
 			@RequestBody int trainerNo) {
 		return service.changeStatus(trainerNo);
 	}
-	
-	
 	
 	
 	

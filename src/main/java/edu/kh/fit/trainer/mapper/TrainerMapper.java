@@ -133,7 +133,14 @@ public interface TrainerMapper {
 
 int updatePw(String password);
 
+String selectTarinerNickname(int trainerNo);
 
 
+	// 강의 매출 가져오기
+	List<Board> classList1(int trainerNo, RowBounds bounds);
+	int classListCount1( int trainerNo); 
+	
+	List<Board> boardList(int trainerNo, RowBounds bounds);
+	int boardListCount(int trainerNo);
 
 }
