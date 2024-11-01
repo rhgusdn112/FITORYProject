@@ -29,7 +29,7 @@
             <tr id="class" th:each="order : ${orderList}" th:object="${order}">
               <th>
                 <a th:href="@{/board/{boardTypeNo}/{orderClassNo}(boardTypeNo=*{boardTypeNo},orderClassNo=*{orderClassNo})}">
-                <img th:if="*{boardTypeName}" th:src="${videoNo}" class="list-thumbnail" alt="썸네일">
+                <img th:if="*{boardTypeName}" th:src="*{thumbnail}" class="list-thumbnail" alt="썸네일">
               </a>
               </th>
               <td>

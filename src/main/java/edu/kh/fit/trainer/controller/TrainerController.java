@@ -243,8 +243,6 @@ public class TrainerController {
 
 				trainerLogin.setTrainerImgMain(renameList.get(0));
 				trainerLogin.setTrainerImgMainSub(renameList.get(1));
-				trainerLogin.setTrainerImgSub(renameList.get(2));
-				trainerLogin.setTrainerImgSubSub(renameList.get(3));
 			}
 		} else
 			message = "수정에 실패하였습니다.";
