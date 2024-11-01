@@ -36,4 +36,9 @@ public class MainServiceImpl implements MainService{
 
 	return map;
 	}
+	
+	@Override
+	public int update(String email, String password) {
+		return mapper.update(email, password);
+	}
 }

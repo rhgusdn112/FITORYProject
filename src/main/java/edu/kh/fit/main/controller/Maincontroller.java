@@ -6,7 +6,10 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fit.board.dto.Board;
 import edu.kh.fit.main.service.MainService;
@@ -71,6 +74,28 @@ public class Maincontroller {
 	@GetMapping("afterFindPw")
 	public String afterFindPw() {
 		return "login/afterFindPw";
+	}
+	
+	@PostMapping("afterFindPw")
+	public String UpdatePw(
+			@RequestBody String password,
+			@RequestBody String email,
+			RedirectAttributes ra) {
+		
+		int result = service.update(email, password);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "비밀번호가 변경되었습니다.";
+			path = "login";
+		}else {
+			message = "비밀번호 변경 실패";
+			path = "find-password";
+		}
+		
+		return "redirect:" + path;
 	}
 
 

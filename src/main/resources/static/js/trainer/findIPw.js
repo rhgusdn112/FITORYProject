@@ -171,5 +171,5 @@ signUpForm.addEventListener("click", () => {
     return;
   }
 
-  location.href = "/afterFindPw?memberEmail="+email.value;
+  location.href = "/afterFindPw?trainerEmail="+email.value;
 })
