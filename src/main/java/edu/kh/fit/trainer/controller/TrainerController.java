@@ -387,4 +387,34 @@ public class TrainerController {
 		
 		return "redirect:" + path;
 	}
+	
+	@GetMapping("dashBoard")
+	public String dashBoard() {
+		return "trainer/trainerDashBoard";
+	}
+	
+  // 대시보드 매출 가져오기
+//  @ResponseBody
+//  @GetMapping("classList")
+//  public Map<String, Object> classList( 
+//  		@SessionAttribute("trainerNo") Trainer trainerLogin,
+//			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+//  		) {
+//  	int trainerNo = trainerLogin.getTrainerNo();
+//  	return service.classList(trainerNo, cp);
+//  } => 강의 목록에서 조회하기
+  @ResponseBody
+  @GetMapping("boardList")
+  public Map<String, Object> boardList(
+  		@SessionAttribute("trainerNo") Trainer trainerLogin,
+  		@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+  		){
+  	int trainerNo = trainerLogin.getTrainerNo();
+  	return service.boardList(trainerNo, cp);
+  }
+  
+  @GetMapping("query")
+  public String query() {
+  	return "myPage/query";
+  }
 }
