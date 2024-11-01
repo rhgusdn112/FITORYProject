@@ -340,6 +340,11 @@ public class MemberController {
 		
 		return "redirect:" + path;
 	}
+	
+	@GetMapping("query")
+	public String query() {
+		return "myPage/query";
+	}
 
 }
 

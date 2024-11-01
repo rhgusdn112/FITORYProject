@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 비동기적으로 1:1 문의 목록 가져오기
   const fetchInquiryList = (page = 1) => {
-    fetch(`/api/inquiryList?page=${page}`)
+    fetch(`/inquiryList?page=${page}`)
       .then(response => {
         if (response.ok) return response.json();
         throw new Error("조회 오류");
@@ -43,10 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 1; i <= totalPages; i++) {
           const li = document.createElement("li");
           const a = document.createElement("a");
-          a.href = "#";
           a.innerText = i;
           a.addEventListener("click", (e) => {
-            e.preventDefault();
             fetchInquiryList(i);
           });
           li.append(a);
@@ -57,5 +55,5 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // 페이지 로드 시 목록 가져오기
-  fetchInquiryList();
+  fetchInquiryList(1);
 });
