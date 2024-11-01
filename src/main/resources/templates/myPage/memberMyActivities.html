@@ -27,10 +27,9 @@
           </thead>
           <tbody>
             <tr th:each="review:${reviewList}" th:object="${review}">
-              [[${review}]]
               <td class="left">
                 <th:block th:if="*{type == '리뷰'}">
-                  <a th:href="|/board/*{classNo}/*{commentNo}|" th:text="*{reviewContent}">리뷰 제목</a>
+                  <a th:href="|/board/*{classNo}/*{boardNo}|" th:text="*{reviewContent}">리뷰 제목</a>
                 </th:block>
                 <th:block th:unless="*{type == '리뷰'}">
                   <a th:href="|/query/*{queryNo}/*{commentNo}|" th:text="*{reviewContent}">1:1문의 제목</a>
