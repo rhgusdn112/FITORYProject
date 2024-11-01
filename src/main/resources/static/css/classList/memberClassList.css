@@ -38,7 +38,7 @@ input::placeholder {
 
 /* main 박스 */
 .main-box {
-	border: 5px solid #bfbfbf;
+	border: 1px solid #bfbfbf;
 	margin: auto;
 	padding: 3%;
 	min-height: 100vh;

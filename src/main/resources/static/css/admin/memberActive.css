@@ -11,7 +11,7 @@
 section {
   margin-top: 100px;
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -32,7 +32,7 @@ section {
 
 .section-divider {
   border: none;
-  border-top: 2px solid #eee;
+  border-top: 1px solid white;
   margin: 20px 0;
 }
 
@@ -46,7 +46,7 @@ section {
   height: 300px;
   object-fit: cover;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid white;
   margin-right: 20px;
 }
 
@@ -54,7 +54,7 @@ section {
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid white;
 }
 
 .class-section .lecture-info:last-child {
@@ -70,46 +70,50 @@ section {
   padding: 8px 12px;
   margin-right: 10px;
   border-radius: 4px;
-  background-color: #ccc;
+  background-color: #bfbfbf;
+  color: #292929;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 #selectAllBtn:hover, #selectDeleteBtn:hover {
-  background-color: #aaa;
+  background-color: #292929;
+  color: #bfbfbf;
 }
 
-.pagination {
-  margin: 20px 0;
-  text-align: center;
-}
-
+/* 페이지 네이션 */
 .pagination a {
-  padding: 8px 12px;
-  margin: 0 5px;
   text-decoration: none;
-  color: #666;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.pagination a.current {
-  font-weight: bold;
-  background-color: #666;
-  color: #fff;
+  color: #bfbfbf;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
 }
 
 .pagination a:hover {
-  background-color: #ddd;
+  background-color: #bfbfbf;
+  color: #292929;
 }
+
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
+}
+
 
 #boardWriteBtn {
   position: absolute;
   top: 0;
   right: 220px;
-  background-color: #ccc;
+  background-color: #bfbfbf;
   padding: 10px;
   border-radius: 8px;
   text-align: center;
@@ -117,7 +121,7 @@ section {
 
 #boardWriteBtn a {
   text-decoration: none;
-  color: #666;
+  color: #bfbfbf;
   font-weight: bold;
 }
 
@@ -163,7 +167,7 @@ section.orderTable, section.commentTable, section.queryTable, section.reportTabl
   margin-left: 350px;
   width: 70%s;
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -179,8 +183,8 @@ section h4 {
 
 /* 버튼 스타일 */
 button {
-  background-color: #eee;
-  border: 1px solid #ccc;
+  background-color: #bfbfbf;
+  border: 1px solid #292929;
   border-radius: 4px;
   padding: 10px 15px;
   cursor: pointer;
@@ -188,12 +192,13 @@ button {
 }
 
 button:hover {
-  background-color: #ddd;
+  background-color: white;
 }
 
 /* 정렬 버튼 스타일 */
 #btn {
-  background-color: #ccc;
+  background-color: #bfbfbf;
+  color: #292929;
   border: none;
   border-radius: 4px;
   padding: 10px;
@@ -203,45 +208,6 @@ button:hover {
 }
 
 #btn:hover {
-  background-color: #aaa;
-}
-
-/* 페이지네이션 스타일 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.pagination a {
-  margin: 0 10px;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #666;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.pagination a:hover {
-  background-color: #f0f0f0;
-}
-
-.pagination a.current {
-  background-color: #666;
-  color: #fff;
-  font-weight: bold;
-}
-
-/* 표 안 버튼 스타일 */
-tbody td button {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-tbody td button:hover {
-  background-color: #ddd;
+  background-color: #292929;
+  color: #bfbfbf;
 }

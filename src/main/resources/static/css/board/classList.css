@@ -1,25 +1,47 @@
-/* 메인 콘텐츠 영역 스타일 */
-main {
-  font-size: 2em;
-  font-weight: bold;
-  padding: 30px 0;
-  margin-left: 220px;
-  margin-top: 70px;
-  text-align: center;
+@font-face {
+  font-family: 'MaruBuriSemiBold';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.ttf) format("truetype");
+}
+* {
+	font-family: 'MaruBuriSemiBold';
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+input::placeholder {
+	text-align: left;
+	font-size: 15px;
 }
 
 .class-section {
-  margin-left: 350px;
-  margin-top: 100px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	min-height: 100vh;
+	min-width: 50vw;
+	padding-left: 10%;
+	margin: auto;
+	margin-top: 10%;
+	margin-left: 10%;
+	justify-content: center;
+	padding-right: 3%;
+  
 }
 
+/* 제목 */
 .class-section h1 {
-  margin-bottom: 20px;
-  font-size: 1.5em;
+	color: #292929;
+	font-size: 32px;
+	text-shadow: 1px #bfbfbf;
+	margin-bottom: 20px;
+}
+
+/* 메인 박스 */
+.slider-container {
+	border: 1px solid #bfbfbf;
+	margin: auto;
+	padding: 3%;
+	min-height: 100vh;
+	min-width: 50vw;
 }
 
 .sort-dropdown {
@@ -38,7 +60,7 @@ main {
 }
 
 .table-container {
-  width:100%
+  width:100%;
   overflow-x: auto;
   margin-top: 20px;
 }
@@ -47,102 +69,79 @@ main {
   width:100%
 }
 
-.class-section img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  margin-right: 20px;
+/* 영상 이미지 */
+.box>tbody>tr>th:first-child {
+	width: 20%;
+	padding-right: 10px;
 }
 
-.class-section .lecture-info {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+thead>tr>th {
+	width: 20%;
+	padding-right: 10px;
 }
 
-.class-section .lecture-info:last-child {
-  border-bottom: none;
+thead>tr>th:first-child img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	/* 16:9 비율 유지 */
+	object-fit: cover;
+	/* 이미지가 박스에 꽉 차도록 설정 */
+	max-height: 150px;
+	/* 최대 높이 설정 */
+	border-radius: 5px;
+	/* 모서리 둥글게 설정 (선택 사항) */
 }
 
-.class-section .lecture-text {
-  flex-grow: 1;
-  font-size: 1.2em;
+
+thead>tr>th:last-child {
+	width: 10%;
+	text-align: center;
 }
 
-#selectAllBtn, #selectDeleteBtn {
-  padding: 8px 12px;
-  margin-right: 10px;
-  border-radius: 4px;
-  background-color: #ccc;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#selectAllBtn:hover, #selectDeleteBtn:hover {
-  background-color: #aaa;
-}
-
+/* 페이지네이션 스타일 */
 .pagination {
-  margin: 20px 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5%; /* 위쪽 간격 */
 }
 
 .pagination a {
-  padding: 8px 12px;
-  margin: 0 5px;
   text-decoration: none;
-  color: #666;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.pagination a.current {
-  font-weight: bold;
-  background-color: #666;
-  color: #fff;
+  color: #bfbfbf;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bfbfbf;
+  background-color: #292929;
+  border-radius: 5px;
 }
 
 .pagination a:hover {
-  background-color: #ddd;
+  background-color: #bfbfbf;
+  color: #292929;
 }
 
-#boardWriteBtn {
-  position: absolute;
-  top: 0;
-  right: 220px;
-  background-color: #ccc;
-  padding: 10px;
-  border-radius: 8px;
+.pagination a.active {
+  background-color: #bfbfbf;
+  color: #292929;
+  border: 1px solid #bfbfbf;
+}
+
+.pagination ::marker{
+  content: '';
+}
+
+/* 새 글 작성 버튼 */
+#boardWirteBtn {
+  background-color: #bfbfbf;
+  color: #292929;
+  padding: 5px 10px;
+  width: 20%;
+  border-radius: 20px;
   text-align: center;
-}
-
-
-
-/* 전체 선택 및 선택 전체 삭제 버튼을 페이지네이션 위로 이동 */
-.pagination {
-  margin: 20px 0;
-  text-align: center;
-}
-
-#selectAllBtn, #selectDeleteBtn {
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-tbody{
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+	margin-top: 3%;
 }

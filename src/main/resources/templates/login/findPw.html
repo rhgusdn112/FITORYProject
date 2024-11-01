@@ -9,18 +9,15 @@
 <body>
 
     <!-- 공통 조각 삽입 (헤더 포함) -->
-  <!-- <th:block th:replace="~{common/common}"></th:block> -->
+  <th:block th:replace="~{common/common}"></th:block>
 
         <!-- header -->
   <main>
-    <section class="overlap-group">
-        <div class="text-wrapper-2">
+    <section class="main">
+      <div class="title">
           <h2>비밀번호 찾기</h2>
         </div>
- 
-
-
-        <div class="findPw-section">
+        <div class="main-box">
           <div class="findPw-options">
             <button class="memberBtn" id="member">회원 비밀번호 찾기</button>
             <button class="trainerBtn" id="trainer">
@@ -59,7 +56,7 @@
 
   
   <!-- 푸터 조각 -->
-  <!-- <th:block th:replace="~{common/footer}"></th:block> -->
+  <th:block th:replace="~{common/footer}"></th:block>
   <script src="/js/login/findPw.js"></script>
 </body>
 </html>
