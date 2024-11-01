@@ -252,4 +252,41 @@ public class TrainerServiceImpl implements TrainerService{
 		return mapper.updatePw(password);
 	}
 
+	//강의 매출 가져오기
+	@Override
+	public Map<String, Object> classList(int trainerNo, int cp) {
+		int listCount = mapper.classListCount1(trainerNo);
+		Pagination pagination = new Pagination(cp, listCount, 10, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> classList = mapper.classList1(trainerNo, bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+    map.put("classList", classList);
+    map.put("pagination", pagination);
+		
+		return map;
+	}
+	@Override
+	public Map<String, Object> boardList(int trainerNo, int cp) {
+		int listCount = mapper.boardListCount(trainerNo);
+		Pagination pagination = new Pagination(cp, listCount, 10, 5);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp-1) * limit;
+		
+		RowBounds bounds = new RowBounds(offset, limit);
+		
+		List<Board> boardList = mapper.boardList(trainerNo, bounds);
+		
+		Map<String, Object> map = new HashMap<>();
+	  map.put("boardList", boardList);
+	  map.put("pagination", pagination);
+		
+		return map;
+	}
 }

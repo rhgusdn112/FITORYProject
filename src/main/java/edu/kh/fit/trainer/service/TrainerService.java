@@ -76,5 +76,9 @@ String findPw(String email);
 
 int updatePw(String password);
 
+Map<String, Object> classList(int trainerNo, int cp);
+
+Map<String, Object> boardList(int trainerNo, int cp);
+
 
 }
