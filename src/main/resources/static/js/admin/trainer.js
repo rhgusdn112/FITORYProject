@@ -58,7 +58,7 @@ const selectTrainerList = () => {
       changeBtn.innerText = "탈퇴상태 변경";
 
       changeBtn.addEventListener("click", () => {
-        fetch("/admin/changeStatusTrainer",{
+        fetch("/trainer/changeStatus",{
           method : "put",
           headers : {"Content-Type" : "application/json"},
           body : trainer.trainerNo

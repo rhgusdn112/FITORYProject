@@ -4,7 +4,7 @@ const boardList = document.querySelector("#boardList");
 
 // classList는 classNo = 2인 게시물
 const selectClassList = (cp) => {
-  fetch("/admin/classList?cp="+cp)
+  fetch("/trainer/classList?cp="+cp)
   .then(response => {
     if(response.ok) return response.json();
     throw new Error("조회 실패");
@@ -76,7 +76,7 @@ const selectClassList = (cp) => {
 
 // boardList는 classNo = 3인 게시물
 const selectBoardList = (cp) => {
-  fetch("/admin/boardList?cp="+cp)
+  fetch("/trainer/boardList?cp="+cp)
   .then(response => {
     if(response.ok) return response.json();
     throw new Error("조회 실패");
