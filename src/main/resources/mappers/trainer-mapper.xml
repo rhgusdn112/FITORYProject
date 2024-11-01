@@ -291,5 +291,13 @@
 		GROUP BY BOARD_NO, TITLE, PAYMENT
 	</select>
 	
+	<update id="changeStatus">
+UPDATE "TRAINER"
+  	SET
+  		TRAINNER_DEL_FL = 
+  			DECODE(TRAINNER_DEL_FL, 'Y', 'N', 'Y')
+  	WHERE TRAINER_NO = #{trainerNo}
+	</update>
+	
 </mapper>
 

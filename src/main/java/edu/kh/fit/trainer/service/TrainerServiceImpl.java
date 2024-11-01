@@ -263,7 +263,7 @@ public class TrainerServiceImpl implements TrainerService{
 		
 		RowBounds bounds = new RowBounds(offset, limit);
 		
-		List<Board> classList = mapper.classList1(trainerNo, bounds);
+		List<Board> classList = mapper.classList(trainerNo, bounds);
 		
 		Map<String, Object> map = new HashMap<>();
     map.put("classList", classList);
@@ -288,5 +288,10 @@ public class TrainerServiceImpl implements TrainerService{
 	  map.put("pagination", pagination);
 		
 		return map;
+	}
+	
+	@Override
+	public int changeStatus(int trainerNo) {
+		return mapper.changeStatus(trainerNo);
 	}
 }
