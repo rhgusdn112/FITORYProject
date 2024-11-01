@@ -21,7 +21,6 @@
               th:data-rating="${review.number}">
               수정
             </button>
-
             <button class="delete-review-btn" th:attr="data-id=${review.commentNo}">삭제</button>
           </td>
         </tr>
@@ -65,7 +64,8 @@
   </div>
 
   <!-- 리뷰 작성 섹션 (결제한 회원만 작성 가능) -->
-  <div class="review-container" th:if="${userType == 'paidMember' && !hasReviewed}">
+<!--   <div class="review-container" th:if="${userType == 'paidMember' && !hasReviewed}"> -->
+  <div class="review-container">
     <h2 id="review-section-header">리뷰 작성</h2>
     <table class="review-table">
       <thead>
@@ -153,9 +153,8 @@
           <td th:text="${review.number} + ' 점'">별점: 5.0</td>
           <td>
             <!-- th:if="${user != null and userType == 'trainer' and user.trainerNo == review.trainerNo}" -->
-            <button class="report-btn" data-type="review"
-              th:attr="data-comment-no=${review.commentNo}"><i class="fa-solid fa-land-mine-on"></i> 리뷰 신고</button>
-            </div>
+            <button class="report-btn" data-type="review" th:attr="data-comment-no=${review.commentNo}"><i
+                class="fa-solid fa-land-mine-on"></i> 리뷰 신고</button>
           </td>
         </tr>
       </tbody>

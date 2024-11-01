@@ -71,7 +71,7 @@
   color: black; /* 기본 별 색상 */
 }
 
-#new-review {
+#new-review-edit {
   resize: none; /* 크기 조정 불가 */
   font-size: 1.2em; /* 폰트 크기 조정 */
   height: 2.5em; /* 한 줄 높이 설정 */
