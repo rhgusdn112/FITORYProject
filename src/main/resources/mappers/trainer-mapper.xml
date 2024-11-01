@@ -147,7 +147,8 @@
 			         DETAIL,
 			         TRAINER_NICKNAME,
 			         BOARD_TYPE_NAME,
-			         CLASS_NO
+			         CLASS_NO,
+			         THUMBNAIL
         FROM "BOARD"
         JOIN TRAINER ON (BOARD.TRAINER_NO = TRAINER.TRAINER_NO)
         JOIN BOARD_TYPE ON (BOARD.CLASS_NO = BOARD_TYPE.BOARD_TYPE_NO)
