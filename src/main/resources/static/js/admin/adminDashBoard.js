@@ -49,7 +49,7 @@ const selectClassList = (cp) => {
     const {startPage, endPage, currentPage, prevPage, nextPage, maxPage} = pagination;
 
     // 버튼 생성 + 화면 추가 함수
-    const createPageBtn = (page, text) => {
+    const createPageBtn1 = (page, text) => {
       const a = document.createElement('a');
       a.textContent = text;
       a.dataset.page = page;
@@ -58,15 +58,15 @@ const selectClassList = (cp) => {
       pg1.append(a);
       } 
 
-      createPageBtn(1, '처음');
-      createPageBtn(prevPage, '이전');
+      createPageBtn1(1, '처음');
+      createPageBtn1(prevPage, '이전');
 
       for(let i = startPage; i < endPage; i++) {
-        createPageBtn(i, i);
+        createPageBtn1(i, i);
       }
 
-      createPageBtn(nextPage, '다음');
-      createPageBtn(maxPage, '마지막');
+      createPageBtn1(nextPage, '다음');
+      createPageBtn1(maxPage, '마지막');
 
       paginationAddEvent();
   })
@@ -121,39 +121,50 @@ const selectBoardList = (cp) => {
 
     // 버튼 생성 + 화면 추가 함수
     const createPageBtn = (page, text) => {
-   const a = document.createElement('a');
-   a.textContent = text;
-   a.dataset.page = page;
+    const a = document.createElement('a');
+    a.textContent = text;
+    a.dataset.page = page;
 
-   if(!isNaN(Number(text)) &&  page == currentPage) a.classList.add('current');
-   pg2.append(a);
-   } 
+    if(!isNaN(Number(text)) &&  page == currentPage) a.classList.add('current');
+    pg2.append(a);
+    } 
 
-   createPageBtn(1, '처음');
-   createPageBtn(prevPage, '이전');
+    createPageBtn(1, '처음');
+    createPageBtn(prevPage, '이전');
 
-   for(let i = startPage; i < endPage; i++) {
-     createPageBtn(i, i);
+    for(let i = startPage; i < endPage; i++) {
+      createPageBtn(i, i);
+    }
+
+    createPageBtn(nextPage, '다음');
+    createPageBtn(maxPage, '마지막');
+
+    paginationAddEvent();
+
+    })
+    .catch(err => console.error(err));
    }
 
-   createPageBtn(nextPage, '다음');
-   createPageBtn(maxPage, '마지막');
-
-   paginationAddEvent();
-
-  })
-  .catch(err => console.error(err));
-}
-
 const paginationAddEvent = () => {
-  const pagination = document.querySelectorAll('.pagination a');
-  pagination.forEach(a => {
+  const pagination1 = document.querySelectorAll('.pagination1 a');
+  const pagination2 = document.querySelectorAll('.pagination2 a');
+
+  pagination1.forEach(a => {
     a.addEventListener('click', (e) => {
 
       if(a.classList.contains('current')) return;
       
       const cp = e.target.dataset.page;
       selectClassList(cp);
+    });
+  });
+
+  pagination2.forEach(a => {
+    a.addEventListener('click', (e) => {
+
+      if(a.classList.contains('current')) return;
+      
+      const cp = e.target.dataset.page;
       selectBoardList(cp);
     });
   });
